@@ -1,0 +1,11 @@
+name: 'D8 Feature Blocks Seven'
+description: 'Seven theme block settings.'
+type: module
+core: 8.x
+dependencies:
+  - block
+  - help
+  - system
+  - user
+version: 8.x-1.0
+package: D8

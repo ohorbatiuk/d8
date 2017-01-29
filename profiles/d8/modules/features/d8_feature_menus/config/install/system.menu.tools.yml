@@ -1,0 +1,7 @@
+langcode: uk
+status: true
+dependencies: {  }
+id: tools
+label: Інструменти
+description: 'Посилання інструментів користувача, часто додані модулями'
+locked: true

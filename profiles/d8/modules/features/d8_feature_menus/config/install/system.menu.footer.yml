@@ -1,0 +1,7 @@
+langcode: uk
+status: true
+dependencies: {  }
+id: footer
+label: 'Нижній колонтитул'
+description: 'Посилання відомостей про сайт'
+locked: true

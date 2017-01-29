@@ -1,0 +1,7 @@
+langcode: uk
+status: true
+dependencies: {  }
+id: main
+label: 'Основна навіґація'
+description: 'Посилання розділів сайту'
+locked: true

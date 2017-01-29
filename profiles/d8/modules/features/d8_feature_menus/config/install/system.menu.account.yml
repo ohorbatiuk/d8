@@ -1,0 +1,7 @@
+langcode: uk
+status: true
+dependencies: {  }
+id: account
+label: 'Меню облікового запису користувача'
+description: 'Посилання, пов’язані з активним обліковим записом'
+locked: true

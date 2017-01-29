@@ -1,0 +1,19 @@
+langcode: uk
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bootstrap
+id: bootstrap_powered
+theme: bootstrap
+region: footer
+weight: -7
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Працює на Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

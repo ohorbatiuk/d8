@@ -1,0 +1,23 @@
+langcode: uk
+status: false
+dependencies:
+  config:
+    - system.menu.tools
+  module:
+    - system
+  theme:
+    - bootstrap
+id: bootstrap_tools
+theme: bootstrap
+region: '-1'
+weight: -6
+provider: null
+plugin: 'system_menu_block:tools'
+settings:
+  id: 'system_menu_block:tools'
+  label: Інструменти
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility: {  }

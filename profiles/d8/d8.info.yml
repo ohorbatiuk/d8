@@ -1,0 +1,17 @@
+name: D8
+type: profile
+description: 'Basis for the site on Drupal 8.'
+version: VERSION
+core: 8.x
+dependencies:
+  - dblog
+  - config
+  - breakpoint
+  - toolbar
+  - views_ui
+  - admin_toolbar_tools
+  - features_ui
+  - d8_feature_menus
+themes:
+  - seven
+  - bootstrap

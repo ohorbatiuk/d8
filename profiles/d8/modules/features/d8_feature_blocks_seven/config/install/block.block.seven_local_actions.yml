@@ -1,0 +1,17 @@
+langcode: uk
+status: true
+dependencies:
+  theme:
+    - seven
+id: seven_local_actions
+theme: seven
+region: pre_content
+weight: -1
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Основні адміністративні дії'
+  provider: core
+  label_display: '0'
+visibility: {  }
