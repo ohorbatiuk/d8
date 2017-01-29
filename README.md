@@ -1,9 +1,11 @@
 Drupal 8.2.5
 
-Admin Toolbar 1.17
+Admin Toolbar 1.18
 
-Configuration Update Base 1.1
+Configuration Update Base 1.3
 
-Features 3.0-rc1
+Features 3.2
 
-Bootstrap 3.0-rc2
+Module filter 3.0
+
+Bootstrap 3.1
