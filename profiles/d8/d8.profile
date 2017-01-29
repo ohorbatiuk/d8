@@ -8,7 +8,7 @@
 /**
  * Implements hook_modules_installed().
  */
-function portfolio_modules_installed($modules) {
+function d8_modules_installed($modules) {
   foreach (['seven', 'bootstrap'] as $module) {
     if (in_array($module, $modules)) {
       $module_list = ['d8_feature_blocks_' . $module];
