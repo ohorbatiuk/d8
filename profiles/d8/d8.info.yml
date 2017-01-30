@@ -5,17 +5,16 @@ version: VERSION
 core: 8.x
 
 dependencies:
-  - dblog
-  - config
+  - block
   - breakpoint
+  - config
+  - dblog
   - toolbar
   - views_ui
 
   - admin_toolbar_tools
   - features_ui
   - module_filter
-
-  - d8_feature_menus
 
 themes:
   - seven

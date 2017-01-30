@@ -1,5 +1,4 @@
-langcode: uk
-status: true
+langcode: en
 dependencies:
   theme:
     - seven

@@ -1,7 +1,7 @@
-langcode: uk
+langcode : en
 status: true
 dependencies: {  }
 id: account
-label: 'Меню облікового запису користувача'
-description: 'Посилання, пов’язані з активним обліковим записом'
+label: 'User account menu'
+description: 'Links related to the active user account'
 locked: true

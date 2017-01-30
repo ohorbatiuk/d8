@@ -1,4 +1,4 @@
-langcode: uk
+langcode: en
 status: true
 dependencies:
   theme:
@@ -11,7 +11,7 @@ provider: null
 plugin: local_tasks_block
 settings:
   id: local_tasks_block
-  label: Вкладки
+  label: Tabs
   provider: core
   label_display: '0'
   primary: true

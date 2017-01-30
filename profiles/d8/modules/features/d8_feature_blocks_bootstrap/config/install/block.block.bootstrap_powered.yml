@@ -1,4 +1,4 @@
-langcode: uk
+langcode: en
 status: true
 dependencies:
   module:
@@ -13,7 +13,7 @@ provider: null
 plugin: system_powered_by_block
 settings:
   id: system_powered_by_block
-  label: 'Працює на Drupal'
+  label: 'Powered by Drupal'
   provider: system
   label_display: '0'
 visibility: {  }

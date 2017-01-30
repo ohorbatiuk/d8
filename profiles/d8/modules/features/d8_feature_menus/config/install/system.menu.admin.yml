@@ -1,7 +1,7 @@
-langcode: uk
+langcode : en
 status: true
 dependencies: {  }
 id: admin
-label: Адміністрування
-description: 'Посилання адміністративних завдань'
+label: Administration
+description: 'Administrative task links'
 locked: true

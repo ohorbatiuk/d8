@@ -1,7 +1,7 @@
-langcode: uk
+langcode : en
 status: true
 dependencies: {  }
 id: tools
-label: Інструменти
-description: 'Посилання інструментів користувача, часто додані модулями'
+label: Tools
+description: 'User tool links, often added by modules'
 locked: true

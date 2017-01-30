@@ -1,7 +1,7 @@
-langcode: uk
+langcode : en
 status: true
 dependencies: {  }
 id: main
-label: 'Основна навіґація'
-description: 'Посилання розділів сайту'
+label: 'Main navigation'
+description: 'Site section links'
 locked: true
