@@ -2,17 +2,16 @@
 
 /**
  * @file
- * Enables modules and site configuration for a D8 site installation.
+ * Basis for the site on Drupal 8.
  */
 
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Database\Database;
+
 /**
- * Implements hook_modules_installed().
+ * Implements hook_form_FORM_ID_alter().
  */
-function d8_modules_installed($modules) {
-  foreach (['seven', 'bootstrap'] as $module) {
-    if (in_array($module, $modules)) {
-      $module_list = ['d8_feature_blocks_' . $module];
-//      \Drupal::service('module_installer')->install($module_list, TRUE);
-    }
-  }
+function d8_form_install_configure_form_alter(array &$form, FormStateInterface $form_state) {
+  $db = Database::getConnectionInfo();
+  $form['admin_account']['account']['name']['#default_value'] = $db['default']['username'];
 }

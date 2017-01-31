@@ -1,26 +1,19 @@
 langcode: en
 status: true
 dependencies:
-  module:
-    - system
   theme:
     - seven
-id: seven_local_tasks
+id: seven_primary_local_tasks
 theme: seven
 region: header
-weight: -5
+weight: -2
 provider: null
 plugin: local_tasks_block
 settings:
   id: local_tasks_block
-  label: Tabs
+  label: 'Primary tabs'
   provider: core
   label_display: '0'
   primary: true
   secondary: false
-visibility:
-  request_path:
-    id: request_path
-    pages: "/admin/structure/block\r\n/admin/structure/block/*"
-    negate: true
-    context_mapping: {  }
+visibility: {  }

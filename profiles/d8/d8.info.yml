@@ -9,12 +9,16 @@ dependencies:
   - breakpoint
   - config
   - dblog
+  - menu_ui
+  - shortcut
   - toolbar
   - views_ui
 
   - admin_toolbar_tools
   - features_ui
   - module_filter
+
+  - d8_feature_menus
 
 themes:
   - seven
