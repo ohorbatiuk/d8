@@ -1,4 +1,4 @@
-Drupal 8.2.5
+Drupal 8.2.6
 
 Admin Toolbar 1.18
 
