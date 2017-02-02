@@ -9,7 +9,9 @@ dependencies:
   - breakpoint
   - config
   - dblog
+  - field_ui
   - menu_ui
+  - node
   - shortcut
   - toolbar
   - views_ui
