@@ -14,4 +14,5 @@ use Drupal\Core\Database\Database;
 function d8_form_install_configure_form_alter(array &$form, FormStateInterface $form_state) {
   $db = Database::getConnectionInfo();
   $form['admin_account']['account']['name']['#default_value'] = $db['default']['username'];
+  $form['update_notifications']['update_status_module']['#default_value'] = array(1);
 }
