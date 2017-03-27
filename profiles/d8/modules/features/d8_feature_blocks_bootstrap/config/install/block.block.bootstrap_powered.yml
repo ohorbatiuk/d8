@@ -1,5 +1,5 @@
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -7,7 +7,7 @@ dependencies:
     - bootstrap
 id: bootstrap_powered
 theme: bootstrap
-region: footer
+region: -1
 weight: -7
 provider: null
 plugin: system_powered_by_block
