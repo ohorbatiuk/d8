@@ -1,5 +1,5 @@
-name: 'D8 Feature Blocks Bootstrap'
-description: 'Bootstrap theme block settings.'
+name: 'D8 Feature Blocks D8 Theme'
+description: 'D8 Theme block settings.'
 type: module
 core: 8.x
 dependencies:

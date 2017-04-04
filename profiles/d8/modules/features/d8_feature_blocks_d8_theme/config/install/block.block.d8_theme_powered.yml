@@ -4,9 +4,9 @@ dependencies:
   module:
     - system
   theme:
-    - bootstrap
-id: bootstrap_powered
-theme: bootstrap
+    - d8_theme
+id: d8_theme_powered
+theme: d8_theme
 region: -1
 weight: -7
 provider: null

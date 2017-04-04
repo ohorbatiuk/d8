@@ -6,9 +6,9 @@ dependencies:
   module:
     - system
   theme:
-    - bootstrap
-id: bootstrap_footer
-theme: bootstrap
+    - d8_theme
+id: d8_theme_footer
+theme: d8_theme
 region: footer
 weight: 0
 provider: null

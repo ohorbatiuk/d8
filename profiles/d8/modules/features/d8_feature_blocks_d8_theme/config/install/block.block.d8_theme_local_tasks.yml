@@ -2,9 +2,9 @@ langcode: en
 status: true
 dependencies:
   theme:
-    - bootstrap
-id: bootstrap_local_tasks
-theme: bootstrap
+    - d8_theme
+id: d8_theme_local_tasks
+theme: d8_theme
 region: header
 weight: -7
 provider: null

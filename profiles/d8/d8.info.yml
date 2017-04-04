@@ -25,3 +25,4 @@ dependencies:
 themes:
   - seven
   - bootstrap
+  - d8_theme

@@ -14,7 +14,7 @@ function d8_install() {
   \Drupal::service('module_installer')
     ->install([
       'd8_feature_blocks_seven',
-      'd8_feature_blocks_bootstrap',
+      'd8_feature_blocks_d8_theme',
       'd8_feature_settings',
     ]);
 

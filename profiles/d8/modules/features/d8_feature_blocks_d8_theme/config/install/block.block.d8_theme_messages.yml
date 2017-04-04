@@ -4,16 +4,16 @@ dependencies:
   module:
     - system
   theme:
-    - bootstrap
-id: bootstrap_breadcrumbs
-theme: bootstrap
+    - d8_theme
+id: d8_theme_messages
+theme: d8_theme
 region: header
 weight: -7
 provider: null
-plugin: system_breadcrumb_block
+plugin: system_messages_block
 settings:
-  id: system_breadcrumb_block
-  label: Breadcrumbs
+  id: system_messages_block
+  label: 'Status messages'
   provider: system
   label_display: '0'
 visibility: {  }

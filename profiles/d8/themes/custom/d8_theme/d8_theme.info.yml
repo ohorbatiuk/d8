@@ -1,0 +1,14 @@
+core: 8.x
+type: theme
+base theme: bootstrap
+
+name: 'D8 Theme'
+description: 'Theme for D8 profile.'
+package: D8
+
+regions:
+  navigation: 'Navigation'
+  navigation_collapsible: 'Navigation (Collapsible)'
+  header: 'Top Bar'
+  content: 'Content'
+  footer: 'Footer'

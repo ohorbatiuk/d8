@@ -2,9 +2,9 @@ langcode: en
 status: false
 dependencies:
   theme:
-    - bootstrap
-id: bootstrap_page_title
-theme: bootstrap
+    - d8_theme
+id: d8_theme_page_title
+theme: d8_theme
 region: '-1'
 weight: -4
 provider: null
