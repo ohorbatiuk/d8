@@ -9,7 +9,7 @@ dependencies:
     - d8_theme
 id: d8_theme_account_menu
 theme: d8_theme
-region: '-1'
+region: navigation
 weight: -5
 provider: null
 plugin: 'system_menu_block:account'

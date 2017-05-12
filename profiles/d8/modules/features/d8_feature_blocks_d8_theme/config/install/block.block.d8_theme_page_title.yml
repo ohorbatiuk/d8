@@ -5,7 +5,7 @@ dependencies:
     - d8_theme
 id: d8_theme_page_title
 theme: d8_theme
-region: '-1'
+region: navigation
 weight: -4
 provider: null
 plugin: page_title_block
