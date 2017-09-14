@@ -1,6 +1,6 @@
-Drupal 8.3.6
+Drupal 8.3.7
 
-Admin Toolbar 1.19
+Admin Toolbar 1.20
 
 Configuration Update Base 1.3
 
