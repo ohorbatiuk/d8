@@ -1,4 +1,8 @@
 {
+    "name": "chmez/d8",
+    "description": "Profile for Drupal 8.",
+    "type": "drupal-profile",
+    "license": "GPL-2.0+",
     "repositories": [
         {
             "type": "composer",
