@@ -1,2 +1,4 @@
-vendor
 .idea
+modules/contrib
+themes/contrib
+vendor
