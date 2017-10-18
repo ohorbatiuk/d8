@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "cweagans/composer-patches": "^1.0",
         "drupal/core": "8.4.0",
         "drupal/admin_toolbar": "1.20",
         "drupal/config_update": "1.4",
@@ -26,6 +27,12 @@
             "themes/contrib/{$name}": [
                 "type:drupal-theme"
             ]
+        },
+        "enable-patching": true,
+        "patches": {
+            "drupal/core": {
+                "2916898 - Missing text format: basic_html": "https://www.drupal.org/files/issues/2916898-missing-text-format-basic-html.patch"
+            }
         }
     }
 }
