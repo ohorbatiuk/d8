@@ -32,6 +32,9 @@
         "patches": {
             "drupal/core": {
                 "2916898 - Missing text format: basic_html": "https://www.drupal.org/files/issues/2916898-missing-text-format-basic-html.patch"
+            },
+            "drupal/bootstrap": {
+                "2903656 - Updating to Drupal core 8.4.0-beta1 results in not working dropdown menu": "https://www.drupal.org/files/issues/updating_to_drupal_core-2903656-3.patch"
             }
         }
     }
