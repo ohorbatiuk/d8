@@ -18,14 +18,6 @@ function d8_install() {
       'd8_feature_settings',
     ]);
 
-  // Set Monday how first day of the week and disable possibility to change
-  // personal timezone by the user.
-  \Drupal::configFactory()
-    ->getEditable('system.date')
-    ->set('first_day', 1)
-    ->set('timezone.user.configurable', 0)
-    ->save(TRUE);
-
   // Populate the default shortcut set.
   $shortcut = Shortcut::create([
     'shortcut_set' => 'default',

@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * d8_feature_settings.install
+ */
+
+/**
+ * Implements hook_install().
+ */
+function d8_feature_settings_install() {
+  // Set Monday how first day of the week and disable possibility to change
+  // personal timezone by the user.
+  \Drupal::configFactory()->getEditable('system.date')
+    ->set('first_day', 1)
+    ->set('timezone.user.configurable', 0)
+    ->save(TRUE);
+
+  \Drupal::configFactory()->getEditable('system.logging')
+    ->set('error_level', 'verbose')
+    ->save(TRUE);
+}
