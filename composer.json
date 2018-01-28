@@ -14,6 +14,7 @@
         "cweagans/composer-patches": "^1.0",
         "drupal/admin_toolbar": "1.22",
         "drupal/bootstrap": "3.9",
+        "drupal/config_override": "1.0-beta2",
         "drupal/config_update": "1.5",
         "drupal/core": "8.4.4",
         "drupal/features": "3.5",

@@ -1,0 +1,12 @@
+display:
+  default:
+    display_options:
+      pager:
+        type: full
+        options:
+          tags:
+            previous: '‹ Prev'
+            next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
+          quantity: 9

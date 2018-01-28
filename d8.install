@@ -11,19 +11,28 @@ use Drupal\shortcut\Entity\Shortcut;
  * Implements hook_install().
  */
 function d8_install() {
-  \Drupal::service('module_installer')
-    ->install([
-      'd8_feature_blocks_seven',
-      'd8_feature_blocks_d8_theme',
-      'd8_feature_settings',
-    ]);
+  \Drupal::service('module_installer')->install([
+    'd8_feature_blocks_seven',
+    'd8_feature_blocks_d8_theme',
+    'd8_feature_settings',
+  ]);
 
   // Populate the default shortcut set.
   $shortcut = Shortcut::create([
     'shortcut_set' => 'default',
     'title' => t('Features'),
     'weight' => -20,
-    'link' => array('uri' => 'internal:/admin/config/development/features'),
+    'link' => [
+      'uri' => 'internal:/admin/config/development/features',
+    ],
   ]);
+
   $shortcut->save();
+}
+
+/**
+ * Install "Config Override" module.
+ */
+function d8_update_8001() {
+  \Drupal::service('module_installer')->install(['config_override']);
 }
