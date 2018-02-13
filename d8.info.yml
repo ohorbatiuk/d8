@@ -4,6 +4,9 @@ description: 'Basis for the site on Drupal 8.'
 version: VERSION
 core: 8.x
 
+distribution:
+  name: D8
+
 dependencies:
   - block
   - breakpoint
