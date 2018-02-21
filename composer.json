@@ -13,10 +13,10 @@
         "composer/installers": "1.4.0",
         "cweagans/composer-patches": "^1.0",
         "drupal/admin_toolbar": "1.23",
-        "drupal/bootstrap": "3.9",
+        "drupal/bootstrap": "3.10",
         "drupal/config_override": "1.0-beta2",
         "drupal/config_update": "1.5",
-        "drupal/core": "8.4.4",
+        "drupal/core": "8.4.5",
         "drupal/features": "3.5",
         "drupal/module_filter": "3.1"
     },
