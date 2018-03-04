@@ -18,17 +18,7 @@
         "drupal/config_update": "1.5",
         "drupal/core": "8.4.5",
         "drupal/features": "3.7",
-        "drupal/module_filter": "3.1",
-        "slowprog/composer-copy-file": "0.2.1",
-        "sozarch/bootstrap-sass": "3.3.7"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "SlowProg\\CopyFile\\ScriptHandler::copy"
-        ],
-        "post-update-cmd": [
-            "SlowProg\\CopyFile\\ScriptHandler::copy"
-        ]
+        "drupal/module_filter": "3.1"
     },
     "extra": {
         "installer-paths": {
@@ -44,9 +34,6 @@
             "drupal/core": {
                 "2916898 - Missing text format: basic_html": "https://www.drupal.org/files/issues/2916898-missing-text-format-basic-html.patch"
             }
-        },
-        "copy-file": {
-            "vendor/sozarch/bootstrap-sass/scss/_variables.scss": "profiles/contrib/d8/themes/custom/d8_theme/sass/"
         }
     }
 }
