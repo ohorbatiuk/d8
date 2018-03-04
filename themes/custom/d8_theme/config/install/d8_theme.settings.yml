@@ -1,0 +1,24 @@
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: '/profiles/contrib/d8/themes/custom/d8_theme/favicon.ico'
+  use_default: 1
+schemas:
+  d8_theme: 8000
+  bootstrap: 8000
+fluid_container: 1
+image_shape: img-thumbnail
+table_responsive: '0'
+table: ''
+navbar_position: static-top
+langcode: en
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: 1
+  node_user_picture: false
+logo:
+  path: ''
+  url: ''
+  use_default: 1
+table_wide: 1

@@ -1,0 +1,25 @@
+.table-responsive {
+  @media screen and (max-width: $screen-xs-max) {
+    &.table-wrapper.table-wide {
+      width: auto;
+    }
+  }
+}
+
+.table-wrapper.table-wide {
+  margin-left: -$navbar-padding-horizontal;
+  margin-right: -$navbar-padding-horizontal;
+
+  > .table {
+    > thead > tr > th,
+    > tbody > tr > td {
+      &:first-child {
+        padding-left: $navbar-padding-horizontal;
+      }
+
+      &:last-child {
+        padding-right: $navbar-padding-horizontal;
+      }
+    }
+  }
+}
