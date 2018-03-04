@@ -1,0 +1,11 @@
+{
+  "name": "D8",
+  "version": "1.0.0",
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-cli": "latest",
+    "gulp-sass": "latest",
+    "gulp-sourcemaps": "^2.6.0"
+  },
+  "private": true
+}
