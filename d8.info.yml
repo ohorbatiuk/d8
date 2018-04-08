@@ -8,23 +8,24 @@ distribution:
   name: D8
 
 dependencies:
-  - block
-  - breakpoint
-  - config
-  - dblog
-  - field_ui
-  - menu_ui
-  - node
-  - shortcut
-  - toolbar
-  - views_ui
+  - drupal:block
+  - drupal:breakpoint
+  - drupal:config
+  - drupal:dblog
+  - drupal:field_ui
+  - drupal:menu_ui
+  - drupal:node
+  - drupal:shortcut
+  - drupal:toolbar
+  - drupal:views_ui
 
-  - admin_toolbar_tools
-  - config_override
-  - features_ui
-  - module_filter
+  - admin_toolbar:admin_toolbar_tools
+  - config_override:config_override
+  - features:features_ui
+  - module_filter:module_filter
+  - recaptcha:recaptcha
 
-  - d8_feature_menus
+  - d8_feature_menus:d8_feature_menus
 
 themes:
   - seven
