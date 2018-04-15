@@ -33,7 +33,7 @@
         "enable-patching": true,
         "patches": {
             "drupal/core": {
-                "2916898 - Missing text format: basic_html": "https://www.drupal.org/files/issues/2916898-missing-text-format-basic-html.patch"
+                "2916898 - Do not use basic_html text format for 'No log messages available.' message": "https://www.drupal.org/files/issues/2018-04-05/2916898-34.patch"
             }
         }
     }
