@@ -34,7 +34,7 @@
         "patches": {
             "drupal/core": {
                 "2916898 - Do not use basic_html text format for 'No log messages available.' message": "https://www.drupal.org/files/issues/2018-04-05/2916898-34.patch",
-                "2981434 - Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2018-06-24/default-theme-favicon-for-administration-theme-2981434-5.patch"
+                "2981434 - Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2018-06-25/default-theme-favicon-for-administration-theme-2981434-5.patch"
             }
         }
     }
