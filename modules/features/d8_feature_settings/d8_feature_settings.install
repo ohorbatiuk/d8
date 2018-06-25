@@ -20,3 +20,12 @@ function d8_feature_settings_install() {
     ->set('error_level', 'verbose')
     ->save(TRUE);
 }
+
+/**
+ * Enable overriding favicon of administration theme.
+ */
+function d8_feature_settings_update_8001() {
+  \Drupal::configFactory()->getEditable('system.theme')
+    ->set('favicon', TRUE)
+    ->save();
+}
