@@ -34,9 +34,6 @@
         "patches": {
             "drupal/core": {
                 "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2018-06-25/default-theme-favicon-for-administration-theme-2981434-5.patch"
-            },
-            "drupal/recaptcha": {
-                "Preloader": "https://www.drupal.org/files/issues/2018-12-09/recaptcha-preloader-3019135-4.patch"
             }
         }
     }
