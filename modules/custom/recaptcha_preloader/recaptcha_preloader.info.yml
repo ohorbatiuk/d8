@@ -1,0 +1,12 @@
+name: reCAPTCHA Preloader
+description: Provide preloader for Google reCAPTCHA.
+package: Spam control
+
+type: module
+core: 8.x
+version: 8.x-1.0
+
+configure: recaptcha_preloader.admin_settings_form
+
+dependencies:
+  - recaptcha:recaptcha

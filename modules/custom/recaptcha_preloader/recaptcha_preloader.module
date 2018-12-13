@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Provide preloader for Google reCAPTCHA.
+ */
+
+/**
+ * Implements hook_captcha().
+ */
+function recaptcha_preloader_captcha($op, $captcha_type = '') {
+  $type = 'reCAPTCHA with preloader';
+
+  switch ($op) {
+    case 'list':
+      return [$type];
+
+    case 'generate':
+      if ($captcha_type !== $type) {
+        break;
+      }
+
+      $captcha = recaptcha_captcha('generate', 'reCAPTCHA');
+
+      if (isset($captcha['form']['recaptcha_widget'])) {
+        $x = 1;
+      }
+
+      return $captcha;
+  }
+}
