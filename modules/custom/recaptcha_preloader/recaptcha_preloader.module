@@ -23,7 +23,6 @@ function recaptcha_preloader_captcha($op, $captcha_type = '') {
       $captcha = recaptcha_captcha('generate', 'reCAPTCHA');
 
       if (isset($captcha['form']['recaptcha_widget'])) {
-        $x = 1;
       }
 
       return $captcha;

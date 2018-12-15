@@ -1,0 +1,4 @@
+recaptcha_preloader.admin_settings_form_tab:
+  route_name: recaptcha_preloader.admin_settings_form
+  title: 'reCAPTCHA Preloader'
+  base_route: captcha_settings
