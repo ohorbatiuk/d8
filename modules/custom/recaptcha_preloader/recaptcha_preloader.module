@@ -111,10 +111,16 @@ function recaptcha_preloader_captcha($op, $captcha_type = '') {
 
       if ($config->get('message')) {
         if ($config->get('appearance')) {
+          $theme = $recaptcha_config->get('widget.theme');
+
+          if (!$theme) {
+            $theme = 'light';
+          }
+
           $attributes = [
             'class' => [
               'g-recaptcha-message',
-              $recaptcha_config->get('widget.theme'),
+              $theme,
             ],
           ];
 

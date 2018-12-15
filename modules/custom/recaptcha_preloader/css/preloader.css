@@ -200,12 +200,8 @@
   height: 144px;
 }
 
-.g-recaptcha-wrapper.loading > .g-recaptcha {
-  position: relative;
-  z-index: 0;
-}
-
-.g-recaptcha-wrapper > .g-recaptcha-message {
+.g-recaptcha-wrapper.loading > .g-recaptcha,
+.g-recaptcha-wrapper > .g-recaptcha-message{
   display: none;
 }
 
@@ -215,7 +211,6 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
   box-sizing: border-box;
   border-radius: 3px;
   font-family: Roboto, helvetica, arial, sans-serif;
