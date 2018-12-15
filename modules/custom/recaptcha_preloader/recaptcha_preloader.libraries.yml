@@ -1,0 +1,17 @@
+connector:
+  version: VERSION
+  css:
+    component:
+      css/preloader.css: {}
+  js:
+    js/preloader.js:
+      attributes:
+        async: true
+        defer: true
+    https://www.google.com/recaptcha/api.js?onload=onLoadReCaptcha:
+      type: external
+      attributes:
+        async: true
+        defer: true
+  dependencies:
+    - core/jquery

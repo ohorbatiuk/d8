@@ -36,6 +36,25 @@ function recaptcha_preloader_form_alter(&$form, FormStateInterface $form_state, 
 }
 
 /**
+ * Implements hook_library_info_alter().
+ */
+function recaptcha_preloader_library_info_alter(&$libraries, $extension) {
+  if ($extension === 'recaptcha_preloader') {
+    $items = [];
+
+    foreach ($libraries['connector']['js'] as $key => $item) {
+      if (substr($key, 0, 5) === 'https') {
+        $key .= '&hl=' . \Drupal::languageManager()->getCurrentLanguage()->getId();
+      }
+
+      $items[$key] = $item;
+    }
+
+    $libraries['connector']['js'] = $items;
+  }
+}
+
+/**
  * Implements hook_captcha().
  */
 function recaptcha_preloader_captcha($op, $captcha_type = '') {
@@ -73,56 +92,9 @@ function recaptcha_preloader_captcha($op, $captcha_type = '') {
         'recaptcha_preloader_style',
       ];
 
-      $widget['#attached']['html_head'] = [
-        [
-          [
-            '#tag' => 'script',
-            '#attributes' => [
-              'src' => Url::fromUserInput('/core/assets/vendor/jquery/jquery.min.js')->toString(),
-              'async' => TRUE,
-              'defer' => TRUE,
-            ],
-          ],
-          'jquery',
-        ],
-        [
-          [
-            '#tag' => 'script',
-            '#attributes' => [
-              'src' => Url::fromUserInput($path . 'js/preloader.js')->toString(),
-              'async' => TRUE,
-              'defer' => TRUE,
-            ],
-          ],
-          'recaptcha_preloader_script',
-        ],
-        [
-          [
-            '#tag' => 'link',
-            '#attributes' => [
-              'href' => Url::fromUserInput($path . 'css/preloader.css')->toString(),
-              'rel' => 'stylesheet',
-              'type' => 'text/css',
-            ],
-          ],
-          'recaptcha_preloader_style',
-        ],
-        [
-          [
-            '#tag' => 'script',
-            '#attributes' => [
-              'src' => Url::fromUri('https://www.google.com/recaptcha/api.js', [
-                'query' => [
-                  'hl' => \Drupal::service('language_manager')->getCurrentLanguage()->getId(),
-                  'onload' => 'onLoadReCaptcha',
-                ],
-                'absolute' => TRUE,
-              ])->toString(),
-              'async' => TRUE,
-              'defer' => TRUE,
-            ],
-          ],
-          'recaptcha_api',
+      $widget['#attached'] = [
+        'library' => [
+          'recaptcha_preloader/connector',
         ],
       ];
 
