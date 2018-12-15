@@ -5,6 +5,9 @@
  * Provide preloader for Google reCAPTCHA.
  */
 
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Url;
+
 /**
  * Implements hook_captcha().
  */
@@ -21,9 +24,110 @@ function recaptcha_preloader_captcha($op, $captcha_type = '') {
       }
 
       $captcha = recaptcha_captcha('generate', 'reCAPTCHA');
+      $recaptcha_config = \Drupal::config('recaptcha.settings');
+      $config = \Drupal::config('recaptcha_preloader.settings');
 
-      if (isset($captcha['form']['recaptcha_widget'])) {
+      if (!(isset($captcha['form']['recaptcha_widget']) && !$recaptcha_config->get('widget.noscript') && $config->get('use'))) {
+        return $captcha;
       }
+
+      $widget = &$captcha['form']['recaptcha_widget'];
+      $path = '/' . drupal_get_path('module', 'recaptcha_preloader') . '/';
+
+      $html_heads[] = [
+        [
+          '#tag' => 'link',
+          '#attributes' => [
+            'href' => Url::fromUserInput($path . 'css/preloader.css')->toString(),
+            'rel' => 'stylesheet',
+            'type' => 'text/css',
+          ],
+        ],
+        'recaptcha_preloader_style',
+      ];
+
+      $widget['#attached']['html_head'] = [
+        [
+          [
+            '#tag' => 'script',
+            '#attributes' => [
+              'src' => Url::fromUserInput('/core/assets/vendor/jquery/jquery.min.js')->toString(),
+              'async' => TRUE,
+              'defer' => TRUE,
+            ],
+          ],
+          'jquery',
+        ],
+        [
+          [
+            '#tag' => 'script',
+            '#attributes' => [
+              'src' => Url::fromUserInput($path . 'js/preloader.js')->toString(),
+              'async' => TRUE,
+              'defer' => TRUE,
+            ],
+          ],
+          'recaptcha_preloader_script',
+        ],
+        [
+          [
+            '#tag' => 'link',
+            '#attributes' => [
+              'href' => Url::fromUserInput($path . 'css/preloader.css')->toString(),
+              'rel' => 'stylesheet',
+              'type' => 'text/css',
+            ],
+          ],
+          'recaptcha_preloader_style',
+        ],
+        [
+          [
+            '#tag' => 'script',
+            '#attributes' => [
+              'src' => Url::fromUri('https://www.google.com/recaptcha/api.js', [
+                'query' => [
+                  'hl' => \Drupal::service('language_manager')->getCurrentLanguage()->getId(),
+                  'onload' => 'onLoadReCaptcha',
+                ],
+                'absolute' => TRUE,
+              ])->toString(),
+              'async' => TRUE,
+              'defer' => TRUE,
+            ],
+          ],
+          'recaptcha_api',
+        ],
+      ];
+
+      $attributes = [
+        'class' => [
+          'g-recaptcha-wrapper',
+          $recaptcha_config->get('widget.size') ? 'compact' : 'default',
+          'loading',
+        ],
+      ];
+
+      $widget['#prefix'] = '<div' . new Attribute($attributes) . '>';
+
+      if ($config->get('message')) {
+        if ($config->get('appearance')) {
+          $attributes = [
+            'class' => [
+              'g-recaptcha-message',
+              $recaptcha_config->get('widget.theme'),
+            ],
+          ];
+
+          $widget['#suffix'] .= '<div' . new Attribute($attributes) . '>';
+          $widget['#suffix'] .= $config->get('message');
+          $widget['#suffix'] .= '</div>';
+        }
+        else {
+          $widget['#markup'] = substr($widget['#markup'], 0, -6) . $config->get('message') . substr($widget['#markup'], -6);
+        }
+      }
+
+      $widget['#suffix'] .= '</div>';
 
       return $captcha;
   }
