@@ -11,5 +11,5 @@ recaptcha_preloader.settings:
       type: boolean
       label: 'Appearance'
     message:
-      type: string
+      type: label
       label: 'Message'
