@@ -1,0 +1,15 @@
+# Schema for the configuration files of the recaptcha_preloader module.
+
+recaptcha_preloader.settings:
+  type: config_object
+  label: 'reCAPTCHA Preloader settings'
+  mapping:
+    use:
+      type: boolean
+      label: 'Enable'
+    appearance:
+      type: boolean
+      label: 'Appearance'
+    message:
+      type: label
+      label: 'Message'

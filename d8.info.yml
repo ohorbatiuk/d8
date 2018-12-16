@@ -23,8 +23,8 @@ dependencies:
   - config_override
   - features_ui
   - module_filter
-  - recaptcha
 
+  - d8_captcha
   - d8_feature_menus
 
 themes:

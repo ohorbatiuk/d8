@@ -1,0 +1,3 @@
+use: false
+appearance: true
+message: 'I''m loading...'

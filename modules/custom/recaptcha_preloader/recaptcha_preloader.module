@@ -1,0 +1,190 @@
+<?php
+
+/**
+ * @file
+ * Provide preloader for Google reCAPTCHA.
+ */
+
+use Drupal\Core\Asset\AttachedAssets;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_form_alter().
+ */
+function recaptcha_preloader_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (\Drupal::config('recaptcha_preloader.settings')->get('use') && !$form_state->getUserInput()) {
+    $types = ['recaptcha_preloader/reCAPTCHA with preloader'];
+    $default = \Drupal::config('captcha.settings')->get('default_challenge');
+
+    if ($default === $types[0]) {
+      $types[] = 'default';
+    }
+
+    $entities = \Drupal::entityTypeManager()->getStorage('captcha_point')
+      ->loadByProperties([
+        'status' => TRUE,
+        'formId' => $form_id,
+        'captchaType' => $types,
+      ]);
+
+    if ($entities) {
+      _recaptcha_preloader_search($form);
+    }
+  }
+}
+
+/**
+ * Implements hook_captcha().
+ */
+function recaptcha_preloader_captcha($op, $captcha_type = '') {
+  $type = 'reCAPTCHA with preloader';
+
+  switch ($op) {
+    case 'list':
+      return [$type];
+
+    case 'generate':
+      if ($captcha_type !== $type) {
+        break;
+      }
+
+      $captcha = recaptcha_captcha('generate', 'reCAPTCHA');
+      $recaptcha_config = \Drupal::config('recaptcha.settings');
+      $config = \Drupal::config('recaptcha_preloader.settings');
+
+      if (!(isset($captcha['form']['recaptcha_widget']) && !$recaptcha_config->get('widget.noscript') && $config->get('use'))) {
+        return $captcha;
+      }
+
+      $assets = AttachedAssets::createFromRenderArray([
+        '#attached' => [
+          'library' => [
+            'recaptcha_preloader/connector',
+          ],
+        ],
+      ]);
+
+      /** @var \Drupal\Core\Asset\AssetResolverInterface $service */
+      $service = \Drupal::service('asset.resolver');
+
+      $assets = [
+        'css' => [
+          $service->getCssAssets($assets, FALSE),
+        ],
+        'js' => $service->getJsAssets($assets, FALSE),
+      ];
+
+      $fields = [
+        'css' => [
+          'tag' => 'link',
+          'attribute' => 'href',
+          'attributes' => [
+            'rel' => 'stylesheet',
+            'type' => 'text/css',
+          ],
+        ],
+        'js' => [
+          'tag' => 'script',
+          'attribute' => 'src',
+          'attributes' => [
+            'async' => TRUE,
+            'defer' => TRUE,
+          ],
+        ],
+      ];
+
+      $widget = &$captcha['form']['recaptcha_widget'];
+      $widget['#attached']['html_head'] = [];
+
+      foreach ($assets as $type => $group) {
+        $id = 1;
+
+        foreach ($group as $items) {
+          foreach ($items as $item) {
+            $url = $item['data'];
+
+            if ($item['type'] === 'external') {
+              $url .= '&hl=' . \Drupal::languageManager()->getCurrentLanguage()
+                  ->getId();
+            }
+            else {
+              $url = '/' . $url;
+            }
+
+            $widget['#attached']['html_head'][] = [
+              [
+                '#tag' => $fields[$type]['tag'],
+                '#attributes' => [
+                    $fields[$type]['attribute'] => $url,
+                  ] + $fields[$type]['attributes'],
+              ],
+              'recaptcha_preloader_' . $type . '_' . ($id++),
+            ];
+          }
+        }
+      }
+
+      $attributes = [
+        'class' => [
+          'g-recaptcha-wrapper',
+          $recaptcha_config->get('widget.size') ? 'compact' : 'default',
+          'loading',
+        ],
+      ];
+
+      $widget['#prefix'] = '<div' . new Attribute($attributes) . '>';
+
+      if ($config->get('message')) {
+        if ($config->get('appearance')) {
+          $theme = $recaptcha_config->get('widget.theme');
+
+          if (!$theme) {
+            $theme = 'light';
+          }
+
+          $attributes = [
+            'class' => [
+              'g-recaptcha-message',
+              $theme,
+            ],
+          ];
+
+          $widget['#suffix'] .= '<div' . new Attribute($attributes) . '>';
+          $widget['#suffix'] .= $config->get('message');
+          $widget['#suffix'] .= '</div>';
+        }
+        else {
+          $widget['#markup'] = substr($widget['#markup'], 0, -6) . $config->get('message') . substr($widget['#markup'], -6);
+        }
+      }
+
+      $widget['#suffix'] .= '</div>';
+
+      return $captcha;
+  }
+}
+
+/**
+ * Disable submit form elements.
+ *
+ * @param array $elements
+ *   The element array.
+ */
+function _recaptcha_preloader_search(array &$elements) {
+  foreach (Element::children($elements) as $key) {
+    if (is_array($elements[$key])) {
+      switch ($elements[$key]['#type']) {
+        case 'actions':
+          _recaptcha_preloader_search($elements[$key]);
+          break;
+
+        case 'submit':
+          $elements[$key]['#disabled'] = TRUE;
+          $elements[$key]['#attributes']['class'][] = 'blocked-by-recaptcha';
+          break;
+      }
+    }
+  }
+}

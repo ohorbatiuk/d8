@@ -1,0 +1,10 @@
+name: 'D8 Captcha'
+description: 'Captcha settings.'
+type: module
+core: 8.x
+dependencies:
+  - captcha
+  - recaptcha
+  - recaptcha_preloader
+version: 8.x-1.0
+package: D8
