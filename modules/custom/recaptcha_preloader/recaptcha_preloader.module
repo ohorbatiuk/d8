@@ -5,10 +5,10 @@
  * Provide preloader for Google reCAPTCHA.
  */
 
+use Drupal\Core\Asset\AttachedAssets;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Template\Attribute;
-use Drupal\Core\Url;
 
 /**
  * Implements hook_form_alter().
@@ -36,25 +36,6 @@ function recaptcha_preloader_form_alter(&$form, FormStateInterface $form_state, 
 }
 
 /**
- * Implements hook_library_info_alter().
- */
-function recaptcha_preloader_library_info_alter(&$libraries, $extension) {
-  if ($extension === 'recaptcha_preloader') {
-    $items = [];
-
-    foreach ($libraries['connector']['js'] as $key => $item) {
-      if (substr($key, 0, 5) === 'https') {
-        $key .= '&hl=' . \Drupal::languageManager()->getCurrentLanguage()->getId();
-      }
-
-      $items[$key] = $item;
-    }
-
-    $libraries['connector']['js'] = $items;
-  }
-}
-
-/**
  * Implements hook_captcha().
  */
 function recaptcha_preloader_captcha($op, $captcha_type = '') {
@@ -77,26 +58,73 @@ function recaptcha_preloader_captcha($op, $captcha_type = '') {
         return $captcha;
       }
 
-      $widget = &$captcha['form']['recaptcha_widget'];
-      $path = '/' . drupal_get_path('module', 'recaptcha_preloader') . '/';
+      $assets = AttachedAssets::createFromRenderArray([
+        '#attached' => [
+          'library' => [
+            'recaptcha_preloader/connector',
+          ],
+        ],
+      ]);
 
-      $html_heads[] = [
-        [
-          '#tag' => 'link',
-          '#attributes' => [
-            'href' => Url::fromUserInput($path . 'css/preloader.css')->toString(),
+      /** @var \Drupal\Core\Asset\AssetResolverInterface $service */
+      $service = \Drupal::service('asset.resolver');
+
+      $assets = [
+        'css' => [
+          $service->getCssAssets($assets, FALSE),
+        ],
+        'js' => $service->getJsAssets($assets, FALSE),
+      ];
+
+      $fields = [
+        'css' => [
+          'tag' => 'link',
+          'attribute' => 'href',
+          'attributes' => [
             'rel' => 'stylesheet',
             'type' => 'text/css',
           ],
         ],
-        'recaptcha_preloader_style',
-      ];
-
-      $widget['#attached'] = [
-        'library' => [
-          'recaptcha_preloader/connector',
+        'js' => [
+          'tag' => 'script',
+          'attribute' => 'src',
+          'attributes' => [
+            'async' => TRUE,
+            'defer' => TRUE,
+          ],
         ],
       ];
+
+      $widget = &$captcha['form']['recaptcha_widget'];
+      $widget['#attached']['html_head'] = [];
+
+      foreach ($assets as $type => $group) {
+        $id = 1;
+
+        foreach ($group as $items) {
+          foreach ($items as $item) {
+            $url = $item['data'];
+
+            if ($item['type'] === 'external') {
+              $url .= '&hl=' . \Drupal::languageManager()->getCurrentLanguage()
+                  ->getId();
+            }
+            else {
+              $url = '/' . $url;
+            }
+
+            $widget['#attached']['html_head'][] = [
+              [
+                '#tag' => $fields[$type]['tag'],
+                '#attributes' => [
+                    $fields[$type]['attribute'] => $url,
+                  ] + $fields[$type]['attributes'],
+              ],
+              'recaptcha_preloader_' . $type . '_' . ($id++),
+            ];
+          }
+        }
+      }
 
       $attributes = [
         'class' => [

@@ -2,9 +2,9 @@ connector:
   version: VERSION
   css:
     component:
-      css/preloader.css: {}
+      css/base.css: {}
   js:
-    js/preloader.js:
+    js/base.js:
       attributes:
         async: true
         defer: true
