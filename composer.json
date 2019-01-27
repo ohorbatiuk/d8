@@ -16,7 +16,7 @@
         "drupal/bootstrap": "3.16",
         "drupal/config_override": "1.0-beta2",
         "drupal/config_update": "1.5",
-        "drupal/core": "8.6.4",
+        "drupal/core": "8.6.7",
         "drupal/features": "3.8",
         "drupal/module_filter": "3.1",
         "drupal/recaptcha": "2.3"
