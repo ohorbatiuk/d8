@@ -23,13 +23,15 @@ class Captcha extends ReCaptchaAdminSettingsForm {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildForm($form, $form_state);
 
-    $section = $form['general'];
-
-    unset($form['general'], $form['widget']);
-
     $form['#title'] = $this->t('reCAPTCHA keys');
 
-    return $form + $section;
+    $form['general']['#type'] = 'container';
+    $form['general']['recaptcha_verify_hostname']['#access'] = FALSE;
+    $form['general']['recaptcha_use_globally']['#access'] = FALSE;
+
+    $form['widget']['#access'] = FALSE;
+
+    return $form;
   }
 
 }
