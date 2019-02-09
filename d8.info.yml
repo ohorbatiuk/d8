@@ -24,6 +24,7 @@ dependencies:
   - features_ui
   - module_filter
 
+  - d8_ban
   - d8_captcha
   - d8_feature_menus
 
