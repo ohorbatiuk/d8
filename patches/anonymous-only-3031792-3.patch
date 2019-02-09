@@ -1,0 +1,84 @@
+diff --git a/config/schema/autoban.schema.yml b/config/schema/autoban.schema.yml
+index 8f2ca48..ffc0b5f 100644
+--- a/config/schema/autoban.schema.yml
++++ b/config/schema/autoban.schema.yml
+@@ -23,3 +23,6 @@ autoban.autoban.*:
+     provider:
+       type: string
+       label: 'IP ban provider.'
++    anonymous:
++      type: boolean
++      label: 'Anonymous only.'
+diff --git a/src/Controller/AutobanController.php b/src/Controller/AutobanController.php
+index 63f5b2b..689469c 100644
+--- a/src/Controller/AutobanController.php
++++ b/src/Controller/AutobanController.php
+@@ -38,6 +38,7 @@ class AutobanController extends ControllerBase {
+       $type = $params['type'];
+       $threshold = 1;
+       $referer = NULL;
++      $anonymous = FALSE;
+     }
+     else {
+       $entity = autoban::load($rule);
+@@ -45,6 +46,7 @@ class AutobanController extends ControllerBase {
+       $type = trim($entity->type);
+       $threshold = (int) $entity->threshold;
+       $referer = trim($entity->referer);
++      $anonymous = $entity->anonymous;
+     }
+
+     $connection = Database::getConnection();
+@@ -88,6 +90,10 @@ class AutobanController extends ControllerBase {
+     $query->addExpression('COUNT(log.hostname)', 'hcount');
+     $query->having('COUNT(log.hostname) >= :cnt', [':cnt' => $threshold]);
+
++    if ($anonymous) {
++      $query->having('MAX(log.uid) = 0');
++    }
++
+     $result = $query->execute()->fetchAll();
+     return $result;
+   }
+diff --git a/src/Entity/Autoban.php b/src/Entity/Autoban.php
+index 0ee6916..100c32c 100644
+--- a/src/Entity/Autoban.php
++++ b/src/Entity/Autoban.php
+@@ -58,6 +58,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
+  *     "referer",
+  *     "threshold",
+  *     "provider",
++ *     "anonymous",
+  *   },
+  * )
+  */
+@@ -105,4 +106,11 @@ class Autoban extends ConfigEntityBase {
+    */
+   public $provider;
+
++  /**
++   * Anonymous only.
++   *
++   * @var bool
++   */
++  public $anonymous;
++
+ }
+diff --git a/src/Form/AutobanFormBase.php b/src/Form/AutobanFormBase.php
+index fde1500..df7b17d 100644
+--- a/src/Form/AutobanFormBase.php
++++ b/src/Form/AutobanFormBase.php
+@@ -178,6 +178,13 @@ class AutobanFormBase extends EntityForm {
+       '#required' => TRUE,
+     ];
+
++    $form['anonymous'] = [
++      '#type' => 'checkbox',
++      '#title' => $this->t('Anonymous only'),
++      '#description' => $this->t('Allow ban only IP addresses which were not used by authenticated users.'),
++      '#default_value' => $autoban_rule->anonymous,
++    ];
++
+     $destination = $this->getDestinationArray();
+     $cancel_url = !empty($destination['destination']) && Url::fromRoute('<current>')->toString() != $destination['destination'] ?
+       Url::fromUserInput($destination['destination']) : Url::fromRoute('entity.autoban.list');
