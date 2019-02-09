@@ -71,6 +71,13 @@ function d8_update_8003() {
 }
 
 /**
+ * Install "D8 Ban" module.
+ */
+function d8_update_8004() {
+  \Drupal::service('module_installer')->install(['d8_ban']);
+}
+
+/**
  * Implements hook_install_tasks().
  */
 function d8_install_tasks(&$install_state) {
