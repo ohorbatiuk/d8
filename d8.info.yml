@@ -20,6 +20,7 @@ dependencies:
   - views_ui
 
   - admin_toolbar_tools
+  - config2php
   - config_override
   - features_ui
   - module_filter
