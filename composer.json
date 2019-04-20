@@ -35,7 +35,7 @@
         "enable-patching": true,
         "patches": {
             "drupal/autoban": {
-                "Anonymous only": "https://www.drupal.org/files/issues/2019-02-09/anonymous-only-3031792-3.patch"
+                "Anonymous only": "https://www.drupal.org/files/issues/2019-04-21/anonymous-only-3031792-5.patch"
             },
             "drupal/core": {
                 "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2018-06-25/default-theme-favicon-for-administration-theme-2981434-5.patch"
