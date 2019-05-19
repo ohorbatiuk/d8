@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Installation process.
+ * Install, update and uninstall functions for the d8 installation profile.
  */
 
-use Drupal\shortcut\Entity\Shortcut;
+use Drupal\d8\Form\D8CaptchaForm;
 
 /**
  * Implements hook_install().
@@ -18,7 +18,7 @@ function d8_install() {
   ]);
 
   // Populate the default shortcut set.
-  $shortcut = Shortcut::create([
+  $shortcut = \Drupal::entityTypeManager()->getStorage('shortcut')->create([
     'shortcut_set' => 'default',
     'title' => t('Features'),
     'weight' => -20,
@@ -92,7 +92,7 @@ function d8_install_tasks(&$install_state) {
     'install_captcha_form' => [
       'display_name' => t('Set up captcha keys'),
       'type' => 'form',
-      'function' => 'Drupal\d8\Captcha',
+      'function' => D8CaptchaForm::class,
     ],
   ];
 }

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * d8_feature_settings.install
+ * Install, update and uninstall functions for the d8_feature_settings module.
  */
 
 /**
