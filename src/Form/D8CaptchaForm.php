@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\d8;
+namespace Drupal\d8\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\recaptcha\Form\ReCaptchaAdminSettingsForm;
@@ -8,7 +8,7 @@ use Drupal\recaptcha\Form\ReCaptchaAdminSettingsForm;
 /**
  * Configure reCAPTCHA settings for this profile.
  */
-class Captcha extends ReCaptchaAdminSettingsForm {
+class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
 
   /**
    * {@inheritdoc}

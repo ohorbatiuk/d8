@@ -9,7 +9,7 @@ use Drupal\Core\Link;
 /**
  * Configure reCAPTCHA Preloader settings for this site.
  */
-class Settings extends ConfigFormBase {
+class RecaptchaPreloaderSettingsForm extends ConfigFormBase {
 
   /**
    * {@inheritdoc}
