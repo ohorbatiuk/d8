@@ -14,7 +14,11 @@ use Drupal\Core\Template\Attribute;
  * Implements hook_form_alter().
  */
 function recaptcha_preloader_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  if (\Drupal::config('recaptcha_preloader.settings')->get('use') && !$form_state->getUserInput()) {
+  if (
+    \Drupal::config('recaptcha_preloader.settings')->get('use') &&
+    \Drupal::config('recaptcha.settings')->get('widget.size') !== 'invisible' &&
+    !$form_state->getUserInput()
+  ) {
     $types = ['recaptcha_preloader/reCAPTCHA with preloader'];
     $default = \Drupal::config('captcha.settings')->get('default_challenge');
 
@@ -54,7 +58,12 @@ function recaptcha_preloader_captcha($op, $captcha_type = '') {
       $recaptcha_config = \Drupal::config('recaptcha.settings');
       $config = \Drupal::config('recaptcha_preloader.settings');
 
-      if (!(isset($captcha['form']['recaptcha_widget']) && !$recaptcha_config->get('widget.noscript') && $config->get('use'))) {
+      if (!(
+        isset($captcha['form']['recaptcha_widget']['#suffix']) &&
+        !$recaptcha_config->get('widget.noscript') &&
+        $recaptcha_config->get('widget.size') !== 'invisible' &&
+        $config->get('use')
+      )) {
         return $captcha;
       }
 
