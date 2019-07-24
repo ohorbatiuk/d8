@@ -20,3 +20,10 @@ function d8_captcha_install() {
     ->set($key, $data[$key])
     ->save();
 }
+
+/**
+ * Uninstall the "reCAPTCHA Preloader" module.
+ */
+function d8_captcha_update_8001() {
+  \Drupal::service('module_installer')->uninstall(['recaptcha_preloader'], FALSE);
+}
