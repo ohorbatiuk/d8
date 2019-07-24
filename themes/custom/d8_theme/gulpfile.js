@@ -2,10 +2,6 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 
-gulp.task('default', ['sass'], function () {
-  gulp.watch('sass/style.scss', ['sass']);
-});
-
 gulp.task('sass', function () {
   return gulp.src('sass/style.scss')
     .pipe(sourcemaps.init())
@@ -13,3 +9,8 @@ gulp.task('sass', function () {
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('css'))
 });
+
+gulp.task('default', gulp.series('sass', function (done) {
+  gulp.watch('sass/style.scss', gulp.series('sass'));
+  done();
+}));
