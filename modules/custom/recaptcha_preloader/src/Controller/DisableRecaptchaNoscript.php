@@ -5,6 +5,8 @@ namespace Drupal\recaptcha_preloader\Controller;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\StringTranslation\TranslationInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -17,9 +19,19 @@ class DisableRecaptchaNoscript extends ControllerBase {
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The configuration factory service.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The messenger.
+   * @param \Drupal\Core\StringTranslation\TranslationInterface $string_translation
+   *   The string translation service.
    */
-  public function __construct(ConfigFactoryInterface $config_factory) {
+  public function __construct(
+    ConfigFactoryInterface $config_factory,
+    MessengerInterface $messenger,
+    TranslationInterface $string_translation
+  ) {
     $this->configFactory = $config_factory;
+    $this->messenger = $messenger;
+    $this->stringTranslation = $string_translation;
   }
 
   /**
@@ -27,7 +39,9 @@ class DisableRecaptchaNoscript extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('config.factory')
+      $container->get('config.factory'),
+      $container->get('messenger'),
+      $container->get('string_translation')
     );
   }
 
@@ -42,7 +56,7 @@ class DisableRecaptchaNoscript extends ControllerBase {
       ->set('widget.noscript', FALSE)
       ->save();
 
-    $this->messenger()->addStatus($this->t('The %option widget option of the %module module has been disabled.', [
+    $this->messenger->addStatus($this->t('The %option widget option of the %module module has been disabled.', [
       '%option' => 'Enable fallback for browsers with JavaScript disabled',
       '%module' => 'reCAPTCHA',
     ]));

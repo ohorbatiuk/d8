@@ -7,7 +7,6 @@
 
 use Drupal\Core\Asset\AttachedAssets;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Element;
 use Drupal\Core\Template\Attribute;
 
 /**
@@ -34,7 +33,7 @@ function recaptcha_preloader_form_alter(&$form, FormStateInterface $form_state, 
       ]);
 
     if ($entities) {
-      _recaptcha_preloader_search($form);
+      \Drupal::service('recaptcha_preloader.helper')->search($form);
     }
   }
 }
@@ -59,7 +58,7 @@ function recaptcha_preloader_captcha($op, $captcha_type = '') {
       $config = \Drupal::config('recaptcha_preloader.settings');
 
       if (!(
-        isset($captcha['form']['recaptcha_widget']['#suffix']) &&
+        isset($captcha['form']['recaptcha_widget']) &&
         !$recaptcha_config->get('widget.noscript') &&
         $recaptcha_config->get('widget.size') !== 'invisible' &&
         $config->get('use')
@@ -106,6 +105,7 @@ function recaptcha_preloader_captcha($op, $captcha_type = '') {
 
       $widget = &$captcha['form']['recaptcha_widget'];
       $widget['#attached']['html_head'] = [];
+      $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
       foreach ($assets as $type => $group) {
         $id = 1;
@@ -115,8 +115,7 @@ function recaptcha_preloader_captcha($op, $captcha_type = '') {
             $url = $item['data'];
 
             if ($item['type'] === 'external') {
-              $url .= '&hl=' . \Drupal::languageManager()->getCurrentLanguage()
-                  ->getId();
+              $url .= '&hl=' . $langcode;
             }
             else {
               $url = '/' . $url;
@@ -126,8 +125,8 @@ function recaptcha_preloader_captcha($op, $captcha_type = '') {
               [
                 '#tag' => $fields[$type]['tag'],
                 '#attributes' => [
-                    $fields[$type]['attribute'] => $url,
-                  ] + $fields[$type]['attributes'],
+                  $fields[$type]['attribute'] => $url,
+                ] + $fields[$type]['attributes'],
               ],
               'recaptcha_preloader_' . $type . '_' . ($id++),
             ];
@@ -145,7 +144,7 @@ function recaptcha_preloader_captcha($op, $captcha_type = '') {
 
       $widget['#prefix'] = '<div' . new Attribute($attributes) . '>';
 
-      if ($config->get('message')) {
+      if ($message = $config->get('message')) {
         if ($config->get('appearance')) {
           $theme = $recaptcha_config->get('widget.theme');
 
@@ -160,40 +159,21 @@ function recaptcha_preloader_captcha($op, $captcha_type = '') {
             ],
           ];
 
+          if (!isset($widget['#suffix'])) {
+            $widget['#suffix'] = '';
+          }
+
           $widget['#suffix'] .= '<div' . new Attribute($attributes) . '>';
-          $widget['#suffix'] .= $config->get('message');
+          $widget['#suffix'] .= $message;
           $widget['#suffix'] .= '</div>';
         }
         else {
-          $widget['#markup'] = substr($widget['#markup'], 0, -6) . $config->get('message') . substr($widget['#markup'], -6);
+          $widget['#markup'] = substr($widget['#markup'], 0, -6) . $message . substr($widget['#markup'], -6);
         }
       }
 
       $widget['#suffix'] .= '</div>';
 
       return $captcha;
-  }
-}
-
-/**
- * Disable submit form elements.
- *
- * @param array $elements
- *   The element array.
- */
-function _recaptcha_preloader_search(array &$elements) {
-  foreach (Element::children($elements) as $key) {
-    if (is_array($elements[$key])) {
-      switch ($elements[$key]['#type']) {
-        case 'actions':
-          _recaptcha_preloader_search($elements[$key]);
-          break;
-
-        case 'submit':
-          $elements[$key]['#disabled'] = TRUE;
-          $elements[$key]['#attributes']['class'][] = 'blocked-by-recaptcha';
-          break;
-      }
-    }
   }
 }
