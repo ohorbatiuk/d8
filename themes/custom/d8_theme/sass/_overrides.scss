@@ -1,3 +1,17 @@
+.btn {
+  &.active.focus,
+  &.active:focus,
+  &.focus,
+  &:active,
+  &:active.focus,
+  &:active:focus,
+  &:focus {
+    @extend .progress-bar.active;
+    @extend .progress-bar-striped;
+    outline: none;
+  }
+}
+
 .table-responsive {
   @media screen and (max-width: $screen-xs-max) {
     &.table-wrapper.table-wide {
