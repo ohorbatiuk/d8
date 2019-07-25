@@ -11,6 +11,30 @@
     &:not(.use-ajax) {
       @extend .progress-bar.active;
       @extend .progress-bar-striped;
+
+      &.btn-default {
+        @include button-variant($btn-primary-color, darken($btn-default-bg, 25%), lighten($btn-default-border, 15%));
+      }
+
+      &.btn-primary {
+        @include button-variant($btn-primary-color, $btn-primary-bg, lighten($btn-primary-border, 15%));
+      }
+
+      &.btn-success {
+        @include button-variant($btn-success-color, $btn-success-bg, lighten($btn-success-border, 15%));
+      }
+
+      &.btn-info {
+        @include button-variant($btn-info-color, $btn-info-bg, lighten($btn-info-border, 15%));
+      }
+
+      &.btn-warning {
+        @include button-variant($btn-warning-color, $btn-warning-bg, lighten($btn-warning-border, 15%));
+      }
+
+      &.btn-danger {
+        @include button-variant($btn-danger-color, $btn-danger-bg, lighten($btn-danger-border, 15%));
+      }
     }
   }
 }
