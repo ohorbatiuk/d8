@@ -6,9 +6,12 @@
   &:active.focus,
   &:active:focus,
   &:focus {
-    @extend .progress-bar.active;
-    @extend .progress-bar-striped;
     outline: none;
+
+    &:not(.use-ajax) {
+      @extend .progress-bar.active;
+      @extend .progress-bar-striped;
+    }
   }
 }
 
