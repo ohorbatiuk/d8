@@ -1,0 +1,3 @@
+services:
+  recaptcha_preloader.helper:
+    class: Drupal\recaptcha_preloader\Service\RecaptchaPreloaderHelper

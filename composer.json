@@ -39,6 +39,10 @@
             },
             "drupal/core": {
                 "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2018-06-25/default-theme-favicon-for-administration-theme-2981434-5.patch"
+            },
+            "drupal/recaptcha": {
+                "Integrate Invisible reCAPTCHA option from Google": "https://www.drupal.org/files/issues/2019-03-07/recaptcha-ajax-2493183-164%2Bnocaptcha-2852269-165_2.patch",
+                "Invisible captcha": "profiles/contrib/d8/patches/recaptcha.patch"
             }
         }
     }

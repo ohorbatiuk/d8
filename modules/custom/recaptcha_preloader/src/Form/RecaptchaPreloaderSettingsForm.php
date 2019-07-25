@@ -2,14 +2,50 @@
 
 namespace Drupal\recaptcha_preloader\Form;
 
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\StringTranslation\TranslationInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Configure reCAPTCHA Preloader settings for this site.
  */
 class RecaptchaPreloaderSettingsForm extends ConfigFormBase {
+
+  /**
+   * Constructs a RecaptchaPreloaderSettingsForm object.
+   *
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The factory for configuration objects.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The messenger.
+   * @param \Drupal\Core\StringTranslation\TranslationInterface $string_translation
+   *   The string translation service.
+   */
+  public function __construct(
+    ConfigFactoryInterface $config_factory,
+    MessengerInterface $messenger,
+    TranslationInterface $string_translation
+  ) {
+    parent::__construct($config_factory);
+
+    $this->messenger = $messenger;
+    $this->stringTranslation = $string_translation;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('config.factory'),
+      $container->get('messenger'),
+      $container->get('string_translation')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -30,7 +66,7 @@ class RecaptchaPreloaderSettingsForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     if ($this->config('recaptcha.settings')->get('widget.noscript')) {
-      $this->messenger()->addWarning($this->t('For using this functionality %module widget option %option must be disabled. For disabling that option click @url.', [
+      $this->messenger->addWarning($this->t('For using this functionality %module widget option %option must be disabled. For disabling that option click @url.', [
         '%module' => 'reCAPTCHA',
         '%option' => 'Enable fallback for browsers with JavaScript disabled',
         '@url' => Link::createFromRoute($this->t('here'), 'recaptcha_preloader.disable_recaptcha_noscript')->toString(),
@@ -39,7 +75,7 @@ class RecaptchaPreloaderSettingsForm extends ConfigFormBase {
       return $form;
     }
 
-    $config = $this->config('recaptcha_preloader.settings');
+    $config = $this->config($this->getEditableConfigNames()[0]);
 
     $form['use'] = [
       '#default_value' => $config->get('use'),
@@ -88,13 +124,13 @@ class RecaptchaPreloaderSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $config = $this->config('recaptcha_preloader.settings');
+    $config = $this->config($this->getEditableConfigNames()[0]);
 
-    $config
-      ->set('use', $form_state->getValue('use'))
-      ->set('appearance', $form_state->getValue('appearance'))
-      ->set('message', $form_state->getValue('message'))
-      ->save();
+    foreach (['use', 'appearance', 'message'] as $name) {
+      $config->set($name, $form_state->getValue($name));
+    }
+
+    $config->save();
 
     parent::submitForm($form, $form_state);
   }
