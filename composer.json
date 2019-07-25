@@ -42,7 +42,7 @@
             },
             "drupal/recaptcha": {
                 "Integrate Invisible reCAPTCHA option from Google": "https://www.drupal.org/files/issues/2019-03-07/recaptcha-ajax-2493183-164%2Bnocaptcha-2852269-165_2.patch",
-                "Invisible captcha": "patches/recaptcha.patch"
+                "Invisible captcha": "profiles/contrib/d8/patches/recaptcha.patch"
             }
         }
     }
