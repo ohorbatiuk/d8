@@ -29,9 +29,11 @@ class DisableRecaptchaNoscript extends ControllerBase {
     MessengerInterface $messenger,
     TranslationInterface $string_translation
   ) {
+    $this
+      ->setStringTranslation($string_translation)
+      ->setMessenger($messenger);
+
     $this->configFactory = $config_factory;
-    $this->messenger = $messenger;
-    $this->stringTranslation = $string_translation;
   }
 
   /**
@@ -56,7 +58,7 @@ class DisableRecaptchaNoscript extends ControllerBase {
       ->set('widget.noscript', FALSE)
       ->save();
 
-    $this->messenger->addStatus($this->t('The %option widget option of the %module module has been disabled.', [
+    $this->messenger()->addStatus($this->t('The %option widget option of the %module module has been disabled.', [
       '%option' => 'Enable fallback for browsers with JavaScript disabled',
       '%module' => 'reCAPTCHA',
     ]));

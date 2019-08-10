@@ -27,7 +27,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
   ) {
     parent::__construct($config_factory);
 
-    $this->stringTranslation = $string_translation;
+    $this->setStringTranslation($string_translation);
   }
 
   /**
