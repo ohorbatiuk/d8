@@ -32,8 +32,9 @@ class RecaptchaPreloaderSettingsForm extends ConfigFormBase {
   ) {
     parent::__construct($config_factory);
 
-    $this->messenger = $messenger;
-    $this->stringTranslation = $string_translation;
+    $this
+      ->setStringTranslation($string_translation)
+      ->setMessenger($messenger);
   }
 
   /**
@@ -66,7 +67,7 @@ class RecaptchaPreloaderSettingsForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     if ($this->config('recaptcha.settings')->get('widget.noscript')) {
-      $this->messenger->addWarning($this->t('For using this functionality %module widget option %option must be disabled. For disabling that option click @url.', [
+      $this->messenger()->addWarning($this->t('For using this functionality %module widget option %option must be disabled. For disabling that option click @url.', [
         '%module' => 'reCAPTCHA',
         '%option' => 'Enable fallback for browsers with JavaScript disabled',
         '@url' => Link::createFromRoute($this->t('here'), 'recaptcha_preloader.disable_recaptcha_noscript')->toString(),
@@ -78,17 +79,17 @@ class RecaptchaPreloaderSettingsForm extends ConfigFormBase {
     $config = $this->config($this->getEditableConfigNames()[0]);
 
     $form['use'] = [
-      '#default_value' => $config->get('use'),
-      '#description' => $this->t('Disable submit form elements and show the message when reCAPTCHA is loading.'),
-      '#title' => $this->t('Enable'),
       '#type' => 'checkbox',
+      '#title' => $this->t('Enable'),
+      '#description' => $this->t('Disable submit form elements and show the message when reCAPTCHA is loading.'),
+      '#default_value' => $config->get('use'),
     ];
 
     $form['appearance'] = [
-      '#default_value' => $config->get('appearance'),
+      '#type' => 'checkbox',
       '#title' => $this->t('Appearance'),
       '#description' => $this->t('Apply reCAPTCHA styling for a message.'),
-      '#type' => 'checkbox',
+      '#default_value' => $config->get('appearance'),
       '#states' => [
         'enabled' => [
           ':input[name="use"]' => [
@@ -99,10 +100,10 @@ class RecaptchaPreloaderSettingsForm extends ConfigFormBase {
     ];
 
     $form['message'] = [
-      '#default_value' => $config->get('message'),
-      '#description' => $this->t('Special text on the reCAPTCHA place while reCAPTCHA is loading.'),
-      '#title' => $this->t('Message'),
       '#type' => 'textfield',
+      '#title' => $this->t('Message'),
+      '#description' => $this->t('Special text on the reCAPTCHA place while reCAPTCHA is loading.'),
+      '#default_value' => $config->get('message'),
       '#states' => [
         'enabled' => [
           ':input[name="use"]' => [
