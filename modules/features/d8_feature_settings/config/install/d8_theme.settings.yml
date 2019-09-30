@@ -1,14 +1,18 @@
 favicon:
   mimetype: image/vnd.microsoft.icon
   path: ''
-  url: 'http://127.0.0.1/profiles/d8/themes/custom/d8_theme/favicon.ico'
+  url: 'http://127.0.0.1/profiles/contrib/d8/themes/custom/d8_theme/favicon.ico'
   use_default: true
 schemas:
-  d8_theme: 8000
+  d8_theme: 8001
+  bootstrap: 8000
 fluid_container: 1
 image_shape: img-thumbnail
 table_responsive: '-1'
 table: ''
+navbar_position: static-top
+langcode: en
+tooltip_placement: 'auto top'
 features:
   comment_user_picture: true
   comment_user_verification: true
@@ -18,5 +22,3 @@ logo:
   path: ''
   url: ''
   use_default: true
-navbar_position: static-top
-langcode: en
