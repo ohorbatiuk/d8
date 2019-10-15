@@ -37,6 +37,9 @@
             "drupal/autoban": {
                 "Anonymous IP used by authorized IP": "https://www.drupal.org/files/issues/2019-09-28/anonymous-only-3084397-2.patch"
             },
+            "drupal/bootstrap": {
+                "Theme updater does not work": "https://www.drupal.org/files/issues/2019-09-30/theme-updater-3084544-2.patch"
+            },
             "drupal/core": {
                 "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2018-06-25/default-theme-favicon-for-administration-theme-2981434-5.patch"
             },
