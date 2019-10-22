@@ -50,13 +50,13 @@
 <div{{ wrapper_attributes }}>
   {%
     set classes = [
-    'table',
-    bordered ? 'table-bordered',
-    condensed ? 'table-condensed',
-    hover ? 'table-hover',
-    striped ? 'table-striped',
-    sticky ? 'sticky-enabled',
-  ]
+      'table',
+      bordered ? 'table-bordered',
+      condensed ? 'table-condensed',
+      hover ? 'table-hover',
+      striped ? 'table-striped',
+      sticky ? 'sticky-enabled',
+    ]
   %}
   <table{{ attributes.addClass(classes) }}>
     {% if caption %}
