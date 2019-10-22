@@ -1,4 +1,4 @@
-var onLoadReCaptcha = function () {
+const onLoadReCaptcha = function () {
   jQuery('.g-recaptcha iframe').on('load', function () {
     jQuery(this)
       .closest('.g-recaptcha-wrapper')
