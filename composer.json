@@ -13,7 +13,7 @@
         "composer/installers": "1.4.0",
         "cweagans/composer-patches": "^1.0",
         "drupal/admin_toolbar": "2.2",
-        "drupal/autoban": "1.5",
+        "drupal/autoban": "1.6",
         "drupal/bootstrap": "3.20",
         "drupal/captcha": "1.0",
         "drupal/config2php": "2.0.0-beta2",
