@@ -36,7 +36,7 @@
         "enable-patching": true,
         "patches": {
             "drupal/autoban": {
-                "Anonymous IP used by authorized IP": "https://www.drupal.org/files/issues/2019-09-28/anonymous-only-3084397-2.patch"
+                "Anonymous IP used by authorized IP": "https://www.drupal.org/files/issues/2020-04-07/anonymous-only-3084397-5.patch"
             },
             "drupal/bootstrap": {
                 "Theme updater does not work": "https://www.drupal.org/files/issues/2019-09-30/theme-updater-3084544-2.patch"
