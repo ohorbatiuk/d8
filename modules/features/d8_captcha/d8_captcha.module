@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Captcha settings.
+ */
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function d8_captcha_library_info_alter(&$libraries, $extension) {
+  if ($extension === 'recaptcha' && isset($libraries['recaptcha.invisible'])) {
+    $libraries['recaptcha.invisible']['js'] = [
+      '/' . drupal_get_path('module', 'd8_captcha') . '/js/recaptcha.invisible.js' => [],
+    ];
+  }
+}
