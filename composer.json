@@ -22,7 +22,7 @@
         "drupal/core": "8.8.5",
         "drupal/features": "3.8",
         "drupal/module_filter": "3.1",
-        "drupal/recaptcha": "2.4"
+        "drupal/recaptcha": "2.5"
     },
     "extra": {
         "installer-paths": {
@@ -46,8 +46,7 @@
                 "Add events for matching entity hooks": "https://www.drupal.org/files/issues/2019-05-23/2551893-entity-hooks-71.patch"
             },
             "drupal/recaptcha": {
-                "Integrate Invisible reCAPTCHA option from Google": "https://www.drupal.org/files/issues/2019-03-07/recaptcha-ajax-2493183-164%2Bnocaptcha-2852269-165_2.patch",
-                "Invisible captcha": "profiles/contrib/d8/patches/recaptcha.patch"
+                "Integrate Invisible reCAPTCHA option from Google": "https://www.drupal.org/files/issues/2019-03-07/recaptcha-ajax-2493183-164%2Bnocaptcha-2852269-165_2.patch"
             }
         }
     }
