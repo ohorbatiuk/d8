@@ -14,7 +14,7 @@
         "cweagans/composer-patches": "^1.0",
         "drupal/admin_toolbar": "2.2",
         "drupal/autoban": "1.6",
-        "drupal/bootstrap": "3.20",
+        "drupal/bootstrap": "3.21",
         "drupal/captcha": "1.0",
         "drupal/config2php": "2.0.0-beta2",
         "drupal/config_override": "1.0-beta2",
@@ -37,9 +37,6 @@
         "patches": {
             "drupal/autoban": {
                 "Anonymous IP used by authorized IP": "https://www.drupal.org/files/issues/2020-04-07/anonymous-only-3084397-5.patch"
-            },
-            "drupal/bootstrap": {
-                "Theme updater does not work": "https://www.drupal.org/files/issues/2019-09-30/theme-updater-3084544-2.patch"
             },
             "drupal/core": {
                 "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2019-12-14/default-theme-favicon-for-administration-theme-2981434-7.patch",
