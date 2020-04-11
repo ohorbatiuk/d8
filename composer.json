@@ -35,6 +35,9 @@
         },
         "enable-patching": true,
         "patches": {
+            "drupal/admin_toolbar": {
+                "Check permissions before displaying the search menu item": "profiles/contrib/d8/patches/3126311-check-permissions-for-search-access-8.patch"
+            },
             "drupal/autoban": {
                 "Anonymous IP used by authorized IP": "https://www.drupal.org/files/issues/2020-04-07/anonymous-only-3084397-5.patch"
             },
