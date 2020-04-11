@@ -31,6 +31,19 @@ function d8_install() {
 }
 
 /**
+ * Implements hook_install_tasks().
+ */
+function d8_install_tasks(&$install_state) {
+  return [
+    'install_captcha_form' => [
+      'display_name' => t('Set up captcha keys'),
+      'type' => 'form',
+      'function' => D8CaptchaForm::class,
+    ],
+  ];
+}
+
+/**
  * Install "Config Override" module.
  */
 function d8_update_8001() {
@@ -82,17 +95,4 @@ function d8_update_8004() {
  */
 function d8_update_8005() {
   \Drupal::service('module_installer')->install(['config2php']);
-}
-
-/**
- * Implements hook_install_tasks().
- */
-function d8_install_tasks(&$install_state) {
-  return [
-    'install_captcha_form' => [
-      'display_name' => t('Set up captcha keys'),
-      'type' => 'form',
-      'function' => D8CaptchaForm::class,
-    ],
-  ];
 }
