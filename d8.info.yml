@@ -19,6 +19,7 @@ dependencies:
   - drupal:toolbar
   - drupal:views_ui
 
+  - admin_toolbar:admin_toolbar_search
   - admin_toolbar:admin_toolbar_tools
   - config2php:config2php
   - config_override:config_override
