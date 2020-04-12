@@ -5,6 +5,7 @@
  * Install, update and uninstall functions for the d8 installation profile.
  */
 
+use Drupal\Core\Site\Settings;
 use Drupal\d8\Form\D8CaptchaForm;
 
 /**
@@ -28,6 +29,23 @@ function d8_install() {
   ]);
 
   $shortcut->save();
+
+  $sandbox = [];
+
+  d8_update_8006($sandbox);
+}
+
+/**
+ * Implements hook_install_tasks().
+ */
+function d8_install_tasks(&$install_state) {
+  return [
+    'install_captcha_form' => [
+      'display_name' => t('Set up captcha keys'),
+      'type' => 'form',
+      'function' => D8CaptchaForm::class,
+    ],
+  ];
 }
 
 /**
@@ -85,14 +103,32 @@ function d8_update_8005() {
 }
 
 /**
- * Implements hook_install_tasks().
+ * Grant access to the search tab for a role with access to toolbar.
  */
-function d8_install_tasks(&$install_state) {
-  return [
-    'install_captcha_form' => [
-      'display_name' => t('Set up captcha keys'),
-      'type' => 'form',
-      'function' => D8CaptchaForm::class,
-    ],
-  ];
+function d8_update_8006(&$sandbox) {
+  if (!isset($sandbox['total'])) {
+    $sandbox['total'] = \Drupal::entityQuery('user_role')->count()->execute();
+    $sandbox['offset'] = 0;
+    $sandbox['limit'] = Settings::get('entity_update_batch_size', 50);
+  }
+
+  $role_ids = \Drupal::entityQuery('user_role')
+    ->range($sandbox['offset'], $sandbox['limit'])
+    ->execute();
+
+  $roles = \Drupal::entityTypeManager()->getStorage('user_role')
+    ->loadMultiple($role_ids);
+
+  /** @var \Drupal\user\RoleInterface $role */
+  foreach ($roles as $role_id => $role) {
+    if (
+      $role->hasPermission('access toolbar') &&
+      !$role->hasPermission('use admin toolbar search')
+    ) {
+      user_role_grant_permissions($role_id, ['use admin toolbar search']);
+    }
+  }
+
+  $sandbox['offset'] += count($role_ids);
+  $sandbox['#finished'] = $sandbox['offset'] / $sandbox['total'];
 }
