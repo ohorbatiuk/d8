@@ -5,6 +5,7 @@
  * Install, update and uninstall functions for the d8 installation profile.
  */
 
+use Drupal\Core\Site\Settings;
 use Drupal\d8\Form\D8CaptchaForm;
 
 /**
@@ -108,10 +109,11 @@ function d8_update_8006(&$sandbox) {
   if (!isset($sandbox['total'])) {
     $sandbox['total'] = \Drupal::entityQuery('user_role')->count()->execute();
     $sandbox['offset'] = 0;
+    $sandbox['limit'] = Settings::get('entity_update_batch_size', 50);
   }
 
   $role_ids = \Drupal::entityQuery('user_role')
-    ->range($sandbox['offset'], 10)
+    ->range($sandbox['offset'], $sandbox['limit'])
     ->execute();
 
   $roles = \Drupal::entityTypeManager()->getStorage('user_role')
