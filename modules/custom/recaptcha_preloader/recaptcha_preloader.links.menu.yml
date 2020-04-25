@@ -1,6 +1,0 @@
-recaptcha_preloader.admin_settings_form:
-  title: 'reCAPTCHA Preloader'
-  parent: captcha.settings
-  description: 'Administer the reCAPTCHA Preloader.'
-  route_name: recaptcha_preloader.admin_settings_form
-  weight: 3
