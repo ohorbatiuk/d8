@@ -22,7 +22,8 @@
         "drupal/core": "8.8.5",
         "drupal/features": "3.8",
         "drupal/module_filter": "3.1",
-        "drupal/recaptcha": "2.5"
+        "drupal/recaptcha": "2.5",
+        "drupal/recaptcha_preloader": "1.0.0-alpha1"
     },
     "extra": {
         "installer-paths": {
