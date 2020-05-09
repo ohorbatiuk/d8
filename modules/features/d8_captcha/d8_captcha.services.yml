@@ -1,0 +1,6 @@
+services:
+  d8_captcha.module_handler:
+    class: Drupal\d8_captcha\Service\D8CaptchaModuleHandler
+    public: false
+    decorates: module_handler
+    parent: module_handler
