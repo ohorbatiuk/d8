@@ -41,7 +41,7 @@ function d8_install() {
 function d8_install_tasks(&$install_state) {
   return [
     'install_captcha_form' => [
-      'display_name' => t('Set up captcha keys'),
+      'display_name' => t('Set up captcha settings'),
       'type' => 'form',
       'function' => D8CaptchaForm::class,
     ],
