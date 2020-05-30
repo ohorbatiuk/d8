@@ -17,13 +17,16 @@ class D8CaptchaModuleHandler extends ModuleHandler {
   public function invoke($module, $hook, array $args = []) {
     $data = parent::invoke($module, $hook, $args);
 
-    if ($hook === 'captcha' && $args[0] === 'generate') {
-      if ($module === 'recaptcha' && $args[1] === 'reCAPTCHA') {
+    if (
+      $hook === 'captcha' &&
+      $args[0] === 'generate' &&
+      $args[1] === 'reCAPTCHA'
+    ) {
+      if ($module === 'recaptcha') {
         $data['form']['recaptcha_widget']['#suffix'] = '';
       }
       elseif (
         $module === 'recaptcha_preloader' &&
-        $args[1] === 'reCAPTCHA with preloader' &&
         isset($data['form']['#attached']['library'])
       ) {
         unset($data['form']['#attached']['library']);

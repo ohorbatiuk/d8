@@ -112,7 +112,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
       $this->moduleInstaller->install(['recaptcha_preloader'])
     ) {
       $this->config('captcha.settings')
-        ->set('default_challenge', 'recaptcha_preloader/reCAPTCHA with preloader')
+        ->set('default_challenge', 'recaptcha_preloader/reCAPTCHA')
         ->save();
 
       $this->config('recaptcha_preloader.settings')
