@@ -18,19 +18,12 @@ class D8CaptchaModuleHandler extends ModuleHandler {
     $data = parent::invoke($module, $hook, $args);
 
     if (
+      $module === 'recaptcha' &&
       $hook === 'captcha' &&
       $args[0] === 'generate' &&
       $args[1] === 'reCAPTCHA'
     ) {
-      if ($module === 'recaptcha') {
-        $data['form']['recaptcha_widget']['#suffix'] = '';
-      }
-      elseif (
-        $module === 'recaptcha_preloader' &&
-        isset($data['form']['#attached']['library'])
-      ) {
-        unset($data['form']['#attached']['library']);
-      }
+      $data['form']['recaptcha_widget']['#suffix'] = '';
     }
 
     return $data;

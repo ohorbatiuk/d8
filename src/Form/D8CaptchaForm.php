@@ -8,6 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\recaptcha\Form\ReCaptchaAdminSettingsForm;
+use Drupal\recaptcha_preloader\Service\RecaptchaPreloaderHelperInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -112,7 +113,10 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
       $this->moduleInstaller->install(['recaptcha_preloader'])
     ) {
       $this->config('captcha.settings')
-        ->set('default_challenge', 'recaptcha_preloader/reCAPTCHA')
+        ->set(
+          'default_challenge',
+          'recaptcha_preloader/' . RecaptchaPreloaderHelperInterface::CHALLENGE_TYPE
+        )
         ->save();
 
       $this->config('recaptcha_preloader.settings')
