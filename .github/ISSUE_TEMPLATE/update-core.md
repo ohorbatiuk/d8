@@ -2,7 +2,7 @@
 name: Update core
 about: Update core.
 title: Update core from 9.CURRENT to 9.LAST
-labels: update core
+labels: update, core
 assignees: ''
 
 ---
