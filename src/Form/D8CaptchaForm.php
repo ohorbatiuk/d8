@@ -120,7 +120,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
         ->save();
 
       $this->config('recaptcha_preloader.settings')
-        ->set('use', TRUE)
+        ->set('status', TRUE)
         ->save();
     }
   }
