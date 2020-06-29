@@ -107,11 +107,8 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     parent::submitForm($form, $form_state);
 
-    if (
-      $form_state->getValue('recaptcha_size') !== 'invisible' &&
-      $this->moduleInstaller->install(['recaptcha_preloader'])
-    ) {
-      $this->config('recaptcha_preloader.settings')->set('status', TRUE)->save();
+    if ($form_state->getValue('recaptcha_size') !== 'invisible') {
+      $this->moduleInstaller->install(['recaptcha_preloader']);
     }
   }
 
