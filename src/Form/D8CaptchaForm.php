@@ -8,7 +8,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\recaptcha\Form\ReCaptchaAdminSettingsForm;
-use Drupal\recaptcha_preloader\Service\RecaptchaPreloaderHelperInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -66,10 +65,10 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
    * {@inheritdoc}
    */
   protected function getEditableConfigNames() {
-    return array_merge(parent::getEditableConfigNames(), [
-      'captcha.settings',
-      'recaptcha_preloader.settings',
-    ]);
+    return array_merge(
+      parent::getEditableConfigNames(),
+      ['recaptcha_preloader.settings']
+    );
   }
 
   /**
@@ -112,16 +111,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
       $form_state->getValue('recaptcha_size') !== 'invisible' &&
       $this->moduleInstaller->install(['recaptcha_preloader'])
     ) {
-      $this->config('captcha.settings')
-        ->set(
-          'default_challenge',
-          'recaptcha_preloader/' . RecaptchaPreloaderHelperInterface::CHALLENGE_TYPE
-        )
-        ->save();
-
-      $this->config('recaptcha_preloader.settings')
-        ->set('status', TRUE)
-        ->save();
+      $this->config('recaptcha_preloader.settings')->set('status', TRUE)->save();
     }
   }
 
