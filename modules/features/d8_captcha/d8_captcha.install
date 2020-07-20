@@ -5,22 +5,6 @@
  * Install, update and uninstall functions for the d8_captcha module.
  */
 
-use Symfony\Component\Yaml\Yaml;
-
-/**
- * Implements hook_install().
- */
-function d8_captcha_install() {
-  $path = drupal_get_path('module', 'd8_captcha') . '/config/install/';
-  $name = 'captcha.settings';
-  $data = Yaml::parseFile($path . $name . '.yml');
-  $key = 'default_challenge';
-
-  \Drupal::configFactory()->getEditable($name)
-    ->set($key, $data[$key])
-    ->save();
-}
-
 /**
  * Uninstall the "reCAPTCHA Preloader" module.
  */
