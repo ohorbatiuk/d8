@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Provides a wrapper for the "Config Export to PHP array" module.
+ */
+
+use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function d8_config2php_help($route_name, RouteMatchInterface $route_match) {
+  $output = '';
+
+  if ($route_name === 'help.page.d8_config2php') {
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t('Provides a wrapper for the "Config Export to PHP array" module.') . '</p>';
+  }
+
+  return $output;
+}
+
+/**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function d8_config2php_menu_links_discovered_alter(&$links) {
+  $links['admin_toolbar_tools.extra_links:config.export']['route_name'] = 'config2php.export';
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function d8_config2php_menu_local_tasks_alter(
+  &$data,
+  $route_name,
+  RefinableCacheableDependencyInterface &$cacheability
+) {
+  if (isset($data['tabs'][0]['config.export'])) {
+    $data['tabs'][0]['config.export']['#link']['url'] = Url::fromRoute('config2php.export');
+  }
+}

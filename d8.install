@@ -132,3 +132,10 @@ function d8_update_8006(&$sandbox) {
   $sandbox['offset'] += count($role_ids);
   $sandbox['#finished'] = $sandbox['offset'] / $sandbox['total'];
 }
+
+/**
+ * Install "D8 Config Export to PHP array" module.
+ */
+function d8_update_8901() {
+  \Drupal::service('module_installer')->install(['d8_config2php']);
+}
