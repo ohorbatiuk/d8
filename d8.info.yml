@@ -1,7 +1,7 @@
 name: D8
 type: profile
 description: 'Basis for the site on Drupal 8.'
-version: 0.10.1.97
+version: 0.10.1.98
 core: 8.x
 
 distribution:
