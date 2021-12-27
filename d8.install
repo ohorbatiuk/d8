@@ -33,6 +33,7 @@ function d8_install() {
   $sandbox = [];
 
   d8_update_8006($sandbox);
+  d8_update_8902();
 }
 
 /**
@@ -138,4 +139,13 @@ function d8_update_8006(&$sandbox) {
  */
 function d8_update_8901() {
   \Drupal::service('module_installer')->install(['d8_config2php']);
+}
+
+/**
+ * Enable news mode.
+ */
+function d8_update_8902() {
+  \Drupal::configFactory()->getEditable('update.settings')
+    ->set('news', TRUE)
+    ->save();
 }
