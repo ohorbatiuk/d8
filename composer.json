@@ -15,7 +15,7 @@
         "drupal/admin_toolbar": "3.0.2",
         "drupal/autoban": "1.6",
         "drupal/bootstrap": "3.23",
-        "drupal/captcha": "1.0",
+        "drupal/captcha": "1.2",
         "drupal/config_override": "1.0-beta2",
         "drupal/config_update": "1.7",
         "drupal/core": "8.9.18",
