@@ -34,6 +34,7 @@ function d8_install() {
   $sandbox = [];
 
   d8_update_8006($sandbox);
+  d8_update_8903();
 }
 
 /**
@@ -155,4 +156,11 @@ function d8_update_8902() {
   \Drupal::configFactory()->getEditable('update.settings')
     ->set('news', TRUE)
     ->save();
+}
+
+/**
+ * Set features bundle of installation profile as default.
+ */
+function d8_update_8903() {
+  \Drupal::state()->set('features.current_bundle', 'd8');
 }
