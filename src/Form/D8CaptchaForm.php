@@ -110,6 +110,8 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
     if ($form_state->getValue('recaptcha_size') !== 'invisible') {
       $this->moduleInstaller->install(['recaptcha_preloader']);
     }
+
+    drupal_flush_all_caches();
   }
 
 }
