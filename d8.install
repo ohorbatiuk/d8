@@ -164,3 +164,17 @@ function d8_update_8902() {
 function d8_update_8903() {
   \Drupal::state()->set('features.current_bundle', 'd8');
 }
+
+/**
+ * Delete records of split versions.
+ */
+function d8_update_8904() {
+  \Drupal::database()->delete('key_value')
+    ->condition('collection', 'state')
+    ->condition(
+      'name',
+      \Drupal::database()->escapeLike('update.versions.') . '%',
+      'LIKE'
+    )
+    ->execute();
+}
