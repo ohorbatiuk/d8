@@ -1,9 +1,9 @@
-name: 'D8 Ban'
+name: 'D8+ Ban'
 description: 'Ban settings.'
 type: module
 core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'D8+'
 dependencies:
   - autoban:autoban_ban
   - autoban:autoban_dblog
-version: 8.x-1.0
-package: D8

@@ -1,6 +1,6 @@
-name: 'D8 Feature Settings'
+name: 'D8+ Feature Settings'
 description: 'All default configuration settings.'
 type: module
 core: 8.x
-version: 8.x-1.0
-package: D8
+core_version_requirement: ^8 || ^9
+package: 'D8+'

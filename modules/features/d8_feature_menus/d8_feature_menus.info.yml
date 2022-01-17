@@ -1,8 +1,8 @@
-name: 'D8 Feature Menus'
+name: 'D8+ Feature Menus'
 description: 'All menus.'
 type: module
 core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'D8+'
 dependencies:
-  - system
-version: 8.x-1.0
-package: D8
+  - drupal:system

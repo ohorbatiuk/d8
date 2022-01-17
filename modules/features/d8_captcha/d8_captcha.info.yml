@@ -1,9 +1,9 @@
-name: 'D8 Captcha'
+name: 'D8+ Captcha'
 description: 'Captcha settings.'
 type: module
 core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'D8+'
 dependencies:
-  - captcha
-  - recaptcha
-version: 8.x-1.0
-package: D8
+  - captcha:captcha
+  - recaptcha:recaptcha
