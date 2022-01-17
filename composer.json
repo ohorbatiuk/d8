@@ -16,7 +16,7 @@
         "drupal/autoban": "1.6",
         "drupal/bootstrap": "3.23",
         "drupal/captcha": "1.2",
-        "drupal/config_override": "1.0-beta2",
+        "drupal/config_override": "1.0-rc1",
         "drupal/config_update": "1.7",
         "drupal/core": "8.9.20",
         "drupal/core-composer-scaffold": "8.9.20",
