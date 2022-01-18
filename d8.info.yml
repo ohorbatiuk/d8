@@ -1,7 +1,7 @@
 name: D8+
 type: profile
 description: 'Basis for the site on Drupal 8/9.'
-version: 0.12.0.107
+version: 0.12.0.108
 core: 8.x
 core_version_requirement: ^8 || ^9
 

@@ -21,7 +21,7 @@
         "drupal/core": "9.3.2",
         "drupal/core-composer-scaffold": "9.3.2",
         "drupal/features": "3.12",
-        "drupal/module_filter": "3.1",
+        "drupal/module_filter": "3.2",
         "drupal/recaptcha": "3.0",
         "drupal/recaptcha_preloader": "1.0.0-alpha4"
     },
