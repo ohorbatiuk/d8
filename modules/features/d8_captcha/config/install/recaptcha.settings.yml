@@ -4,6 +4,6 @@ widget:
   theme: 'light'
   type: 'image'
   size: 'invisible'
+  badge: 'bottomright'
   tabindex: 0
   noscript: false
-  badge: 'bottomright'
