@@ -1,6 +1,6 @@
 {
     "name": "chmez/d8",
-    "description": "Profile for Drupal 8.",
+    "description": "Profile for Drupal 8/9.",
     "type": "drupal-profile",
     "license": "GPL-2.0-or-later",
     "repositories": [
