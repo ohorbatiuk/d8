@@ -11,14 +11,3 @@
 function d8_captcha_update_8001() {
   \Drupal::service('module_installer')->uninstall(['recaptcha_preloader'], FALSE);
 }
-
-/**
- * Ensure that option for adding captcha to all forms is defined.
- */
-function d8_captcha_update_9301(&$sandbox) {
-  $config = \Drupal::configFactory()->getEditable('captcha.settings');
-
-  if ($config->get('enabled_default') === NULL) {
-    $config->set('enabled_default', 0)->save();
-  }
-}
