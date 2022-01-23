@@ -40,7 +40,11 @@
         "enable-patching": true,
         "patches": {
             "drupal/autoban": {
-                "Anonymous IP used by authorized IP": "https://www.drupal.org/files/issues/2020-04-07/anonymous-only-3084397-5.patch"
+                "Anonymous IP used by authorized IP": "https://www.drupal.org/files/issues/2020-04-07/anonymous-only-3084397-5.patch",
+                "Too few arguments to function Drupal\\\\dblog\\\\Controller\\\\DbLogController::buildFilterQuery()": "https://www.drupal.org/files/issues/2021-12-09/3253490-4.patch"
+            },
+            "drupal/config_override": {
+                "PHP Fatal error: Uncaught Error: Call to a member function getParameter() on null": "https://www.drupal.org/files/issues/2021-08-03/call_to_member_function_getparameter_3226418_1.patch"
             },
             "drupal/core": {
                 "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2019-12-14/default-theme-favicon-for-administration-theme-2981434-7.patch",

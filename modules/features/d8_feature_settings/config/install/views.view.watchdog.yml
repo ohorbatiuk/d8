@@ -14,7 +14,7 @@ base_field: wid
 display:
   default:
     id: default
-    display_title: Default
+    display_title: Master
     display_plugin: default
     position: 0
     display_options:
@@ -607,6 +607,8 @@ display:
               separator: ''
               empty_column: false
               responsive: priority-medium
+              default_sort_order: 'asc'
+              sortable: false
             wid:
               sortable: false
               default_sort_order: desc
