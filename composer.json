@@ -19,7 +19,7 @@
         "drupal/config_override": "1.0-rc1",
         "drupal/config_update": "1.7",
         "drupal/core": "9.3.5",
-        "drupal/core-composer-scaffold": "9.3.3",
+        "drupal/core-composer-scaffold": "9.3.5",
         "drupal/features": "3.12",
         "drupal/module_filter": "3.2",
         "drupal/recaptcha": "3.0",
