@@ -5,6 +5,8 @@
  * Install, update and uninstall functions for the d8 installation profile.
  */
 
+use Drupal\Core\Config\FileStorage;
+use Drupal\Core\Config\InstallStorage;
 use Drupal\Core\Site\Settings;
 use Drupal\d8\Form\D8CaptchaForm;
 use Drupal\d8\Form\D8ConfigureForm;
@@ -13,11 +15,38 @@ use Drupal\d8\Form\D8ConfigureForm;
  * Implements hook_install().
  */
 function d8_install() {
-  \Drupal::service('module_installer')->install([
+  $modules = [
+    'd8_feature_settings',
+    'd8_feature_menus',
     'd8_feature_blocks_seven',
     'd8_feature_blocks_d8_theme',
-    'd8_feature_settings',
-  ]);
+    'd8_ban',
+    'recaptcha',
+  ];
+
+  if (\Drupal::moduleHandler()->moduleExists('config2php')) {
+    $modules[] = 'd8_config2php';
+  }
+
+  /** @var \Drupal\Core\Extension\ModuleInstallerInterface $installer */
+  $installer = \Drupal::service('module_installer');
+
+  $installer->install($modules);
+
+  /** @var \Drupal\Core\Extension\ExtensionPathResolver $resolver */
+  $resolver = \Drupal::service('extension.path.resolver');
+
+  $path = sprintf(
+    '%s/%s',
+    $resolver->getPath('module', 'd8_captcha'),
+    InstallStorage::CONFIG_INSTALL_DIRECTORY
+  );
+
+  foreach ((new FileStorage($path))->listAll() as $name) {
+    \Drupal::configFactory()->getEditable($name)->delete();
+  }
+
+  $installer->install(['d8_captcha'], FALSE);
 
   // Populate the default shortcut set.
   $shortcut = \Drupal::entityTypeManager()->getStorage('shortcut')->create([
@@ -177,4 +206,11 @@ function d8_update_8904() {
       'LIKE'
     )
     ->execute();
+}
+
+/**
+ * Uninstall "Config Override" module.
+ */
+function d8_update_9301() {
+  \Drupal::service('module_installer')->uninstall(['config_override'], FALSE);
 }

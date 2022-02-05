@@ -9,3 +9,4 @@ threshold: '3'
 user_type: '1'
 provider: ban
 anonymous: true
+rule_type : null

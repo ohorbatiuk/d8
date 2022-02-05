@@ -1,34 +1,24 @@
-name: D8
+name: D8+
 type: profile
-description: 'Basis for the site on Drupal 8.'
-version: 0.11.0.107
-core: 8.x
+description: 'Basis for the site on Drupal 8/9.'
+version: 0.12.0.108
+core_version_requirement: ^9
 
 distribution:
-  name: D8
+  name: D8+
 
 dependencies:
   - drupal:block
   - drupal:breakpoint
   - drupal:config
-  - drupal:dblog
   - drupal:field_ui
-  - drupal:menu_ui
   - drupal:node
   - drupal:shortcut
-  - drupal:toolbar
-  - drupal:views_ui
 
   - admin_toolbar:admin_toolbar_search
   - admin_toolbar:admin_toolbar_tools
-  - config_override:config_override
   - features:features_ui
   - module_filter:module_filter
-
-  - d8:d8_ban
-  - d8:d8_captcha
-  - d8:d8_config2php
-  - d8:d8_feature_menus
 
 themes:
   - seven

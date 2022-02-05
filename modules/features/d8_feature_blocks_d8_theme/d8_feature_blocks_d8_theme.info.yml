@@ -1,10 +1,9 @@
-name: 'D8 Feature Blocks D8 Theme'
-description: 'D8 Theme block settings.'
+name: 'D8+ Feature Blocks D8 Theme'
+description: 'D8+ Theme block settings.'
 type: module
-core: 8.x
+core_version_requirement: ^9
+package: 'D8+'
 dependencies:
-  - block
-  - d8_feature_menus
-  - system
-version: 8.x-1.0
-package: D8
+  - d8:d8_feature_menus
+  - drupal:block
+  - drupal:system
