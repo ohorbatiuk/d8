@@ -214,3 +214,10 @@ function d8_update_8904() {
 function d8_update_9301() {
   \Drupal::service('module_installer')->uninstall(['config_override'], FALSE);
 }
+
+/**
+ * Install "StandWithUkraine" module.
+ */
+function d8_update_9302() {
+  \Drupal::service('module_installer')->install(['standwithukraine']);
+}
