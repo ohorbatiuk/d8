@@ -81,7 +81,18 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
 
     $form['widget']['#type'] = 'container';
     $form['widget']['#weight'] = 0;
-    $form['widget']['recaptcha_size']['#type'] = 'radios';
+
+    $field = &$form['widget']['recaptcha_size'];
+    $field['#type'] = 'radios';
+
+    if (!empty($field['#default_value'])) {
+      $field['#options'][''] = $this->t('Normal');
+
+      $field['#options'][$field['#default_value']] .= sprintf(
+        ' (%s)',
+        $this->t('default')
+      );
+    }
 
     foreach (Element::children($form['widget']) as $key) {
       if ($key !== 'recaptcha_size') {
