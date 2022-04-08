@@ -23,7 +23,7 @@
         "drupal/features": "3.12",
         "drupal/module_filter": "3.2",
         "drupal/recaptcha": "3.0",
-        "drupal/recaptcha_preloader": "1.0.0-alpha4",
+        "drupal/recaptcha_preloader": "1.0.0",
         "drupal/standwithukraine": "1.0.1"
     },
     "require-dev": {
