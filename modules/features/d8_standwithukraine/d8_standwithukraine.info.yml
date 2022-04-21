@@ -1,0 +1,7 @@
+name: 'D8+ StandWithUkraine'
+description: 'StandWithUkraine settings.'
+type: module
+core_version_requirement: ^9
+package: 'D8+'
+dependencies:
+  - standwithukraine:standwithukraine
