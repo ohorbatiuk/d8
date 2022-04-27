@@ -9,7 +9,10 @@
  * Implements hook_preprocess_HOOK().
  */
 function d8_standwithukraine_preprocess_standwithukraine(&$variables) {
-  if (!$variables['is_admin']) {
+  if (
+    empty($theme = \Drupal::config('system.theme')->get('admin')) ||
+    \Drupal::theme()->getActiveTheme()->getName() !== $theme
+  ) {
     return;
   }
 
