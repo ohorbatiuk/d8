@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @file
+ * Provides a wrapper for the StandWithUkraine module.
+ */
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function d8_standwithukraine_preprocess_standwithukraine(&$variables) {
+  if (
+    empty($theme = \Drupal::config('system.theme')->get('admin')) ||
+    \Drupal::theme()->getActiveTheme()->getName() !== $theme
+  ) {
+    return;
+  }
+
+  /** @var \Drupal\Core\Menu\LocalTaskManagerInterface $service */
+  $service = \Drupal::service('plugin.manager.menu.local_task');
+
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $items = $service->getLocalTasksForRoute($route_name);
+
+  foreach ($items as $delta => $group) {
+    if (isset($group[$route_name])) {
+      unset($group[$route_name]);
+
+      if (empty($group)) {
+        unset($items[$delta]);
+      }
+    }
+  }
+
+  $offset = 117;
+
+  if (!empty($items)) {
+    $offset += 51;
+  }
+
+  /** @var \Drupal\Core\Template\Attribute $attributes */
+  $attributes = $variables['attributes'];
+
+  $attributes
+    ->addClass('right')
+    ->setAttribute('style', 'top: ' . $offset . 'px');
+}

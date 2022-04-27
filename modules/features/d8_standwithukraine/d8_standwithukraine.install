@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the d8_standwithukraine module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function d8_standwithukraine_install($is_syncing) {
+  if (!$is_syncing) {
+    module_set_weight('d8_standwithukraine', 5);
+  }
+}

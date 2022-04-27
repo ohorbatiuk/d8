@@ -21,6 +21,7 @@ function d8_install() {
     'd8_feature_blocks_seven',
     'd8_feature_blocks_d8_theme',
     'd8_ban',
+    'd8_standwithukraine',
     'recaptcha',
   ];
 
@@ -220,4 +221,11 @@ function d8_update_9301() {
  */
 function d8_update_9302() {
   \Drupal::service('module_installer')->install(['standwithukraine']);
+}
+
+/**
+ * Install "D8+ StandWithUkraine" module.
+ */
+function d8_update_9303() {
+  \Drupal::service('module_installer')->install(['d8_standwithukraine']);
 }
