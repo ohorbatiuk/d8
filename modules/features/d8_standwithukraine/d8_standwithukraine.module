@@ -16,14 +16,23 @@ function d8_standwithukraine_preprocess_standwithukraine(&$variables) {
     return;
   }
 
-  $offset = 117;
-
   /** @var \Drupal\Core\Menu\LocalTaskManagerInterface $service */
   $service = \Drupal::service('plugin.manager.menu.local_task');
 
-  $items = $service->getLocalTasksForRoute(
-    \Drupal::routeMatch()->getRouteName()
-  );
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $items = $service->getLocalTasksForRoute($route_name);
+
+  foreach ($items as $delta => $group) {
+    if (isset($group[$route_name])) {
+      unset($group[$route_name]);
+
+      if (empty($group)) {
+        unset($items[$delta]);
+      }
+    }
+  }
+
+  $offset = 117;
 
   if (!empty($items)) {
     $offset += 51;
