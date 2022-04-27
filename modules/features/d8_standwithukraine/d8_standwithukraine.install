@@ -10,13 +10,6 @@
  */
 function d8_standwithukraine_install($is_syncing) {
   if (!$is_syncing) {
-    d8_standwithukraine_update_9301();
+    module_set_weight('d8_standwithukraine', 5);
   }
-}
-
-/**
- * Implements hook_update_N().
- */
-function d8_standwithukraine_update_9301() {
-  module_set_weight('d8_standwithukraine', 5);
 }
