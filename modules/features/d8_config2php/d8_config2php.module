@@ -22,23 +22,3 @@ function d8_config2php_help($route_name, RouteMatchInterface $route_match) {
 
   return $output;
 }
-
-/**
- * Implements hook_menu_links_discovered_alter().
- */
-function d8_config2php_menu_links_discovered_alter(&$links) {
-  $links['admin_toolbar_tools.extra_links:config.export']['route_name'] = 'config2php.export';
-}
-
-/**
- * Implements hook_menu_local_tasks_alter().
- */
-function d8_config2php_menu_local_tasks_alter(
-  &$data,
-  $route_name,
-  RefinableCacheableDependencyInterface &$cacheability
-) {
-  if (isset($data['tabs'][0]['config.export'])) {
-    $data['tabs'][0]['config.export']['#link']['url'] = Url::fromRoute('config2php.export');
-  }
-}
