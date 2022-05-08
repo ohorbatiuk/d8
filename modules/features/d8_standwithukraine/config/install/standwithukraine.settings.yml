@@ -1,3 +1,13 @@
 url: 'https://supportukrainenow.org'
 position: ''
 offset: null
+favicon:
+  disable: false
+  ratios:
+    bartik: 60
+    bootstrap: 60
+    claro: 60
+    d8_theme: 60
+    olivero: 60
+    seven: 60
+    stark: 60
