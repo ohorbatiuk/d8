@@ -4,7 +4,7 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-rows: 6fr 1fr 3fr;
+  grid-template-rows: 7fr 1fr 2fr;
   height: 100vh;
 }
 
@@ -54,44 +54,4 @@
   background: black;
   margin: 0;
   padding: 1rem 7rem;
-}
-
-.shell {
-  background: lightgray;
-}
-
-.yellow {
-  background: yellow;
-}
-
-.light-blue {
-  background: skyblue;
-}
-
-.green {
-  background: lightgreen;
-}
-
-.purple {
-  background: purple;
-}
-
-.red {
-  background: red;
-}
-
-.blue {
-  background: blue;
-}
-
-.black {
-  background: black;
-}
-
-.white {
-  background: white;
-}
-
-.dark-blue {
-  background: darkblue;
 }

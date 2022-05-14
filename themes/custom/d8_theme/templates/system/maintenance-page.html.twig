@@ -10,34 +10,13 @@
  * @see https://codepen.io/mjhea0/pen/LoMVNm
  */
 #}
-<section class="top">
-  <section class="shell"></section>
-  <section class="yellow"></section>
-  <section class="light-blue"></section>
-  <section class="green"></section>
-  <section class="purple"></section>
-  <section class="red"></section>
-  <section class="blue"></section>
-</section>
-
-<section class="middle">
-  <section class="blue"></section>
-  <section class="black"></section>
-  <section class="purple"></section>
-  <section class="black"></section>
-  <section class="blue"></section>
-  <section class="black"></section>
-  <section class="white"></section>
-</section>
-
-<section class="bottom">
-  <section class="dark-blue"></section>
-  <section class="white"></section>
-  <section class="blue"></section>
-  <section class="black"></section>
-  <section class="black"></section>
-  <section class="dark-blue"></section>
-</section>
+{% for class, colors in rows %}
+  <section class="{{ class }}">
+    {% for color in colors %}
+      <section style="background: {{ color }}"></section>
+    {% endfor %}
+  </section>
+{% endfor %}
 
 <section class="grid-over">
   <section class="message-container">
