@@ -6,61 +6,6 @@
  */
 
 /**
- * Implements hook_page_attachments_alter().
- */
-function d8_standwithukraine_page_attachments_alter(array &$attachments) {
-  if (
-    !theme_get_setting('features.favicon') ||
-    theme_get_setting('favicon.mimetype') !== 'image/vnd.microsoft.icon' ||
-    !isset($attachments['#attached']['html_head_link']) ||
-    !is_array($attachments['#attached']['html_head_link']) ||
-    \Drupal::config('standwithukraine.settings')->get('favicon.disable')
-  ) {
-    return;
-  }
-
-  $found = FALSE;
-
-  foreach ($attachments['#attached']['html_head_link'] as &$group) {
-    if (is_array($group)) {
-      foreach ($group as &$element) {
-        if (
-          is_array($element) &&
-          isset($element['rel'], $element['href'], $element['type']) &&
-          $element['rel'] === 'icon' &&
-          $element['type'] === 'image/png'
-        ) {
-          $found = TRUE;
-
-          break;
-        }
-      }
-    }
-  }
-
-  if (!$found) {
-    return;
-  }
-
-  $theme = \Drupal::theme()->getActiveTheme()->getName();
-  $config = \Drupal::config('system.theme');
-
-  if ($config->get('favicon') && $config->get('admin') === $theme) {
-    $theme = $config->get('default');
-  }
-
-  /** @var \Drupal\standwithukraine\Service\StandWithUkraineFaviconInterface $favicon */
-  $favicon = \Drupal::service('standwithukraine.favicon');
-
-  $urls = $favicon->build($theme);
-
-  if (isset($urls[$theme])) {
-    $urls = $urls[$theme];
-    $element['href'] = $urls['16x16'] ?? reset($urls);
-  }
-}
-
-/**
  * Implements hook_preprocess_HOOK().
  */
 function d8_standwithukraine_preprocess_standwithukraine(&$variables) {
@@ -75,22 +20,28 @@ function d8_standwithukraine_preprocess_standwithukraine(&$variables) {
   $service = \Drupal::service('plugin.manager.menu.local_task');
 
   $route_name = \Drupal::routeMatch()->getRouteName();
-  $items = $service->getLocalTasksForRoute($route_name);
+  $offset = 85;
 
-  foreach ($items as $delta => $group) {
-    if (isset($group[$route_name])) {
-      unset($group[$route_name]);
+  if ($route_name !== 'system.batch_page.html') {
+    $offset += 32;
+    $items = $service->getLocalTasksForRoute($route_name);
+
+    foreach ($items as $group_delta => &$group) {
+      /** @var \Drupal\Core\Menu\LocalTaskInterface $item */
+      foreach ($group as $item_delta => $item) {
+        if ($item->getRouteName() === $route_name) {
+          unset($group[$item_delta]);
+        }
+      }
 
       if (empty($group)) {
-        unset($items[$delta]);
+        unset($items[$group_delta]);
       }
     }
-  }
 
-  $offset = 117;
-
-  if (!empty($items)) {
-    $offset += 51;
+    if (!empty($items)) {
+      $offset += 51;
+    }
   }
 
   /** @var \Drupal\Core\Template\Attribute $attributes */
