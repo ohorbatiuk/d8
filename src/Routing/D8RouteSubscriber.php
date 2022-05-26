@@ -7,9 +7,7 @@ use Drupal\d8\Controller\D8Controller;
 use Symfony\Component\Routing\RouteCollection;
 
 /**
- * Class D8RouteSubscriber.
- *
- * @package Drupal\d8\Routing
+ * Listens to the dynamic route events.
  */
 class D8RouteSubscriber extends RouteSubscriberBase {
 

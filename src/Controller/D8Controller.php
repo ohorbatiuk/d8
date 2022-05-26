@@ -3,31 +3,32 @@
 namespace Drupal\d8\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Laminas\Diactoros\Response\RedirectResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class D8Controller.
- *
- * @package Drupal\d8\Controller
+ * Controller routines for installation profile routes.
  */
 class D8Controller extends ControllerBase {
 
   /**
    * Switch maintenance mode.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   Information about the current HTTP request.
+   *
+   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   *   The redirect response.
    */
-  public function maintenance() {
+  public function maintenance(Request $request) {
     $this->state()->set(
       'system.maintenance_mode',
       !$this->state()->get('system.maintenance_mode')
     );
 
-    if (\Drupal::request()->server->has('HTTP_REFERER')) {
-      return new RedirectResponse(
-        \Drupal::request()->server->get('HTTP_REFERER')
-      );
-    }
-
-    return $this->redirect('<front>');
+    return $request->server->has('HTTP_REFERER')
+      ? new RedirectResponse($request->server->get('HTTP_REFERER'))
+      : $this->redirect('<front>');
   }
 
 }

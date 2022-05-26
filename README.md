@@ -29,3 +29,7 @@ This installation profile requires the following modules:
 ### New installation step for setting captcha keys
 
 ![captcha](images/captcha.png "captcha")
+
+### Maintenance mode
+
+![maintenance](images/maintenance.png "maintenance")
