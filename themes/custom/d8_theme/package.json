@@ -5,7 +5,8 @@
     "gulp": "latest",
     "gulp-cli": "latest",
     "gulp-sass": "latest",
-    "gulp-sourcemaps": "^2.6.0"
+    "gulp-sourcemaps": "latest",
+    "sass": "latest"
   },
   "private": true
 }
