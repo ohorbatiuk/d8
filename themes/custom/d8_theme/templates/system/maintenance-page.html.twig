@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Theme override to display a single Drupal page while offline.
+ *
+ * All available variables are mirrored in page.html.twig.
+ * Some may be blank but they are provided for consistency.
+ *
+ * @see template_preprocess_maintenance_page()
+ * @see https://codepen.io/mjhea0/pen/LoMVNm
+ */
+#}
+{% for class, colors in rows %}
+  <section class="{{ class }}">
+    {% for color in colors %}
+      <section style="background: {{ color }}"></section>
+    {% endfor %}
+  </section>
+{% endfor %}
+
+<section class="grid-over">
+  <section class="message-container">
+    <p class="message">{{ title }}</p>
+  </section>
+</section>
