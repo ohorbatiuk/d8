@@ -1,5 +1,5 @@
-name: 'D8+ StandWithUkraine'
-description: 'Provides a wrapper for the StandWithUkraine module.'
+name: 'D8+ StandWithUkraine 🇺🇦'
+description: 'Provides a wrapper for the StandWithUkraine 🇺🇦 module.'
 type: module
 core_version_requirement: ^9
 package: 'D8+'
