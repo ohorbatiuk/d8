@@ -22,7 +22,7 @@ This installation profile requires the following modules:
 * [Module Filter](https://www.drupal.org/project/module_filter)
 * [reCAPTCHA](https://www.drupal.org/project/recaptcha)
 * [reCAPTCHA Preloader](https://www.drupal.org/project/recaptcha_preloader)
-* [StandWithUkraine](https://www.drupal.org/project/standwithukraine) 🇺🇦
+* [StandWithUkraine 🇺🇦](https://www.drupal.org/project/standwithukraine)
 
 ## Features
 
