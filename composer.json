@@ -12,16 +12,13 @@
     "require": {
         "composer/installers": "1.11.0",
         "cweagans/composer-patches": "^1.0",
-        "drupal/admin_toolbar": "3.0.2",
-        "drupal/autoban": "1.6",
-        "drupal/bootstrap": "3.24",
-        "drupal/captcha": "1.2",
+        "drupal/admin_toolbar": "3.1.0",
+        "drupal/bootstrap": "3.25",
+        "drupal/captcha": "1.3",
         "drupal/config_override": "1.0-rc1",
-        "drupal/config_update": "1.7",
+        "drupal/config_update": "2.0.x-dev",
         "drupal/core": "^10",
         "drupal/core-composer-scaffold": "^10",
-        "drupal/features": "3.12",
-        "drupal/module_filter": "3.2",
         "drupal/recaptcha": "3.0",
         "drupal/recaptcha_preloader": "1.0.0",
         "drupal/standwithukraine": "1.3.3"
@@ -40,8 +37,12 @@
                 "Anonymous IP used by authorized IP": "https://www.drupal.org/files/issues/2020-04-07/anonymous-only-3084397-5.patch",
                 "Too few arguments to function Drupal\\\\dblog\\\\Controller\\\\DbLogController::buildFilterQuery()": "https://www.drupal.org/files/issues/2021-12-09/3253490-4.patch"
             },
+            "drupal/config2php": {
+                "Automated Drupal 10 compatibility fixes": "https://www.drupal.org/files/issues/2022-07-18/config2php.2.x-dev.rector.patch"
+            },
             "drupal/config_override": {
-                "PHP Fatal error: Uncaught Error: Call to a member function getParameter() on null": "https://www.drupal.org/files/issues/2021-08-03/call_to_member_function_getparameter_3226418_1.patch"
+                "PHP Fatal error: Uncaught Error: Call to a member function getParameter() on null": "https://www.drupal.org/files/issues/2021-08-03/call_to_member_function_getparameter_3226418_1.patch",
+                "Automated Drupal 10 compatibility fixes": "https://www.drupal.org/files/issues/2022-06-15/config_override.1.x-dev.rector.patch"
             },
             "drupal/core": {
                 "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2019-12-14/default-theme-favicon-for-administration-theme-2981434-7.patch",
@@ -52,7 +53,11 @@
                 "Set default bundle for site": "https://www.drupal.org/files/issues/2022-01-08/features-current-bundle-2789001-14.patch"
             },
             "drupal/recaptcha": {
-                "Integrate Invisible reCAPTCHA option from Google": "https://www.drupal.org/files/issues/2019-03-07/recaptcha-ajax-2493183-164%2Bnocaptcha-2852269-165_2.patch"
+                "Integrate Invisible reCAPTCHA option from Google": "https://www.drupal.org/files/issues/2019-03-07/recaptcha-ajax-2493183-164%2Bnocaptcha-2852269-165_2.patch",
+                "Drupal 10 compatibility": "https://git.drupalcode.org/project/recaptcha/-/merge_requests/2.diff"
+            },
+            "drupal/recaptcha_preloader": {
+                "Automated Drupal 10 compatibility fixes": "https://www.drupal.org/files/issues/2022-06-16/recaptcha_preloader.1.x-dev.rector.patch"
             }
         }
     }
