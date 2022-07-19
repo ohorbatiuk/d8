@@ -1,4 +1,4 @@
-# Installation profile for Drupal 8/9
+# Installation profile for Drupal 8/9/10
 
 [![Version](http://poser.pugx.org/chmez/d8/version)](https://packagist.org/packages/chmez/d8)
 [![Total Downloads](http://poser.pugx.org/chmez/d8/downloads)](https://packagist.org/packages/chmez/d8)

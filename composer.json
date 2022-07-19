@@ -1,6 +1,6 @@
 {
     "name": "chmez/d8",
-    "description": "Profile for Drupal 8/9.",
+    "description": "Profile for Drupal 8/9/10.",
     "type": "drupal-profile",
     "license": "GPL-2.0-or-later",
     "repositories": [
@@ -18,8 +18,8 @@
         "drupal/captcha": "1.2",
         "drupal/config_override": "1.0-rc1",
         "drupal/config_update": "1.7",
-        "drupal/core": "9.4.1",
-        "drupal/core-composer-scaffold": "9.4.1",
+        "drupal/core": "^10",
+        "drupal/core-composer-scaffold": "^10",
         "drupal/features": "3.12",
         "drupal/module_filter": "3.2",
         "drupal/recaptcha": "3.0",
