@@ -24,7 +24,7 @@
         "drupal/module_filter": "3.2",
         "drupal/recaptcha": "3.0",
         "drupal/recaptcha_preloader": "1.0.0",
-        "drupal/standwithukraine": "1.3.3"
+        "drupal/standwithukraine": "1.3.4"
     },
     "require-dev": {
         "drupal/config2php": "2.0.1"
