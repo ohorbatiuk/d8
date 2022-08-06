@@ -6,7 +6,6 @@ type: 'page not found'
 message: /
 referer: ''
 threshold: '3'
-user_type: '1'
+user_type: '3'
 provider: ban
-anonymous: true
 rule_type : null
