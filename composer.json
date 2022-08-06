@@ -13,7 +13,7 @@
         "composer/installers": "1.11.0",
         "cweagans/composer-patches": "^1.0",
         "drupal/admin_toolbar": "3.1.1",
-        "drupal/autoban": "1.6",
+        "drupal/autoban": "1.7",
         "drupal/bootstrap": "3.24",
         "drupal/captcha": "1.2",
         "drupal/config_override": "1.0-rc1",
@@ -40,7 +40,7 @@
                 "Logout link missing": "https://git.drupalcode.org/project/admin_toolbar/-/commit/b5581f2.patch"
             },
             "drupal/autoban": {
-                "Anonymous IP used by authorized IP": "https://www.drupal.org/files/issues/2020-04-07/anonymous-only-3084397-5.patch",
+                "Anonymous IP used by authorized IP": "https://www.drupal.org/files/issues/2022-08-06/autoban-anonymous-only-3084397-6.patch",
                 "Too few arguments to function Drupal\\\\dblog\\\\Controller\\\\DbLogController::buildFilterQuery()": "https://www.drupal.org/files/issues/2021-12-09/3253490-4.patch"
             },
             "drupal/config_override": {
