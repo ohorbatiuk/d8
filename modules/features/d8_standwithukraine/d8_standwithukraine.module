@@ -5,7 +5,34 @@
  * Provides a wrapper for the StandWithUkraine module.
  */
 
-use Drupal\Core\Template\Attribute;
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function d8_standwithukraine_page_attachments_alter(array &$attachments) {
+  if (
+    !empty($theme = \Drupal::config('system.theme')->get('admin')) &&
+    \Drupal::theme()->getActiveTheme()->getName() === $theme &&
+    \Drupal::config('standwithukraine.settings')->get('single')
+  ) {
+    foreach ($attachments['#attached']['html_head'] as &$element) {
+      if ($element[1] === 'standwithukraine') {
+        $element[0]['#value'] = str_replace(2.5, 4, $element[0]['#value']);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_page_top().
+ */
+function d8_standwithukraine_page_top(array &$page_top) {
+  if (
+    !empty($theme = \Drupal::config('system.theme')->get('admin')) &&
+    \Drupal::theme()->getActiveTheme()->getName() === $theme
+  ) {
+    $page_top['standwithukraine']['#single'] = FALSE;
+  }
+}
 
 /**
  * Implements hook_preprocess_HOOK().
@@ -52,19 +79,4 @@ function d8_standwithukraine_preprocess_standwithukraine(&$variables) {
   $attributes
     ->addClass('right')
     ->setAttribute('style', 'top: ' . $offset . 'px');
-
-  if ($variables['single']) {
-    $attributes->removeClass('single')->addClass('double');
-
-    $variables['lines'] = array_map(
-      function ($position, $text) {
-        return [
-          'attributes' => (new Attribute())->addClass(['line', $position]),
-          'content' => $text,
-        ];
-      },
-      ['first', 'last'],
-      ['Stand With', 'Ukraine'],
-    );
-  }
 }
