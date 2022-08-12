@@ -1,0 +1,4 @@
+services:
+  d8_standwithukraine.helper:
+    class: Drupal\d8_standwithukraine\D8StandWithUkraineHelper
+    arguments: ['@config.factory', '@theme.manager']
