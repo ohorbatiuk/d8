@@ -1,0 +1,10 @@
+services:
+  standwithukraine.negotiator.d8:
+    class: Drupal\d8_standwithukraine\D8StandWithUkraineNegotiator
+    arguments:
+      - '@config.factory'
+      - '@theme.manager'
+      - '@current_route_match'
+      - '@plugin.manager.menu.local_task'
+    tags:
+      - { name: standwithukraine_negotiator }
