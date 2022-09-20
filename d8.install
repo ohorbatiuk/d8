@@ -25,8 +25,15 @@ function d8_install() {
     'recaptcha',
   ];
 
-  if (\Drupal::moduleHandler()->moduleExists('config2php')) {
-    $modules[] = 'd8_config2php';
+  $optional_modules = [
+    'config2php' => 'd8_',
+    'upgrade_status' => '',
+  ];
+
+  foreach ($optional_modules as $module => $prefix) {
+    if (\Drupal::moduleHandler()->moduleExists($module)) {
+      $modules[] = $prefix . $module;
+    }
   }
 
   /** @var \Drupal\Core\Extension\ModuleInstallerInterface $installer */
@@ -228,4 +235,13 @@ function d8_update_9302() {
  */
 function d8_update_9303() {
   \Drupal::service('module_installer')->install(['d8_standwithukraine']);
+}
+
+/**
+ * Install "Upgrade Status" module.
+ */
+function d8_update_9401() {
+  if (\Drupal::moduleHandler()->moduleExists($module = 'upgrade_status')) {
+    \Drupal::service('module_installer')->install([$module]);
+  }
 }

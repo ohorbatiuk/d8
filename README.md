@@ -24,6 +24,7 @@ This installation profile requires the following modules:
 * [reCAPTCHA](https://www.drupal.org/project/recaptcha)
 * [reCAPTCHA Preloader](https://www.drupal.org/project/recaptcha_preloader)
 * [StandWithUkraine 🇺🇦](https://www.drupal.org/project/standwithukraine)
+* [Upgrade Status](https://www.drupal.org/project/upgrade_status)
 
 ## Features
 

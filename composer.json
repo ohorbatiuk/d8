@@ -27,7 +27,8 @@
         "drupal/standwithukraine": "1.3.6"
     },
     "require-dev": {
-        "drupal/config2php": "2.0.1"
+        "drupal/config2php": "2.0.1",
+        "drupal/upgrade_status": "3.17"
     },
     "extra": {
         "installer-paths": {
