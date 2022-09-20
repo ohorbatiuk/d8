@@ -30,8 +30,11 @@ function d8_install() {
     'upgrade_status' => '',
   ];
 
+  /** @var \Drupal\Core\Extension\ModuleExtensionList $extension */
+  $extension = \Drupal::service('extension.list.module');
+
   foreach ($optional_modules as $module => $prefix) {
-    if (\Drupal::moduleHandler()->moduleExists($module)) {
+    if ($extension->exists($module)) {
       $modules[] = $prefix . $module;
     }
   }
@@ -241,7 +244,10 @@ function d8_update_9303() {
  * Install "Upgrade Status" module.
  */
 function d8_update_9401() {
-  if (\Drupal::moduleHandler()->moduleExists($module = 'upgrade_status')) {
+  /** @var \Drupal\Core\Extension\ModuleExtensionList $extension */
+  $extension = \Drupal::service('extension.list.module');
+
+  if ($extension->exists($module = 'upgrade_status')) {
     \Drupal::service('module_installer')->install([$module]);
   }
 }
