@@ -3,7 +3,7 @@
 namespace Drupal\d8\Routing;
 
 use Drupal\Core\Routing\RouteSubscriberBase;
-use Drupal\d8\Controller\D8Controller;
+use Drupal\d8\Controller\D8MaintenanceController;
 use Symfony\Component\Routing\RouteCollection;
 
 /**
@@ -17,7 +17,7 @@ class D8RouteSubscriber extends RouteSubscriberBase {
   protected function alterRoutes(RouteCollection $collection) {
     if ($route = $collection->get('system.site_maintenance_mode')) {
       $route->setDefaults([
-        '_controller' => D8Controller::class . '::maintenance',
+        '_controller' => D8MaintenanceController::class . '::action',
       ]);
     }
   }

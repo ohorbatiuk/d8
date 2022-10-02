@@ -3,12 +3,6 @@
     "description": "Profile for Drupal 8/9.",
     "type": "drupal-profile",
     "license": "GPL-2.0-or-later",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        }
-    ],
     "require": {
         "composer/installers": "1.11.0",
         "cweagans/composer-patches": "^1.0",
@@ -18,8 +12,8 @@
         "drupal/captcha": "1.2",
         "drupal/config_override": "1.0-rc1",
         "drupal/config_update": "1.7",
-        "drupal/core": "9.4.4",
-        "drupal/core-composer-scaffold": "9.4.4",
+        "drupal/core": "9.4.7",
+        "drupal/core-composer-scaffold": "9.4.7",
         "drupal/features": "3.12",
         "drupal/module_filter": "3.2",
         "drupal/recaptcha": "3.0",
@@ -31,11 +25,6 @@
         "drupal/upgrade_status": "3.17"
     },
     "extra": {
-        "installer-paths": {
-            "modules/contrib/{$name}": [ "type:drupal-module" ],
-            "themes/contrib/{$name}": [ "type:drupal-theme" ]
-        },
-        "enable-patching": true,
         "patches": {
             "drupal/admin_toolbar": {
                 "Logout link missing": "https://git.drupalcode.org/project/admin_toolbar/-/commit/b5581f2.patch"
@@ -58,6 +47,17 @@
             "drupal/recaptcha": {
                 "Integrate Invisible reCAPTCHA option from Google": "https://www.drupal.org/files/issues/2019-03-07/recaptcha-ajax-2493183-164%2Bnocaptcha-2852269-165_2.patch"
             }
+        },
+        "enable-patching": true,
+        "installer-paths": {
+            "modules/contrib/{$name}": [ "type:drupal-module" ],
+            "themes/contrib/{$name}": [ "type:drupal-theme" ]
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ]
 }
