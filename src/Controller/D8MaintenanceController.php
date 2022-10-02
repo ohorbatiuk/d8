@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Controller routines for installation profile routes.
  */
-class D8Controller extends ControllerBase {
+class D8MaintenanceController extends ControllerBase {
 
   /**
    * Switch maintenance mode.
@@ -20,7 +20,7 @@ class D8Controller extends ControllerBase {
    * @return \Symfony\Component\HttpFoundation\RedirectResponse
    *   The redirect response.
    */
-  public function maintenance(Request $request) {
+  public function action(Request $request) {
     $this->state()->set(
       'system.maintenance_mode',
       !$this->state()->get('system.maintenance_mode')
