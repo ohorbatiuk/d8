@@ -1,4 +1,10 @@
+text: |-
+  We Stand With
+  Ukraine
 single: true
+sizes:
+  first: true
+  last: false
 url: 'https://supportukrainenow.org'
 position: ''
 offset: null

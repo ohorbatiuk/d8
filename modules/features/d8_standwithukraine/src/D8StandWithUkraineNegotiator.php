@@ -114,7 +114,9 @@ class D8StandWithUkraineNegotiator implements StandWithUkraineNegotiatorInterfac
     }
 
     $settings
+      ->setText(StandWithUkraineSettingsInterface::TEXT)
       ->setDouble()
+      ->setSizes(FALSE, TRUE)
       ->setPosition(StandWithUkraineSettingsInterface::POSITION_RIGHT)
       ->setOffset($offset);
   }
