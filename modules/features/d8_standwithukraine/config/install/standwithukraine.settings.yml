@@ -23,6 +23,9 @@ favicon:
     d8_theme:
       ratio: 60
       background: false
+    gin:
+      ratio: 60
+      background: false
     olivero:
       ratio: 60
       background: false
