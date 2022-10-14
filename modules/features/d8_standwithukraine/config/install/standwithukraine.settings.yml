@@ -1,13 +1,14 @@
-text: |-
-  We Stand With
-  Ukraine
-single: true
-sizes:
-  first: true
-  last: false
-url: 'https://supportukrainenow.org'
-position: ''
-offset: null
+message:
+  text: |-
+    We Stand With
+    Ukraine
+  single: true
+  sizes:
+    first: true
+    last: false
+  url: 'https://supportukrainenow.org'
+  position: ''
+  offset: null
 favicon:
   disable: false
   themes:
