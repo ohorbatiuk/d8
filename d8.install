@@ -251,3 +251,10 @@ function d8_update_9401() {
     \Drupal::service('module_installer')->install([$module]);
   }
 }
+
+/**
+ * Install "Contextual Links" module.
+ */
+function d8_update_9402() {
+  \Drupal::service('module_installer')->install(['contextual']);
+}
