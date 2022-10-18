@@ -1,7 +1,14 @@
-single: true
-url: 'https://supportukrainenow.org'
-position: ''
-offset: null
+message:
+  text: |-
+    We Stand With
+    Ukraine
+  single: true
+  sizes:
+    first: true
+    last: false
+  url: 'https://supportukrainenow.org'
+  position: ''
+  offset: null
 favicon:
   disable: false
   themes:
@@ -15,6 +22,9 @@ favicon:
       ratio: 60
       background: false
     d8_theme:
+      ratio: 60
+      background: false
+    gin:
       ratio: 60
       background: false
     olivero:
