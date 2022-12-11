@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Change the Bootstrap CDN theme according to light or dark mode.
+ */
+
+use Drupal\Core\Block\BlockPluginInterface;
+
+/**
+ * Implements hook_block_view_BASE_BLOCK_ID_alter().
+ */
+function d8_night_block_view_dark_mode_switch_block_alter(
+  array &$build,
+  BlockPluginInterface $block
+) {
+  $build['#attached']['library'][] = 'd8_night/base';
+}

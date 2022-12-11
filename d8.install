@@ -258,3 +258,10 @@ function d8_update_9401() {
 function d8_update_9402() {
   \Drupal::service('module_installer')->install(['contextual']);
 }
+
+/**
+ * Install "D8+ Night" module.
+ */
+function d8_update_9403() {
+  \Drupal::service('module_installer')->install(['d8_night']);
+}
