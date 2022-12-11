@@ -3,14 +3,20 @@
 namespace Drupal\d8_night\Controller;
 
 use Drupal\bootstrap\Bootstrap;
-use Drupal\Core\Controller\ControllerBase;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\d8\Controller\D8MaintenanceController;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Controller routines for D8+ Night routes.
  */
-class D8NightController extends ControllerBase {
+class D8NightController extends D8MaintenanceController {
+
+  /**
+   * TRUE when will be switching to dark mode.
+   *
+   * @var bool
+   */
+  private $dark;
 
   /**
    * Change the Bootstrap CDN theme according to light or dark mode.
@@ -27,16 +33,21 @@ class D8NightController extends ControllerBase {
    *   The redirect response.
    */
   public function switch(Request $request, $mode) {
+    $this->dark = !empty($mode);
+
+    return $this->action($request);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function doAction() {
     Bootstrap::getTheme('d8_theme')->setSetting(
       'cdn_theme',
-      $mode ? 'slate' : 'bootstrap'
+      $this->dark ? 'slate' : 'bootstrap'
     );
 
     drupal_flush_all_caches();
-
-    return $request->server->has('HTTP_REFERER')
-      ? new RedirectResponse($request->server->get('HTTP_REFERER'))
-      : $this->redirect('<front>');
   }
 
 }
