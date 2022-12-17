@@ -5,6 +5,7 @@
  * Change the Bootstrap CDN theme according to light or dark mode.
  */
 
+use Drupal\bootstrap\Bootstrap;
 use Drupal\Core\Block\BlockPluginInterface;
 
 /**
@@ -15,4 +16,7 @@ function d8_night_block_view_dark_mode_switch_block_alter(
   BlockPluginInterface $block
 ) {
   $build['#attached']['library'][] = 'd8_night/base';
+
+  $theme = Bootstrap::getTheme('d8_theme')->getSetting('cdn_theme');
+  $build['#attached']['drupalSettings']['d8_night'] = $theme === 'slate';
 }

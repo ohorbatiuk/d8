@@ -21,21 +21,14 @@ class D8MaintenanceController extends ControllerBase {
    *   The redirect response.
    */
   public function action(Request $request) {
-    $this->doAction();
-
-    return $request->server->has('HTTP_REFERER')
-      ? new RedirectResponse($request->server->get('HTTP_REFERER'))
-      : $this->redirect('<front>');
-  }
-
-  /**
-   * Execute the main process.
-   */
-  protected function doAction() {
     $this->state()->set(
       'system.maintenance_mode',
       !$this->state()->get('system.maintenance_mode')
     );
+
+    return $request->server->has('HTTP_REFERER')
+      ? new RedirectResponse($request->server->get('HTTP_REFERER'))
+      : $this->redirect('<front>');
   }
 
 }
