@@ -2,8 +2,25 @@ base:
   css:
     component:
       css/style.css: {}
+  dependencies:
+    - d8_theme/checkbox
 
 maintenance:
   css:
     theme:
       css/maintenance.css: {}
+
+checkbox:
+  version: VERSION
+  js:
+    https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-checkbox-x@1.5.7/js/checkbox-x.min.js:
+      type: external
+    js/checkbox.js: {}
+  css:
+    theme:
+      https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-checkbox-x@1.5.7/css/checkbox-x.min.css:
+        type: external
+      css/checkbox.css: { minified: true }
+  dependencies:
+    - bootstrap/theme
+    - core/jquery
