@@ -25,9 +25,13 @@
         }
       }
 
-      $('#dark-mode-switch', context).on('change', function () {
-        check($(this).is(':checked'));
-      });
+      var $element = $('#dark-mode-switch', context);
+
+      $element
+        .val($element.is(':checked') + 0)
+        .on('change', function () {
+          check($(this).is(':checked'));
+        });
     }
   };
 })(jQuery, Drupal, drupalSettings);

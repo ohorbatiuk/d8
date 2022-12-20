@@ -24,3 +24,4 @@ checkbox:
   dependencies:
     - bootstrap/theme
     - core/jquery
+    - d8_night/base
