@@ -17,11 +17,21 @@
       if ('reload' in localStorage) {
         localStorage.removeItem('reload');
       }
-      else if ('theme' in localStorage) {
-        var dark = localStorage.theme === 'true';
+      else {
+        var dark;
+
+        if ('theme' in localStorage) {
+          dark = localStorage.theme === 'true';
+        }
+        else {
+          dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+
+        console.log(dark);
+        console.log(settings.d8_night);
 
         if (settings.d8_night !== dark) {
-          check(localStorage.theme);
+          check(dark);
         }
       }
 
