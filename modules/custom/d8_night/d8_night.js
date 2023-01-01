@@ -1,9 +1,9 @@
 (function ($, Drupal, drupalSettings) {
-  Drupal.behaviors.D8Night = {
+  Drupal.behaviors.d8Night = {
     attach: function attach(context, settings) {
-      function check(mode) {
+      function check(night) {
         $.ajax({
-          url: Drupal.url('night/' + (mode ? 1 : 0)),
+          url: Drupal.url('night/' + (night ? 1 : 0)),
           dataType: 'json',
           success: function (data) {
             if (data.update) {
@@ -18,20 +18,17 @@
         localStorage.removeItem('reload');
       }
       else {
-        var dark;
+        var night;
 
         if ('theme' in localStorage) {
-          dark = localStorage.theme === 'true';
+          night = localStorage.theme === 'true';
         }
         else {
-          dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          night = window.matchMedia('(prefers-color-scheme: dark)').matches;
         }
 
-        console.log(dark);
-        console.log(settings.d8_night);
-
-        if (settings.d8_night !== dark) {
-          check(dark);
+        if (settings.d8_night !== night) {
+          check(night);
         }
       }
 

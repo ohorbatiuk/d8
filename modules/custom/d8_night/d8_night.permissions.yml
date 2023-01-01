@@ -1,0 +1,3 @@
+administer d8_night:
+  title: 'Administer D8+ Night'
+  description: 'Choose Bootstrap CDN theme which will be used in dark mode.'

@@ -1,4 +1,12 @@
-d8_night:
+d8_night.settings:
+  path: '/admin/config/user-interface/d8-night'
+  defaults:
+    _form: '\Drupal\d8_night\Form\D8NightForm'
+    _title: 'D8+ Night'
+  requirements:
+    _permission: 'administer d8_night'
+
+d8_night.switcher:
   path: '/night/{mode}'
   defaults:
     _controller: '\Drupal\d8_night\Controller\D8NightController::switch'

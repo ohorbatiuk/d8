@@ -3,5 +3,6 @@ description: 'Change the Bootstrap CDN theme according to light or dark mode.'
 type: module
 core_version_requirement: ^9
 package: 'D8+'
+configure: d8_night.settings
 dependencies:
   - dark_mode_switch:dark_mode_switch
