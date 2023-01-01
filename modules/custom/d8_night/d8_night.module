@@ -8,6 +8,7 @@
 use Drupal\bootstrap\Bootstrap;
 use Drupal\Core\Block\BlockPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\d8_night\Form\D8NightForm;
 
 /**
  * Implements hook_block_view_BASE_BLOCK_ID_alter().
@@ -18,8 +19,8 @@ function d8_night_block_view_dark_mode_switch_block_alter(
 ) {
   $build['#attached']['library'][] = 'd8_night/base';
 
-  $active_theme = Bootstrap::getTheme('d8_theme')->getSetting('cdn_theme');
-  $needed_theme = \Drupal::config('d8_night.settings')->get('theme');
+  $active_theme = Bootstrap::getTheme('d8_theme')->getSetting(D8NightForm::NAME);
+  $needed_theme = \Drupal::config('d8_night.settings')->get(D8NightForm::NAME);
   $build['#attached']['drupalSettings']['d8_night'] = $active_theme === $needed_theme;
 }
 

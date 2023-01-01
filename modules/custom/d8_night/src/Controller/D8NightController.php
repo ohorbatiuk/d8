@@ -4,6 +4,7 @@ namespace Drupal\d8_night\Controller;
 
 use Drupal\bootstrap\Bootstrap;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\d8_night\Form\D8NightForm;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -13,12 +14,20 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class D8NightController extends ControllerBase {
 
   /**
+   * The cache tags invalidator.
+   *
+   * @var \Drupal\Core\Cache\CacheTagsInvalidatorInterface
+   */
+  private $invalidator;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
     $instance = parent::create($container);
 
     $instance->configFactory = $container->get('config.factory');
+    $instance->invalidator = $container->get('cache_tags.invalidator');
 
     return $instance;
   }
@@ -36,13 +45,21 @@ class D8NightController extends ControllerBase {
    *   The JSON response.
    */
   public function switch($mode) {
-    $theme = Bootstrap::getTheme('d8_theme');
-    $sub_theme = $this->config('d8_night.settings')->get('theme');
-    $was = $theme->getSetting('cdn_theme') === $sub_theme;
+    $settings = ($theme = Bootstrap::getTheme('d8_theme'))->settings();
+    $sub_theme = $this->config('d8_night.settings')->get(D8NightForm::NAME);
+    $was = $settings->get(D8NightForm::NAME) === $sub_theme;
 
     if ($update = ($now = !empty($mode)) !== $was) {
-      $theme->setSetting('cdn_theme', $now ? $sub_theme : 'bootstrap');
-      drupal_flush_all_caches();
+      $settings
+        ->set(D8NightForm::NAME, $now ? $sub_theme : 'bootstrap')
+        ->clear('cdn_cache')
+        ->save();
+
+      if ($tags = $theme->getSettingPlugin(D8NightForm::NAME)->getCacheTags()) {
+        $this->invalidator->invalidateTags($tags);
+      }
+
+      $theme->getCache('settings')->deleteAll();
     }
 
     return new JsonResponse(['update' => $update]);
