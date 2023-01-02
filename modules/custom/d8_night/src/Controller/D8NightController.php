@@ -4,7 +4,6 @@ namespace Drupal\d8_night\Controller;
 
 use Drupal\bootstrap\Bootstrap;
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\d8_night\Form\D8NightForm;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -28,6 +27,7 @@ class D8NightController extends ControllerBase {
 
     $instance->configFactory = $container->get('config.factory');
     $instance->invalidator = $container->get('cache_tags.invalidator');
+    $instance->stateService = $container->get('state');
 
     return $instance;
   }
@@ -46,16 +46,19 @@ class D8NightController extends ControllerBase {
    */
   public function switch($mode) {
     $settings = ($theme = Bootstrap::getTheme('d8_theme'))->settings();
-    $sub_theme = $this->config('d8_night.settings')->get(D8NightForm::NAME);
-    $was = $settings->get(D8NightForm::NAME) === $sub_theme;
+    $sub_theme = $this->config('d8_night.settings')->get('theme');
+    $was = $settings->get('cdn_theme') === $sub_theme;
 
     if ($update = ($now = !empty($mode)) !== $was) {
       $settings
-        ->set(D8NightForm::NAME, $now ? $sub_theme : 'bootstrap')
+        ->set(
+          'cdn_theme',
+          $now ? $sub_theme : $this->state()->get('d8_night')
+        )
         ->clear('cdn_cache')
         ->save();
 
-      if ($tags = $theme->getSettingPlugin(D8NightForm::NAME)->getCacheTags()) {
+      if ($tags = $theme->getSettingPlugin('cdn_theme')->getCacheTags()) {
         $this->invalidator->invalidateTags($tags);
       }
 

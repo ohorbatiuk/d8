@@ -1,21 +1,23 @@
 (function ($, Drupal, drupalSettings) {
   Drupal.behaviors.d8Night = {
     attach: function attach(context, settings) {
+      var name = 'Drupal.d8_night.reload';
+
       function check(night) {
         $.ajax({
           url: Drupal.url('night/' + (night ? 1 : 0)),
           dataType: 'json',
           success: function (data) {
             if (data.update) {
-              localStorage.reload = true;
+              localStorage.setItem(name, 'y');
               window.location.reload();
             }
           }
         });
       }
 
-      if ('reload' in localStorage) {
-        localStorage.removeItem('reload');
+      if (localStorage.getItem(name)) {
+        localStorage.removeItem(name);
       }
       else {
         var night;
