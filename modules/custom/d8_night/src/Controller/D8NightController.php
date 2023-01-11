@@ -45,7 +45,8 @@ class D8NightController extends ControllerBase {
    *   The JSON response.
    */
   public function switch($mode) {
-    $settings = ($theme = Bootstrap::getTheme('d8_theme'))->settings();
+    $theme = $this->config('system.theme')->get('default');
+    $settings = ($theme = Bootstrap::getTheme($theme))->settings();
     $sub_theme = $this->config('d8_night.settings')->get('theme');
     $was = $settings->get('cdn_theme') === $sub_theme;
 

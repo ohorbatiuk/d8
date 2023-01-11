@@ -5,13 +5,15 @@
  * Install, update and uninstall functions for the d8_night module.
  */
 
-use Drupal\bootstrap\Bootstrap;
-
 /**
  * Implements hook_install().
  */
 function d8_night_install($is_syncing) {
-  $theme = Bootstrap::getTheme('d8_theme');
+  if ($is_syncing || !class_exists($class = 'Drupal\bootstrap\Bootstrap')) {
+    return;
+  }
+
+  $theme = $class::getTheme(\Drupal::config('system.theme')->get('default'));
 
   if (($value = $theme->getSetting('cdn_theme')) === NULL) {
     $version = $theme->getSetting('cdn_version');

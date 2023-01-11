@@ -18,7 +18,8 @@ function d8_night_block_view_dark_mode_switch_block_alter(
 ) {
   $build['#attached']['library'][] = 'd8_night/base';
 
-  $active_theme = Bootstrap::getTheme('d8_theme')->getSetting('cdn_theme');
+  $default_theme = \Drupal::config('system.theme')->get('default');
+  $active_theme = Bootstrap::getTheme($default_theme)->getSetting('cdn_theme');
   $needed_theme = \Drupal::config('d8_night.settings')->get('theme');
   $build['#attached']['drupalSettings']['d8_night'] = $active_theme === $needed_theme;
 }

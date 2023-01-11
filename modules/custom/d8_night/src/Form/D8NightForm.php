@@ -25,6 +25,7 @@ class D8NightForm extends ConfigFormBase {
   public static function create(ContainerInterface $container) {
     $instance = parent::create($container);
 
+    $instance->setConfigFactory($container->get('config.factory'));
     $instance->state = $container->get('state');
 
     return $instance;
@@ -48,7 +49,9 @@ class D8NightForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    Bootstrap::getTheme('d8_theme')->getSettingPlugin('cdn_theme')
+    $theme = $this->config('system.theme')->get('default');
+
+    Bootstrap::getTheme($theme)->getSettingPlugin('cdn_theme')
       ->alterForm(
         $form,
         $form_state->setValue(
