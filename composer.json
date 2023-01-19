@@ -20,7 +20,8 @@
         "drupal/recaptcha": "3.0",
         "drupal/recaptcha_preloader": "1.0.0",
         "drupal/standwithukraine": "1.3.7",
-        "kartik-v/bootstrap-checkbox-x": "1.5.7"
+        "kartik-v/bootstrap-checkbox-x": "1.5.7",
+        "oomphinc/composer-installers-extender": "2.0.1"
     },
     "require-dev": {
         "drupal/config2php": "2.0.1",
@@ -54,10 +55,12 @@
             }
         },
         "enable-patching": true,
+        "installer-types": [ "library" ],
         "installer-paths": {
-            "libraries/{$name}": [ "kartik-v/bootstrap-checkbox-x" ],
+            "libraries/bootstrap-checkbox-x": [ "kartik-v/bootstrap-checkbox-x" ],
             "modules/contrib/{$name}": [ "type:drupal-module" ],
-            "themes/contrib/{$name}": [ "type:drupal-theme" ]
+            "themes/contrib/{$name}": [ "type:drupal-theme" ],
+            "vendor/{$vendor}/{$name}": [ "type:library" ]
         }
     },
     "repositories": [
