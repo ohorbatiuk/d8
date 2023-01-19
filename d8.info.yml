@@ -21,8 +21,6 @@ dependencies:
   - features:features_ui
   - module_filter:module_filter
 
-  - d8:d8_night
-
 themes:
   - seven
   - bootstrap

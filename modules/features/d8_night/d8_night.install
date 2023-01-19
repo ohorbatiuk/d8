@@ -13,7 +13,12 @@ function d8_night_install($is_syncing) {
     return;
   }
 
-  $theme = $class::getTheme(\Drupal::config('system.theme')->get('default'));
+  try {
+    $theme = $class::getTheme(\Drupal::config('system.theme')->get('default'));
+  }
+  catch (Exception $exception) {
+    return;
+  }
 
   if (($value = $theme->getSetting('cdn_theme')) === NULL) {
     $version = $theme->getSetting('cdn_version');

@@ -21,6 +21,7 @@ function d8_install() {
     'd8_feature_blocks_seven',
     'd8_feature_blocks_d8_theme',
     'd8_ban',
+    'd8_night',
     'd8_standwithukraine',
     'recaptcha',
   ];
