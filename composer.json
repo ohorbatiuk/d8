@@ -4,7 +4,6 @@
     "type": "drupal-profile",
     "license": "GPL-2.0-or-later",
     "require": {
-        "chmez/bootstrap-checkbox-x": "1.5.7",
         "composer/installers": "1.11.0",
         "cweagans/composer-patches": "^1.0",
         "drupal/admin_toolbar": "3.1.1",
@@ -20,7 +19,8 @@
         "drupal/module_filter": "3.2",
         "drupal/recaptcha": "3.0",
         "drupal/recaptcha_preloader": "1.0.0",
-        "drupal/standwithukraine": "1.3.7"
+        "drupal/standwithukraine": "1.3.7",
+        "kartik-v/bootstrap-checkbox-x": "1.5.7"
     },
     "require-dev": {
         "drupal/config2php": "2.0.1",
@@ -55,7 +55,7 @@
         },
         "enable-patching": true,
         "installer-paths": {
-            "libraries/{$name}": [ "type:drupal-library" ],
+            "libraries/{$name}": [ "kartik-v/bootstrap-checkbox-x" ],
             "modules/contrib/{$name}": [ "type:drupal-module" ],
             "themes/contrib/{$name}": [ "type:drupal-theme" ]
         }
@@ -64,18 +64,6 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "chmez/bootstrap-checkbox-x",
-                "type": "drupal-library",
-                "version": "1.5.7",
-                "dist": {
-                    "url": "https://github.com/kartik-v/bootstrap-checkbox-x/archive/refs/tags/v1.5.7.zip",
-                    "type": "zip"
-                }
-            }
         }
     ]
 }
