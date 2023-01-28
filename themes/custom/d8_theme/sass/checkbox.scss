@@ -14,12 +14,16 @@ $navbar-form: ($navbar-height - 26px) / 2;
   }
 }
 
-.checkbox .control-label {
+.checkbox label.control-label {
   display: block;
   padding-left: 0;
 
-  .cbx-icon-krajee {
-    fill: $input-border;
+  .cbx {
+    margin-left: 0;
+
+    .cbx-icon-krajee {
+      fill: $input-border;
+    }
   }
 
   .checkbox-label {
