@@ -12,5 +12,5 @@ d8_night.switcher:
     _controller: '\Drupal\d8_night\Controller\D8NightController::switch'
     _title: 'Switch to light or dark mode'
   requirements:
-    _access: 'TRUE'
+    _permission: 'switch between day and night'
     mode: '[0-1]{1}'

@@ -16,6 +16,10 @@ function d8_night_block_view_dark_mode_switch_block_alter(
   array &$build,
   BlockPluginInterface $block
 ) {
+  if (!\Drupal::currentUser()->hasPermission('switch between day and night')) {
+    return;
+  }
+
   $build['#attached']['library'][] = 'd8_night/base';
 
   $default_theme = \Drupal::config('system.theme')->get('default');
