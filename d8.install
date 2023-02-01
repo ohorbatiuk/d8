@@ -261,8 +261,9 @@ function d8_update_9402() {
 }
 
 /**
- * Install "D8+ Night" module.
+ * Install extensions for dark mode.
  */
 function d8_update_9403() {
   \Drupal::service('module_installer')->install(['d8_night']);
+  \Drupal::service('theme_installer')->install(['d8_theme_night']);
 }

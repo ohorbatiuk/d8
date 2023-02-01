@@ -5,7 +5,6 @@
  * Change the Bootstrap CDN theme according to light or dark mode.
  */
 
-use Drupal\bootstrap\Bootstrap;
 use Drupal\Core\Block\BlockPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 
@@ -16,16 +15,9 @@ function d8_night_block_view_dark_mode_switch_block_alter(
   array &$build,
   BlockPluginInterface $block
 ) {
-  if (!\Drupal::currentUser()->hasPermission('switch between day and night')) {
-    return;
-  }
-
-  $build['#attached']['library'][] = 'd8_night/base';
-
-  $default_theme = \Drupal::config('system.theme')->get('default');
-  $active_theme = Bootstrap::getTheme($default_theme)->getSetting('cdn_theme');
-  $needed_theme = \Drupal::config('d8_night.settings')->get('theme');
-  $build['#attached']['drupalSettings']['d8_night'] = $active_theme === $needed_theme;
+  $attached = &$build['#attached'];
+  $attached['library'][] = 'd8_night/base';
+  $attached['drupalSettings']['d8_night'] = !empty($_SESSION['d8_night']);
 }
 
 /**
@@ -34,17 +26,10 @@ function d8_night_block_view_dark_mode_switch_block_alter(
 function d8_night_help($route_name, RouteMatchInterface $route_match) {
   $output = '';
 
-  switch ($route_name) {
-    case 'help.page.d8_night':
-      $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('Change the Bootstrap CDN theme according to light or
+  if ($route_name === 'help.page.d8_night') {
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t('Change the Bootstrap CDN theme according to light or
 dark mode.') . '</p>';
-      break;
-
-    case 'd8_night.settings':
-      $output = '<p>' . t('Choose Bootstrap CDN theme which will be used in dark
-mode.') . '</p>';
-      break;
   }
 
   return $output;

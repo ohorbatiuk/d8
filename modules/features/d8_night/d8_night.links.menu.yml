@@ -1,5 +1,0 @@
-d8_night.settings:
-  title: 'D8+ Night'
-  description: 'Choose Bootstrap CDN theme which will be used in dark mode.'
-  parent: system.admin_config_ui
-  route_name: d8_night.settings
