@@ -28,7 +28,7 @@
         "patches": {
             "drupal/autoban": {
                 "Anonymous IP used by authorized IP": "https://www.drupal.org/files/issues/2022-08-06/autoban-anonymous-only-3084397-6.patch",
-                "Too few arguments to function Drupal\\\\dblog\\\\Controller\\\\DbLogController::buildFilterQuery()": "https://www.drupal.org/files/issues/2021-12-09/3253490-4.patch",
+                "Too few arguments to function DbLogController::buildFilterQuery()": "https://git.drupalcode.org/project/autoban/-/merge_requests/2.patch",
                 "Drupal 9.5 compatibility": "patches/autoban.patch"
             },
             "drupal/config_override": {
