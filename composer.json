@@ -28,7 +28,8 @@
         "patches": {
             "drupal/autoban": {
                 "Anonymous IP used by authorized IP": "https://www.drupal.org/files/issues/2022-08-06/autoban-anonymous-only-3084397-6.patch",
-                "Too few arguments to function Drupal\\\\dblog\\\\Controller\\\\DbLogController::buildFilterQuery()": "https://www.drupal.org/files/issues/2021-12-09/3253490-4.patch"
+                "Too few arguments to function Drupal\\\\dblog\\\\Controller\\\\DbLogController::buildFilterQuery()": "https://www.drupal.org/files/issues/2021-12-09/3253490-4.patch",
+                "Drupal 9.5 compatibility": "patches/autoban.patch"
             },
             "drupal/config_override": {
                 "PHP Fatal error: Uncaught Error: Call to a member function getParameter() on null": "https://www.drupal.org/files/issues/2021-08-03/call_to_member_function_getparameter_3226418_1.patch"
