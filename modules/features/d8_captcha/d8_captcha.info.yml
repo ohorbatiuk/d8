@@ -1,7 +1,9 @@
-name: 'D8+ Captcha'
-description: 'Captcha settings.'
+name: D8+ Captcha
+description: Provides a wrapper for the reCAPTCHA module.
+package: D8+
+
 type: module
 core_version_requirement: ^9
-package: 'D8+'
+
 dependencies:
   - recaptcha:recaptcha
