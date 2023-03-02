@@ -2,11 +2,8 @@
 
 namespace Drupal\d8\Form;
 
-use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Extension\ModuleInstallerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
-use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\recaptcha\Form\ReCaptchaAdminSettingsForm;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -23,35 +20,15 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
   private $moduleInstaller;
 
   /**
-   * Constructs a D8CaptchaForm object.
-   *
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
-   *   The factory for configuration objects.
-   * @param \Drupal\Core\StringTranslation\TranslationInterface $string_translation
-   *   The string translation service.
-   * @param \Drupal\Core\Extension\ModuleInstallerInterface $module_installer
-   *   The module installer.
-   */
-  public function __construct(
-    ConfigFactoryInterface $config_factory,
-    TranslationInterface $string_translation,
-    ModuleInstallerInterface $module_installer
-  ) {
-    parent::__construct($config_factory);
-
-    $this->setStringTranslation($string_translation);
-    $this->moduleInstaller = $module_installer;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('config.factory'),
-      $container->get('string_translation'),
-      $container->get('module_installer')
-    );
+    $instance = parent::create($container);
+
+    $instance->setStringTranslation($container->get('string_translation'));
+    $instance->moduleInstaller = $container->get('module_installer');
+
+    return $instance;
   }
 
   /**
