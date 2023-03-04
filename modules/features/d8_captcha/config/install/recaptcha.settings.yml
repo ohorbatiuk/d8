@@ -3,7 +3,7 @@ use_globally: false
 widget:
   theme: 'light'
   type: 'image'
-  size: 'invisible'
+  size: ''
   badge: 'bottomright'
   tabindex: 0
   noscript: false
