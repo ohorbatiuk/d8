@@ -43,7 +43,8 @@
                 "Set default bundle for site": "https://www.drupal.org/files/issues/2022-01-08/features-current-bundle-2789001-14.patch"
             },
             "drupal/recaptcha": {
-                "Integrate Invisible reCAPTCHA option from Google": "https://www.drupal.org/files/issues/2022-10-12/recaptcha-ajax-2493183-164%2Bnocaptcha-2852269-203.patch"
+                "Integrate Invisible reCAPTCHA option from Google": "https://www.drupal.org/files/issues/2022-10-12/recaptcha-ajax-2493183-164%2Bnocaptcha-2852269-203.patch",
+                "Register in the new tab": "https://www.drupal.org/files/issues/2023-03-05/recaptcha-register-in-the-new-tab-3346065-2.patch"
             }
         },
         "enable-patching": true,
