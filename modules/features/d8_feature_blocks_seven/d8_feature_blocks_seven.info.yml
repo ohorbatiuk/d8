@@ -1,8 +1,10 @@
-name: 'D8+ Feature Blocks Seven'
-description: 'Seven theme block settings.'
+name: D8+ Feature Blocks Seven
+description: Seven theme block settings.
+package: D8+
+
 type: module
 core_version_requirement: ^9
-package: 'D8+'
+
 dependencies:
   - d8:d8_feature_menus
   - drupal:block
