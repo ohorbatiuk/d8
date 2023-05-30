@@ -9,6 +9,8 @@ dependencies:
 third_party_settings:
   standwithukraine:
     enabled: true
+    ratio: 50
+    background: false
 id: d8_theme_branding
 theme: d8_theme
 region: navigation
