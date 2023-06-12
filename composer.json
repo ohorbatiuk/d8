@@ -7,7 +7,7 @@
         "composer/installers": "1.11.0",
         "cweagans/composer-patches": "^1.0",
         "drupal/admin_toolbar": "3.3.0",
-        "drupal/autoban": "1.7",
+        "drupal/autoban": "1.9",
         "drupal/bootstrap": "3.24",
         "drupal/captcha": "1.9",
         "drupal/config_override": "1.0-rc1",
@@ -26,11 +26,6 @@
     },
     "extra": {
         "patches": {
-            "drupal/autoban": {
-                "Anonymous IP used by authorized IP": "https://www.drupal.org/files/issues/2022-08-06/autoban-anonymous-only-3084397-6.patch",
-                "Too few arguments to function DbLogController::buildFilterQuery()": "https://git.drupalcode.org/project/autoban/-/merge_requests/2.patch",
-                "Drupal 9.5 compatibility": "patches/autoban.patch"
-            },
             "drupal/config_override": {
                 "PHP Fatal error: Uncaught Error: Call to a member function getParameter() on null": "https://www.drupal.org/files/issues/2021-08-03/call_to_member_function_getparameter_3226418_1.patch"
             },
