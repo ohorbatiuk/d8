@@ -7,5 +7,6 @@ message: /
 referer: ''
 threshold: '3'
 user_type: '3'
+window: none
 provider: ban
-rule_type : null
+rule_type: null

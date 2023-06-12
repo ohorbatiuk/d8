@@ -1,8 +1,10 @@
-name: 'D8+ Ban'
-description: 'Ban settings.'
+name: D8+ Ban
+description: Ban settings.
+package: D8+
+
 type: module
-core_version_requirement: ^9
-package: 'D8+'
+core_version_requirement: ^9 || ^10
+
 dependencies:
   - autoban:autoban_ban
   - autoban:autoban_dblog
