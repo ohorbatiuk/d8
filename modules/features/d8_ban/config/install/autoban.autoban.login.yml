@@ -1,0 +1,12 @@
+id: login
+type: user
+message: 'Login attempt failed'
+referer: ''
+threshold: '2'
+window: none
+provider: ban
+user_type: '3'
+rule_type: 1
+langcode: en
+status: true
+dependencies: {  }
