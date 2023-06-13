@@ -1,0 +1,25 @@
+autoban_thresholds: |-
+  1
+  2
+  3
+  5
+  10
+  20
+  50
+  100
+autoban_windows: |-
+  1 hour ago
+  1 day ago
+  1 week ago
+  1 month ago
+  1 year ago
+autoban_window_default: ''
+autoban_query_mode: like
+autoban_use_wildcards: 0
+autoban_whitelist: ''
+autoban_dblog_type_exclude: |-
+  autoban
+  cron
+  php
+  system
+autoban_threshold_analyze: '5'
