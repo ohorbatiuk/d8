@@ -1,12 +1,12 @@
-id: open_absent_page_by_anonymous
-type: 'page not found'
-message: /
+id: login
+type: user
+message: 'Login attempt failed'
 referer: ''
-threshold: '3'
+threshold: '2'
 window: none
 provider: ban
 user_type: '3'
-rule_type: null
+rule_type: 1
 langcode: en
 status: true
 dependencies: {  }
