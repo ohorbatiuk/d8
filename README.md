@@ -17,7 +17,6 @@ This installation profile requires the following modules:
 * [Bootstrap](https://www.drupal.org/project/bootstrap) (theme)
 * [CAPTCHA](https://www.drupal.org/project/captcha)
 * [Config Export to PHP array](https://www.drupal.org/project/config2php)
-* [Config override](https://www.drupal.org/project/config_override)
 * [Configuration Update Manager](https://www.drupal.org/project/config_update)
 * [Features](https://www.drupal.org/project/features)
 * [Module Filter](https://www.drupal.org/project/module_filter)
