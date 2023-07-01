@@ -1,12 +1,8 @@
-# Installation profile for Drupal 8/9
+# Installation profile for Drupal 9
 
 [![Made in Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd500.svg?labelColor=005bbb)](https://supportukrainenow.org)
 [![Version](http://poser.pugx.org/chmez/d8/version)](https://packagist.org/packages/chmez/d8)
 [![Total Downloads](http://poser.pugx.org/chmez/d8/downloads)](https://packagist.org/packages/chmez/d8)
-
-## Mirror
-
-[GitLab](https://gitlab.com/chmez/d8)
 
 ## Requirements
 
@@ -34,3 +30,7 @@ This installation profile requires the following modules:
 ### Maintenance mode
 
 ![maintenance](images/maintenance.png "maintenance")
+
+## Mirror
+
+[GitLab](https://gitlab.com/chmez/d8)
