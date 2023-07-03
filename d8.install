@@ -258,3 +258,19 @@ function d8_update_9401() {
 function d8_update_9402() {
   \Drupal::service('module_installer')->install(['contextual']);
 }
+
+/**
+ * Update Features bundle configuration.
+ */
+function d8_update_9501() {
+  /** @var \Drupal\Core\Extension\ModuleExtensionList $extension */
+  $extension = \Drupal::service('extension.list.module');
+
+  $path = $extension->getPath($name = 'd8') . '/config/install';
+  $data = (new FileStorage($path))->read($name = 'features.bundle.' . $name);
+
+  /** @var \Drupal\Core\Config\CachedStorage $storage */
+  $storage = \Drupal::service('config.storage');
+
+  $storage->write($name, (array) $data);
+}
