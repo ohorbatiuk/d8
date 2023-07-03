@@ -34,7 +34,7 @@
                 "News mode": "https://www.drupal.org/files/issues/2022-06-20/drupal-news-mode-3256060-10.patch"
             },
             "drupal/features": {
-                "Set default bundle for site": "https://www.drupal.org/files/issues/2022-01-08/features-current-bundle-2789001-14.patch"
+                "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch"
             },
             "drupal/module_filter": {
                 "Missing autocomplete library": "https://www.drupal.org/files/issues/2023-06-30/module-filter-missing-autocomplete-library-3371613-3.patch"
