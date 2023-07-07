@@ -9,7 +9,7 @@
     outline: none;
 
     &:not(.use-ajax) {
-      @extend .progress-bar.active;
+      @include animation(progress-bar-stripes 2s linear infinite);
       @extend .progress-bar-striped;
 
       &.btn-default {
