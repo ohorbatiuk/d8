@@ -1,4 +1,7 @@
 .idea
 modules/contrib
 themes/contrib
+themes/custom/d8_theme/sass/_progress-bars.scss
+themes/custom/d8_theme/sass/_variables.scss
+themes/custom/d8_theme/sass/mixins
 vendor
