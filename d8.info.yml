@@ -3,7 +3,7 @@ description: Basis for the site on Drupal 9.
 
 type: profile
 core_version_requirement: ^9
-version: 0.13.2.148
+version: 0.13.3.149
 
 distribution:
   name: D8+

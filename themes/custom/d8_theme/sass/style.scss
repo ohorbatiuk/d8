@@ -1,7 +1,7 @@
-@import "variables";
-@import "mixins/vendor-prefixes";
-@import "mixins/buttons";
-@import "mixins/progress-bar";
-@import "mixins/gradients";
-@import "progress-bars";
+@import "bootstrap/variables";
+@import "bootstrap/mixins/vendor-prefixes";
+@import "bootstrap/mixins/buttons";
+@import "bootstrap/mixins/progress-bar";
+@import "bootstrap/mixins/gradients";
+@import "bootstrap/progress-bars";
 @import "overrides";
