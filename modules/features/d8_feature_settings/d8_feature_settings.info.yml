@@ -1,8 +1,10 @@
-name: 'D8+ Feature Settings'
-description: 'All default configuration settings.'
+name: D8+ Feature Settings
+description: All default configuration settings.
+package: D8+
+
 type: module
-core_version_requirement: ^9
-package: 'D8+'
+core_version_requirement: ^9 || ^10
+
 dependencies:
   - drupal:dblog
   - drupal:views_ui
