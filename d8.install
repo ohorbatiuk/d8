@@ -25,18 +25,11 @@ function d8_install() {
     'recaptcha',
   ];
 
-  $optional_modules = [
-    'config2php' => 'd8_',
-    'upgrade_status' => '',
-  ];
-
   /** @var \Drupal\Core\Extension\ModuleExtensionList $extension */
   $extension = \Drupal::service('extension.list.module');
 
-  foreach ($optional_modules as $module => $prefix) {
-    if ($extension->exists($module)) {
-      $modules[] = $prefix . $module;
-    }
+  if ($extension->exists($module = 'config2php')) {
+    $modules[] = 'd8_' . $module;
   }
 
   /** @var \Drupal\Core\Extension\ModuleInstallerInterface $installer */
@@ -273,4 +266,19 @@ function d8_update_9501() {
   $storage = \Drupal::service('config.storage');
 
   $storage->write($name, (array) $data);
+}
+
+/**
+ * Uninstall "Upgrade Status" module.
+ */
+function d8_update_9502() {
+  /** @var \Drupal\Core\Extension\ModuleExtensionList $extension */
+  $extension = \Drupal::service('extension.list.module');
+
+  if ($extension->exists($module = 'upgrade_status')) {
+    /** @var \Drupal\Core\Extension\ModuleInstallerInterface $installer */
+    $installer = \Drupal::service('module_installer');
+
+    $installer->uninstall([$module], FALSE);
+  }
 }
