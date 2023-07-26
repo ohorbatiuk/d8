@@ -7,6 +7,8 @@ use Drupal\Core\Installer\Form\SiteConfigureForm;
 
 /**
  * Provides the site configuration form.
+ *
+ * @phpstan-ignore-next-line
  */
 class D8ConfigureForm extends SiteConfigureForm {
 

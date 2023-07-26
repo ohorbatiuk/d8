@@ -3,7 +3,7 @@ description: Seven theme block settings.
 package: D8+
 
 type: module
-core_version_requirement: ^9
+core_version_requirement: ^9 || ^10
 
 dependencies:
   - d8:d8_feature_menus

@@ -1,4 +1,4 @@
-# Installation profile for Drupal 9
+# Installation profile for Drupal 9/10
 
 [![Made in Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd500.svg?labelColor=005bbb)](https://supportukrainenow.org)
 [![Version](http://poser.pugx.org/chmez/d8/version)](https://packagist.org/packages/chmez/d8)
@@ -10,7 +10,6 @@ This installation profile requires the following modules:
 
 * [Admin Toolbar](https://www.drupal.org/project/admin_toolbar)
 * [Automatic IP ban (Autoban)](https://www.drupal.org/project/autoban)
-* [Bootstrap](https://www.drupal.org/project/bootstrap) (theme)
 * [CAPTCHA](https://www.drupal.org/project/captcha)
 * [Config Export to PHP array](https://www.drupal.org/project/config2php)
 * [Configuration Update Manager](https://www.drupal.org/project/config_update)
@@ -19,6 +18,11 @@ This installation profile requires the following modules:
 * [reCAPTCHA](https://www.drupal.org/project/recaptcha)
 * [reCAPTCHA Preloader](https://www.drupal.org/project/recaptcha_preloader)
 * [StandWithUkraine 🇺🇦](https://www.drupal.org/project/standwithukraine)
+
+This installation profile requires the following themes:
+
+* [Bootstrap](https://www.drupal.org/project/bootstrap)
+* [Seven](https://www.drupal.org/project/seven)
 
 ## Features
 

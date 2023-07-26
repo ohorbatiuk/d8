@@ -1,8 +1,10 @@
-name: 'D8+ Feature Menus'
-description: 'All menus.'
+name: D8+ Feature Menus
+description: All menus.
+package: D8+
+
 type: module
-core_version_requirement: ^9
-package: 'D8+'
+core_version_requirement: ^9 || ^10
+
 dependencies:
   - drupal:system
   - drupal:menu_ui
