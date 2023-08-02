@@ -7,4 +7,5 @@ level_type:
   - '5'
   - '6'
   - '7'
-roles: {  }
+roles:
+  administrator: administrator
