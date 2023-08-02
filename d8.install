@@ -282,3 +282,10 @@ function d8_update_9502() {
     $installer->uninstall([$module], FALSE);
   }
 }
+
+/**
+ * Install "Drupal Symfony Mailer" module.
+ */
+function d8_update_10001() {
+  \Drupal::service('module_installer')->install(['symfony_mailer']);
+}
