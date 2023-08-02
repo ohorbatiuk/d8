@@ -22,6 +22,7 @@ function d8_install() {
     'd8_feature_blocks_d8_theme',
     'd8_ban',
     'd8_standwithukraine',
+    'd8_log',
     'recaptcha',
   ];
 
@@ -281,4 +282,11 @@ function d8_update_9502() {
 
     $installer->uninstall([$module], FALSE);
   }
+}
+
+/**
+ * Install "D8+ Log" module.
+ */
+function d8_update_10001() {
+  \Drupal::service('module_installer')->install(['d8_log']);
 }
