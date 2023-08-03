@@ -1,0 +1,9 @@
+name: D8+ Mail
+description: Provides a wrapper for the "Drupal Symfony Mailer" module.
+package: D8+
+
+type: module
+core_version_requirement: ^9.4 || ^10
+
+dependencies:
+  - symfony_mailer:symfony_mailer
