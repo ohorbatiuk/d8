@@ -15,7 +15,10 @@ use Drupal\d8\Form\D8ConfigureForm;
  * Implements hook_install().
  */
 function d8_install() {
-  $modules = [
+  /** @var \Drupal\Core\Extension\ModuleInstallerInterface $installer */
+  $installer = \Drupal::service('module_installer');
+
+  $installer->install([
     'd8_feature_settings',
     'd8_feature_menus',
     'd8_feature_blocks_seven',
@@ -23,12 +26,7 @@ function d8_install() {
     'd8_ban',
     'd8_standwithukraine',
     'recaptcha',
-  ];
-
-  /** @var \Drupal\Core\Extension\ModuleInstallerInterface $installer */
-  $installer = \Drupal::service('module_installer');
-
-  $installer->install($modules);
+  ]);
 
   /** @var \Drupal\Core\Extension\ExtensionPathResolver $resolver */
   $resolver = \Drupal::service('extension.path.resolver');
@@ -89,14 +87,14 @@ function d8_install_tasks_alter(&$tasks, $install_state) {
  * Install "Config Override" module.
  */
 function d8_update_8001() {
-  \Drupal::service('module_installer')->install(['config_override']);
+  _d8_module('config_override');
 }
 
 /**
  * Install "reCAPTCHA" module.
  */
 function d8_update_8002() {
-  \Drupal::service('module_installer')->install(['recaptcha']);
+  _d8_module('recaptcha');
 }
 
 /**
@@ -116,7 +114,7 @@ function d8_update_8003() {
 
   unset($item);
 
-  \Drupal::service('module_installer')->install(['d8_captcha']);
+  _d8_module('d8_captcha');
 
   foreach ($items as $key => $item) {
     $config->set($key, $item);
@@ -129,19 +127,14 @@ function d8_update_8003() {
  * Install "D8 Ban" module.
  */
 function d8_update_8004() {
-  \Drupal::service('module_installer')->install(['d8_ban']);
+  _d8_module('d8_ban');
 }
 
 /**
  * Install "Config Export to PHP array" module.
  */
 function d8_update_8005() {
-  /** @var \Drupal\Core\Extension\ModuleExtensionList $extension */
-  $extension = \Drupal::service('extension.list.module');
-
-  if ($extension->exists($module = 'config2php')) {
-    \Drupal::service('module_installer')->install([$module]);
-  }
+  _d8_module($module = 'config2php', $module);
 }
 
 /**
@@ -179,12 +172,7 @@ function d8_update_8006(&$sandbox) {
  * Install "D8+ Config Export to PHP array" module.
  */
 function d8_update_8901(&$sandbox) {
-  /** @var \Drupal\Core\Extension\ModuleExtensionList $extension */
-  $extension = \Drupal::service('extension.list.module');
-
-  if ($extension->exists($module = 'config2php')) {
-    \Drupal::service('module_installer')->install(['d8_' . $module]);
-  }
+  _d8_module('d8_' . ($module = 'config2php'), $module);
 }
 
 /**
@@ -221,40 +209,35 @@ function d8_update_8904() {
  * Uninstall "Config Override" module.
  */
 function d8_update_9301() {
-  \Drupal::service('module_installer')->uninstall(['config_override'], FALSE);
+  _d8_module('config_override', NULL, TRUE);
 }
 
 /**
  * Install "StandWithUkraine" module.
  */
 function d8_update_9302() {
-  \Drupal::service('module_installer')->install(['standwithukraine']);
+  _d8_module('standwithukraine');
 }
 
 /**
  * Install "D8+ StandWithUkraine" module.
  */
 function d8_update_9303() {
-  \Drupal::service('module_installer')->install(['d8_standwithukraine']);
+  _d8_module('d8_standwithukraine');
 }
 
 /**
  * Install "Upgrade Status" module.
  */
 function d8_update_9401() {
-  /** @var \Drupal\Core\Extension\ModuleExtensionList $extension */
-  $extension = \Drupal::service('extension.list.module');
-
-  if ($extension->exists($module = 'upgrade_status')) {
-    \Drupal::service('module_installer')->install([$module]);
-  }
+  _d8_module($module = 'upgrade_status', $module);
 }
 
 /**
  * Install "Contextual Links" module.
  */
 function d8_update_9402() {
-  \Drupal::service('module_installer')->install(['contextual']);
+  _d8_module('contextual');
 }
 
 /**
@@ -277,25 +260,41 @@ function d8_update_9501() {
  * Uninstall "Upgrade Status" module.
  */
 function d8_update_9502() {
-  /** @var \Drupal\Core\Extension\ModuleExtensionList $extension */
-  $extension = \Drupal::service('extension.list.module');
-
-  if ($extension->exists($module = 'upgrade_status')) {
-    /** @var \Drupal\Core\Extension\ModuleInstallerInterface $installer */
-    $installer = \Drupal::service('module_installer');
-
-    $installer->uninstall([$module], FALSE);
-  }
+  _d8_module($module = 'upgrade_status', $module, TRUE);
 }
 
 /**
  * Install "D8+ Mail" module.
  */
 function d8_update_10001(&$sandbox) {
-  /** @var \Drupal\Core\Extension\ModuleExtensionList $extension */
-  $extension = \Drupal::service('extension.list.module');
+  _d8_module('d8_mail', 'symfony_mailer');
+}
 
-  if ($extension->exists('symfony_mailer')) {
-    \Drupal::service('module_installer')->install(['d8_mail']);
+/**
+ * (Un)install a module with optional checking of some other module.
+ *
+ * @param string $target
+ *   The name of the module from this installation profile or drupal.org.
+ * @param string|null $source
+ *   (optional) The name of the module from drupal.org. If this parameter is
+ *   specified then before installing/uninstalling the target module will be
+ *   checked if the source module exists. Defaults to NULL.
+ * @param bool $uninstall
+ *   (optional) TRUE, if the module should be installed. Defaults to FALSE.
+ */
+function _d8_module($target, $source = NULL, $uninstall = FALSE) {
+  if ($source !== NULL) {
+    /** @var \Drupal\Core\Extension\ModuleExtensionList $extension */
+    $extension = \Drupal::service('extension.list.module');
+
+    if (!$extension->exists($source)) {
+      return;
+    }
   }
+
+  /** @var \Drupal\Core\Extension\ModuleInstallerInterface $installer */
+  $installer = \Drupal::service('module_installer');
+
+  $method = ($uninstall ? 'un' : '') . 'install';
+  $installer->$method([$target], !$uninstall);
 }

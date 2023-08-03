@@ -9,18 +9,14 @@
  * Uninstall the "reCAPTCHA Preloader" module.
  */
 function d8_captcha_update_8001() {
-  /** @var \Drupal\Core\Extension\ModuleInstallerInterface $installer */
-  $installer = \Drupal::service('module_installer');
-
-  $installer->uninstall(['recaptcha_preloader'], FALSE);
+  \Drupal::moduleHandler()->loadInclude('install', 'd8');
+  _d8_module('recaptcha_preloader', NULL, TRUE);
 }
 
 /**
  * Install the "reCAPTCHA Preloader" module.
  */
 function d8_captcha_update_9501() {
-  /** @var \Drupal\Core\Extension\ModuleInstallerInterface $installer */
-  $installer = \Drupal::service('module_installer');
-
-  $installer->install(['recaptcha_preloader']);
+  \Drupal::moduleHandler()->loadInclude('install', 'd8');
+  _d8_module('recaptcha_preloader');
 }
