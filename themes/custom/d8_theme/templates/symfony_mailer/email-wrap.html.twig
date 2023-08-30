@@ -1,0 +1,62 @@
+{#
+/**
+ * @file
+ * Default theme implementation for Symfony Email wrapper.
+ *
+ * Variables:
+ * - body: Email body content.
+ * - is_html: True if generating HTML output, false for plain text.
+ * - type: Email type.
+ * - sub_type: Email sub-type.
+ * - attributes: HTML attributes for the top-level email element.
+ *
+ * Additional variables are available when HTML output is used:
+ * - logo: Logo for site as defined in Appearance or theme settings.
+ * - welcome: A welcome message to the user.
+ * - year: Current year.
+ * - site_name: Name for site as defined in Site information settings.
+ *
+ * @see template_preprocess_email_wrap()
+ * @see \Drupal\d8_theme\Plugin\Preprocess\EmailWrap
+ *
+ * @ingroup themeable
+ */
+#}
+{% if is_html %}
+  <html>
+    <body>
+      <table style="background-color: #eee; width: 100%;">
+        <tr>
+          <td align="center" style="padding: 40px">
+            <div style="max-width: 750px; font-family: 'Arial'; text-align: left;">
+              <div style="text-transform: uppercase">
+                {{ prefix }}
+                <img src="{{ logo }}" width="32" height="32" style="vertical-align: middle" />
+                {% if suffix %}
+                  {{ suffix }}
+                {% else %}
+                  <span>{{ site_name }}</span>
+                {% endif %}
+              </div>
+              <div style="margin: 10px 0 20px;
+                          padding: 15px;
+                          background-color: #fff;
+                          border: 1px solid #ddd;
+                          border-radius: 4px;
+                          -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+                          box-shadow: 0 1px 1px rgba(0, 0, 0, .05);">
+                <h4 style="margin-top: 0;">{{ welcome }}</h4>
+                {{ body }}
+              </div>
+              <div style="text-align: center; color: #777;">
+                &copy; {{ year }}, {{ site_name }}
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </body>
+  </html>
+{% else %}
+  {{ body }}
+{% endif %}
