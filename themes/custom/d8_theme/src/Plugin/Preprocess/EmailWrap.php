@@ -82,9 +82,19 @@ class EmailWrap extends PreprocessBase implements ContainerFactoryPluginInterfac
     /** @var \Drupal\symfony_mailer\InternalEmailInterface $email */
     $email = $variables->email;
 
+    if (
+      is_array($parameter = $email->getParam('legacy_message')) &&
+      isset($parameter['params']['account'])
+    ) {
+      $account = $parameter['params']['account'];
+    }
+    else {
+      $account = $email->getAccount();
+    }
+
     $variables->welcome = $this->t(
       'Hello @recipient-name,',
-      ['@recipient-name' => $email->getAccount()->getDisplayName()]
+      ['@recipient-name' => $account->getDisplayName()]
     );
 
     $variables->year = $this->dateFormatter->format(
