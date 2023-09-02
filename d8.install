@@ -267,7 +267,7 @@ function d8_update_9502() {
  * Install "D8+ Mail" module.
  */
 function d8_update_10001(&$sandbox) {
-  _d8_module('d8_mail', 'symfony_mailer');
+  _d8_module('d8_mail');
 }
 
 /**
