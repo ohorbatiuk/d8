@@ -55,12 +55,7 @@ function d8_install() {
 
   $shortcut->save();
 
-  foreach ([8006, 8901, 8903, 10001] as $update) {
-    $sandbox = [];
-    $function = 'd8_update_' . $update;
-
-    $function($sandbox);
-  }
+  _d8_update([8006, 8901, 8903, 10001]);
 }
 
 /**
@@ -297,4 +292,24 @@ function _d8_module($target, $source = NULL, $uninstall = FALSE) {
 
   $method = ($uninstall ? 'un' : '') . 'install';
   $installer->$method([$target], !$uninstall);
+}
+
+/**
+ * Process list of update hooks.
+ *
+ * @param int|int[] $numbers
+ *   The update hook identifiers.
+ */
+function _d8_update($numbers) {
+  $item = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 1)[0];
+
+  if (preg_match('#([^/]+)\.install$#', $item['file'], $matches)) {
+    $sandbox = [];
+
+    foreach ((array) $numbers as $number) {
+      $function = $matches[1] . '_update_' . $number;
+
+      $function($sandbox);
+    }
+  }
 }
