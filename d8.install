@@ -55,7 +55,7 @@ function d8_install() {
 
   $shortcut->save();
 
-  _d8_update([8006, 8901, 8903, 10001]);
+  _d8_update(8006, 8901, 8903, 10001);
 }
 
 /**
