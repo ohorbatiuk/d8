@@ -297,16 +297,16 @@ function _d8_module($target, $source = NULL, $uninstall = FALSE) {
 /**
  * Process list of update hooks.
  *
- * @param int|int[] $numbers
+ * @param int[] ...
  *   The update hook identifiers.
  */
-function _d8_update($numbers) {
+function _d8_update() {
   $item = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 1)[0];
 
   if (preg_match('#([^/]+)\.install$#', $item['file'], $matches)) {
     $sandbox = [];
 
-    foreach ((array) $numbers as $number) {
+    foreach (func_get_args() as $number) {
       $function = $matches[1] . '_update_' . $number;
 
       $function($sandbox);
