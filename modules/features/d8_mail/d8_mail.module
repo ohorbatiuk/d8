@@ -5,9 +5,17 @@
  * Provides a wrapper for the Drupal Symfony Mailer module.
  */
 
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
+use Drupal\d8_mail\Entity\MailerTransport;
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function d8_mail_entity_type_alter(array &$entity_types) {
+  /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
+  $entity_types['mailer_transport']->setClass(MailerTransport::class);
+}
 
 /**
  * Implements hook_help().
@@ -34,29 +42,6 @@ function d8_mail_help($route_name, RouteMatchInterface $route_match) {
   }
 
   return $output;
-}
-
-/**
- * Implements hook_ENTITY_TYPE_update().
- */
-function d8_mail_mailer_transport_update(EntityInterface $entity) {
-  /** @var \Drupal\symfony_mailer\MailerTransportInterface $mailer */
-  /** @var \Drupal\Core\Plugin\ObjectWithPluginCollectionInterface $mailer */
-  $mailer = $entity;
-
-  if (
-    $mailer->isDefault() &&
-    !empty($address = $mailer->getPluginCollections()['configuration']['user'])
-  ) {
-    /** @var \Drupal\Component\Utility\EmailValidatorInterface $validator */
-    $validator = \Drupal::service('email.validator');
-
-    if ($validator->isValid($address)) {
-      \Drupal::configFactory()->getEditable('system.site')
-        ->set('mail', $address)
-        ->save();
-    }
-  }
 }
 
 /**
