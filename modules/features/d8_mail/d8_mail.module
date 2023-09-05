@@ -7,15 +7,6 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
-use Drupal\d8_mail\Entity\MailerTransport;
-
-/**
- * Implements hook_entity_type_alter().
- */
-function d8_mail_entity_type_alter(array &$entity_types) {
-  /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
-  $entity_types['mailer_transport']->setClass(MailerTransport::class);
-}
 
 /**
  * Implements hook_help().
