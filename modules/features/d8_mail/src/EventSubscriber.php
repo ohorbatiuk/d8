@@ -8,6 +8,8 @@ use Drupal\Core\Config\ConfigEvents;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\Logger\LoggerChannelTrait;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -20,8 +22,24 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class EventSubscriber implements EventSubscriberInterface {
 
-  use StringTranslationTrait;
+  use LoggerChannelTrait;
   use MessengerTrait;
+  use StringTranslationTrait;
+
+  /**
+   * The common part of the status message and database log message.
+   */
+  const MESSAGE = ' has been changed from %old to %new.';
+
+  /**
+   * The link label of the status message and database log message.
+   */
+  const LABEL = 'The site E-mail address';
+
+  /**
+   * The prefix of the status message where the link will be inserted.
+   */
+  const KEY = '@link';
 
   /**
    * The entity type manager.
@@ -45,6 +63,20 @@ class EventSubscriber implements EventSubscriberInterface {
   private $configFactory;
 
   /**
+   * The base E-mail address of the site.
+   *
+   * @var string
+   */
+  private $siteAddress;
+
+  /**
+   * The E-mail address from the username field of the mailer transport entity.
+   *
+   * @var string
+   */
+  private $mailerAddress;
+
+  /**
    * EventSubscriber constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
@@ -57,21 +89,46 @@ class EventSubscriber implements EventSubscriberInterface {
    *   The messenger.
    * @param \Drupal\Core\StringTranslation\TranslationInterface $translation
    *   The string translation.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
+   *   The logger channel factory.
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
     EmailValidatorInterface $email_validator,
     ConfigFactoryInterface $config_factory,
     MessengerInterface $messenger,
-    TranslationInterface $translation
+    TranslationInterface $translation,
+    LoggerChannelFactoryInterface $logger_factory
   ) {
     $this
       ->setStringTranslation($translation)
+      ->setLoggerFactory($logger_factory)
       ->setMessenger($messenger);
 
     $this->entityTypeManager = $entity_type_manager;
     $this->emailValidator = $email_validator;
     $this->configFactory = $config_factory;
+  }
+
+  /**
+   * Gets parameters set of message.
+   *
+   * @param string $key
+   *   The link parameter name.
+   * @param string $text
+   *   The link label.
+   */
+  private function context($key, $text) {
+    return [
+      $key => Link::createFromRoute(
+        $this->t($text),
+        'system.site_information_settings',
+        [],
+        ['fragment' => 'edit-site-mail']
+      )->toString(),
+      '%old' => $this->siteAddress,
+      '%new' => $this->mailerAddress,
+    ];
   }
 
   /**
@@ -108,31 +165,33 @@ class EventSubscriber implements EventSubscriberInterface {
       /** @var \Drupal\Component\Plugin\LazyPluginCollection $configuration */
       $configuration = $entity->getPluginCollections()['configuration'];
 
+      $this->mailerAddress = $configuration->getConfiguration()['user'];
+
       if (
-        !empty($mailer_address = $configuration->getConfiguration()['user']) &&
-        $this->emailValidator->isValid($mailer_address)
+        empty($this->mailerAddress) ||
+        !$this->emailValidator->isValid($this->mailerAddress)
       ) {
-        $site_config = $this->configFactory->getEditable('system.site');
-        $site_address = $site_config->get($key = 'mail');
-
-        if ($mailer_address !== $site_address) {
-          $site_config->set($key, $mailer_address)->save();
-
-          $this->messenger->addStatus($this->t(
-            '@link has been changed from %old to %new.',
-            [
-              '@link' => Link::createFromRoute(
-                $this->t('The site E-mail address'),
-                'system.site_information_settings',
-                [],
-                ['fragment' => 'edit-site-mail']
-              )->toString(),
-              '%old' => $site_address,
-              '%new' => $mailer_address,
-            ]
-          ));
-        }
+        return;
       }
+
+      $site_config = $this->configFactory->getEditable('system.site');
+      $this->siteAddress = $site_config->get($key = 'mail');
+
+      if ($this->mailerAddress === $this->siteAddress) {
+        return;
+      }
+
+      $site_config->set($key, $this->mailerAddress)->save();
+
+      $this->messenger->addStatus($this->t(
+        self::KEY . self::MESSAGE,
+        $this->context(self::KEY, self::LABEL)
+      ));
+
+      $this->getLogger('d8_mail')->info(
+        self::LABEL . self::MESSAGE,
+        $this->context(substr(self::KEY, 1), 'Edit')
+      );
     }
   }
 
