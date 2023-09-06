@@ -21,7 +21,6 @@ dependencies:
   - admin_toolbar:admin_toolbar_tools
   - features:features_ui
   - module_filter:module_filter
-  - symfony_mailer:symfony_mailer
 
 themes:
   - seven
