@@ -38,7 +38,7 @@ function d8_mail_help($route_name, RouteMatchInterface $route_match) {
 /**
  * Implements hook_preprocess_HOOK().
  */
-function d8_mail_preprocess_email_wrap__d8(&$variables) {
+function d8_mail_preprocess_email_wrap__html(&$variables) {
   $variables['logo'] = sprintf(
     str_repeat('%s', 2),
     \Drupal::request()->getSchemeAndHttpHost(),
@@ -79,7 +79,7 @@ function d8_mail_preprocess_email_wrap__d8(&$variables) {
  */
 function d8_mail_theme($existing, $type, $theme, $path) {
   $name = 'email_wrap';
-  return [$name . '__d8' => ['base hook' => $name]];
+  return [$name . '__html' => ['base hook' => $name]];
 }
 
 /**
@@ -90,6 +90,6 @@ function d8_mail_theme_suggestions_email_wrap_alter(
   array $variables
 ) {
   if ($variables['is_html']) {
-    $suggestions[] = $variables['theme_hook_original'] . '__d8';
+    $suggestions[] = $variables['theme_hook_original'] . '__html';
   }
 }

@@ -6,17 +6,15 @@
  */
 
 /**
- * Uninstall the "reCAPTCHA Preloader" module.
+ * Uninstall reCAPTCHA Preloader module.
  */
 function d8_captcha_update_8001() {
-  \Drupal::moduleHandler()->loadInclude('install', 'd8');
   _d8_module('recaptcha_preloader', NULL, TRUE);
 }
 
 /**
- * Install the "reCAPTCHA Preloader" module.
+ * Install reCAPTCHA Preloader module.
  */
 function d8_captcha_update_9501() {
-  \Drupal::moduleHandler()->loadInclude('install', 'd8');
   _d8_module('recaptcha_preloader');
 }

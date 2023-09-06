@@ -117,6 +117,9 @@ class EventSubscriber implements EventSubscriberInterface {
    *   The link parameter name.
    * @param string $text
    *   The link label.
+   *
+   * @return array
+   *   The parameters list.
    */
   private function context($key, $text) {
     return [
