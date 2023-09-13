@@ -1,9 +1,9 @@
 name: D8+ Config Export to PHP array
-description: Provides a wrapper for the "Config Export to PHP array" module.
+description: Provides a wrapper for the Config Export to PHP array module.
 package: D8+
 
 type: module
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^8.7.7 || ^9 || ^10
 
 dependencies:
   - config2php:config2php
