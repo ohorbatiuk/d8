@@ -22,7 +22,7 @@
         "drupal/symfony_mailer": "1.2.2"
     },
     "require-dev": {
-        "drupal/config2php": "2.0.2",
+        "drupal/config2php": "2.1.0",
         "twbs/bootstrap-sass": "3.4.3"
     },
     "extra": {
