@@ -16,18 +16,15 @@ class D8MaintenanceController extends ControllerBase {
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    *   Information about the current HTTP request.
-   *
-   * @return \Symfony\Component\HttpFoundation\RedirectResponse
-   *   The redirect response.
    */
-  public function action(Request $request) {
+  public function action(Request $request): RedirectResponse {
     $this->state()->set(
-      'system.maintenance_mode',
-      !$this->state()->get('system.maintenance_mode')
+      $key = 'system.maintenance_mode',
+      !$this->state()->get($key),
     );
 
-    return $request->server->has('HTTP_REFERER')
-      ? new RedirectResponse($request->server->get('HTTP_REFERER'))
+    return $request->server->has($key = 'HTTP_REFERER')
+      ? new RedirectResponse($request->server->get($key))
       : $this->redirect('<front>');
   }
 

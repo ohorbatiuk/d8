@@ -2,6 +2,7 @@
 
 namespace Drupal\d8\Form;
 
+use Drupal\Core\Extension\ModuleInstallerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\recaptcha\Form\ReCaptchaAdminSettingsForm;
@@ -14,15 +15,14 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
 
   /**
    * The module installer.
-   *
-   * @var \Drupal\Core\Extension\ModuleInstallerInterface
    */
-  private $moduleInstaller;
+  private readonly ModuleInstallerInterface $moduleInstaller;
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
+  public static function create(ContainerInterface $container): self {
+    /** @var self $instance */
     $instance = parent::create($container);
 
     $instance->setStringTranslation($container->get('string_translation'));
@@ -34,24 +34,24 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
   /**
    * {@inheritdoc}
    */
-  public function getFormId() {
+  public function getFormId(): string {
     return 'install_captcha_form';
   }
 
   /**
    * {@inheritdoc}
    */
-  protected function getEditableConfigNames() {
+  protected function getEditableConfigNames(): array {
     return array_merge(
       parent::getEditableConfigNames(),
-      ['recaptcha_preloader.settings']
+      ['recaptcha_preloader.settings'],
     );
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state): array {
     $form = parent::buildForm($form, $form_state);
 
     $form['#title'] = $this->t('reCAPTCHA settings');
@@ -67,7 +67,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
 
       $field['#options'][$field['#default_value']] .= sprintf(
         ' (%s)',
-        $this->t('default')
+        $this->t('default'),
       );
     }
 
@@ -92,7 +92,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     parent::submitForm($form, $form_state);
 
     if ($form_state->getValue('recaptcha_size') !== 'invisible') {

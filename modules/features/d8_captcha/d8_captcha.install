@@ -8,13 +8,13 @@
 /**
  * Uninstall reCAPTCHA Preloader module.
  */
-function d8_captcha_update_8001() {
-  _d8_module('recaptcha_preloader', NULL, TRUE);
+function d8_captcha_update_8001(array &$sandbox): void {
+  _d8_module('recaptcha_preloader', uninstall: TRUE);
 }
 
 /**
  * Install reCAPTCHA Preloader module.
  */
-function d8_captcha_update_9501() {
+function d8_captcha_update_9501(array &$sandbox): void {
   _d8_module('recaptcha_preloader');
 }

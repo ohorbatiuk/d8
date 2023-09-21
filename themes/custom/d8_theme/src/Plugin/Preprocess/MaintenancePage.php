@@ -18,7 +18,7 @@ class MaintenancePage extends PreprocessBase implements PreprocessInterface {
   /**
    * {@inheritdoc}
    */
-  public function preprocessVariables(Variables $variables) {
+  public function preprocessVariables(Variables $variables): void {
     $variables->rows = [
       'top' => [
         'lightgray',

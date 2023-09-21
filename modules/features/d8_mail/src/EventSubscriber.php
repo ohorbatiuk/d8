@@ -29,61 +29,36 @@ class EventSubscriber implements EventSubscriberInterface {
   /**
    * The common part of the status message and database log message.
    */
-  const MESSAGE = ' has been changed from %old to %new.';
+  private const MESSAGE = ' has been changed from %old to %new.';
 
   /**
    * The link label of the status message and database log message.
    */
-  const LABEL = 'The site E-mail address';
+  private const LABEL = 'The site E-mail address';
 
   /**
    * The prefix of the status message where the link will be inserted.
    */
-  const KEY = '@link';
-
-  /**
-   * The entity type manager.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  private $entityTypeManager;
-
-  /**
-   * The E-mail validator.
-   *
-   * @var \Drupal\Component\Utility\EmailValidatorInterface
-   */
-  private $emailValidator;
-
-  /**
-   * The configuration factory.
-   *
-   * @var \Drupal\Core\Config\ConfigFactoryInterface
-   */
-  private $configFactory;
+  private const KEY = '@link';
 
   /**
    * The base E-mail address of the site.
-   *
-   * @var string
    */
-  private $siteAddress;
+  private string $siteAddress;
 
   /**
    * The E-mail address from the username field of the mailer transport entity.
-   *
-   * @var string
    */
-  private $mailerAddress;
+  private string $mailerAddress;
 
   /**
    * EventSubscriber constructor.
    *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The entity type manager.
-   * @param \Drupal\Component\Utility\EmailValidatorInterface $email_validator
+   * @param \Drupal\Component\Utility\EmailValidatorInterface $emailValidator
    *   The E-mail validator.
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
    *   The configuration factory.
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger.
@@ -93,9 +68,9 @@ class EventSubscriber implements EventSubscriberInterface {
    *   The logger channel factory.
    */
   public function __construct(
-    EntityTypeManagerInterface $entity_type_manager,
-    EmailValidatorInterface $email_validator,
-    ConfigFactoryInterface $config_factory,
+    private readonly EntityTypeManagerInterface $entityTypeManager,
+    private readonly EmailValidatorInterface $emailValidator,
+    private readonly ConfigFactoryInterface $configFactory,
     MessengerInterface $messenger,
     TranslationInterface $translation,
     LoggerChannelFactoryInterface $logger_factory
@@ -104,10 +79,6 @@ class EventSubscriber implements EventSubscriberInterface {
       ->setStringTranslation($translation)
       ->setLoggerFactory($logger_factory)
       ->setMessenger($messenger);
-
-    $this->entityTypeManager = $entity_type_manager;
-    $this->emailValidator = $email_validator;
-    $this->configFactory = $config_factory;
   }
 
   /**
@@ -117,17 +88,13 @@ class EventSubscriber implements EventSubscriberInterface {
    *   The link parameter name.
    * @param string $text
    *   The link label.
-   *
-   * @return array
-   *   The parameters list.
    */
-  private function context($key, $text) {
+  private function context(string $key, string $text): array {
     return [
       $key => Link::createFromRoute(
         $this->t($text),
         'system.site_information_settings',
-        [],
-        ['fragment' => 'edit-site-mail']
+        options: ['fragment' => 'edit-site-mail'],
       )->toString(),
       '%old' => $this->siteAddress,
       '%new' => $this->mailerAddress,
@@ -137,9 +104,8 @@ class EventSubscriber implements EventSubscriberInterface {
   /**
    * {@inheritdoc}
    */
-  public static function getSubscribedEvents() {
-    $events[ConfigEvents::SAVE][] = ['onConfigSave'];
-    return $events;
+  public static function getSubscribedEvents(): array {
+    return [ConfigEvents::SAVE => [['onConfigSave']]];
   }
 
   /**
@@ -151,7 +117,7 @@ class EventSubscriber implements EventSubscriberInterface {
    * @param \Drupal\Core\Config\ConfigCrudEvent $event
    *   The event.
    */
-  public function onConfigSave(ConfigCrudEvent $event) {
+  public function onConfigSave(ConfigCrudEvent $event): void {
     $mailer_config = $event->getConfig();
 
     if (
@@ -188,12 +154,12 @@ class EventSubscriber implements EventSubscriberInterface {
 
       $this->messenger->addStatus($this->t(
         self::KEY . self::MESSAGE,
-        $this->context(self::KEY, self::LABEL)
+        $this->context(self::KEY, self::LABEL),
       ));
 
       $this->getLogger('d8_mail')->info(
         self::LABEL . self::MESSAGE,
-        $this->context(substr(self::KEY, 1), 'Edit')
+        $this->context(substr(self::KEY, 1), 'Edit'),
       );
     }
   }
