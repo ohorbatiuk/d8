@@ -7,6 +7,7 @@
 
 use Drupal\Core\Config\FileStorage;
 use Drupal\Core\Config\InstallStorage;
+use Drupal\Core\Entity\Controller\VersionHistoryController;
 use Drupal\Core\Site\Settings;
 use Drupal\d8\Form\D8CaptchaForm;
 use Drupal\d8\Form\D8ConfigureForm;
@@ -139,7 +140,11 @@ function d8_update_8006(array &$sandbox): void {
       ->execute();
 
     $sandbox['offset'] = 0;
-    $sandbox['limit'] = Settings::get('entity_update_batch_size', 50);
+
+    $sandbox['limit'] = Settings::get(
+      'entity_update_batch_size',
+      VersionHistoryController::REVISIONS_PER_PAGE,
+    );
   }
 
   $role_ids = \Drupal::entityQuery('user_role')
