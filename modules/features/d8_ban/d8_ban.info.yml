@@ -3,7 +3,7 @@ description: Ban settings.
 package: D8+
 
 type: module
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^8 || ^9 || ^10
 
 dependencies:
   - autoban:autoban_ban

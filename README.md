@@ -1,6 +1,6 @@
 # D8+
 
-Installation profile for Drupal 9/10.
+Installation profile for Drupal 10.
 
 [![Made in Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd500.svg?labelColor=005bbb)](https://supportukrainenow.org)
 [![Version](http://poser.pugx.org/lexhouk/d8/version)](https://packagist.org/packages/lexhouk/d8)

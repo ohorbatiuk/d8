@@ -15,61 +15,28 @@ use Drupal\standwithukraine\StandWithUkraineSettingsInterface;
 class D8StandWithUkraineNegotiator implements StandWithUkraineNegotiatorInterface {
 
   /**
-   * The configuration factory.
-   *
-   * @var \Drupal\Core\Config\ConfigFactoryInterface
-   */
-  private $configFactory;
-
-  /**
-   * The theme.
-   *
-   * @var \Drupal\Core\Theme\ThemeManagerInterface
-   */
-  private $themeManager;
-
-  /**
-   * The currently active route match object.
-   *
-   * @var \Drupal\Core\Routing\RouteMatchInterface
-   */
-  private $routeMatch;
-
-  /**
-   * The local task manger.
-   *
-   * @var \Drupal\Core\Menu\LocalTaskManagerInterface
-   */
-  private $localTaskManager;
-
-  /**
    * D8StandWithUkraineNegotiator constructor.
    *
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
    *   The configuration factory.
-   * @param \Drupal\Core\Theme\ThemeManagerInterface $theme_manager
+   * @param \Drupal\Core\Theme\ThemeManagerInterface $themeManager
    *   The theme.
-   * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+   * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
    *   The currently active route match object.
-   * @param \Drupal\Core\Menu\LocalTaskManagerInterface $local_task_manager
+   * @param \Drupal\Core\Menu\LocalTaskManagerInterface $localTaskManager
    *   The local task manger.
    */
   public function __construct(
-    ConfigFactoryInterface $config_factory,
-    ThemeManagerInterface $theme_manager,
-    RouteMatchInterface $route_match,
-    LocalTaskManagerInterface $local_task_manager
-  ) {
-    $this->configFactory = $config_factory;
-    $this->themeManager = $theme_manager;
-    $this->routeMatch = $route_match;
-    $this->localTaskManager = $local_task_manager;
-  }
+    private readonly ConfigFactoryInterface $configFactory,
+    private readonly ThemeManagerInterface $themeManager,
+    private readonly RouteMatchInterface $routeMatch,
+    private readonly LocalTaskManagerInterface $localTaskManager
+  ) {}
 
   /**
    * {@inheritdoc}
    */
-  public function applies(StandWithUkraineSettingsInterface $settings) {
+  public function applies(StandWithUkraineSettingsInterface $settings): bool {
     if (
       $settings->isSingle() ||
       $settings->getPosition() !== StandWithUkraineSettingsInterface::POSITION_RIGHT
@@ -87,7 +54,7 @@ class D8StandWithUkraineNegotiator implements StandWithUkraineNegotiatorInterfac
   /**
    * {@inheritdoc}
    */
-  public function override(StandWithUkraineSettingsInterface $settings) {
+  public function override(StandWithUkraineSettingsInterface $settings): void {
     $route_name = $this->routeMatch->getRouteName();
     $offset = 85;
 

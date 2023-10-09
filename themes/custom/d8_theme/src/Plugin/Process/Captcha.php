@@ -19,7 +19,11 @@ class Captcha extends ProcessBase implements ProcessInterface {
   /**
    * {@inheritdoc}
    */
-  public static function processElement(Element $element, FormStateInterface $form_state, array &$complete_form) {
+  public static function processElement(
+    Element $element,
+    FormStateInterface $form_state,
+    array &$complete_form
+  ): void {
     if ($element->hasProperty('theme_wrappers')) {
       $element->appendProperty('theme_wrappers', 'form_element');
     }

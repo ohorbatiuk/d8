@@ -13,7 +13,7 @@ class D8UpdateController extends DbUpdateController {
   /**
    * {@inheritdoc}
    */
-  protected function selection(Request $request) {
+  protected function selection(Request $request): array {
     $build = parent::selection($request);
 
     if (isset($build['start'])) {

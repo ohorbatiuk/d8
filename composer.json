@@ -1,6 +1,6 @@
 {
     "name": "lexhouk/d8",
-    "description": "Profile for Drupal 9/10.",
+    "description": "Profile for Drupal 10.",
     "type": "drupal-profile",
     "license": "GPL-2.0-or-later",
     "require": {
@@ -11,8 +11,8 @@
         "drupal/bootstrap": "3.28",
         "drupal/captcha": "1.9",
         "drupal/config_update": "2.0.0-alpha3",
-        "drupal/core": "10.0.10",
-        "drupal/core-composer-scaffold": "10.0.10",
+        "drupal/core": "10.1.5",
+        "drupal/core-composer-scaffold": "10.1.5",
         "drupal/features": "3.13",
         "drupal/module_filter": "4.0.1",
         "drupal/recaptcha": "3.1",
