@@ -1,6 +1,6 @@
 ---
-name: Update module or theme
-about: Update module or theme.
+name: Update module
+about: Update module.
 title: Update "NAME" module from CURRENT to LAST
 labels: update
 assignees: ''
