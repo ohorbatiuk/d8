@@ -8,7 +8,7 @@
         "cweagans/composer-patches": "^1.0",
         "drupal/admin_toolbar": "3.4.1",
         "drupal/autoban": "1.9",
-        "drupal/bootstrap": "3.28",
+        "drupal/bootstrap": "3.29",
         "drupal/captcha": "1.9",
         "drupal/config_update": "2.0.0-alpha3",
         "drupal/core": "10.1.5",
