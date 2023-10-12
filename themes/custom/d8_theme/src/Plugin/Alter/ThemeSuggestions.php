@@ -2,7 +2,7 @@
 
 namespace Drupal\d8_theme\Plugin\Alter;
 
-use Drupal\bootstrap\Plugin\Alter\ThemeSuggestions;
+use Drupal\bootstrap\Plugin\Alter\ThemeSuggestions as ThemeSuggestionsBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -14,7 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @BootstrapAlter("theme_suggestions")
  */
-class D8ThemeSuggestions extends ThemeSuggestions implements ContainerFactoryPluginInterface {
+class ThemeSuggestions extends ThemeSuggestionsBase implements ContainerFactoryPluginInterface {
 
   /**
    * The route match.
