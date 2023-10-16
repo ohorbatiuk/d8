@@ -41,7 +41,7 @@ class Tooltip extends UpdateBase {
    *   FALSE if the update failed, otherwise any other return will be
    *   interpreted as TRUE.
    */
-  public function update(Theme $theme, array &$context) {
+  public function update(Theme $theme, array &$context): bool {
     $theme->setSetting('tooltip_placement', 'auto top');
 
     return TRUE;

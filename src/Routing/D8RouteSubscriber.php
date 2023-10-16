@@ -14,8 +14,8 @@ class D8RouteSubscriber extends RouteSubscriberBase {
   /**
    * {@inheritdoc}
    */
-  protected function alterRoutes(RouteCollection $collection) {
-    if ($route = $collection->get('system.site_maintenance_mode')) {
+  protected function alterRoutes(RouteCollection $collection): void {
+    if (($route = $collection->get('system.site_maintenance_mode')) !== NULL) {
       $route->setDefaults([
         '_controller' => D8MaintenanceController::class . '::action',
       ]);

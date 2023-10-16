@@ -1,9 +1,9 @@
 name: D8+ Log
-description: Provides a wrapper for the "Error & Exception Mailer" module.
+description: Provides a wrapper for the Error & Exception Mailer module.
 package: D8+
 
 type: module
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^10
 
 dependencies:
   - exception_mailer:exception_mailer

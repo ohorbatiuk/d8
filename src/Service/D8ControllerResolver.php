@@ -14,12 +14,15 @@ class D8ControllerResolver extends ControllerResolver {
   /**
    * The method name for building a database update page.
    */
-  const METHOD = '::handle';
+  private const METHOD = '::handle';
 
   /**
    * {@inheritdoc}
    */
-  public function getControllerFromDefinition($controller, $path = '') {
+  public function getControllerFromDefinition(
+    mixed $controller,
+    $path = ''
+  ): mixed {
     if (
       $controller === '\\' . DbUpdateController::class . self::METHOD &&
       $path === ''

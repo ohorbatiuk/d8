@@ -8,7 +8,7 @@
 /**
  * Implements hook_install().
  */
-function d8_standwithukraine_install($is_syncing) {
+function d8_standwithukraine_install(bool $is_syncing): void {
   if (!$is_syncing) {
     module_set_weight('d8_standwithukraine', 5);
   }

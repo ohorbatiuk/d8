@@ -1,9 +1,9 @@
 name: D8+
-description: Basis for the site on Drupal 9/10.
+description: Basis for the site on Drupal 10.
 
 type: profile
-core_version_requirement: ^9 || ^10
-version: 0.15.0.153
+core_version_requirement: ^10
+version: 0.17.0.158
 
 distribution:
   name: D8+
