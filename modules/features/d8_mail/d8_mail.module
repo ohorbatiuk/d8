@@ -11,7 +11,10 @@ use Drupal\Core\Url;
 /**
  * Implements hook_help().
  */
-function d8_mail_help(string $route_name, RouteMatchInterface $route_match): string {
+function d8_mail_help(
+  string $route_name,
+  RouteMatchInterface $route_match
+): string {
   $output = '';
 
   if ($route_name === 'help.page.d8_mail') {
@@ -25,7 +28,7 @@ function d8_mail_help(string $route_name, RouteMatchInterface $route_match): str
       'Provides a wrapper for the <a href=":url">:name</a> module.',
       [
         ':url' => $url->toString(),
-        ':name' => 'Drupal Symfony Mailer'
+        ':name' => 'Drupal Symfony Mailer',
       ],
     );
 
@@ -33,6 +36,15 @@ function d8_mail_help(string $route_name, RouteMatchInterface $route_match): str
   }
 
   return $output;
+}
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function d8_mail_library_info_alter(array &$libraries, string $extension): void {
+  if ($extension === 'symfony_mailer') {
+    unset($libraries['test']['css']['theme']['css/test.email.css']);
+  }
 }
 
 /**
