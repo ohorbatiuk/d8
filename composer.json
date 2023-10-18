@@ -19,7 +19,7 @@
         "drupal/recaptcha_preloader": "1.0.1",
         "drupal/seven": "1.0.0",
         "drupal/standwithukraine": "1.3.10",
-        "drupal/symfony_mailer": "1.2.2"
+        "drupal/symfony_mailer": "1.3.2"
     },
     "require-dev": {
         "drupal/config2php": "2.1.0",
@@ -47,7 +47,8 @@
                 "Register in the new tab": "https://www.drupal.org/files/issues/2023-03-05/recaptcha-register-in-the-new-tab-3346065-2.patch"
             },
             "drupal/symfony_mailer": {
-                "Add support for complex address strings in back-compatibility mode": "https://www.drupal.org/files/issues/2023-03-30/symfony_mailer-support_complex_address_strings-3350992-3.patch"
+                "Add support for complex address strings in back-compatibility mode": "https://www.drupal.org/files/issues/2023-03-30/symfony_mailer-support_complex_address_strings-3350992-3.patch",
+                "Drupal 10.1.0 new aggregation breaks InlineCssEmailAdjuster": "https://www.drupal.org/files/issues/2023-09-21/symfony_mailer.inline-css.3371042-88.patch"
             }
         },
         "enable-patching": true,
