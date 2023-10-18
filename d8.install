@@ -276,7 +276,7 @@ function d8_update_10001(array &$sandbox): void {
 /**
  * Add the admin role to the first user.
  */
-function d8_update_10101($sandbox) {
+function d8_update_10101(array &$sandbox): void {
   $account = \Drupal::entityTypeManager()->getStorage('user')->load(1);
 
   if ($account instanceof UserInterface) {
