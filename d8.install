@@ -277,10 +277,19 @@ function d8_update_10001(array &$sandbox): void {
  * Add the admin role to the first user.
  */
 function d8_update_10101(array &$sandbox): void {
+  /** @var \Drupal\user\RoleInterface $role */
+  $role = \Drupal::entityTypeManager()->getStorage('user_role')
+    ->create([
+      'id' => 'administrator',
+      'label' => 'Administrator',
+    ]);
+
+  $role->setIsAdmin(TRUE)->setWeight(2)->save();
+
   $account = \Drupal::entityTypeManager()->getStorage('user')->load(1);
 
   if ($account instanceof UserInterface) {
-    $account->addRole('administrator');
+    $account->addRole($role->id());
     $account->save();
   }
 }
