@@ -36,6 +36,9 @@
                 "Add events for matching entity hooks": "https://www.drupal.org/files/issues/2022-12-22/2551893-99.patch",
                 "News mode": "https://www.drupal.org/files/issues/2022-06-20/drupal-news-mode-3256060-10.patch"
             },
+            "drupal/exception_mailer": {
+                "Queue workers are broken": "https://www.drupal.org/files/issues/2023-10-20/exception-mailer-queue-worker-parent-3395572-2.patch"
+            },
             "drupal/features": {
                 "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch",
                 "Deprecated function: Creation of dynamic property Drupal\\features\\FeaturesGenerationMethodManager::$cacheKeyPrefix is deprecated in Drupal\\features\\FeaturesGenerationMethodManager->__construct() (line 28 of modules/contrib/features/src/FeaturesGenerationM": "https://www.drupal.org/files/issues/2023-07-19/3375425-3.patch"
