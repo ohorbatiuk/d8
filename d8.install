@@ -58,7 +58,7 @@ function d8_install(bool $is_syncing): void {
 
   $shortcut->save();
 
-  _d8_update(8006, 8901, 8903, 10001, 10101);
+  _d8_update(8006, 8901, 8903, 10001, 10102);
 }
 
 /**
@@ -274,7 +274,7 @@ function d8_update_10001(array &$sandbox): void {
 }
 
 /**
- * Add the admin role to the first user.
+ * Create the admin role.
  */
 function d8_update_10101(array &$sandbox): void {
   /** @var \Drupal\user\RoleInterface $role */
@@ -285,11 +285,16 @@ function d8_update_10101(array &$sandbox): void {
     ]);
 
   $role->setIsAdmin(TRUE)->setWeight(2)->save();
+}
 
+/**
+ * Add the admin role to the first user.
+ */
+function d8_update_10102(array &$sandbox): void {
   $account = \Drupal::entityTypeManager()->getStorage('user')->load(1);
 
   if ($account instanceof UserInterface) {
-    $account->addRole($role->id());
+    $account->addRole('administrator');
     $account->save();
   }
 }
@@ -297,7 +302,7 @@ function d8_update_10101(array &$sandbox): void {
 /**
  * Install D8+ Log module.
  */
-function d8_update_10102(array &$sandbox): void {
+function d8_update_10103(array &$sandbox): void {
   _d8_module('d8_log');
 }
 
