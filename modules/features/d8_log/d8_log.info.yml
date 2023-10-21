@@ -6,4 +6,5 @@ type: module
 core_version_requirement: ^10
 
 dependencies:
+  - d8:d8_mail
   - exception_mailer:exception_mailer
