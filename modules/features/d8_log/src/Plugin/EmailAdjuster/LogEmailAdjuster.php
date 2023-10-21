@@ -24,7 +24,7 @@ class LogEmailAdjuster extends EmailAdjusterBase implements ContainerFactoryPlug
   /**
    * The renderer.
    */
-  protected readonly RendererInterface $renderer;
+  private readonly RendererInterface $renderer;
 
   /**
    * {@inheritdoc}
@@ -42,6 +42,12 @@ class LogEmailAdjuster extends EmailAdjusterBase implements ContainerFactoryPlug
     return $instance;
   }
 
+  /**
+   * Gets text with paths and/or namespaces as filtered HTML.
+   *
+   * @param string $content
+   *   The data.
+   */
   private function cell(string $content): array {
     return [
       '#markup' => preg_replace('#(\w+[/\\\]+)(\w+)#', '$1<wbr>$2', $content),
@@ -60,10 +66,14 @@ class LogEmailAdjuster extends EmailAdjusterBase implements ContainerFactoryPlug
       '#rows' => array_map(
         function (string $item): array {
           $item = explode(':', $item, 2);
+          array_walk($item, 'trim');
           $item[1] = ['data' => $this->cell($item[1])];
           return $item;
         },
-        array_slice($body, 2, 10),
+        array_filter(
+          array_slice($body, 2, 10),
+          fn(string $item): bool => !preg_match('/:\s*$/', $item),
+        ),
       ),
     ];
 
