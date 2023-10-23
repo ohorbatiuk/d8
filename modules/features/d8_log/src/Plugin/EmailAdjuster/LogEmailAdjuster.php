@@ -2,7 +2,6 @@
 
 namespace Drupal\d8_log\Plugin\EmailAdjuster;
 
-use Drupal\Component\Render\MarkupInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\symfony_mailer\EmailInterface;
@@ -91,8 +90,7 @@ class LogEmailAdjuster extends EmailAdjusterBase implements ContainerFactoryPlug
       implode(
         '<hr>',
         array_map(
-          fn(array $element): MarkupInterface => $this->renderer
-            ->render($element),
+          fn(array $element): string => $this->renderer->render($element),
           $elements,
         ),
       ),

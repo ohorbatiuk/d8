@@ -7,6 +7,9 @@ version: 0.17.0.159
 
 distribution:
   name: D8+
+  langcode: en
+  install:
+    finish_url: /welcome
 
 dependencies:
   - drupal:block

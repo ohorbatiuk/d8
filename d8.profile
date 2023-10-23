@@ -19,6 +19,8 @@ function d8_form_install_configure_form_alter(
   $db = Database::getConnectionInfo();
   $form['admin_account']['account']['name']['#default_value'] = $db['default']['username'];
   $form['update_notifications']['update_status_module']['#default_value'] = [1];
+
+  $form['#submit'][] = '_d8_install_configure_form_submit';
 }
 
 /**
@@ -29,6 +31,28 @@ function d8_form_user_login_form_alter(
   FormStateInterface $form_state
 ): void {
   $form['#submit'][] = '_d8_user_login_form_submit';
+}
+
+/**
+ * Saves the site name and E-mail in states to re-save these two records later.
+ *
+ * @see \Drupal\d8\Controller\D8WelcomeController::page()
+ */
+function _d8_install_configure_form_submit(
+  array &$form,
+  FormStateInterface $form_state
+): void {
+  global $install_state;
+
+  if (empty($install_state['config_install_path'])) {
+    $values = [];
+
+    foreach (['name', 'mail'] as $key) {
+      $values[$key] = (string) $form_state->getValue('site_' . $key);
+    }
+
+    \Drupal::state()->set('d8', array_filter($values));
+  }
 }
 
 /**
