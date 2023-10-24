@@ -4,4 +4,4 @@ d8.ready:
     _title: Welcome
     _controller: '\Drupal\d8\Controller\D8WelcomeController::page'
   requirements:
-    _access: 'TRUE'
+    _permission: 'administer site configuration'

@@ -56,10 +56,14 @@ class LogEmailAdjuster extends EmailAdjusterBase implements ContainerFactoryPlug
 
   /**
    * {@inheritdoc}
+   *
+   * @see exception_mailer_mail()
    */
   public function postRender(EmailInterface $email): void {
     $body = preg_split('/\s*\n+\s*/', trim($email->getHtmlBody()));
 
+    // Convert log information to a table and show it without introduction and
+    // site name.
     $elements[] = [
       '#theme' => 'table',
       '#rows' => array_map(
@@ -76,6 +80,7 @@ class LogEmailAdjuster extends EmailAdjusterBase implements ContainerFactoryPlug
       ),
     ];
 
+    // Delete line numerations from backtrace lines and show these lines.
     $elements[] = [
       '#theme' => 'item_list',
       '#list_type' => 'ol',
