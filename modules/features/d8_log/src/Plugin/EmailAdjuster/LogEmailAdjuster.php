@@ -89,6 +89,7 @@ class LogEmailAdjuster extends EmailAdjusterBase implements ContainerFactoryPlug
           ->cell(preg_replace('/^#\d+\s+/', '', $item)),
         array_slice($body, 12, -1),
       ),
+      '#empty' => $this->t('Backtrace data is absent.'),
     ];
 
     $email->setHtmlBody(
