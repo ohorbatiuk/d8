@@ -1,10 +1,9 @@
 langcode: en
 status: true
 dependencies: {  }
-id: page
+id: '404'
 label: 'Absent page'
-description: 'Someone tries to open a page to which he/she does not have access
-  or this page does not exist.'
+description: 'Someone tries to open a page that does not exist.'
 type: error
 exception: ''
 error_type: 'page not found'
