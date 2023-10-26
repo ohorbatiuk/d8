@@ -1,14 +1,13 @@
 langcode: en
 status: true
 dependencies: {  }
-id: '403'
-label: 'Forbidden page'
+id: 403_cacheable
+label: 'Forbidden page (cacheable)'
 description: 'Attempt to open a page that is restricted for the current user.'
-type: error
-exception: ''
-error_type: 'access denied'
-error_severity:
-  4: '4'
+type: exception
+exception: Drupal\Core\Http\Exception\CacheableAccessDeniedHttpException
+error_type: ''
+error_severity: {  }
 message: ''
 hostname: ''
 send_email: false
