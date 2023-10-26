@@ -11,6 +11,7 @@ use Drupal\Core\Entity\Controller\VersionHistoryController;
 use Drupal\Core\Site\Settings;
 use Drupal\d8\Form\D8CaptchaForm;
 use Drupal\d8\Form\D8ConfigureForm;
+use Drupal\user\UserInterface;
 
 /**
  * Implements hook_install().
@@ -26,6 +27,7 @@ function d8_install(bool $is_syncing): void {
     'd8_feature_blocks_d8_theme',
     'd8_ban',
     'd8_standwithukraine',
+    'd8_log',
     'recaptcha',
   ]);
 
@@ -56,7 +58,7 @@ function d8_install(bool $is_syncing): void {
 
   $shortcut->save();
 
-  _d8_update(8006, 8901, 8903, 10001);
+  _d8_update(8006, 8901, 8903, 10001, 10102);
 }
 
 /**
@@ -269,6 +271,39 @@ function d8_update_9502(array &$sandbox): void {
  */
 function d8_update_10001(array &$sandbox): void {
   _d8_module('d8_mail');
+}
+
+/**
+ * Create the admin role.
+ */
+function d8_update_10101(array &$sandbox): void {
+  /** @var \Drupal\user\RoleInterface $role */
+  $role = \Drupal::entityTypeManager()->getStorage('user_role')
+    ->create([
+      'id' => 'administrator',
+      'label' => 'Administrator',
+    ]);
+
+  $role->setIsAdmin(TRUE)->setWeight(2)->save();
+}
+
+/**
+ * Add the admin role to the first user.
+ */
+function d8_update_10102(array &$sandbox): void {
+  $account = \Drupal::entityTypeManager()->getStorage('user')->load(1);
+
+  if ($account instanceof UserInterface) {
+    $account->addRole('administrator');
+    $account->save();
+  }
+}
+
+/**
+ * Install D8+ Log module.
+ */
+function d8_update_10103(array &$sandbox): void {
+  _d8_module('d8_log');
 }
 
 /**

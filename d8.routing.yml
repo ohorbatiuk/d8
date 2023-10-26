@@ -1,0 +1,7 @@
+d8.ready:
+  path: '/welcome'
+  defaults:
+    _title: Welcome
+    _controller: '\Drupal\d8\Controller\D8WelcomeController::page'
+  requirements:
+    _permission: 'administer site configuration'

@@ -24,6 +24,7 @@ This installation profile requires the following modules:
 - [CAPTCHA](https://www.drupal.org/project/captcha)
 - [Configuration Update Manager](https://www.drupal.org/project/config_update)
 - [Drupal Symfony Mailer](https://www.drupal.org/project/symfony_mailer)
+- [Error & Exception Mailer](https://www.drupal.org/project/exception_mailer)
 - [Features](https://www.drupal.org/project/features)
 - [Module Filter](https://www.drupal.org/project/module_filter)
 - [reCAPTCHA](https://www.drupal.org/project/recaptcha)

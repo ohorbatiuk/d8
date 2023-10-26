@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies: {  }
+id: 403_exception
+label: 'Forbidden page (Symfony)'
+description: 'Attempt to open a page that is restricted for the current user.'
+type: exception
+exception: Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
+error_type: ''
+error_severity: {  }
+message: ''
+hostname: ''
+send_email: false
+emails: {  }
+roles: {  }
+email_body: ''
+send_interval: '0'

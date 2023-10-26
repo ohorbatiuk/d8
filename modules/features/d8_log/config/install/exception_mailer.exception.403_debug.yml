@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies: {  }
+id: 403_debug
+label: 'Forbidden page (debug)'
+description: 'Attempt to open a page that is restricted for the current user.'
+type: error
+exception: ''
+error_type: exception_mailer
+error_severity:
+  7: '7'
+message: ''
+hostname: ''
+send_email: false
+emails: {  }
+roles: {  }
+email_body: ''
+send_interval: '0'

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies: {  }
+id: 403_warning
+label: 'Forbidden page (warning)'
+description: 'Attempt to open a page that is restricted for the current user.'
+type: error
+exception: ''
+error_type: 'access denied'
+error_severity:
+  4: '4'
+message: ''
+hostname: ''
+send_email: false
+emails: {  }
+roles: {  }
+email_body: ''
+send_interval: '0'

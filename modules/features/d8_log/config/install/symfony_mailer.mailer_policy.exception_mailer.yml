@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - d8_log
+    - exception_mailer
+id: exception_mailer
+configuration:
+  log: {  }

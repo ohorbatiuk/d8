@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies: {  }
+id: '404'
+label: 'Absent page'
+description: 'Someone tries to open a page that does not exist.'
+type: error
+exception: ''
+error_type: 'page not found'
+error_severity:
+  4: '4'
+message: ''
+hostname: ''
+send_email: false
+emails: {  }
+roles: {  }
+email_body: ''
+send_interval: '0'
