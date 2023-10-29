@@ -31,6 +31,9 @@
             "drupal/autoban": {
                 "Mixed links": "https://www.drupal.org/files/issues/2023-09-09/autoban-mixed-links-3386212-2.patch"
             },
+            "drupal/config2php": {
+                "Drupal 10 only": "https://git.drupalcode.org/project/config2php/-/merge_requests/2.diff"
+            },
             "drupal/core": {
                 "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2019-12-14/default-theme-favicon-for-administration-theme-2981434-7.patch",
                 "Add events for matching entity hooks": "https://www.drupal.org/files/issues/2022-12-22/2551893-99.patch",
