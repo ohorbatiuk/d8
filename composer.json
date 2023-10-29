@@ -51,6 +51,7 @@
                 "Register in the new tab": "https://www.drupal.org/files/issues/2023-03-05/recaptcha-register-in-the-new-tab-3346065-2.patch"
             },
             "drupal/recaptcha_preloader": {
+                "Add header with module name in ASCII Art style, change maintainer username in the information file, and update the module description": "https://git.drupalcode.org/project/recaptcha_preloader/-/commit/16688a8cbe3d6ed582714f8d7671cf390ec6f34a.diff",
                 "Drupal 10 only": "https://git.drupalcode.org/project/recaptcha_preloader/-/merge_requests/1.diff"
             },
             "drupal/symfony_mailer": {
