@@ -20,17 +20,17 @@ class D8StandWithUkraineNegotiator implements StandWithUkraineNegotiatorInterfac
    * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
    *   The configuration factory.
    * @param \Drupal\Core\Theme\ThemeManagerInterface $themeManager
-   *   The theme.
+   *   The theme manager.
    * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
    *   The currently active route match object.
    * @param \Drupal\Core\Menu\LocalTaskManagerInterface $localTaskManager
-   *   The local task manger.
+   *   The local task manager.
    */
   public function __construct(
-    private readonly ConfigFactoryInterface $configFactory,
-    private readonly ThemeManagerInterface $themeManager,
-    private readonly RouteMatchInterface $routeMatch,
-    private readonly LocalTaskManagerInterface $localTaskManager
+    protected ConfigFactoryInterface $configFactory,
+    protected ThemeManagerInterface $themeManager,
+    protected RouteMatchInterface $routeMatch,
+    protected LocalTaskManagerInterface $localTaskManager
   ) {}
 
   /**
