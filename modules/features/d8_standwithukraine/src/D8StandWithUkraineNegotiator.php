@@ -6,6 +6,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Menu\LocalTaskManagerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Theme\ThemeManagerInterface;
+use Drupal\standwithukraine\Position;
 use Drupal\standwithukraine\Service\StandWithUkraineNegotiatorInterface;
 use Drupal\standwithukraine\StandWithUkraineSettingsInterface;
 
@@ -37,10 +38,7 @@ class D8StandWithUkraineNegotiator implements StandWithUkraineNegotiatorInterfac
    * {@inheritdoc}
    */
   public function applies(StandWithUkraineSettingsInterface $settings): bool {
-    if (
-      $settings->isSingle() ||
-      $settings->getPosition() !== StandWithUkraineSettingsInterface::POSITION_RIGHT
-    ) {
+    if ($settings->isSingle() || $settings->getPosition() !== Position::Right) {
       $theme = $this->configFactory->get('system.theme')->get('admin');
 
       if (!empty($theme)) {
@@ -84,7 +82,7 @@ class D8StandWithUkraineNegotiator implements StandWithUkraineNegotiatorInterfac
       ->setText(StandWithUkraineSettingsInterface::TEXT)
       ->setDouble()
       ->setSizes(FALSE, TRUE)
-      ->setPosition(StandWithUkraineSettingsInterface::POSITION_RIGHT)
+      ->setPosition(Position::Right)
       ->setOffset($offset);
   }
 
