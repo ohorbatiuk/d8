@@ -2,10 +2,10 @@
 
 namespace Drupal\d8\Form;
 
-use Drupal\Core\Extension\ModuleInstallerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\recaptcha\Form\ReCaptchaAdminSettingsForm;
+use Drupal\service\ModuleInstallerTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -13,22 +13,15 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
 
-  /**
-   * The module installer.
-   */
-  private readonly ModuleInstallerInterface $moduleInstaller;
+  use ModuleInstallerTrait;
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container): self {
-    /** @var self $instance */
-    $instance = parent::create($container);
-
-    $instance->setStringTranslation($container->get('string_translation'));
-    $instance->moduleInstaller = $container->get('module_installer');
-
-    return $instance;
+  public static function create(ContainerInterface $container): static {
+    return parent::create($container)
+      ->setStringTranslation($container->get('string_translation'))
+      ->setModuleInstaller($container);
   }
 
   /**
@@ -42,10 +35,10 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
    * {@inheritdoc}
    */
   protected function getEditableConfigNames(): array {
-    return array_merge(
-      parent::getEditableConfigNames(),
-      ['recaptcha_preloader.settings'],
-    );
+    return [
+      ...parent::getEditableConfigNames(),
+      'recaptcha_preloader.settings',
+    ];
   }
 
   /**
@@ -96,7 +89,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
     parent::submitForm($form, $form_state);
 
     if ($form_state->getValue('recaptcha_size') !== 'invisible') {
-      $this->moduleInstaller->install(['recaptcha_preloader']);
+      $this->moduleInstaller()->install(['recaptcha_preloader']);
     }
 
     drupal_flush_all_caches();

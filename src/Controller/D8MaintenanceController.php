@@ -3,6 +3,8 @@
 namespace Drupal\d8\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\service\StateTrait;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -10,6 +12,15 @@ use Symfony\Component\HttpFoundation\Request;
  * Controller routines for installation profile routes.
  */
 class D8MaintenanceController extends ControllerBase {
+
+  use StateTrait;
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container): static {
+    return parent::create($container)->setState($container);
+  }
 
   /**
    * Switch maintenance mode.

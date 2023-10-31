@@ -307,6 +307,13 @@ function d8_update_10103(array &$sandbox): void {
 }
 
 /**
+ * Install Service module.
+ */
+function d8_update_10104(array &$sandbox): void {
+  _d8_module('service');
+}
+
+/**
  * (Un)install a module with optional checking of some other module.
  *
  * @param string $target

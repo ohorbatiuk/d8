@@ -3,7 +3,7 @@
 namespace Drupal\d8_log\Plugin\EmailAdjuster;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\Core\Render\RendererInterface;
+use Drupal\service\RendererTrait;
 use Drupal\symfony_mailer\EmailInterface;
 use Drupal\symfony_mailer\Processor\EmailAdjusterBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -20,10 +20,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class LogEmailAdjuster extends EmailAdjusterBase implements ContainerFactoryPluginInterface {
 
-  /**
-   * The renderer.
-   */
-  private readonly RendererInterface $renderer;
+  use RendererTrait;
 
   /**
    * {@inheritdoc}
@@ -34,11 +31,8 @@ class LogEmailAdjuster extends EmailAdjusterBase implements ContainerFactoryPlug
     $plugin_id,
     $plugin_definition
   ): static {
-    $instance = new static($configuration, $plugin_id, $plugin_definition);
-
-    $instance->renderer = $container->get('renderer');
-
-    return $instance;
+    return (new static($configuration, $plugin_id, $plugin_definition))
+      ->setRenderer($container);
   }
 
   /**
@@ -96,7 +90,7 @@ class LogEmailAdjuster extends EmailAdjusterBase implements ContainerFactoryPlug
       implode(
         '<hr>',
         array_map(
-          fn(array $element): string => $this->renderer->render($element),
+          fn(array $element): string => $this->renderer()->render($element),
           $elements,
         ),
       ),
