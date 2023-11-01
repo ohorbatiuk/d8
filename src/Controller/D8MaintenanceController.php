@@ -19,7 +19,7 @@ class D8MaintenanceController extends ControllerBase {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container): static {
-    return parent::create($container)->setState($container);
+    return parent::create($container)->addState($container);
   }
 
   /**

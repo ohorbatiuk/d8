@@ -21,7 +21,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
   public static function create(ContainerInterface $container): static {
     return parent::create($container)
       ->setStringTranslation($container->get('string_translation'))
-      ->setModuleInstaller($container);
+      ->addModuleInstaller($container);
   }
 
   /**

@@ -20,7 +20,7 @@ class D8ConfigureForm extends SiteConfigureForm {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container): static {
-    return parent::create($container)->setConfigFactory($container);
+    return parent::create($container)->addConfigFactory($container);
   }
 
   /**

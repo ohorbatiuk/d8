@@ -32,7 +32,7 @@ class LogEmailAdjuster extends EmailAdjusterBase implements ContainerFactoryPlug
     $plugin_definition
   ): static {
     return (new static($configuration, $plugin_id, $plugin_definition))
-      ->setRenderer($container);
+      ->addRenderer($container);
   }
 
   /**

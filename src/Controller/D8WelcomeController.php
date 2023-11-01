@@ -27,11 +27,11 @@ class D8WelcomeController extends ControllerBase {
    */
   public static function create(ContainerInterface $container): static {
     return parent::create($container)
-      ->setContainer($container)
-      ->setConfigFactory()
-      ->setRouteMatch()
-      ->setState()
-      ->setTitleResolver();
+      ->addContainer($container)
+      ->addConfigFactory()
+      ->addRouteMatch()
+      ->addState()
+      ->addTitleResolver();
   }
 
   /**
