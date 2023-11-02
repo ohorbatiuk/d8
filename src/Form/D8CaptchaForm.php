@@ -6,6 +6,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\recaptcha\Form\ReCaptchaAdminSettingsForm;
 use Drupal\service\ModuleInstallerTrait;
+use Drupal\service\StringTranslationTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -14,14 +15,15 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
 
   use ModuleInstallerTrait;
+  use StringTranslationTrait;
 
   /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container): static {
     return parent::create($container)
-      ->setStringTranslation($container->get('string_translation'))
-      ->addModuleInstaller($container);
+      ->addModuleInstaller($container)
+      ->addStringTranslation();
   }
 
   /**

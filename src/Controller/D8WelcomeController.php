@@ -27,8 +27,7 @@ class D8WelcomeController extends ControllerBase {
    */
   public static function create(ContainerInterface $container): static {
     return parent::create($container)
-      ->addContainer($container)
-      ->addConfigFactory()
+      ->addConfigFactory($container)
       ->addRouteMatch()
       ->addState()
       ->addTitleResolver();
