@@ -5,5 +5,4 @@ widget:
   type: 'image'
   size: ''
   badge: 'bottomright'
-  tabindex: 0
   noscript: false
