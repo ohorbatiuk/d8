@@ -50,6 +50,10 @@
                 "Integrate Invisible reCAPTCHA option from Google": "https://www.drupal.org/files/issues/2022-10-12/recaptcha-ajax-2493183-164%2Bnocaptcha-2852269-203.patch",
                 "Register in the new tab": "https://www.drupal.org/files/issues/2023-03-05/recaptcha-register-in-the-new-tab-3346065-2.patch"
             },
+            "drupal/recaptcha_preloader": {
+                "Add header with module name in ASCII Art style, change maintainer username in the information file, and update the module description": "https://git.drupalcode.org/project/recaptcha_preloader/-/commit/16688a8cbe3d6ed582714f8d7671cf390ec6f34a.diff",
+                "Drupal 10 only": "https://git.drupalcode.org/project/recaptcha_preloader/-/merge_requests/1.diff"
+            },
             "drupal/symfony_mailer": {
                 "Add support for complex address strings in back-compatibility mode": "https://www.drupal.org/files/issues/2023-03-30/symfony_mailer-support_complex_address_strings-3350992-3.patch",
                 "Drupal 10.1.0 new aggregation breaks InlineCssEmailAdjuster": "https://www.drupal.org/files/issues/2023-09-21/symfony_mailer.inline-css.3371042-88.patch"
