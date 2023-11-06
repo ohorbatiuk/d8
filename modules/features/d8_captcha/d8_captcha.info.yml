@@ -1,5 +1,5 @@
 name: D8+ Captcha
-description: Provides a wrapper for the reCAPTCHA module.
+description: Provides a wrapper for the reCAPTCHA Preloader module.
 package: D8+
 
 type: module
