@@ -18,3 +18,12 @@ function d8_captcha_update_8001(array &$sandbox): void {
 function d8_captcha_update_9501(array &$sandbox): void {
   _d8_module('recaptcha_preloader');
 }
+
+/**
+ * Remove Tab Index.
+ */
+function d8_captcha_update_10101(array &$sandbox): void {
+  \Drupal::configFactory()->getEditable('recaptcha.settings')
+    ->clear('widget.tabindex')
+    ->save();
+}
