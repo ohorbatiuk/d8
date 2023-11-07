@@ -25,7 +25,10 @@ function d8_captcha_captcha_alter(array &$captcha, array $info): void {
 /**
  * Implements hook_library_info_alter().
  */
-function d8_captcha_library_info_alter(array &$libraries, string $extension): void {
+function d8_captcha_library_info_alter(
+  array &$libraries,
+  string $extension
+): void {
   if (
     $extension === 'recaptcha' &&
     isset($libraries[$name = $extension . '.invisible'])
