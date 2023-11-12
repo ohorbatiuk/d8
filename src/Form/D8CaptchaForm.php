@@ -16,16 +16,15 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
   /**
    * The module installer.
    */
-  private readonly ModuleInstallerInterface $moduleInstaller;
+  protected ModuleInstallerInterface $moduleInstaller;
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container): self {
-    /** @var self $instance */
-    $instance = parent::create($container);
+  public static function create(ContainerInterface $container): static {
+    $instance = parent::create($container)
+      ->setStringTranslation($container->get('string_translation'));
 
-    $instance->setStringTranslation($container->get('string_translation'));
     $instance->moduleInstaller = $container->get('module_installer');
 
     return $instance;
@@ -42,10 +41,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
    * {@inheritdoc}
    */
   protected function getEditableConfigNames(): array {
-    return array_merge(
-      parent::getEditableConfigNames(),
-      ['recaptcha_preloader.settings'],
-    );
+    return [...parent::getEditableConfigNames(), 'recaptcha_preloader.settings'];
   }
 
   /**
