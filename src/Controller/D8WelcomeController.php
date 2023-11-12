@@ -3,8 +3,11 @@
 namespace Drupal\d8\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Controller\TitleResolverInterface;
-use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\service\ConfigFactoryTrait;
+use Drupal\service\EntityTypeManagerTrait;
+use Drupal\service\RouteMatchTrait;
+use Drupal\service\StateTrait;
+use Drupal\service\TitleResolverTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -13,28 +16,21 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class D8WelcomeController extends ControllerBase {
 
-  /**
-   * The current route match.
-   */
-  private readonly RouteMatchInterface $routeMatch;
-
-  /**
-   * The title resolver.
-   */
-  private readonly TitleResolverInterface $titleResolver;
+  use ConfigFactoryTrait;
+  use EntityTypeManagerTrait;
+  use RouteMatchTrait;
+  use StateTrait;
+  use TitleResolverTrait;
 
   /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container): static {
-    $instance = parent::create($container);
-
-    $instance->configFactory = $container->get('config.factory');
-    $instance->routeMatch = $container->get('current_route_match');
-    $instance->stateService = $container->get('state');
-    $instance->titleResolver = $container->get('title_resolver');
-
-    return $instance;
+    return parent::create($container)
+      ->addConfigFactory($container)
+      ->addRouteMatch()
+      ->addState()
+      ->addTitleResolver();
   }
 
   /**
@@ -46,7 +42,7 @@ class D8WelcomeController extends ControllerBase {
    * @see _d8_install_configure_form_submit()
    */
   public function page(Request $request): array {
-    $config = $this->configFactory->getEditable('system.site');
+    $config = $this->configFactory()->getEditable('system.site');
 
     foreach ((array) $this->state()->get('d8') as $key => $value) {
       $config->set($key, $value);
@@ -56,8 +52,8 @@ class D8WelcomeController extends ControllerBase {
 
     $this->state()->delete('d8');
 
-    $title = $this->titleResolver
-      ->getTitle($request, $this->routeMatch->getRouteObject());
+    $title = $this->titleResolver()
+      ->getTitle($request, $this->routeMatch()->getRouteObject());
 
     return ['#plain_text' => $title];
   }
