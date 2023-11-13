@@ -14,7 +14,7 @@ class D8ControllerResolver extends ControllerResolver {
   /**
    * The method name for building a database update page.
    */
-  private const METHOD = '::handle';
+  protected const METHOD = '::handle';
 
   /**
    * {@inheritdoc}
@@ -24,10 +24,10 @@ class D8ControllerResolver extends ControllerResolver {
     $path = ''
   ): mixed {
     if (
-      $controller === '\\' . DbUpdateController::class . self::METHOD &&
+      $controller === '\\' . DbUpdateController::class . static::METHOD &&
       $path === ''
     ) {
-      $controller = D8UpdateController::class . self::METHOD;
+      $controller = D8UpdateController::class . static::METHOD;
     }
 
     return parent::getControllerFromDefinition($controller, $path);
