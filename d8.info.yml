@@ -3,7 +3,7 @@ description: Basis for the site on Drupal 10.
 
 type: profile
 core_version_requirement: ^10
-version: 0.17.0.162
+version: 0.18.0.163
 
 distribution:
   name: D8+
@@ -24,6 +24,7 @@ dependencies:
   - admin_toolbar:admin_toolbar_tools
   - features:features_ui
   - module_filter:module_filter
+  - service:service
 
 themes:
   - seven
