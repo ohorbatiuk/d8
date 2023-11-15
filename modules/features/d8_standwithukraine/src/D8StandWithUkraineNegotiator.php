@@ -6,6 +6,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Menu\LocalTaskManagerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Theme\ThemeManagerInterface;
+use Drupal\standwithukraine\Position;
 use Drupal\standwithukraine\Service\StandWithUkraineNegotiatorInterface;
 use Drupal\standwithukraine\StandWithUkraineSettingsInterface;
 
@@ -20,27 +21,24 @@ class D8StandWithUkraineNegotiator implements StandWithUkraineNegotiatorInterfac
    * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
    *   The configuration factory.
    * @param \Drupal\Core\Theme\ThemeManagerInterface $themeManager
-   *   The theme.
+   *   The theme manager.
    * @param \Drupal\Core\Routing\RouteMatchInterface $routeMatch
    *   The currently active route match object.
    * @param \Drupal\Core\Menu\LocalTaskManagerInterface $localTaskManager
    *   The local task manager.
    */
   public function __construct(
-    private readonly ConfigFactoryInterface $configFactory,
-    private readonly ThemeManagerInterface $themeManager,
-    private readonly RouteMatchInterface $routeMatch,
-    private readonly LocalTaskManagerInterface $localTaskManager
+    protected ConfigFactoryInterface $configFactory,
+    protected ThemeManagerInterface $themeManager,
+    protected RouteMatchInterface $routeMatch,
+    protected LocalTaskManagerInterface $localTaskManager
   ) {}
 
   /**
    * {@inheritdoc}
    */
   public function applies(StandWithUkraineSettingsInterface $settings): bool {
-    if (
-      $settings->isSingle() ||
-      $settings->getPosition() !== StandWithUkraineSettingsInterface::POSITION_RIGHT
-    ) {
+    if ($settings->isSingle() || $settings->getPosition() !== Position::Right) {
       $theme = $this->configFactory->get('system.theme')->get('admin');
 
       if (!empty($theme)) {
@@ -84,7 +82,7 @@ class D8StandWithUkraineNegotiator implements StandWithUkraineNegotiatorInterfac
       ->setText(StandWithUkraineSettingsInterface::TEXT)
       ->setDouble()
       ->setSizes(FALSE, TRUE)
-      ->setPosition(StandWithUkraineSettingsInterface::POSITION_RIGHT)
+      ->setPosition(Position::Right)
       ->setOffset($offset);
   }
 
