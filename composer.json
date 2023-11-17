@@ -24,16 +24,13 @@
         "drupal/symfony_mailer": "1.3.2"
     },
     "require-dev": {
-        "drupal/config2php": "2.1.0",
+        "drupal/config2php": "3.0.0",
         "twbs/bootstrap-sass": "3.4.3"
     },
     "extra": {
         "patches": {
             "drupal/autoban": {
                 "Mixed links": "https://www.drupal.org/files/issues/2023-09-09/autoban-mixed-links-3386212-2.patch"
-            },
-            "drupal/config2php": {
-                "Drupal 10 only": "https://git.drupalcode.org/project/config2php/-/merge_requests/2.diff"
             },
             "drupal/core": {
                 "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2019-12-14/default-theme-favicon-for-administration-theme-2981434-7.patch",
