@@ -34,7 +34,7 @@
             },
             "drupal/core": {
                 "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2019-12-14/default-theme-favicon-for-administration-theme-2981434-7.patch",
-                "Add events for matching entity hooks": "https://www.drupal.org/files/issues/2022-12-22/2551893-99.patch",
+                "Add events for matching entity hooks": "https://www.drupal.org/files/issues/2024-01-30/2551893-122.patch",
                 "News mode": "https://www.drupal.org/files/issues/2024-02-07/drupal-news-mode-3256060-16.patch"
             },
             "drupal/exception_mailer": {
