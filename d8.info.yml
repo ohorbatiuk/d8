@@ -1,9 +1,9 @@
 name: D8+
-description: Basis for the site on Drupal 10.
+description: Installation profile for Drupal 10.
 
 type: profile
 core_version_requirement: ^10
-version: 0.18.0.165
+version: 0.18.0.166
 
 distribution:
   name: D8+
