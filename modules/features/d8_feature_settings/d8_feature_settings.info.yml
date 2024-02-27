@@ -1,5 +1,5 @@
 name: D8+ Feature Settings
-description: All default configuration settings.
+description: Provides some configuration.
 package: D8+
 
 type: module

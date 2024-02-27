@@ -1,5 +1,5 @@
 name: D8+ Ban
-description: Ban settings.
+description: Provides rules for banning by IP address.
 package: D8+
 
 type: module

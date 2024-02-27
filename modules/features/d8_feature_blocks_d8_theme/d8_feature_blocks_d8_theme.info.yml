@@ -1,5 +1,5 @@
 name: D8+ Feature Blocks D8 Theme
-description: D8+ Theme block settings.
+description: Provides blocks for the D8+ theme.
 package: D8+
 
 type: module

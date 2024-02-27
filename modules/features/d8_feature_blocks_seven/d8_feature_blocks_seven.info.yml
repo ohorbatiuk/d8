@@ -1,5 +1,5 @@
 name: D8+ Feature Blocks Seven
-description: Seven theme block settings.
+description: Provides blocks for the Seven theme.
 package: D8+
 
 type: module
