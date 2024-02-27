@@ -1,5 +1,21 @@
 langcode: en
-schemas: []
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: /themes/contrib/bootstrap/favicon.ico
+  use_default: true
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+  node_user_picture: false
+logo:
+  path: ''
+  url: ''
+  use_default: true
+schemas:
+  bootstrap: 8000
+  d8_theme: 8000
 fluid_container: 1
 image_shape: img-thumbnail
 navbar_position: static-top
