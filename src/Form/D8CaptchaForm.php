@@ -18,6 +18,14 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
   use StringTranslationTrait;
 
   /**
+   * The fields are split by section which should be hidden.
+   */
+  protected const FIELDS = [
+    'widget' => ['recaptcha_size'],
+    'general' => ['recaptcha_site_key', 'recaptcha_secret_key'],
+  ];
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container): static {
@@ -46,13 +54,13 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state): array {
+  public function buildForm(
+    array $form,
+    FormStateInterface $form_state
+  ): array {
     $form = parent::buildForm($form, $form_state);
 
     $form['#title'] = $this->t('reCAPTCHA settings');
-
-    $form['widget']['#type'] = 'container';
-    $form['widget']['#weight'] = 0;
 
     $field = &$form['widget']['recaptcha_size'];
     $field['#type'] = 'radios';
@@ -66,18 +74,14 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
       );
     }
 
-    foreach (Element::children($form['widget']) as $key) {
-      if ($key !== 'recaptcha_size') {
-        $form['widget'][$key]['#access'] = FALSE;
-      }
-    }
+    foreach (static::FIELDS as $section => $fields) {
+      $form[$section]['#type'] = 'container';
+      $form[$section]['#weight'] = 1 - intval($section === key(static::FIELDS));
 
-    $form['general']['#type'] = 'container';
-    $form['general']['#weight'] = 1;
-
-    foreach (Element::children($form['general']) as $key) {
-      if (!in_array($key, ['recaptcha_site_key', 'recaptcha_secret_key'])) {
-        $form['general'][$key]['#access'] = FALSE;
+      foreach (Element::children($form[$section]) as $key) {
+        if (!in_array($key, $fields)) {
+          $form[$section][$key]['#access'] = FALSE;
+        }
       }
     }
 
@@ -87,7 +91,10 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state): void {
+  public function submitForm(
+    array &$form,
+    FormStateInterface $form_state
+  ): void {
     parent::submitForm($form, $form_state);
 
     if ($form_state->getValue('recaptcha_size') !== 'invisible') {

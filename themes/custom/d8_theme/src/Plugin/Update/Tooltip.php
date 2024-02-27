@@ -4,15 +4,17 @@ namespace Drupal\d8_theme\Plugin\Update;
 
 use Drupal\bootstrap\Plugin\Update\UpdateBase;
 use Drupal\bootstrap\Theme;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
- * @BootstrapUpdate(
- *   id = 8001,
- *   label = @Translation("Tooltip default position"),
- *   description = @Translation("Show tooltips above field by default."),
- *   private = TRUE,
- * )
+ * The tooltip update.
  */
+#[BootstrapUpdate(
+  id: 8001,
+  label: new TranslatableMarkup('Tooltip default position'),
+  description: new TranslatableMarkup('Show tooltips above field by default.'),
+  private: TRUE
+)]
 class Tooltip extends UpdateBase {
 
   /**
