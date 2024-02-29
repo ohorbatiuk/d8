@@ -10,8 +10,9 @@ use Drupal\Core\Template\Attribute;
  * Pre-processes variables for the "table" theme hook.
  *
  * @ingroup plugins_preprocess
+ *
+ * @BootstrapPreprocess("table")
  */
-#[BootstrapPreprocess('table')]
 class Table extends BootstrapTable {
 
   /**

@@ -11,8 +11,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Implements hook_theme_suggestions_alter().
  *
  * @ingroup plugins_alter
+ *
+ * @BootstrapAlter("theme_suggestions")
  */
-#[BootstrapAlter('theme_suggestions')]
 class ThemeSuggestions extends ThemeSuggestionsBase implements ContainerFactoryPluginInterface {
 
   use RouteMatchTrait;

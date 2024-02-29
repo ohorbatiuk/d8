@@ -11,8 +11,9 @@ use Drupal\Core\Form\FormStateInterface;
  * Processes the "captcha" element.
  *
  * @ingroup plugins_process
+ *
+ * @BootstrapProcess("captcha")
  */
-#[BootstrapProcess('captcha')]
 class Captcha extends ProcessBase implements ProcessInterface {
 
   /**

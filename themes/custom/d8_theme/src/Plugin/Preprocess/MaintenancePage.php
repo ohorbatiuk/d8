@@ -10,8 +10,9 @@ use Drupal\bootstrap\Utility\Variables;
  * Pre-processes variables for the "maintenance_page" theme hook.
  *
  * @ingroup plugins_preprocess
+ *
+ * @BootstrapPreprocess("maintenance_page")
  */
-#[BootstrapPreprocess('maintenance_page')]
 class MaintenancePage extends PreprocessBase implements PreprocessInterface {
 
   /**
