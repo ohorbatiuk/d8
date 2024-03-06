@@ -29,27 +29,27 @@ class EventSubscriber implements EventSubscriberInterface {
   /**
    * The common part of the status message and database log message.
    */
-  private const MESSAGE = ' has been changed from %old to %new.';
+  protected const MESSAGE = ' has been changed from %old to %new.';
 
   /**
    * The link label of the status message and database log message.
    */
-  private const LABEL = 'The site E-mail address';
+  protected const LABEL = 'The site E-mail address';
 
   /**
    * The prefix of the status message where the link will be inserted.
    */
-  private const KEY = '@link';
+  protected const KEY = '@link';
 
   /**
    * The base E-mail address of the site.
    */
-  private string $siteAddress;
+  protected string $siteAddress;
 
   /**
    * The E-mail address from the username field of the mailer transport entity.
    */
-  private string $mailerAddress;
+  protected string $mailerAddress;
 
   /**
    * EventSubscriber constructor.
@@ -68,9 +68,9 @@ class EventSubscriber implements EventSubscriberInterface {
    *   The logger channel factory.
    */
   public function __construct(
-    private readonly EntityTypeManagerInterface $entityTypeManager,
-    private readonly EmailValidatorInterface $emailValidator,
-    private readonly ConfigFactoryInterface $configFactory,
+    protected EntityTypeManagerInterface $entityTypeManager,
+    protected EmailValidatorInterface $emailValidator,
+    protected ConfigFactoryInterface $configFactory,
     MessengerInterface $messenger,
     TranslationInterface $translation,
     LoggerChannelFactoryInterface $logger_factory
@@ -118,49 +118,43 @@ class EventSubscriber implements EventSubscriberInterface {
    *   The event.
    */
   public function onConfigSave(ConfigCrudEvent $event): void {
-    $mailer_config = $event->getConfig();
+    $config = $event->getConfig();
 
     if (
-      $mailer_config->getName() !== 'symfony_mailer.settings' ||
-      !$event->isChanged($key = 'default_transport')
+      $config->getName() === 'symfony_mailer.settings' &&
+      $event->isChanged($key = 'default_transport')
     ) {
-      return;
-    }
+      $entity = $this->entityTypeManager->getStorage('mailer_transport')
+        ->load($config->get($key));
 
-    $entity = $this->entityTypeManager->getStorage('mailer_transport')
-      ->load($mailer_config->get($key));
+      if ($entity instanceof MailerTransportInterface) {
+        /** @var \Drupal\Component\Plugin\LazyPluginCollection $configuration */
+        $configuration = $entity->getPluginCollections()['configuration'];
 
-    if ($entity instanceof MailerTransportInterface) {
-      /** @var \Drupal\Component\Plugin\LazyPluginCollection $configuration */
-      $configuration = $entity->getPluginCollections()['configuration'];
+        $this->mailerAddress = $configuration->getConfiguration()['user'];
 
-      $this->mailerAddress = $configuration->getConfiguration()['user'];
+        if (
+          !empty($this->mailerAddress) &&
+          $this->emailValidator->isValid($this->mailerAddress)
+        ) {
+          $config = $this->configFactory->getEditable('system.site');
+          $this->siteAddress = $config->get($key = 'mail');
 
-      if (
-        empty($this->mailerAddress) ||
-        !$this->emailValidator->isValid($this->mailerAddress)
-      ) {
-        return;
+          if ($this->mailerAddress !== $this->siteAddress) {
+            $config->set($key, $this->mailerAddress)->save();
+
+            $this->messenger->addStatus($this->t(
+              static::KEY . static::MESSAGE,
+              $this->context(static::KEY, static::LABEL),
+            ));
+
+            $this->getLogger('d8_mail')->info(
+              static::LABEL . static::MESSAGE,
+              $this->context(substr(static::KEY, 1), 'Edit'),
+            );
+          }
+        }
       }
-
-      $site_config = $this->configFactory->getEditable('system.site');
-      $this->siteAddress = $site_config->get($key = 'mail');
-
-      if ($this->mailerAddress === $this->siteAddress) {
-        return;
-      }
-
-      $site_config->set($key, $this->mailerAddress)->save();
-
-      $this->messenger->addStatus($this->t(
-        self::KEY . self::MESSAGE,
-        $this->context(self::KEY, self::LABEL),
-      ));
-
-      $this->getLogger('d8_mail')->info(
-        self::LABEL . self::MESSAGE,
-        $this->context(substr(self::KEY, 1), 'Edit'),
-      );
     }
   }
 

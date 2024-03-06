@@ -1,6 +1,6 @@
 {
     "name": "lexhouk/d8",
-    "description": "Profile for Drupal 10.",
+    "description": "Installation profile for Drupal 10.",
     "type": "drupal-profile",
     "license": "GPL-2.0-or-later",
     "require": {
@@ -11,8 +11,8 @@
         "drupal/bootstrap": "3.29",
         "drupal/captcha": "2.0.5",
         "drupal/config_update": "2.0.0-alpha3",
-        "drupal/core": "10.1.5",
-        "drupal/core-composer-scaffold": "10.1.5",
+        "drupal/core": "10.2.3",
+        "drupal/core-composer-scaffold": "10.2.3",
         "drupal/exception_mailer": "4.0.0",
         "drupal/features": "3.13",
         "drupal/module_filter": "4.0.1",
@@ -34,8 +34,8 @@
             },
             "drupal/core": {
                 "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2019-12-14/default-theme-favicon-for-administration-theme-2981434-7.patch",
-                "Add events for matching entity hooks": "https://www.drupal.org/files/issues/2022-12-22/2551893-99.patch",
-                "News mode": "https://www.drupal.org/files/issues/2022-06-20/drupal-news-mode-3256060-10.patch"
+                "Add events for matching entity hooks": "https://www.drupal.org/files/issues/2024-01-30/2551893-122.patch",
+                "News mode": "https://www.drupal.org/files/issues/2024-02-07/drupal-news-mode-3256060-16.patch"
             },
             "drupal/exception_mailer": {
                 "Queue workers are broken": "https://www.drupal.org/files/issues/2023-10-25/exception-mailer-queue-worker-3395572-5.patch"

@@ -1,5 +1,5 @@
 name: D8+ Feature Menus
-description: All menus.
+description: Provides menus.
 package: D8+
 
 type: module

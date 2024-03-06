@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Basis for the site on Drupal 10.
+ * Provides installation profile for Drupal 10.
  */
 
 use Drupal\Core\Database\Database;

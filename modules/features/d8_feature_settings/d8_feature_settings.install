@@ -9,6 +9,10 @@
  * Implements hook_install().
  */
 function d8_feature_settings_install(bool $is_syncing): void {
+  if (!$is_syncing) {
+    return;
+  }
+
   // Set Monday how first day of the week and disable possibility to change
   // personal timezone by the user.
   \Drupal::configFactory()->getEditable('system.date')
