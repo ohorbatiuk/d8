@@ -3,7 +3,7 @@ description: Provides installation profile for Drupal 10.
 
 type: profile
 core_version_requirement: ^10.2
-version: 0.18.1.166
+version: 0.18.1.167
 
 distribution:
   name: D8+

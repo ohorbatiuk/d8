@@ -15,7 +15,7 @@
         "drupal/core-composer-scaffold": "10.2.3",
         "drupal/exception_mailer": "4.0.0",
         "drupal/features": "3.13",
-        "drupal/module_filter": "4.0.1",
+        "drupal/module_filter": "4.1.1",
         "drupal/recaptcha": "3.2",
         "drupal/recaptcha_preloader": "2.0.0",
         "drupal/service": "1.0.0",
@@ -43,9 +43,6 @@
             "drupal/features": {
                 "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch",
                 "Deprecated function: Creation of dynamic property Drupal\\features\\FeaturesGenerationMethodManager::$cacheKeyPrefix is deprecated in Drupal\\features\\FeaturesGenerationMethodManager->__construct() (line 28 of modules/contrib/features/src/FeaturesGenerationM": "https://www.drupal.org/files/issues/2023-07-19/3375425-3.patch"
-            },
-            "drupal/module_filter": {
-                "Missing autocomplete library": "https://www.drupal.org/files/issues/2023-06-30/module-filter-missing-autocomplete-library-3371613-3.patch"
             },
             "drupal/recaptcha": {
                 "Integrate Invisible reCAPTCHA option from Google": "https://www.drupal.org/files/issues/2022-12-05/recaptcha-ajax-2493183-164%2Bnocaptcha-2852269-206.patch",
