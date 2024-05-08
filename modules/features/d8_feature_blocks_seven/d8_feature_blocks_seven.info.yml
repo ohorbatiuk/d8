@@ -10,3 +10,6 @@ dependencies:
   - drupal:block
   - drupal:system
   - drupal:user
+
+lifecycle: deprecated
+lifecycle_link: https://github.com/lexhouk/d8/issues/288
