@@ -1,0 +1,9 @@
+name: D8+ Setting
+description: Provides a wrapper for the D8+ Feature Settings module.
+package: D8+
+
+type: module
+core_version_requirement: ^10
+
+dependencies:
+  - d8:d8_feature_settings

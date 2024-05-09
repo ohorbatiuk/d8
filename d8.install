@@ -17,14 +17,18 @@ use Drupal\user\UserInterface;
  * Implements hook_install().
  */
 function d8_install(bool $is_syncing): void {
+  if ($is_syncing) {
+    return;
+  }
+
   /** @var \Drupal\Core\Extension\ModuleInstallerInterface $installer */
   $installer = \Drupal::service('module_installer');
 
   $installer->install([
-    'd8_feature_settings',
-    'd8_feature_menus',
-    'd8_feature_blocks_seven',
-    'd8_feature_blocks_d8_theme',
+    'd8_setting',
+    'd8_menu',
+    'd8_seven',
+    'd8_theming',
     'd8_ban',
     'd8_standwithukraine',
     'd8_log',
@@ -311,6 +315,20 @@ function d8_update_10103(array &$sandbox): void {
  */
 function d8_update_10104(array &$sandbox): void {
   _d8_module('service');
+}
+
+/**
+ * Install simplified modules.
+ */
+function d8_update_10201(array &$sandbox): void {
+  if (!isset($sandbox['suffixes'])) {
+    $sandbox['suffixes'] = ['menu', 'setting', 'seven', 'theming'];
+    $sandbox['current'] = 0;
+  }
+
+  _d8_module('d8_' . $sandbox['suffixes'][$sandbox['current']++]);
+
+  $sandbox['#finished'] = $sandbox['current'] / count($sandbox['suffixes']);
 }
 
 /**

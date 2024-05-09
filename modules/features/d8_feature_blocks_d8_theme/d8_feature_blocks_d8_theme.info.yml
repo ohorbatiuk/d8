@@ -9,3 +9,6 @@ dependencies:
   - d8:d8_feature_menus
   - drupal:block
   - drupal:system
+
+lifecycle: deprecated
+lifecycle_link: https://github.com/lexhouk/d8/issues/288
