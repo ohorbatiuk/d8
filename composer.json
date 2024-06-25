@@ -1,6 +1,6 @@
 {
     "name": "lexhouk/d8",
-    "description": "Installation profile for Drupal 10.",
+    "description": "The installation profile for CMS Drupal 10 based on the most common modules and themes that form the basis for creating a stable site.",
     "type": "drupal-profile",
     "license": "GPL-2.0-or-later",
     "require": {

@@ -3,6 +3,9 @@
 /**
  * @file
  * Provides installation profile for Drupal 10.
+ *
+ * It is based on the most common modules and themes that form the basis for
+ * creating a stable site.
  */
 
 use Drupal\Core\Database\Database;
