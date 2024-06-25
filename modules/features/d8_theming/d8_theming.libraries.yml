@@ -1,0 +1,6 @@
+base:
+  css:
+    theme:
+      d8_theming.css: { }
+  dependencies:
+    - extlink/drupal.extlink

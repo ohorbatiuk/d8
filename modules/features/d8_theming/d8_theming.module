@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Provides a wrapper for the D8+ Feature Blocks D8 Theme module.
+ */
+
+/**
+ * Implements hook_page_attachments().
+ */
+function d8_theming_page_attachments(array &$attachments): void {
+  $attachments['#attached']['library'][] = 'd8_theming/base';
+}

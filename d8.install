@@ -332,6 +332,15 @@ function d8_update_10201(array &$sandbox): void {
 }
 
 /**
+ * Install External Links and Font Awesome Icons modules.
+ */
+function d8_update_10202(array &$sandbox): void {
+  foreach (['extlink', 'fontawesome'] as $module) {
+    _d8_module($module);
+  }
+}
+
+/**
  * (Un)install a module with optional checking of some other module.
  *
  * @param string $target
