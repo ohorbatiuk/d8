@@ -32,6 +32,7 @@ function d8_install(bool $is_syncing): void {
     'd8_ban',
     'd8_standwithukraine',
     'd8_log',
+    'd8_link',
     'recaptcha',
   ]);
 
@@ -332,12 +333,10 @@ function d8_update_10201(array &$sandbox): void {
 }
 
 /**
- * Install External Links and Font Awesome Icons modules.
+ * Install D8+ Link module.
  */
 function d8_update_10202(array &$sandbox): void {
-  foreach (['extlink', 'fontawesome'] as $module) {
-    _d8_module($module);
-  }
+  _d8_module('d8_link');
 }
 
 /**

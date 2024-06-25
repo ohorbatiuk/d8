@@ -1,0 +1,10 @@
+name: D8+ Link
+description: Provides a wrapper for the External Links module and related.
+package: D8+
+
+type: module
+core_version_requirement: ^9.4 || ^10
+
+dependencies:
+  - extlink:extlink
+  - fontawesome:fontawesome

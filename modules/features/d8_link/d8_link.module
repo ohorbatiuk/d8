@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Provides a wrapper for the External Links module and related...
+ *
+ * ...such as the Font Awesome Icons module.
+ */
+
+/**
+ * Implements hook_page_attachments().
+ */
+function d8_link_page_attachments(array &$attachments): void {
+  $attachments['#attached']['library'][] = 'd8_link/base';
+}
