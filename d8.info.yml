@@ -19,6 +19,7 @@ dependencies:
   - drupal:field_ui
   - drupal:node
   - drupal:shortcut
+  - drupal:update
 
   - admin_toolbar:admin_toolbar_search
   - admin_toolbar:admin_toolbar_tools

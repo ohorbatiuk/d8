@@ -6,6 +6,6 @@ type: module
 core_version_requirement: ^9 || ^10
 
 dependencies:
-  - d8:d8_feature_menus
+  - d8:d8_menu
   - drupal:block
   - drupal:system
