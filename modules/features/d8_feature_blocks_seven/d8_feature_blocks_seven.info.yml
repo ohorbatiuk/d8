@@ -5,11 +5,5 @@ package: D8+
 type: module
 core_version_requirement: ^9 || ^10
 
-dependencies:
-  - d8:d8_feature_menus
-  - drupal:block
-  - drupal:system
-  - drupal:user
-
 lifecycle: deprecated
 lifecycle_link: https://github.com/lexhouk/d8/issues/288

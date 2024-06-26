@@ -5,9 +5,5 @@ package: D8+
 type: module
 core_version_requirement: ^9 || ^10
 
-dependencies:
-  - drupal:system
-  - drupal:menu_ui
-
 lifecycle: deprecated
 lifecycle_link: https://github.com/lexhouk/d8/issues/288
