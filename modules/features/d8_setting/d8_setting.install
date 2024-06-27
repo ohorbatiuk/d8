@@ -2,13 +2,13 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the d8_feature_settings module.
+ * Install, update and uninstall functions for the d8_setting module.
  */
 
 /**
  * Implements hook_install().
  */
-function d8_feature_settings_install(bool $is_syncing): void {
+function d8_setting_install(bool $is_syncing): void {
   if (!$is_syncing) {
     return;
   }
@@ -23,13 +23,4 @@ function d8_feature_settings_install(bool $is_syncing): void {
   \Drupal::configFactory()->getEditable('system.logging')
     ->set('error_level', 'verbose')
     ->save(TRUE);
-}
-
-/**
- * Enable overriding favicon of administration theme.
- */
-function d8_feature_settings_update_8001(array &$sandbox): void {
-  \Drupal::configFactory()->getEditable('system.theme')
-    ->set('favicon', TRUE)
-    ->save();
 }

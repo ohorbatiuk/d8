@@ -1,0 +1,14 @@
+:root {
+  --d8-link: .2em;
+}
+
+.fa {
+  position: relative;
+  top: calc(-2 * var(--d8-link));
+  padding-left: var(--d8-link);
+  font-size: calc(4 * var(--d8-link));
+}
+
+em .fa {
+  padding-left: calc(3 * var(--d8-link) / 2);
+}

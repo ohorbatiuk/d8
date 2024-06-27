@@ -1,9 +1,11 @@
 name: D8+ Theming
-description: Provides a wrapper for the D8+ Feature Blocks D8 Theme module.
+description: Provides blocks for the D8+ theme.
 package: D8+
 
 type: module
 core_version_requirement: ^9 || ^10
 
 dependencies:
-  - d8:d8_feature_blocks_d8_theme
+  - d8:d8_menu
+  - drupal:block
+  - drupal:system

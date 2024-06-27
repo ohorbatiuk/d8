@@ -1,9 +1,10 @@
 name: D8+ Menu
-description: Provides a wrapper for the D8+ Feature Menus module.
+description: Provides a wrapper for the Menu UI module and related.
 package: D8+
 
 type: module
 core_version_requirement: ^9 || ^10
 
 dependencies:
-  - d8:d8_feature_menus
+  - drupal:system
+  - drupal:menu_ui

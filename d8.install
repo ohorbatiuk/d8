@@ -5,64 +5,17 @@
  * Install, update and uninstall functions for the d8 installation profile.
  */
 
-use Drupal\Core\Config\FileStorage;
-use Drupal\Core\Config\InstallStorage;
-use Drupal\Core\Entity\Controller\VersionHistoryController;
-use Drupal\Core\Site\Settings;
+use Drupal\d8\D8Setup;
 use Drupal\d8\Form\D8CaptchaForm;
 use Drupal\d8\Form\D8ConfigureForm;
-use Drupal\user\UserInterface;
 
 /**
  * Implements hook_install().
  */
 function d8_install(bool $is_syncing): void {
-  if ($is_syncing) {
-    return;
+  if (!$is_syncing) {
+    \Drupal::classResolver(D8Setup::class)->install();
   }
-
-  /** @var \Drupal\Core\Extension\ModuleInstallerInterface $installer */
-  $installer = \Drupal::service('module_installer');
-
-  $installer->install([
-    'd8_setting',
-    'd8_menu',
-    'd8_seven',
-    'd8_theming',
-    'd8_ban',
-    'd8_standwithukraine',
-    'd8_log',
-    'recaptcha',
-  ]);
-
-  /** @var \Drupal\Core\Extension\ExtensionPathResolver $resolver */
-  $resolver = \Drupal::service('extension.path.resolver');
-
-  $path = sprintf(
-    '%s/%s',
-    $resolver->getPath('module', 'd8_captcha'),
-    InstallStorage::CONFIG_INSTALL_DIRECTORY,
-  );
-
-  foreach ((new FileStorage($path))->listAll() as $name) {
-    \Drupal::configFactory()->getEditable($name)->delete();
-  }
-
-  $installer->install(['d8_captcha'], FALSE);
-
-  // Populate the default shortcut set.
-  $shortcut = \Drupal::entityTypeManager()->getStorage('shortcut')->create([
-    'shortcut_set' => 'default',
-    'title' => t('Features'),
-    'weight' => -20,
-    'link' => [
-      'uri' => 'internal:/admin/config/development/features',
-    ],
-  ]);
-
-  $shortcut->save();
-
-  _d8_update(8006, 8901, 8903, 10001, 10102);
 }
 
 /**
@@ -86,282 +39,17 @@ function d8_install_tasks_alter(array &$tasks, array $install_state): void {
 }
 
 /**
- * Install Config Override module.
+ * Implements hook_update_last_removed().
  */
-function d8_update_8001(array &$sandbox): void {
-  _d8_module('config_override');
+function d8_update_last_removed(): int {
+  return 10201;
 }
 
 /**
- * Install reCAPTCHA module.
+ * Install D8+ Link module.
  */
-function d8_update_8002(array &$sandbox): void {
-  _d8_module('recaptcha');
-}
-
-/**
- * Install D8+ Captcha module.
- */
-function d8_update_8003(array &$sandbox): void {
-  $config = \Drupal::configFactory()->getEditable('recaptcha.settings');
-  $items = array_fill_keys(['secret_key', 'site_key'], NULL);
-
-  foreach ($items as $key => &$item) {
-    $item = $config->get($key);
-  }
-
-  unset($item);
-
-  _d8_module('d8_captcha');
-
-  foreach ($items as $key => $item) {
-    $config->set($key, $item);
-  }
-
-  $config->save();
-}
-
-/**
- * Install D8+ Ban module.
- */
-function d8_update_8004(array &$sandbox): void {
-  _d8_module('d8_ban');
-}
-
-/**
- * Install Config Export to PHP array module.
- */
-function d8_update_8005(array &$sandbox): void {
-  _d8_module($module = 'config2php', $module);
-}
-
-/**
- * Grant access to the search tab for a role with access to toolbar.
- */
-function d8_update_8006(array &$sandbox): void {
-  if (!isset($sandbox['total'])) {
-    $sandbox['total'] = \Drupal::entityQuery('user_role')
-      ->count()
-      ->accessCheck(FALSE)
-      ->execute();
-
-    $sandbox['offset'] = 0;
-
-    $sandbox['limit'] = Settings::get(
-      'entity_update_batch_size',
-      VersionHistoryController::REVISIONS_PER_PAGE,
-    );
-  }
-
-  $role_ids = \Drupal::entityQuery('user_role')
-    ->range($sandbox['offset'], $sandbox['limit'])
-    ->accessCheck(FALSE)
-    ->execute();
-
-  $roles = \Drupal::entityTypeManager()->getStorage('user_role')
-    ->loadMultiple($role_ids);
-
-  /** @var \Drupal\user\RoleInterface $role */
-  foreach ($roles as $role_id => $role) {
-    if (
-      $role->hasPermission('access toolbar') &&
-      !$role->hasPermission('use admin toolbar search')
-    ) {
-      user_role_grant_permissions($role_id, ['use admin toolbar search']);
-    }
-  }
-
-  $sandbox['offset'] += count($role_ids);
-  $sandbox['#finished'] = $sandbox['offset'] / $sandbox['total'];
-}
-
-/**
- * Install D8+ Config Export to PHP array module.
- */
-function d8_update_8901(array &$sandbox): void {
-  _d8_module('d8_' . ($module = 'config2php'), $module);
-}
-
-/**
- * Enable news mode.
- */
-function d8_update_8902(array &$sandbox): void {
-  \Drupal::configFactory()->getEditable('update.settings')
-    ->set('news', TRUE)
-    ->save();
-}
-
-/**
- * Set features bundle of installation profile as default.
- */
-function d8_update_8903(array &$sandbox): void {
-  \Drupal::state()->set('features.current_bundle', 'd8');
-}
-
-/**
- * Delete records of split versions.
- */
-function d8_update_8904(array &$sandbox): void {
-  \Drupal::database()->delete('key_value')
-    ->condition('collection', 'state')
-    ->condition(
-      'name',
-      \Drupal::database()->escapeLike('update.versions.') . '%',
-      'LIKE',
-    )
-    ->execute();
-}
-
-/**
- * Uninstall Config Override module.
- */
-function d8_update_9301(array &$sandbox): void {
-  _d8_module('config_override', uninstall: TRUE);
-}
-
-/**
- * Install StandWithUkraine module.
- */
-function d8_update_9302(array &$sandbox): void {
-  _d8_module('standwithukraine');
-}
-
-/**
- * Install D8+ StandWithUkraine module.
- */
-function d8_update_9303(array &$sandbox): void {
-  _d8_module('d8_standwithukraine');
-}
-
-/**
- * Install Upgrade Status module.
- */
-function d8_update_9401(array &$sandbox): void {
-  _d8_module($module = 'upgrade_status', $module);
-}
-
-/**
- * Install Contextual Links module.
- */
-function d8_update_9402(array &$sandbox): void {
-  _d8_module('contextual');
-}
-
-/**
- * Update Features bundle configuration.
- */
-function d8_update_9501(array &$sandbox): void {
-  /** @var \Drupal\Core\Extension\ModuleExtensionList $extension */
-  $extension = \Drupal::service('extension.list.module');
-
-  $path = $extension->getPath($name = 'd8') . '/config/install';
-  $data = (new FileStorage($path))->read($name = 'features.bundle.' . $name);
-
-  /** @var \Drupal\Core\Config\CachedStorage $storage */
-  $storage = \Drupal::service('config.storage');
-
-  $storage->write($name, (array) $data);
-}
-
-/**
- * Uninstall Upgrade Status module.
- */
-function d8_update_9502(array &$sandbox): void {
-  _d8_module($module = 'upgrade_status', $module, TRUE);
-}
-
-/**
- * Install D8+ Mail module.
- */
-function d8_update_10001(array &$sandbox): void {
-  _d8_module('d8_mail');
-}
-
-/**
- * Create the admin role.
- */
-function d8_update_10101(array &$sandbox): void {
-  /** @var \Drupal\user\RoleInterface $role */
-  $role = \Drupal::entityTypeManager()->getStorage('user_role')
-    ->create([
-      'id' => 'administrator',
-      'label' => 'Administrator',
-    ]);
-
-  $role->setIsAdmin(TRUE)->setWeight(2)->save();
-}
-
-/**
- * Add the admin role to the first user.
- */
-function d8_update_10102(array &$sandbox): void {
-  $account = \Drupal::entityTypeManager()->getStorage('user')->load(1);
-
-  if ($account instanceof UserInterface) {
-    $account->addRole('administrator');
-    $account->save();
-  }
-}
-
-/**
- * Install D8+ Log module.
- */
-function d8_update_10103(array &$sandbox): void {
-  _d8_module('d8_log');
-}
-
-/**
- * Install Service module.
- */
-function d8_update_10104(array &$sandbox): void {
-  _d8_module('service');
-}
-
-/**
- * Install simplified modules.
- */
-function d8_update_10201(array &$sandbox): void {
-  if (!isset($sandbox['suffixes'])) {
-    $sandbox['suffixes'] = ['menu', 'setting', 'seven', 'theming'];
-    $sandbox['current'] = 0;
-  }
-
-  _d8_module('d8_' . $sandbox['suffixes'][$sandbox['current']++]);
-
-  $sandbox['#finished'] = $sandbox['current'] / count($sandbox['suffixes']);
-}
-
-/**
- * (Un)install a module with optional checking of some other module.
- *
- * @param string $target
- *   The name of the module from this installation profile or drupal.org.
- * @param string|null $source
- *   (optional) The name of the module from drupal.org. If this parameter is
- *   specified then before installing/uninstalling the target module will be
- *   checked if the source module exists. Defaults to NULL.
- * @param bool $uninstall
- *   (optional) TRUE, if the module should be installed. Defaults to FALSE.
- */
-function _d8_module(
-  string $target,
-  string $source = NULL,
-  bool $uninstall = FALSE
-): void {
-  if ($source !== NULL) {
-    /** @var \Drupal\Core\Extension\ModuleExtensionList $extension */
-    $extension = \Drupal::service('extension.list.module');
-
-    if (!$extension->exists($source)) {
-      return;
-    }
-  }
-
-  /** @var \Drupal\Core\Extension\ModuleInstallerInterface $installer */
-  $installer = \Drupal::service('module_installer');
-
-  $method = ($uninstall ? 'un' : '') . 'install';
-  $installer->$method([$target], !$uninstall);
+function d8_update_10202(array &$sandbox): void {
+  \Drupal::classResolver(D8Setup::class)->module('d8_link');
 }
 
 /**

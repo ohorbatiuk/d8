@@ -1,9 +1,9 @@
 name: D8+
-description: Provides installation profile for Drupal 10.
+description: The installation profile for CMS Drupal 10 based on the most common modules and themes that form the basis for creating a stable site.
 
 type: profile
 core_version_requirement: ^10.2
-version: 0.18.2.168
+version: 0.19.0.169
 
 distribution:
   name: D8+
@@ -19,6 +19,7 @@ dependencies:
   - drupal:field_ui
   - drupal:node
   - drupal:shortcut
+  - drupal:update
 
   - admin_toolbar:admin_toolbar_search
   - admin_toolbar:admin_toolbar_tools

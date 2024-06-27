@@ -5,9 +5,5 @@ package: D8+
 type: module
 core_version_requirement: ^10
 
-dependencies:
-  - drupal:dblog
-  - drupal:views_ui
-
 lifecycle: deprecated
 lifecycle_link: https://github.com/lexhouk/d8/issues/288

@@ -1,6 +1,7 @@
 # D8+
 
-Installation profile for Drupal 10.
+The installation profile for CMS Drupal 10 based on the most common modules and
+themes that form the basis for creating a stable site.
 
 [![Made in Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd500.svg?labelColor=005bbb)](https://supportukrainenow.org)
 [![Version](http://poser.pugx.org/lexhouk/d8/version)](https://packagist.org/packages/lexhouk/d8)
@@ -25,7 +26,9 @@ This installation profile requires the following modules:
 - [Configuration Update Manager](https://www.drupal.org/project/config_update)
 - [Drupal Symfony Mailer](https://www.drupal.org/project/symfony_mailer)
 - [Error & Exception Mailer](https://www.drupal.org/project/exception_mailer)
+- [External Links](https://www.drupal.org/project/extlink)
 - [Features](https://www.drupal.org/project/features)
+- [Font Awesome Icons](https://www.drupal.org/project/fontawesome)
 - [Module Filter](https://www.drupal.org/project/module_filter)
 - [reCAPTCHA](https://www.drupal.org/project/recaptcha)
 - [reCAPTCHA Preloader](https://www.drupal.org/project/recaptcha_preloader)
