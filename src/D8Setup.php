@@ -4,10 +4,8 @@ namespace Drupal\d8;
 
 use Drupal\Core\Config\FileStorage;
 use Drupal\Core\Config\InstallStorage;
-use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\Controller\VersionHistoryController;
 use Drupal\Core\Site\Settings;
-use Drupal\service\ConfigFactoryTrait;
 use Drupal\service\EntityTypeManagerTrait;
 use Drupal\service\ExtensionPathResolverTrait;
 use Drupal\service\ModuleInstallerTrait;
@@ -22,9 +20,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @internal
  *    This is an internal utility class wrapping hook implementations.
  */
-class D8Setup implements ContainerInjectionInterface {
+class D8Setup extends D8BuilderBase {
 
-  use ConfigFactoryTrait;
   use EntityTypeManagerTrait;
   use ExtensionPathResolverTrait;
   use ModuleInstallerTrait;
@@ -35,8 +32,7 @@ class D8Setup implements ContainerInjectionInterface {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container): static {
-    return (new static())
-      ->addConfigFactory($container)
+    return parent::create($container)
       ->addEntityTypeManager()
       ->addExtensionPathResolver()
       ->addModuleInstaller()
