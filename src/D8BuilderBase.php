@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Provides a base for hook wrappers.
  *
  * @internal
- *    This is an internal utility class wrapping hook implementations.
+ *   This is an internal utility class wrapping hook implementations.
  */
 abstract class D8BuilderBase implements ContainerInjectionInterface {
 

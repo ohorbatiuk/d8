@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Provides functionality for styling E-mail letters.
  *
  * @internal
- *    This is an internal utility class wrapping hook implementations.
+ *   This is an internal utility class wrapping hook implementations.
  */
 class D8MailBuilder extends D8BuilderBase {
 

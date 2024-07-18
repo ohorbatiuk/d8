@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Provides functionality to set up installation profile.
  *
  * @internal
- *    This is an internal utility class wrapping hook implementations.
+ *   This is an internal utility class wrapping hook implementations.
  */
 class D8Setup extends D8BuilderBase {
 
