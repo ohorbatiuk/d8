@@ -4,13 +4,12 @@ namespace Drupal\d8;
 
 use Drupal\Core\Config\FileStorage;
 use Drupal\Core\Config\InstallStorage;
-use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\Controller\VersionHistoryController;
 use Drupal\Core\Site\Settings;
-use Drupal\service\ConfigFactoryTrait;
 use Drupal\service\EntityTypeManagerTrait;
 use Drupal\service\ExtensionPathResolverTrait;
 use Drupal\service\ModuleInstallerTrait;
+use Drupal\service\ModuleListTrait;
 use Drupal\service\StateTrait;
 use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -19,25 +18,25 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Provides functionality to set up installation profile.
  *
  * @internal
- *    This is an internal utility class wrapping hook implementations.
+ *   This is an internal utility class wrapping hook implementations.
  */
-class D8Setup implements ContainerInjectionInterface {
+class D8Setup extends D8BuilderBase {
 
-  use ConfigFactoryTrait;
   use EntityTypeManagerTrait;
   use ExtensionPathResolverTrait;
   use ModuleInstallerTrait;
+  use ModuleListTrait;
   use StateTrait;
 
   /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container): static {
-    return (new static())
-      ->addConfigFactory($container)
+    return parent::create($container)
       ->addEntityTypeManager()
       ->addExtensionPathResolver()
       ->addModuleInstaller()
+      ->addModuleList()
       ->addState();
   }
 
@@ -156,17 +155,10 @@ class D8Setup implements ContainerInjectionInterface {
     string $source = NULL,
     bool $uninstall = FALSE
   ): void {
-    if ($source !== NULL) {
-      /** @var \Drupal\Core\Extension\ModuleExtensionList $extension */
-      $extension = \Drupal::service('extension.list.module');
-
-      if (!$extension->exists($source)) {
-        return;
-      }
+    if ($source === NULL || $this->moduleList()->exists($source)) {
+      $method = ($uninstall ? 'un' : '') . 'install';
+      $this->moduleInstaller()->$method([$target], !$uninstall);
     }
-
-    $method = ($uninstall ? 'un' : '') . 'install';
-    $this->moduleInstaller()->$method([$target], !$uninstall);
   }
 
 }
