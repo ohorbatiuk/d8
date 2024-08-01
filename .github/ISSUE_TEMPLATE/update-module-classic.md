@@ -1,6 +1,6 @@
 ---
-name: Update module
-about: Refresh an existing contrib module to a newer version.
+name: Update classic module
+about: Refresh an existing contrib module to a newer version where version names still use prefixes based on Drupal core.
 title: Update "NAME" module from CURRENT to NEWER
 labels: update
 assignees: ''
