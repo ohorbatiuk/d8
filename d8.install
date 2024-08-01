@@ -53,6 +53,16 @@ function d8_update_10202(array &$sandbox): void {
 }
 
 /**
+ * Uninstall deprecated modules.
+ */
+function d8_update_10203(array &$sandbox): void {
+  foreach (['blocks_d8_theme', 'blocks_seven', 'menus', 'settings'] as $name) {
+    \Drupal::classResolver(D8Setup::class)
+      ->module('d8_feature_' . $name, uninstall: TRUE);
+  }
+}
+
+/**
  * Process list of update hooks.
  *
  * @param int[] ...
