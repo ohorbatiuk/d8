@@ -6,6 +6,7 @@ use Drupal\Core\Config\FileStorage;
 use Drupal\Core\Config\InstallStorage;
 use Drupal\Core\Entity\Controller\VersionHistoryController;
 use Drupal\Core\Site\Settings;
+use Drupal\Core\StringTranslation\StringTranslationTrait as CoreStringTranslationTrait;
 use Drupal\service\EntityTypeManagerTrait;
 use Drupal\service\ExtensionPathResolverTrait;
 use Drupal\service\ModuleInstallerTrait;
@@ -23,12 +24,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class D8Setup extends D8BuilderBase {
 
+  use CoreStringTranslationTrait;
   use EntityTypeManagerTrait;
   use ExtensionPathResolverTrait;
   use ModuleInstallerTrait;
   use ModuleListTrait;
   use StateTrait;
-  use StringTranslationTrait;
+
+  use StringTranslationTrait {
+    StringTranslationTrait::getStringTranslation insteadof CoreStringTranslationTrait;
+  }
 
   /**
    * {@inheritdoc}
