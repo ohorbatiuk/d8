@@ -11,6 +11,7 @@ use Drupal\service\ExtensionPathResolverTrait;
 use Drupal\service\ModuleInstallerTrait;
 use Drupal\service\ModuleListTrait;
 use Drupal\service\StateTrait;
+use Drupal\service\StringTranslationTrait;
 use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -27,6 +28,7 @@ class D8Setup extends D8BuilderBase {
   use ModuleInstallerTrait;
   use ModuleListTrait;
   use StateTrait;
+  use StringTranslationTrait;
 
   /**
    * {@inheritdoc}
@@ -37,7 +39,8 @@ class D8Setup extends D8BuilderBase {
       ->addExtensionPathResolver()
       ->addModuleInstaller()
       ->addModuleList()
-      ->addState();
+      ->addState()
+      ->addStringTranslation();
   }
 
   /**
@@ -74,7 +77,7 @@ class D8Setup extends D8BuilderBase {
     // Populate the default shortcut set.
     $shortcut = $this->entityTypeManager()->getStorage('shortcut')->create([
       'shortcut_set' => 'default',
-      'title' => t('Features'),
+      'title' => $this->t('Features'),
       'weight' => -20,
       'link' => [
         'uri' => 'internal:/admin/config/development/features',

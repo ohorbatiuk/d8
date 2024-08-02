@@ -1,5 +1,0 @@
-bundle: d8
-required: true
-excluded:
-  - d8_theme.settings
-

@@ -42,24 +42,7 @@ function d8_install_tasks_alter(array &$tasks, array $install_state): void {
  * Implements hook_update_last_removed().
  */
 function d8_update_last_removed(): int {
-  return 10201;
-}
-
-/**
- * Install D8+ Link module.
- */
-function d8_update_10202(array &$sandbox): void {
-  \Drupal::classResolver(D8Setup::class)->module('d8_link');
-}
-
-/**
- * Uninstall deprecated modules.
- */
-function d8_update_10203(array &$sandbox): void {
-  foreach (['blocks_d8_theme', 'blocks_seven', 'menus', 'settings'] as $name) {
-    \Drupal::classResolver(D8Setup::class)
-      ->module('d8_feature_' . $name, uninstall: TRUE);
-  }
+  return 10203;
 }
 
 /**
