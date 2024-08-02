@@ -6,17 +6,10 @@
  */
 
 /**
- * Uninstall reCAPTCHA Preloader module.
+ * Implements hook_update_last_removed().
  */
-function d8_captcha_update_8001(array &$sandbox): void {
-  _d8_module('recaptcha_preloader', uninstall: TRUE);
-}
-
-/**
- * Install reCAPTCHA Preloader module.
- */
-function d8_captcha_update_9501(array &$sandbox): void {
-  _d8_module('recaptcha_preloader');
+function d8_captcha_update_last_removed(): int {
+  return 9501;
 }
 
 /**
