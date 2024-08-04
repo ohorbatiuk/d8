@@ -1,9 +1,0 @@
-name: D8+ Feature Blocks D8 Theme
-description: Provides blocks for the D8+ theme.
-package: D8+
-
-type: module
-core_version_requirement: ^9 || ^10
-
-lifecycle: deprecated
-lifecycle_link: https://github.com/lexhouk/d8/issues/288

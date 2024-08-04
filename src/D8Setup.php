@@ -6,11 +6,13 @@ use Drupal\Core\Config\FileStorage;
 use Drupal\Core\Config\InstallStorage;
 use Drupal\Core\Entity\Controller\VersionHistoryController;
 use Drupal\Core\Site\Settings;
+use Drupal\Core\StringTranslation\StringTranslationTrait as CoreStringTranslationTrait;
 use Drupal\service\EntityTypeManagerTrait;
 use Drupal\service\ExtensionPathResolverTrait;
 use Drupal\service\ModuleInstallerTrait;
 use Drupal\service\ModuleListTrait;
 use Drupal\service\StateTrait;
+use Drupal\service\StringTranslationTrait;
 use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -22,11 +24,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class D8Setup extends D8BuilderBase {
 
+  use CoreStringTranslationTrait;
   use EntityTypeManagerTrait;
   use ExtensionPathResolverTrait;
   use ModuleInstallerTrait;
   use ModuleListTrait;
   use StateTrait;
+
+  use StringTranslationTrait {
+    StringTranslationTrait::getStringTranslation insteadof CoreStringTranslationTrait;
+  }
 
   /**
    * {@inheritdoc}
@@ -37,7 +44,8 @@ class D8Setup extends D8BuilderBase {
       ->addExtensionPathResolver()
       ->addModuleInstaller()
       ->addModuleList()
-      ->addState();
+      ->addState()
+      ->addStringTranslation();
   }
 
   /**
@@ -74,7 +82,7 @@ class D8Setup extends D8BuilderBase {
     // Populate the default shortcut set.
     $shortcut = $this->entityTypeManager()->getStorage('shortcut')->create([
       'shortcut_set' => 'default',
-      'title' => t('Features'),
+      'title' => $this->t('Features'),
       'weight' => -20,
       'link' => [
         'uri' => 'internal:/admin/config/development/features',
