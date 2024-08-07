@@ -45,10 +45,6 @@
             "drupal/features": {
                 "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch"
             },
-            "drupal/recaptcha": {
-                "Integrate Invisible reCAPTCHA option from Google": "https://www.drupal.org/files/issues/2022-12-05/recaptcha-ajax-2493183-164%2Bnocaptcha-2852269-206.patch",
-                "Remove reference to removed $noscript variable": "https://git.drupalcode.org/issue/recaptcha-2852269/-/commit/fc27e7e6ba9b7161e39ab7d1471a7792cb154b22.diff"
-            },
             "drupal/symfony_mailer": {
                 "Add support for complex address strings in back-compatibility mode": "https://www.drupal.org/files/issues/2023-03-30/symfony_mailer-support_complex_address_strings-3350992-3.patch",
                 "Drupal 10.1.0 new aggregation breaks InlineCssEmailAdjuster": "https://www.drupal.org/files/issues/2023-09-21/symfony_mailer.inline-css.3371042-88.patch"
