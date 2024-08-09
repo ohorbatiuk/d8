@@ -4,8 +4,8 @@ The installation profile for CMS Drupal 10 based on the most common modules and
 themes that form the basis for creating a stable site.
 
 [![Made in Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd500.svg?labelColor=005bbb)](https://supportukrainenow.org)
-[![Version](https://img.shields.io/packagist/v/lexhouk/d8.svg)](https://packagist.org/packages/lexhouk/d8)
-[![Downloads](https://img.shields.io/packagist/dt/lexhouk/d8)](https://packagist.org/packages/lexhouk/d8)
+[![Packagist Version](https://img.shields.io/packagist/v/lexhouk/d8?label=Version)](https://packagist.org/packages/lexhouk/d8)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/lexhouk/d8?label=Downloads)](https://packagist.org/packages/lexhouk/d8)
 
 
 ## Table of contents
