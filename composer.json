@@ -18,7 +18,7 @@
         "drupal/features": "3.14",
         "drupal/fontawesome": "2.26",
         "drupal/module_filter": "4.1.1",
-        "drupal/recaptcha": "3.2",
+        "drupal/recaptcha": "3.3",
         "drupal/recaptcha_preloader": "2.0.1",
         "drupal/service": "2.0.0",
         "drupal/seven": "1.0.0",
@@ -44,11 +44,6 @@
             },
             "drupal/features": {
                 "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch"
-            },
-            "drupal/recaptcha": {
-                "Integrate Invisible reCAPTCHA option from Google": "https://www.drupal.org/files/issues/2022-12-05/recaptcha-ajax-2493183-164%2Bnocaptcha-2852269-206.patch",
-                "Remove reference to removed $noscript variable": "https://git.drupalcode.org/issue/recaptcha-2852269/-/commit/fc27e7e6ba9b7161e39ab7d1471a7792cb154b22.diff",
-                "Register in the new tab": "https://www.drupal.org/files/issues/2023-03-05/recaptcha-register-in-the-new-tab-3346065-2.patch"
             },
             "drupal/symfony_mailer": {
                 "Add support for complex address strings in back-compatibility mode": "https://www.drupal.org/files/issues/2023-03-30/symfony_mailer-support_complex_address_strings-3350992-3.patch",
