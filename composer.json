@@ -22,7 +22,7 @@
         "drupal/recaptcha_preloader": "2.0.1",
         "drupal/service": "2.0.0",
         "drupal/seven": "1.0.0",
-        "drupal/standwithukraine": "2.0.0",
+        "drupal/standwithukraine": "2.0.x-dev",
         "drupal/symfony_mailer": "1.3.2"
     },
     "require-dev": {
