@@ -1,8 +1,6 @@
 message:
-  text: |-
-    We Stand With
-    Ukraine
-  single: true
+  text: ''
+  pair: false
   sizes:
     first: true
     last: false

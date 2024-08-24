@@ -79,7 +79,7 @@ class D8StandWithUkraineNegotiator implements StandWithUkraineNegotiatorInterfac
     }
 
     $settings
-      ->setText(StandWithUkraineSettingsInterface::TEXT)
+      ->setText('Stand With' . PHP_EOL . 'Ukraine')
       ->setDouble()
       ->setSizes(FALSE, TRUE)
       ->setPosition(Position::Right)
