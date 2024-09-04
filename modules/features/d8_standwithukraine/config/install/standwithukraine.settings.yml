@@ -1,8 +1,8 @@
 message:
   text: |-
-    We Stand With
+    Glory to
     Ukraine
-  single: true
+  pair: false
   sizes:
     first: true
     last: false
