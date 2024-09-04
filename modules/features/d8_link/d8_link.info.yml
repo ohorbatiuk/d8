@@ -6,5 +6,6 @@ type: module
 core_version_requirement: ^10
 
 dependencies:
+  - drupal:link
   - extlink:extlink
   - fontawesome:fontawesome
