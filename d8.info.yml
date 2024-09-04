@@ -22,7 +22,6 @@ dependencies:
   - drupal:update
 
   - admin_toolbar:admin_toolbar_search
-  - admin_toolbar:admin_toolbar_tools
   - features:features_ui
   - module_filter:module_filter
   - service:service
