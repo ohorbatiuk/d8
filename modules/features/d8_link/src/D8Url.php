@@ -16,14 +16,13 @@ class D8Url extends Url {
   public function toString($collect_bubbleable_metadata = FALSE): GeneratedUrl|string {
     $url = parent::toString($collect_bubbleable_metadata);
 
-    if ($this->unrouted) {
-      $modify = &drupal_static('d8_link');
+    $modify = &drupal_static('d8_link');
 
-      if (!empty($modify)) {
-        $url = preg_replace('#^https*://(www\.|)#', '', $url);
-        $modify = FALSE;
-      }
+    if (!empty($modify) && $this->unrouted) {
+      $url = preg_replace('#^https*://(www\.|)#', '', $url);
     }
+
+    $modify = FALSE;
 
     return $url;
   }

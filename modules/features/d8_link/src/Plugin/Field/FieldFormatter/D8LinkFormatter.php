@@ -25,7 +25,7 @@ class D8LinkFormatter extends LinkFormatter {
    * {@inheritdoc}
    */
   protected function buildUrl(LinkItemInterface $item): Url {
-    if (($url =  parent::buildUrl($item))->isExternal()) {
+    if (($url = parent::buildUrl($item))->isExternal()) {
       $url = D8Url::fromUri($url->getUri(), $url->getOptions());
 
       $modify = &drupal_static('d8_link');
