@@ -18,11 +18,13 @@ class D8Url extends Url {
 
     $modify = &drupal_static('d8_link');
 
-    if (!empty($modify) && $this->unrouted) {
-      $url = preg_replace('#^https*://(www\.|)#', '', $url);
-    }
+    if (!empty($modify)) {
+      if ($this->unrouted) {
+        $url = preg_replace('#^https*://(www\.|)#', '', $url);
+      }
 
-    $modify = FALSE;
+      $modify = FALSE;
+    }
 
     return $url;
   }
