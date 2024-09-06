@@ -2,7 +2,7 @@
 name: Update theme
 about: Refresh an existing contrib theme to a newer version.
 title: Update "NAME" theme from CURRENT to NEWER
-labels: update
+labels: '📢 update'
 assignees: ''
 
 ---

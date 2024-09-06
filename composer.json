@@ -10,7 +10,7 @@
         "drupal/autoban": "1.10",
         "drupal/bootstrap": "3.29",
         "drupal/captcha": "2.0.6",
-        "drupal/config_update": "2.0.0-alpha3",
+        "drupal/config_update": "2.0.0-alpha4",
         "drupal/core": "10.2.3",
         "drupal/core-composer-scaffold": "10.2.3",
         "drupal/exception_mailer": "4.0.0",
