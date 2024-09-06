@@ -2,7 +2,7 @@
 name: Update core
 about: Update core.
 title: Update core from CURRENT to NEWER
-labels: update, core
+labels: ['📢 update', 'core']
 assignees: ''
 
 ---
