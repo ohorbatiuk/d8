@@ -23,7 +23,7 @@
         "drupal/service": "2.0.0",
         "drupal/seven": "1.0.0",
         "drupal/standwithukraine": "2.0.2",
-        "drupal/symfony_mailer": "1.3.2"
+        "drupal/symfony_mailer": "1.4.1"
     },
     "require-dev": {
         "drupal/config2php": "3.0.2",
