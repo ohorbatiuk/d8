@@ -147,26 +147,32 @@ class D8Setup extends D8BuilderBase {
   }
 
   /**
-   * (Un)install a module with optional checking of some other module.
+   * (Un)install modules with optional checking of some other module.
    *
-   * @param string $target
-   *   The name of the module from this installation profile or drupal.org.
-   * @param string|null $source
-   *   (optional) The name of the module from drupal.org. If this parameter is
-   *   specified then before installing/uninstalling the target module will be
-   *   checked if the source module exists. Defaults to NULL.
+   * @param array|string $target
+   *   The names of modules from this installation profile or drupal.org.
+   * @param array|string|null $source
+   *   (optional) The names of modules from drupal.org. If this parameter is
+   *   specified then before installing/uninstalling target modules, it will be
+   *   checked if the source modules exist. Defaults to NULL.
    * @param bool $uninstall
-   *   (optional) TRUE, if the module should be installed. Defaults to FALSE.
+   *   (optional) TRUE, if modules should be installed. Defaults to FALSE.
    */
   public function module(
-    string $target,
-    string $source = NULL,
+    array|string $target,
+    array|string $source = NULL,
     bool $uninstall = FALSE
   ): void {
-    if ($source === NULL || $this->moduleList()->exists($source)) {
-      $method = ($uninstall ? 'un' : '') . 'install';
-      $this->moduleInstaller()->$method([$target], !$uninstall);
+    if ($source !== NULL) {
+      foreach ((array) $source as $name) {
+        if (!$this->moduleList()->exists($name)) {
+          return;
+        }
+      }
     }
+
+    $method = ($uninstall ? 'un' : '') . 'install';
+    $this->moduleInstaller()->$method((array) $target, !$uninstall);
   }
 
 }
