@@ -1,7 +1,7 @@
 favicon:
   mimetype: image/vnd.microsoft.icon
   path: ''
-  url: /themes/contrib/bootstrap/favicon.ico
+  url: /profiles/contrib/d8/themes/custom/d8_theme/favicon.ico
   use_default: true
 features:
   comment_user_picture: true
@@ -13,10 +13,18 @@ logo:
   url: ''
   use_default: true
 schemas:
+  d8_theme: 8001
   bootstrap: 8000
-  d8_theme: 8000
 fluid_container: 1
 image_shape: img-thumbnail
+table_responsive: '0'
+table: ''
 navbar_position: static-top
-table_responsive: 0
 tooltip_placement: 'auto top'
+cdn_theme: bootstrap
+cdn_cache_ttl_versions: '604800'
+cdn_cache_ttl_themes: '604800'
+cdn_cache_ttl_assets: '0'
+cdn_cache_ttl_library: '0'
+apply: Apply
+reset_http_request_cache: ''
