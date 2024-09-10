@@ -24,6 +24,8 @@ dependencies:
   - admin_toolbar:admin_toolbar_search
   - admin_toolbar:admin_toolbar_tools
   - features:features_ui
+  - jquery_ui_draggable:jquery_ui_draggable
+  - jquery_ui_resizable:jquery_ui_resizable
   - module_filter:module_filter
   - service:service
 

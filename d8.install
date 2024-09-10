@@ -46,12 +46,11 @@ function d8_update_last_removed(): int {
 }
 
 /**
- * Check for security updates only once a week, even for uninstalled extensions.
+ * Check only for security updates, even for uninstalled extensions.
  */
 function d8_update_10301(array &$sandbox): void {
   \Drupal::configFactory()->getEditable('update.settings')
     ->set('check.disabled_extensions', TRUE)
-    ->set('check.interval_days', 1)
     ->set('notification.threshold', 'security')
     ->save();
 }
