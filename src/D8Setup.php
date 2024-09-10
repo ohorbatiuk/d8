@@ -67,11 +67,8 @@ class D8Setup extends D8BuilderBase {
       'recaptcha',
     ]);
 
-    $path = sprintf(
-      '%s/%s',
-      $this->extensionPathResolver()->getPath('module', 'd8_captcha'),
-      InstallStorage::CONFIG_INSTALL_DIRECTORY,
-    );
+    $path = $this->extensionPathResolver()->getPath('module', 'd8_captcha') .
+      DIRECTORY_SEPARATOR . InstallStorage::CONFIG_INSTALL_DIRECTORY;
 
     foreach ((new FileStorage($path))->listAll() as $name) {
       $this->configFactory()->getEditable($name)->delete();

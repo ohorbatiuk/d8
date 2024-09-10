@@ -20,7 +20,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
   /**
    * The fields are split by section which should be hidden.
    */
-  protected const FIELDS = [
+  protected const array FIELDS = [
     'widget' => ['recaptcha_size'],
     'general' => ['recaptcha_site_key', 'recaptcha_secret_key'],
   ];
@@ -67,11 +67,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
 
     if (!empty($field['#default_value'])) {
       $field['#options'][''] = $this->t('Normal');
-
-      $field['#options'][$field['#default_value']] .= sprintf(
-        ' (%s)',
-        $this->t('default'),
-      );
+      $field['#options'][$field['#default_value']] .= " ({$this->t('default')})";
     }
 
     foreach (static::FIELDS as $section => $fields) {

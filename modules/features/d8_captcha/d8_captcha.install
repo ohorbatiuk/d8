@@ -25,14 +25,14 @@ function d8_captcha_update_10101(array &$sandbox): void {
  * Delete the description of CAPTCHA in translations.
  */
 function d8_captcha_update_10102(array &$sandbox): void {
-  if (\Drupal::languageManager()->isMultilingual()) {
-    $languages = \Drupal::languageManager()->getLanguages();
-    $language = \Drupal::languageManager()->getDefaultLanguage()->getId();
+  if (($manager = \Drupal::languageManager())->isMultilingual()) {
+    $languages = $manager->getLanguages();
+    $language = $manager->getDefaultLanguage()->getId();
 
     unset($languages[$language]);
 
     foreach (array_keys($languages) as $language) {
-      \Drupal::languageManager()
+      $manager
         ->getLanguageConfigOverride($language, 'captcha.settings')
         ->set('description', '')
         ->save();
