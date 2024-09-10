@@ -24,7 +24,7 @@ function d8_install(bool $is_syncing): void {
 function d8_install_tasks(array &$install_state): array {
   return [
     'install_captcha_form' => [
-      'display_name' => t('Set up captcha settings'),
+      'display_name' => t('Activate captcha'),
       'type' => 'form',
       'function' => D8CaptchaForm::class,
     ],
