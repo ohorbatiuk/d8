@@ -19,6 +19,7 @@ dependencies:
   - drupal:config
   - drupal:contextual
   - drupal:field_ui
+  - drupal:help
   - drupal:node
   - drupal:shortcut
   - drupal:update

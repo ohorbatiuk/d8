@@ -56,6 +56,13 @@ function d8_update_10301(array &$sandbox): void {
 }
 
 /**
+ * Install Help module.
+ */
+function d8_update_10302(array &$sandbox): void {
+  \Drupal::classResolver(D8Setup::class)->module('help');
+}
+
+/**
  * Process list of update hooks.
  *
  * @param int[] ...

@@ -34,7 +34,7 @@ function d8_captcha_update_10102(array &$sandbox): void {
     foreach (array_keys($languages) as $language) {
       $manager
         ->getLanguageConfigOverride($language, 'captcha.settings')
-        ->set('description', '')
+        ->clear('description')
         ->save();
     }
   }
