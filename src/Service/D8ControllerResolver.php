@@ -14,7 +14,7 @@ class D8ControllerResolver extends ControllerResolver {
   /**
    * The method name for building a database update page.
    */
-  protected const METHOD = '::handle';
+  protected const string METHOD = '::handle';
 
   /**
    * {@inheritdoc}

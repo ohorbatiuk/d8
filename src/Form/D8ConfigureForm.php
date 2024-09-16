@@ -37,7 +37,11 @@ class D8ConfigureForm extends SiteConfigureForm {
         $this->resetConfigFactory();
       }
 
-      $this->config('update.settings')->set('news', TRUE)->save(TRUE);
+      $this->config('update.settings')
+        ->set('check.disabled_extensions', TRUE)
+        ->set('news', TRUE)
+        ->set('notification.threshold', 'security')
+        ->save(TRUE);
     }
   }
 
