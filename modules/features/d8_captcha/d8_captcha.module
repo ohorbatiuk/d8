@@ -31,13 +31,13 @@ function d8_captcha_library_info_alter(
 ): void {
   if (
     $extension === 'recaptcha' &&
-    isset($libraries[$name = $extension . '.invisible'])
+    isset($libraries[$name = "$extension.invisible"])
   ) {
     /** @var \Drupal\Core\Extension\ExtensionPathResolver $resolver */
     $resolver = \Drupal::service('extension.path.resolver');
 
     $path = $resolver->getPath('module', 'd8_captcha');
 
-    $libraries[$name]['js'] = ['/' . $path . '/js/' . $name . '.js' => []];
+    $libraries[$name]['js'] = ["/$path/js/$name.js" => []];
   }
 }

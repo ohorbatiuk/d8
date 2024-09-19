@@ -1,12 +1,6 @@
 services:
   d8_mail.event_subscriber:
     class: Drupal\d8_mail\EventSubscriber
-    arguments:
-      - '@entity_type.manager'
-      - '@email.validator'
-      - '@config.factory'
-      - '@messenger'
-      - '@string_translation'
-      - '@logger.factory'
+    autowire: true
     tags:
       - { name: event_subscriber }

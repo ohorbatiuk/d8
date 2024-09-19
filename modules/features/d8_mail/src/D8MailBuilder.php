@@ -2,9 +2,11 @@
 
 namespace Drupal\d8_mail;
 
+use Drupal\Core\StringTranslation\StringTranslationTrait as CoreStringTranslationTrait;
 use Drupal\d8\D8BuilderBase;
 use Drupal\service\DateFormatterTrait;
 use Drupal\service\RequestStackTrait;
+use Drupal\service\StringTranslationTrait;
 use Drupal\service\TimeTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -16,8 +18,14 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class D8MailBuilder extends D8BuilderBase {
 
+  use CoreStringTranslationTrait;
   use DateFormatterTrait;
   use RequestStackTrait;
+
+  use StringTranslationTrait {
+    StringTranslationTrait::getStringTranslation insteadof CoreStringTranslationTrait;
+  }
+
   use TimeTrait;
 
   /**
@@ -27,6 +35,7 @@ class D8MailBuilder extends D8BuilderBase {
     return parent::create($container)
       ->addDateFormatter()
       ->addRequestStack()
+      ->addStringTranslation()
       ->addTime();
   }
 
@@ -39,11 +48,9 @@ class D8MailBuilder extends D8BuilderBase {
    * @see d8_mail_preprocess_email_wrap__html()
    */
   public function preprocessHtmlEmailWrapper(array &$variables): void {
-    $variables['logo'] = sprintf(
-      str_repeat('%s', 2),
-      $this->requestStack()->getCurrentRequest()->getSchemeAndHttpHost(),
-      theme_get_setting('logo')['url'],
-    );
+    $variables['logo'] =
+      $this->requestStack()->getCurrentRequest()->getSchemeAndHttpHost() .
+      theme_get_setting('logo')['url'];
 
     /** @var \Drupal\symfony_mailer\InternalEmailInterface $email */
     $email = $variables['email'];
@@ -51,7 +58,7 @@ class D8MailBuilder extends D8BuilderBase {
     $parameter = (array) $email->getParam('legacy_message');
     $account = $parameter['params']['account'] ?? $email->getAccount();
 
-    $variables['welcome'] = t(
+    $variables['welcome'] = $this->t(
       'Hello @recipient-name,',
       ['@recipient-name' => $account->getDisplayName()],
     );
