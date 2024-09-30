@@ -18,7 +18,7 @@ abstract class D8BuilderBase extends ClassResolverBase {
   /**
    * {@inheritdoc}
    */
-  public function addServices(): static {
+  protected function addServices(): static {
     return $this->addConfigFactory();
   }
 

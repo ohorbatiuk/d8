@@ -26,7 +26,7 @@ class LogEmailAdjuster extends EmailAdjusterBase implements ContainerFactoryPlug
   /**
    * {@inheritdoc}
    */
-  public function addServices(): static {
+  protected function addServices(): static {
     return $this->addRenderer();
   }
 

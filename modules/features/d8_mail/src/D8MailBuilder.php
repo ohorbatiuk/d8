@@ -30,7 +30,7 @@ class D8MailBuilder extends D8BuilderBase {
   /**
    * {@inheritdoc}
    */
-  public function addServices(): static {
+  protected function addServices(): static {
     return parent::addServices()
       ->addDateFormatter()
       ->addRequestStack()

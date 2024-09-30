@@ -22,7 +22,7 @@ class ThemeSuggestions extends ThemeSuggestionsBase implements ContainerFactoryP
   /**
    * {@inheritdoc}
    */
-  public function addServices(): static {
+  protected function addServices(): static {
     return $this->addRouteMatch();
   }
 

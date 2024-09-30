@@ -24,7 +24,7 @@ class D8WelcomeController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public function addServices(): static {
+  protected function addServices(): static {
     return $this
       ->addConfigFactory()
       ->addRouteMatch()
