@@ -1,6 +1,6 @@
 ---
 name: Update core
-about: Update core.
+about: Switch to a newer version of the Drupal core to get improvements and new features.
 title: Update core from CURRENT to NEWER
 labels: ['📢 update', 'core']
 assignees: lexhouk
