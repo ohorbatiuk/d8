@@ -17,7 +17,7 @@ class D8MaintenanceController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  protected function addServices(): static {
+  protected function creation(): static {
     return $this->addState();
   }
 

@@ -20,7 +20,7 @@ class D8ConfigureForm extends SiteConfigureForm {
   /**
    * {@inheritdoc}
    */
-  protected function addServices(): static {
+  protected function creation(): static {
     return $this->addConfigFactory();
   }
 

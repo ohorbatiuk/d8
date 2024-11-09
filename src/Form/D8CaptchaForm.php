@@ -29,7 +29,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
   /**
    * {@inheritdoc}
    */
-  protected function addServices(): static {
+  protected function creation(): static {
     return $this->addModuleInstaller()->addStringTranslation();
   }
 

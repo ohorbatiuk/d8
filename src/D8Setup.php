@@ -37,8 +37,8 @@ class D8Setup extends D8BuilderBase {
   /**
    * {@inheritdoc}
    */
-  protected function addServices(): static {
-    return parent::addServices()
+  protected function creation(): static {
+    return parent::creation()
       ->addEntityTypeManager()
       ->addExtensionPathResolver()
       ->addModuleInstaller()
