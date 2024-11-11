@@ -5,8 +5,6 @@ type: profile
 core_version_requirement: ^10.3
 version: 0.21.0.189
 
-php: 8.3
-
 distribution:
   name: D8+
   langcode: en
