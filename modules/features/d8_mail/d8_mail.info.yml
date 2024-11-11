@@ -5,8 +5,6 @@ package: D8+
 type: module
 core_version_requirement: ^10.3 || ^11
 
-php: 8.3
-
 dependencies:
   - d8:d8
   - symfony_mailer:symfony_mailer
