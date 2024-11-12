@@ -14,7 +14,7 @@ class D8Url extends Url {
    * {@inheritdoc}
    */
   public function toString(
-    $collect_bubbleable_metadata = FALSE
+    $collect_bubbleable_metadata = FALSE,
   ): GeneratedUrl|string {
     $url = parent::toString($collect_bubbleable_metadata);
 

@@ -29,7 +29,7 @@ class D8ConfigureForm extends SiteConfigureForm {
    */
   public function submitForm(
     array &$form,
-    FormStateInterface $form_state
+    FormStateInterface $form_state,
   ): void {
     parent::submitForm($form, $form_state);
 
