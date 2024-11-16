@@ -21,7 +21,7 @@ class D8ControllerResolver extends ControllerResolver {
    */
   public function getControllerFromDefinition(
     mixed $controller,
-    $path = ''
+    $path = '',
   ): mixed {
     if (
       $controller === '\\' . DbUpdateController::class . static::METHOD &&

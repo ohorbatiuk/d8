@@ -55,7 +55,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
    */
   public function buildForm(
     array $form,
-    FormStateInterface $form_state
+    FormStateInterface $form_state,
   ): array {
     $form = parent::buildForm($form, $form_state);
 
@@ -88,7 +88,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
    */
   public function submitForm(
     array &$form,
-    FormStateInterface $form_state
+    FormStateInterface $form_state,
   ): void {
     parent::submitForm($form, $form_state);
 

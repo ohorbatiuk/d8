@@ -157,7 +157,7 @@ class D8Setup extends D8BuilderBase {
   public function module(
     array|string $target,
     array|string $source = NULL,
-    bool $uninstall = FALSE
+    bool $uninstall = FALSE,
   ): void {
     if ($source !== NULL) {
       foreach ((array) $source as $name) {

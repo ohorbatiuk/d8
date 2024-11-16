@@ -31,7 +31,7 @@ class D8StandWithUkraineNegotiator implements StandWithUkraineNegotiatorInterfac
     protected ConfigFactoryInterface $configFactory,
     protected ThemeManagerInterface $themeManager,
     protected RouteMatchInterface $routeMatch,
-    protected LocalTaskManagerInterface $localTaskManager
+    protected LocalTaskManagerInterface $localTaskManager,
   ) {}
 
   /**

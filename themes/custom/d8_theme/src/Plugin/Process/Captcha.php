@@ -22,7 +22,7 @@ class Captcha extends ProcessBase implements ProcessInterface {
   public static function processElement(
     Element $element,
     FormStateInterface $form_state,
-    array &$complete_form
+    array &$complete_form,
   ): void {
     if ($element->hasProperty('theme_wrappers')) {
       $element->appendProperty('theme_wrappers', 'form_element');

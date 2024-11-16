@@ -73,7 +73,7 @@ class EventSubscriber implements EventSubscriberInterface {
     protected ConfigFactoryInterface $configFactory,
     MessengerInterface $messenger,
     TranslationInterface $translation,
-    LoggerChannelFactoryInterface $logger_factory
+    LoggerChannelFactoryInterface $logger_factory,
   ) {
     $this
       ->setStringTranslation($translation)
