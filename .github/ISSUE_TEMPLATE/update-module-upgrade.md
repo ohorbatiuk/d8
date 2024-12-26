@@ -1,7 +1,7 @@
 ---
 name: Update module to modern
 about: Upgrade an existing contrib module to a newer version where the version name of the current release still uses a prefix based on Drupal core but a newer version name without this prefix.
-title: Update "NAME" module from CURRENT to NEWER
+title: NAME CURRENT to NEWER
 labels: '📢 update'
 assignees: lexhouk
 
