@@ -16,7 +16,3 @@ regions:
 
 libraries:
   - 'd8_theme/base'
-
-libraries-extend:
-  system/maintenance:
-    - d8_theme/maintenance
