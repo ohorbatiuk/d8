@@ -63,6 +63,13 @@ function d8_update_10302(array &$sandbox): void {
 }
 
 /**
+ * Install Idle module.
+ */
+function d8_update_10401(array &$sandbox): void {
+  \Drupal::classResolver(D8Setup::class)->module('idle');
+}
+
+/**
  * Process list of update hooks.
  *
  * @param int[] ...
