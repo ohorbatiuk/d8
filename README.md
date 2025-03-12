@@ -8,14 +8,6 @@ themes that form the basis for creating a stable site.
 [![Packagist Downloads](https://img.shields.io/packagist/dt/lexhouk/d8?label=Downloads)](https://packagist.org/packages/lexhouk/d8)
 
 
-## Table of contents
-
-- Requirements
-- Recommended module
-- Features
-- Mirror
-
-
 ## Requirements
 
 This installation profile requires the following modules:
