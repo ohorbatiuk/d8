@@ -15,7 +15,7 @@
         "drupal/core-composer-scaffold": "10.4.3",
         "drupal/exception_mailer": "4.0.0",
         "drupal/extlink": "2.0.2",
-        "drupal/features": "3.14",
+        "drupal/features": "dev-3447460-drupal-11-compatibility#40732dfd317473d9913c9e97d0cf7e4d68a78934",
         "drupal/fontawesome": "2.26",
         "drupal/idle": "1.0.0",
         "drupal/module_filter": "5.0.3",
@@ -61,6 +61,10 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "git",
+            "url": "https://git.drupalcode.org/issue/features-3447460.git"
         }
     ]
 }
