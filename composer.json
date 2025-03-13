@@ -13,7 +13,7 @@
         "drupal/config_update": "2.0.0-alpha4",
         "drupal/core": "10.4.3",
         "drupal/core-composer-scaffold": "10.4.3",
-        "drupal/exception_mailer": "4.0.6",
+        "drupal/exception_mailer": "dev-project-update-bot-only#d08655a69d7b4b63049a6d5832fd4186a2455461",
         "drupal/extlink": "2.0.2",
         "drupal/features": "dev-3447460-drupal-11-compatibility#40732dfd317473d9913c9e97d0cf7e4d68a78934",
         "drupal/fontawesome": "2.26",
@@ -62,6 +62,10 @@
         {
             "type": "git",
             "url": "https://git.drupalcode.org/issue/features-3447460.git"
+        },
+        {
+            "type": "git",
+            "url": "https://git.drupalcode.org/issue/exception_mailer-3438351.git"
         }
     ]
 }
