@@ -14,14 +14,12 @@ use Drupal\d8_mail\D8MailBuilder;
  */
 function d8_mail_help(
   string $route_name,
-  RouteMatchInterface $route_match
+  RouteMatchInterface $route_match,
 ): string {
   $output = '';
 
   if ($route_name === 'help.page.d8_mail') {
-    $output .= '<h3>' . t('About') . '</h3>';
-
-    $output .= '<p>';
+    $output .= "<h3>{t('About')}</h3><p>";
 
     $url = Url::fromRoute('help.page', ['name' => 'symfony_mailer']);
 
@@ -42,7 +40,10 @@ function d8_mail_help(
 /**
  * Implements hook_library_info_alter().
  */
-function d8_mail_library_info_alter(array &$libraries, string $extension): void {
+function d8_mail_library_info_alter(
+  array &$libraries,
+  string $extension,
+): void {
   if ($extension === 'symfony_mailer') {
     unset($libraries['test']['css']['theme']['css/test.email.css']);
   }
@@ -63,10 +64,10 @@ function d8_mail_theme(
   array $existing,
   string $type,
   string $theme,
-  string $path
+  string $path,
 ): array {
   $name = 'email_wrap';
-  return [$name . '__html' => ['base hook' => $name]];
+  return ["{$name}__html" => ['base hook' => $name]];
 }
 
 /**
@@ -74,9 +75,9 @@ function d8_mail_theme(
  */
 function d8_mail_theme_suggestions_email_wrap_alter(
   array &$suggestions,
-  array $variables
+  array $variables,
 ): void {
   if ($variables['is_html']) {
-    $suggestions[] = $variables['theme_hook_original'] . '__html';
+    $suggestions[] = "{$variables['theme_hook_original']}__html";
   }
 }

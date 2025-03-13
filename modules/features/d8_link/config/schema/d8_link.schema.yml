@@ -1,0 +1,5 @@
+# Schema for the configuration files of the D8+ Link module.
+
+field.formatter.settings.d8_link:
+  type: field.formatter.settings.link
+  label: 'D8+ Link format settings'

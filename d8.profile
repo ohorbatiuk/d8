@@ -17,7 +17,7 @@ use Drupal\Core\Url;
  */
 function d8_form_install_configure_form_alter(
   array &$form,
-  FormStateInterface $form_state
+  FormStateInterface $form_state,
 ): void {
   $db = Database::getConnectionInfo();
   $form['admin_account']['account']['name']['#default_value'] = $db['default']['username'];
@@ -31,7 +31,7 @@ function d8_form_install_configure_form_alter(
  */
 function d8_form_user_login_form_alter(
   array &$form,
-  FormStateInterface $form_state
+  FormStateInterface $form_state,
 ): void {
   $form['#submit'][] = '_d8_user_login_form_submit';
 }
@@ -43,7 +43,7 @@ function d8_form_user_login_form_alter(
  */
 function _d8_install_configure_form_submit(
   array &$form,
-  FormStateInterface $form_state
+  FormStateInterface $form_state,
 ): void {
   global $install_state;
 
@@ -51,7 +51,7 @@ function _d8_install_configure_form_submit(
     $values = [];
 
     foreach (['name', 'mail'] as $key) {
-      $values[$key] = (string) $form_state->getValue('site_' . $key);
+      $values[$key] = (string) $form_state->getValue("site_$key");
     }
 
     \Drupal::state()->set('d8', array_filter($values));
@@ -63,7 +63,7 @@ function _d8_install_configure_form_submit(
  */
 function _d8_user_login_form_submit(
   array &$form,
-  FormStateInterface $form_state
+  FormStateInterface $form_state,
 ): void {
   if (!\Drupal::request()->request->has('destination')) {
     $path = \Drupal::configFactory()->get('system.site')->get('page.front');

@@ -5,7 +5,7 @@ namespace Drupal\d8\Form;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Installer\Form\SiteConfigureForm;
 use Drupal\service\ConfigFactoryTrait;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\service\ConfigFormBaseTrait;
 
 /**
  * Provides the site configuration form.
@@ -14,13 +14,14 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class D8ConfigureForm extends SiteConfigureForm {
 
+  use ConfigFormBaseTrait;
   use ConfigFactoryTrait;
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container): static {
-    return parent::create($container)->addConfigFactory($container);
+  protected function creation(): static {
+    return $this->addConfigFactory();
   }
 
   /**
@@ -28,7 +29,7 @@ class D8ConfigureForm extends SiteConfigureForm {
    */
   public function submitForm(
     array &$form,
-    FormStateInterface $form_state
+    FormStateInterface $form_state,
   ): void {
     parent::submitForm($form, $form_state);
 
@@ -37,7 +38,11 @@ class D8ConfigureForm extends SiteConfigureForm {
         $this->resetConfigFactory();
       }
 
-      $this->config('update.settings')->set('news', TRUE)->save(TRUE);
+      $this->config('update.settings')
+        ->set('check.disabled_extensions', TRUE)
+        ->set('news', TRUE)
+        ->set('notification.threshold', 'security')
+        ->save(TRUE);
     }
   }
 

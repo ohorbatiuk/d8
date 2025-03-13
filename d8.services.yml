@@ -4,8 +4,3 @@ services:
     public: false
     decorates: controller_resolver
     parent: controller_resolver
-
-  d8.route_subscriber:
-    class: Drupal\d8\Routing\D8RouteSubscriber
-    tags:
-      - { name: event_subscriber }

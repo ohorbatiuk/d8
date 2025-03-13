@@ -2,11 +2,9 @@
 
 namespace Drupal\d8_log\Plugin\EmailAdjuster;
 
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\service\EmailAdjusterBase;
 use Drupal\service\RendererTrait;
 use Drupal\symfony_mailer\EmailInterface;
-use Drupal\symfony_mailer\Processor\EmailAdjusterBase;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Defines the Log Email Adjuster.
@@ -18,21 +16,15 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   weight = 800,
  * )
  */
-class LogEmailAdjuster extends EmailAdjusterBase implements ContainerFactoryPluginInterface {
+class LogEmailAdjuster extends EmailAdjusterBase {
 
   use RendererTrait;
 
   /**
    * {@inheritdoc}
    */
-  public static function create(
-    ContainerInterface $container,
-    array $configuration,
-    $plugin_id,
-    $plugin_definition
-  ): static {
-    return (new static($configuration, $plugin_id, $plugin_definition))
-      ->addRenderer($container);
+  protected function creation(): static {
+    return $this->addRenderer();
   }
 
   /**

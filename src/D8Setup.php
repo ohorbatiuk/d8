@@ -14,7 +14,6 @@ use Drupal\service\ModuleListTrait;
 use Drupal\service\StateTrait;
 use Drupal\service\StringTranslationTrait;
 use Drupal\user\UserInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides functionality to set up installation profile.
@@ -38,8 +37,8 @@ class D8Setup extends D8BuilderBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container): static {
-    return parent::create($container)
+  protected function creation(): static {
+    return parent::creation()
       ->addEntityTypeManager()
       ->addExtensionPathResolver()
       ->addModuleInstaller()
@@ -67,11 +66,8 @@ class D8Setup extends D8BuilderBase {
       'recaptcha',
     ]);
 
-    $path = sprintf(
-      '%s/%s',
-      $this->extensionPathResolver()->getPath('module', 'd8_captcha'),
-      InstallStorage::CONFIG_INSTALL_DIRECTORY,
-    );
+    $path = $this->extensionPathResolver()->getPath('module', 'd8_captcha') .
+      DIRECTORY_SEPARATOR . InstallStorage::CONFIG_INSTALL_DIRECTORY;
 
     foreach ((new FileStorage($path))->listAll() as $name) {
       $this->configFactory()->getEditable($name)->delete();
@@ -147,26 +143,32 @@ class D8Setup extends D8BuilderBase {
   }
 
   /**
-   * (Un)install a module with optional checking of some other module.
+   * (Un)install modules with optional checking of some other module.
    *
-   * @param string $target
-   *   The name of the module from this installation profile or drupal.org.
-   * @param string|null $source
-   *   (optional) The name of the module from drupal.org. If this parameter is
-   *   specified then before installing/uninstalling the target module will be
-   *   checked if the source module exists. Defaults to NULL.
+   * @param array|string $target
+   *   The names of modules from this installation profile or drupal.org.
+   * @param array|string|null $source
+   *   (optional) The names of modules from drupal.org. If this parameter is
+   *   specified then before installing/uninstalling target modules, it will be
+   *   checked if the source modules exist. Defaults to NULL.
    * @param bool $uninstall
-   *   (optional) TRUE, if the module should be installed. Defaults to FALSE.
+   *   (optional) TRUE, if modules should be installed. Defaults to FALSE.
    */
   public function module(
-    string $target,
-    string $source = NULL,
-    bool $uninstall = FALSE
+    array|string $target,
+    array|string $source = NULL,
+    bool $uninstall = FALSE,
   ): void {
-    if ($source === NULL || $this->moduleList()->exists($source)) {
-      $method = ($uninstall ? 'un' : '') . 'install';
-      $this->moduleInstaller()->$method([$target], !$uninstall);
+    if ($source !== NULL) {
+      foreach ((array) $source as $name) {
+        if (!$this->moduleList()->exists($name)) {
+          return;
+        }
+      }
     }
+
+    $method = ($uninstall ? 'un' : '') . 'install';
+    $this->moduleInstaller()->$method((array) $target, !$uninstall);
   }
 
 }

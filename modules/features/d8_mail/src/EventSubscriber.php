@@ -29,17 +29,17 @@ class EventSubscriber implements EventSubscriberInterface {
   /**
    * The common part of the status message and database log message.
    */
-  protected const MESSAGE = ' has been changed from %old to %new.';
+  protected const string MESSAGE = ' has been changed from %old to %new.';
 
   /**
    * The link label of the status message and database log message.
    */
-  protected const LABEL = 'The site E-mail address';
+  protected const string LABEL = 'The site E-mail address';
 
   /**
    * The prefix of the status message where the link will be inserted.
    */
-  protected const KEY = '@link';
+  protected const string KEY = '@link';
 
   /**
    * The base E-mail address of the site.
@@ -73,7 +73,7 @@ class EventSubscriber implements EventSubscriberInterface {
     protected ConfigFactoryInterface $configFactory,
     MessengerInterface $messenger,
     TranslationInterface $translation,
-    LoggerChannelFactoryInterface $logger_factory
+    LoggerChannelFactoryInterface $logger_factory,
   ) {
     $this
       ->setStringTranslation($translation)

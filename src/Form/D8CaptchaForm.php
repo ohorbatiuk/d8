@@ -5,22 +5,23 @@ namespace Drupal\d8\Form;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\recaptcha\Form\ReCaptchaAdminSettingsForm;
+use Drupal\service\ConfigFormBaseTrait;
 use Drupal\service\ModuleInstallerTrait;
 use Drupal\service\StringTranslationTrait;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Configure reCAPTCHA settings for this profile.
  */
 class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
 
+  use ConfigFormBaseTrait;
   use ModuleInstallerTrait;
   use StringTranslationTrait;
 
   /**
    * The fields are split by section which should be hidden.
    */
-  protected const FIELDS = [
+  protected const array FIELDS = [
     'widget' => ['recaptcha_size'],
     'general' => ['recaptcha_site_key', 'recaptcha_secret_key'],
   ];
@@ -28,10 +29,8 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container): static {
-    return parent::create($container)
-      ->addModuleInstaller($container)
-      ->addStringTranslation();
+  protected function creation(): static {
+    return $this->addModuleInstaller()->addStringTranslation();
   }
 
   /**
@@ -56,7 +55,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
    */
   public function buildForm(
     array $form,
-    FormStateInterface $form_state
+    FormStateInterface $form_state,
   ): array {
     $form = parent::buildForm($form, $form_state);
 
@@ -67,11 +66,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
 
     if (!empty($field['#default_value'])) {
       $field['#options'][''] = $this->t('Normal');
-
-      $field['#options'][$field['#default_value']] .= sprintf(
-        ' (%s)',
-        $this->t('default'),
-      );
+      $field['#options'][$field['#default_value']] .= " ({$this->t('default')})";
     }
 
     foreach (static::FIELDS as $section => $fields) {
@@ -93,7 +88,7 @@ class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
    */
   public function submitForm(
     array &$form,
-    FormStateInterface $form_state
+    FormStateInterface $form_state,
   ): void {
     parent::submitForm($form, $form_state);
 

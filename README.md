@@ -8,14 +8,6 @@ themes that form the basis for creating a stable site.
 [![Packagist Downloads](https://img.shields.io/packagist/dt/lexhouk/d8?label=Downloads)](https://packagist.org/packages/lexhouk/d8)
 
 
-## Table of contents
-
-- Requirements
-- Recommended module
-- Features
-- Mirror
-
-
 ## Requirements
 
 This installation profile requires the following modules:
@@ -29,6 +21,7 @@ This installation profile requires the following modules:
 - [External Links](https://www.drupal.org/project/extlink)
 - [Features](https://www.drupal.org/project/features)
 - [Font Awesome Icons](https://www.drupal.org/project/fontawesome)
+- [Idle](https://www.drupal.org/project/idle)
 - [Module Filter](https://www.drupal.org/project/module_filter)
 - [reCAPTCHA](https://www.drupal.org/project/recaptcha)
 - [reCAPTCHA Preloader](https://www.drupal.org/project/recaptcha_preloader)
@@ -53,10 +46,6 @@ in PHP array style.
 ### New installation step for setting captcha keys
 
 ![captcha](images/captcha.png "captcha")
-
-### Maintenance mode
-
-![maintenance](images/maintenance.png "maintenance")
 
 
 ## Mirror

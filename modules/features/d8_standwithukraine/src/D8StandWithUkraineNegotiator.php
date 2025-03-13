@@ -31,7 +31,7 @@ class D8StandWithUkraineNegotiator implements StandWithUkraineNegotiatorInterfac
     protected ConfigFactoryInterface $configFactory,
     protected ThemeManagerInterface $themeManager,
     protected RouteMatchInterface $routeMatch,
-    protected LocalTaskManagerInterface $localTaskManager
+    protected LocalTaskManagerInterface $localTaskManager,
   ) {}
 
   /**
@@ -79,7 +79,6 @@ class D8StandWithUkraineNegotiator implements StandWithUkraineNegotiatorInterfac
     }
 
     $settings
-      ->setText(StandWithUkraineSettingsInterface::TEXT)
       ->setDouble()
       ->setSizes(FALSE, TRUE)
       ->setPosition(Position::Right)
