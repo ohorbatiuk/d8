@@ -43,7 +43,9 @@ in PHP array style.
 
 ## Features
 
-### New installation step for setting captcha keys
+### Captcha
+
+New installation step for setting captcha keys.
 
 ![captcha](images/captcha.png "captcha")
 
