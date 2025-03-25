@@ -3,7 +3,7 @@ description: The installation profile for CMS Drupal 10/11 based on the most com
 
 type: profile
 core_version_requirement: ^10.3 || ^11
-version: 0.23.0.199
+version: 0.23.0.200
 
 php: 8.3
 
