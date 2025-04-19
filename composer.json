@@ -27,7 +27,8 @@
         "drupal/seven": "1.0.0",
         "drupal/standwithukraine": "3.0.0",
         "drupal/symfony_mailer": "1.5.0",
-        "php": "^8.3"
+        "php": "^8.3",
+        "twbs/bootstrap": "5.3.3"
     },
     "require-dev": {
         "drupal/config2php": "3.0.2",

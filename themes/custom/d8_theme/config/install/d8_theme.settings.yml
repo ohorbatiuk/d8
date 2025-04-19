@@ -28,7 +28,7 @@ cdn_cache_ttl_assets: '0'
 cdn_cache_ttl_library: '0'
 apply: Apply
 reset_http_request_cache: ''
-bootstrap_source: bootstrap/bootswatch_litera
+bootstrap_source: bootstrap/bootstrap
 bootstrap_enable_color: 0
 bootstrap_system_messages: ''
 bootstrap_table_style: ''
