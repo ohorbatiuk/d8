@@ -44,6 +44,9 @@
                 "Add events for matching entity hooks": "https://www.drupal.org/files/issues/2024-01-30/2551893-122.patch",
                 "News mode": "https://www.drupal.org/files/issues/2024-09-10/drupal-news-mode-3256060-25.patch"
             },
+            "drupal/extlink": {
+                "Extra Comma Appears in Anchor Title Attributes": "https://git.drupalcode.org/project/extlink/-/merge_requests/55.patch"
+            },
             "drupal/features": {
                 "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch"
             },
