@@ -1,0 +1,4 @@
+services:
+  d8_theming.helper:
+    class: Drupal\d8_theming\Service\D8ThemingHelper
+  Drupal\d8_theming\Service\D8ThemingHelperInterface: '@d8_theming.helper'
