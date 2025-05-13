@@ -2,3 +2,11 @@ base:
   css:
     component:
       css/style.css: {}
+
+checkbox-or-radio:
+  js:
+    js/checkbox-or-radio.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery

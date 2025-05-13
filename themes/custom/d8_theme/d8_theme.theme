@@ -5,9 +5,54 @@
  * Functions to support theming in the D8+ theme.
  */
 
+use Drupal\Core\Template\Attribute;
+
 /**
  * Implements hook_preprocess_HOOK().
  */
 function d8_theme_preprocess_captcha(array &$variables): void {
   $variables['attributes']['class'][] = 'mb-3';
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function d8_theme_preprocess_form_element(array &$variables): void {
+  if (
+    !in_array($type = $variables['type'], ['checkbox', 'radio']) ||
+    !empty(theme_get_setting('bootstrap_checkbox'))
+  ) {
+    return;
+  }
+
+  $variables['#attached']['library'][] = 'd8_theme/checkbox-or-radio';
+
+  $icons = $type === 'checkbox' ? ['check', 'square'] : ['record', 'circle'];
+
+  $variables['#attached']['drupalSettings']['d8Theme'][$type] = array_map(
+    fn(string $icon): string => "bi-$icon",
+    $icons = [$icons[1], "$icons[0]-$icons[1]"],
+  );
+
+  $variables['attributes']['class'][] = 'ps-0';
+
+  $variables['input_attributes']->addClass('d-none');
+
+  $variables['label_attributes'] = (new Attribute(
+    $variables['label_attributes'] ?? [],
+  ))->addClass('d-flex', 'align-items-center');
+
+  /** @var \Drupal\d8_theming\Service\D8ThemingHelperInterface $helper */
+  $helper = \Drupal::service('d8_theming.helper');
+
+  $element = $variables['element'];
+
+  $selected = $type === 'checkbox'
+    ? $element['#checked']
+    : $element['#return_value'] === $element['#value'];
+
+  $variables['input_title'] = [
+    'icon' => $helper->icon($icons[(int) $selected], 'fs-3 me-2'),
+    'text' => ['#plain_text' => $variables['input_title']],
+  ];
 }
