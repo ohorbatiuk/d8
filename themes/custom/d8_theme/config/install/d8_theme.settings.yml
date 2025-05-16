@@ -35,9 +35,9 @@ bootstrap_table_style: ''
 bootstrap_table_hover: 0
 bootstrap_table_head: ''
 bootstrap_container: container
-bootstrap_region_clean_navigation: 0
+bootstrap_region_clean_navigation: 1
 bootstrap_region_width_navigation: 0
-bootstrap_region_class_navigation: row
+bootstrap_region_class_navigation: ''
 bootstrap_region_clean_navigation_collapsible: 0
 bootstrap_region_width_navigation_collapsible: 0
 bootstrap_region_class_navigation_collapsible: row

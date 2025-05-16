@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * D8+'s override to display Menu Account.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ */
+#}
+{% block content %}
+  {{ attach_library('d8_theming/icon') }}
+  <a href="#" class="d-block link-secondary text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="bi-person-circle fs-4"></i>
+  </a>
+  <ul{{ attributes.addClass('dropdown-menu dropdown-menu-end')|without('id') }}>
+    {% for route_name, item in items %}
+      {% if route_name == 'user.logout' %}
+        <li><hr class="dropdown-divider"></li>
+      {% endif %}
+      <li{{ item.attributes }}>
+        {{ link(item.title, item.url, {'class': ['dropdown-item']}) }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
