@@ -79,7 +79,7 @@ bootstrap_navbar_offcanvas: ''
 bootstrap_navbar_flyout: 0
 bootstrap_navbar_slide: 0
 bootstrap_tabs_style: ''
-bootstrap_messages_widget: default
+bootstrap_messages_widget: toasts
 bootstrap_messages_widget_toast_delay: '10000'
 bootstrap_float_label: 0
 bootstrap_checkbox: ''

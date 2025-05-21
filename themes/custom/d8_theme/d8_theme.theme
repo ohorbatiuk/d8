@@ -65,3 +65,16 @@ function d8_theme_preprocess_form_element(array &$variables): void {
     'text' => ['#plain_text' => $variables['input_title']],
   ];
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function d8_theme_preprocess_status_messages(array &$variables): void {
+  $variables['attributes']['data-bs-autohide'] = 'false';
+  $variables['attributes']['data-drupal-selector'] = 'messages';
+  $variables['attributes']['class'][] = 'fade';
+
+  foreach (['aria-label', 'data-bs-delay', 'role'] as $attribute) {
+    unset($variables['attributes'][$attribute]);
+  }
+}
