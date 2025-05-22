@@ -25,7 +25,7 @@
   </a>
   <ul{{ attributes.addClass('dropdown-menu dropdown-menu-end')|without('id') }}>
     {% for route_name, item in items %}
-      {% if route_name == 'user.logout' %}
+      {% if not loop.first and route_name == 'user.logout' %}
         <li><hr class="dropdown-divider"></li>
       {% endif %}
       <li{{ item.attributes }}>
