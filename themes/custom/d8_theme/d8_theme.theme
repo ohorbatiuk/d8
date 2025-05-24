@@ -78,3 +78,14 @@ function d8_theme_preprocess_status_messages(array &$variables): void {
     unset($variables['attributes'][$attribute]);
   }
 }
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function d8_theme_theme_registry_alter(array &$theme_registry): void {
+  foreach ($theme_registry as $name => &$info) {
+    if (preg_match('/^(|views_view_)table(|__.+)$/', $name)) {
+      $info['variables']['wide'] = TRUE;
+    }
+  }
+}

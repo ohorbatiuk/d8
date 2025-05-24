@@ -32,7 +32,7 @@
     },
     "require-dev": {
         "drupal/config2php": "3.0.2",
-        "twbs/bootstrap-sass": "3.4.3"
+        "twbs/bootstrap-sass": "5.3.3"
     },
     "extra": {
         "patches": {
