@@ -1,0 +1,21 @@
+.table-wrapper.table-wide {
+  $d8-table: calc(-.5 * var(--bs-gutter-x));
+
+  margin-left: $d8-table;
+  margin-right: $d8-table;
+
+  > .table {
+    > thead > tr > th,
+    > tbody > tr > td {
+      $d8-table: calc(.5 * var(--bs-gutter-x));
+
+      &:first-child {
+        padding-left: $d8-table;
+      }
+
+      &:last-child {
+        padding-right: $d8-table;
+      }
+    }
+  }
+}
