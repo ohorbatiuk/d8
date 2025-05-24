@@ -31,8 +31,7 @@
         "twbs/bootstrap": "5.3.3"
     },
     "require-dev": {
-        "drupal/config2php": "3.0.2",
-        "twbs/bootstrap-sass": "5.3.3"
+        "drupal/config2php": "3.0.2"
     },
     "extra": {
         "patches": {
