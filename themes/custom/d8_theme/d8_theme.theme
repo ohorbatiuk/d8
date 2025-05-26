@@ -5,7 +5,19 @@
  * Functions to support theming in the D8+ theme.
  */
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function d8_theme_form_user_form_alter(
+  array &$form,
+  FormStateInterface $form_state,
+  string $form_id,
+): void {
+  $form['timezone']['#type'] = 'container';
+}
 
 /**
  * Implements hook_preprocess_HOOK().
@@ -13,6 +25,14 @@ use Drupal\Core\Template\Attribute;
 function d8_theme_preprocess_block(array &$variables): void {
   if ($variables['plugin_id'] === 'system_menu_block:account') {
     $variables['attributes']['class'][] = 'dropdown';
+  }
+
+  unset($variables['attributes']['id']);
+
+  foreach (['attributes', 'content_attributes'] as $element) {
+    if (count($variables[$element]) === 0) {
+      unset($variables[$element]);
+    }
   }
 }
 
