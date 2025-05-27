@@ -1,8 +1,3 @@
-base:
-  css:
-    component:
-      css/style.min.css: { minified: true }
-
 checkbox-or-radio:
   js:
     js/checkbox-or-radio.js: {}
@@ -10,3 +5,12 @@ checkbox-or-radio:
     - core/drupal
     - core/drupalSettings
     - core/jquery
+
+table:
+  css:
+    component:
+      css/table.min.css: { minified: true }
+
+tooltip:
+  js:
+    js/tooltip.js: {}

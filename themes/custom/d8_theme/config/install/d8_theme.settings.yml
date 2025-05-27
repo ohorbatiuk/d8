@@ -15,19 +15,6 @@ logo:
 schemas:
   d8_theme: 8001
   bootstrap: 8000
-fluid_container: 1
-image_shape: img-thumbnail
-table_responsive: '0'
-table: ''
-navbar_position: static-top
-tooltip_placement: 'auto top'
-cdn_theme: bootstrap
-cdn_cache_ttl_versions: '604800'
-cdn_cache_ttl_themes: '604800'
-cdn_cache_ttl_assets: '0'
-cdn_cache_ttl_library: '0'
-apply: Apply
-reset_http_request_cache: ''
 bootstrap_source: bootstrap/bootstrap
 bootstrap_enable_color: 0
 bootstrap_system_messages: ''
