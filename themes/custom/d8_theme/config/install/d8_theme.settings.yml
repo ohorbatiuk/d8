@@ -61,7 +61,7 @@ bootstrap_navbar_position: ''
 bootstrap_navbar_color: ''
 bootstrap_navbar_background: bg-light
 bootstrap_navbar_top_class: ''
-bootstrap_navbar_class: 'border-bottom mb-3'
+bootstrap_navbar_class: 'order-last order-sm-first mt-auto mt-sm-0'
 bootstrap_navbar_offcanvas: ''
 bootstrap_navbar_flyout: 0
 bootstrap_navbar_slide: 0

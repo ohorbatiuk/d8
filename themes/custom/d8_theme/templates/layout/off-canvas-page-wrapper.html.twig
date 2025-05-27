@@ -22,7 +22,15 @@
  */
 #}
 {% if children %}
-  <div{{ attributes.addClass('dialog-off-canvas-main-canvas', 'd-flex', 'flex-column') }} data-off-canvas-main-canvas>
+  {%
+    set classes = [
+      'dialog-off-canvas-main-canvas',
+      'd-flex',
+      'flex-column',
+      'h-100',
+    ]
+  %}
+  <div{{ attributes.addClass(classes) }} data-off-canvas-main-canvas>
     {{ children }}
   </div>
 {% endif %}
