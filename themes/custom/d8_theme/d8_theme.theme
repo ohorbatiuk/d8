@@ -1,0 +1,144 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the D8+ theme.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function d8_theme_form_user_form_alter(
+  array &$form,
+  FormStateInterface $form_state,
+  string $form_id,
+): void {
+  $form['timezone']['#type'] = 'container';
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function d8_theme_preprocess(array &$variables, string $hook): void {
+  if (_d8_theme_table($hook) && $variables['wide']) {
+    $variables['#attached']['library'][] = 'd8_theme/table';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function d8_theme_preprocess_block(array &$variables): void {
+  if ($variables['plugin_id'] === 'system_menu_block:account') {
+    $variables['attributes']['class'][] = 'dropdown';
+  }
+
+  unset($variables['attributes']['id']);
+
+  foreach (['attributes', 'content_attributes'] as $element) {
+    if (count($variables[$element]) === 0) {
+      unset($variables[$element]);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function d8_theme_preprocess_captcha(array &$variables): void {
+  $variables['attributes']['class'][] = 'mb-3';
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function d8_theme_preprocess_form_element(array &$variables): void {
+  if (
+    !in_array($type = $variables['type'], ['checkbox', 'radio']) ||
+    !empty(theme_get_setting('bootstrap_checkbox'))
+  ) {
+    return;
+  }
+
+  $variables['#attached']['library'][] = 'd8_theme/checkbox-or-radio';
+
+  $icons = $type === 'checkbox' ? ['check', 'square'] : ['record', 'circle'];
+
+  $variables['#attached']['drupalSettings']['d8Theme'][$type] = array_map(
+    fn(string $icon): string => "bi-$icon",
+    $icons = [$icons[1], "$icons[0]-$icons[1]"],
+  );
+
+  $variables['attributes']['class'][] = 'ps-0';
+
+  $variables['input_attributes']->addClass('d-none');
+
+  $variables['label_attributes'] = (new Attribute(
+    $variables['label_attributes'] ?? [],
+  ))->addClass('d-flex', 'align-items-center');
+
+  /** @var \Drupal\d8_theming\Service\D8ThemingHelperInterface $helper */
+  $helper = \Drupal::service('d8_theming.helper');
+
+  $element = $variables['element'];
+
+  $selected = $type === 'checkbox'
+    ? $element['#checked']
+    : $element['#return_value'] === $element['#value'];
+
+  $variables['input_title'] = [
+    'icon' => $helper->icon($icons[(int) $selected], 'fs-3 me-2'),
+    'text' => ['#plain_text' => $variables['input_title']],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function d8_theme_preprocess_html(array &$variables): void {
+  $variables['html_attributes']->addClass('h-100');
+
+  $variables['attributes']['class'] = [
+    ...($variables['attributes']['class'] ?? []),
+    'd-flex',
+    'flex-column',
+    'h-100',
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function d8_theme_preprocess_status_messages(array &$variables): void {
+  $variables['attributes']['data-bs-autohide'] = 'false';
+  $variables['attributes']['data-drupal-selector'] = 'messages';
+  $variables['attributes']['class'][] = 'fade';
+
+  foreach (['aria-label', 'data-bs-delay', 'role'] as $attribute) {
+    unset($variables['attributes'][$attribute]);
+  }
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function d8_theme_theme_registry_alter(array &$theme_registry): void {
+  foreach ($theme_registry as $name => &$info) {
+    if (_d8_theme_table($name)) {
+      $info['variables']['wide'] = TRUE;
+    }
+  }
+}
+
+/**
+ * Determines if a given theme name corresponds to a table-based theme.
+ *
+ * @param string $name
+ *   The name of the theme to evaluate.
+ */
+function _d8_theme_table(string $name): bool {
+  return preg_match('/^(|views_view_)table(|__.+)$/', $name);
+}

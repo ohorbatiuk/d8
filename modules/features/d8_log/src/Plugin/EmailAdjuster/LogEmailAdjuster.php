@@ -56,7 +56,7 @@ class LogEmailAdjuster extends EmailAdjusterBase {
         function (string $item): array {
           $item = explode(':', $item, 2);
           array_walk($item, 'trim');
-          $item[1] = ['data' => $this->cell($item[1])];
+          $item[1] = ['data' => isset($item[1]) ? $this->cell($item[1]) : ''];
           return $item;
         },
         array_filter(

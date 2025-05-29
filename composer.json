@@ -8,7 +8,7 @@
         "cweagans/composer-patches": "^1.0",
         "drupal/admin_toolbar": "3.5.0",
         "drupal/autoban": "1.10",
-        "drupal/bootstrap": "3.34",
+        "drupal/bootstrap": "5.0.1",
         "drupal/captcha": "2.0.6",
         "drupal/config_update": "2.0.0-alpha4",
         "drupal/core": "10.4.5",
@@ -18,6 +18,8 @@
         "drupal/features": "dev-3447460-drupal-11-compatibility#40732dfd317473d9913c9e97d0cf7e4d68a78934",
         "drupal/fontawesome": "3.0.0",
         "drupal/idle": "1.0.0",
+        "drupal/jquery_ui_draggable": "2.1.0",
+        "drupal/jquery_ui_resizable": "2.1.0",
         "drupal/module_filter": "5.0.3",
         "drupal/recaptcha": "3.3",
         "drupal/recaptcha_preloader": "2.0.1",
@@ -25,11 +27,11 @@
         "drupal/seven": "1.0.0",
         "drupal/standwithukraine": "3.0.0",
         "drupal/symfony_mailer": "1.5.0",
-        "php": "^8.3"
+        "php": "^8.3",
+        "twbs/bootstrap": "5.3.3"
     },
     "require-dev": {
-        "drupal/config2php": "3.0.2",
-        "twbs/bootstrap-sass": "3.4.3"
+        "drupal/config2php": "3.0.2"
     },
     "extra": {
         "patches": {
@@ -41,8 +43,14 @@
                 "Add events for matching entity hooks": "https://www.drupal.org/files/issues/2024-01-30/2551893-122.patch",
                 "News mode": "https://www.drupal.org/files/issues/2024-09-10/drupal-news-mode-3256060-25.patch"
             },
+            "drupal/extlink": {
+                "Extra Comma Appears in Anchor Title Attributes": "https://git.drupalcode.org/project/extlink/-/merge_requests/55.patch"
+            },
             "drupal/features": {
                 "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch"
+            },
+            "drupal/idle": {
+                "Remove indentation in the body of the page and hide links": "https://git.drupalcode.org/project/idle/-/commit/1114e25650ee23dcb163b0dad1fe943a6fc535e4.patch"
             },
             "drupal/symfony_mailer": {
                 "Add support for complex address strings in back-compatibility mode": "https://www.drupal.org/files/issues/2023-03-30/symfony_mailer-support_complex_address_strings-3350992-3.patch"

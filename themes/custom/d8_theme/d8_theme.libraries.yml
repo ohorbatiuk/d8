@@ -1,4 +1,16 @@
-base:
+checkbox-or-radio:
+  js:
+    js/checkbox-or-radio.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery
+
+table:
   css:
     component:
-      css/style.css: {}
+      css/table.min.css: { minified: true }
+
+tooltip:
+  js:
+    js/tooltip.js: {}
