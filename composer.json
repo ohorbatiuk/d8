@@ -17,7 +17,7 @@
         "drupal/extlink": "2.0.2",
         "drupal/features": "dev-3447460-drupal-11-compatibility#40732dfd317473d9913c9e97d0cf7e4d68a78934",
         "drupal/fontawesome": "3.0.0",
-        "drupal/idle": "1.0.0",
+        "drupal/idle": "1.0.2",
         "drupal/jquery_ui_draggable": "2.1.0",
         "drupal/jquery_ui_resizable": "2.1.0",
         "drupal/module_filter": "5.0.3",
@@ -48,9 +48,6 @@
             },
             "drupal/features": {
                 "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch"
-            },
-            "drupal/idle": {
-                "Remove indentation in the body of the page and hide links": "https://git.drupalcode.org/project/idle/-/commit/1114e25650ee23dcb163b0dad1fe943a6fc535e4.patch"
             },
             "drupal/symfony_mailer": {
                 "Add support for complex address strings in back-compatibility mode": "https://www.drupal.org/files/issues/2023-03-30/symfony_mailer-support_complex_address_strings-3350992-3.patch"
