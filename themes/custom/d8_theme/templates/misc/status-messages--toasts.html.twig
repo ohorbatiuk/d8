@@ -1,0 +1,89 @@
+{#
+/**
+ * @file
+ * Default theme implementation for status messages.
+ *
+ * Displays status, error, and warning messages, grouped by type.
+ *
+ * An invisible heading identifies the messages for assistive technology.
+ * Sighted users see a colored box. See http://www.w3.org/TR/WCAG-TECHS/H69.html
+ * for info.
+ *
+ * Add an ARIA label to the contentinfo area so that assistive technology
+ * user agents will better describe this landmark.
+ *
+ * Available variables:
+ * - message_list: List of messages to be displayed, grouped by type.
+ * - status_headings: List of all status types.
+ * - display: (optional) May have a value of 'status' or 'error' when only
+ *   displaying messages of that specific type.
+ * - attributes: HTML attributes for the element, including:
+ *   - class: HTML classes.
+ *
+ * @see template_preprocess_status_messages()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set breakpoint = 'lg' %}
+
+{%
+  set role = {
+    'status': 'status',
+    'warning': 'alert',
+    'error': 'alert',
+    'info': 'info',
+  }
+%}
+
+{%
+  set color = {
+    'status': 'success',
+    'warning': 'warning',
+    'error': 'danger',
+    'info': 'info',
+  }
+%}
+
+{{ attach_library('bootstrap/toast') }}
+
+{%
+  set desktop_attributes = create_attribute(attributes|merge({}))
+    .addClass('d-flex', 'toast', 'm-2')
+%}
+
+<div class="d-none d-{{ breakpoint }}-block toast-container position-fixed top-0 end-0 h-100 overflow-auto" aria-live="polite" aria-atomic="true" data-drupal-messages>
+  {% for type, messages in message_list %}
+    {%
+      set desktop_type_attributes = create_attribute(desktop_attributes|merge({}))
+        .addClass('bg-' ~ color[type] ~ '-subtle')
+    %}
+    {% for message in messages %}
+      <div{{ desktop_type_attributes }} aria-atomic="true" aria-live="assertive" role="{{ role[type] }}">
+        <div class="toast-body overflow-auto text-break">{{ message }}</div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="{% trans %}Close{% endtrans %}"></button>
+      </div>
+    {% endfor %}
+  {% endfor %}
+</div>
+
+{%
+  set mobile_attributes = create_attribute(attributes|merge({}))
+    .addClass('alert', 'alert-dismissible', 'show', 'mb-2')
+%}
+
+<div class="d-{{ breakpoint }}-none" data-drupal-messages>
+  {% for type, messages in message_list %}
+    {%
+      set mobile_type_attributes = create_attribute(mobile_attributes|merge({}))
+        .addClass('alert-' ~ color[type])
+    %}
+    {% for message in messages %}
+      <div{{ mobile_type_attributes }} aria-label="{{ status_headings[type] }}" role="{{ role[type] }}">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{% trans %}Close{% endtrans %}"></button>
+      </div>
+    {% endfor %}
+  {% endfor %}
+</div>

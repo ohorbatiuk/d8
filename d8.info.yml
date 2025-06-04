@@ -3,7 +3,7 @@ description: The installation profile for CMS Drupal 10/11 based on the most com
 
 type: profile
 core_version_requirement: ^10.3 || ^11
-version: 0.23.0.200
+version: 0.23.0.202
 
 php: 8.3
 
@@ -26,9 +26,7 @@ dependencies:
 
   - admin_toolbar:admin_toolbar_search
   - features:features_ui
-  - idle:idle
-  - jquery_ui_draggable:jquery_ui_draggable
-  - jquery_ui_resizable:jquery_ui_resizable
+  - idle:idle (>=1.0.2)
   - module_filter:module_filter
   - service:service (>=2.1.0)
 

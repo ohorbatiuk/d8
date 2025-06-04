@@ -15,4 +15,4 @@ regions:
   footer: 'Footer'
 
 libraries:
-  - 'd8_theme/base'
+  - 'd8_theme/tooltip'

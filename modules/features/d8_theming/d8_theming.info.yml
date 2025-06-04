@@ -1,5 +1,5 @@
 name: D8+ Theming
-description: Provides blocks for the D8+ theme.
+description: Provides blocks and icons for the D8+ theme.
 package: D8+
 
 type: module

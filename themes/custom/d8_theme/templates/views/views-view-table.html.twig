@@ -1,3 +1,5 @@
+{% extends "table.html.twig" %}
+
 {#
 /**
  * @file
@@ -6,7 +8,7 @@
  * Available variables:
  * - attributes: Remaining HTML attributes for the element.
  *   - class: HTML classes that can be used to style contextually through CSS.
- * - wrapper_attributes: Remaining HTML attributes for the wrapper of the
+ * - content_attributes: Remaining HTML attributes for the wrapper of the
  *   element.
  *   - class: HTML classes that can be used to style contextually through CSS.
  * - title : The title of this group of rows.
@@ -30,109 +32,98 @@
  * - striped: Flag indicating whether or not table rows should be striped.
  * - responsive: Flag indicating whether or not the table should be wrapped to
  *   be responsive (using the Bootstrap Framework .table-responsive wrapper).
+ * - wide: Delete left and right free spaces near a table which created by
+ *   column.
  *
  * @ingroup templates
  *
  * @see template_preprocess_views_view_table()
  */
 #}
-<div{{ wrapper_attributes }}>
-  {%
-    set classes = [
-      'table',
-      bordered ? 'table-bordered',
-      condensed ? 'table-condensed',
-      hover ? 'table-hover',
-      striped ? 'table-striped',
-      sticky ? 'sticky-enabled',
-    ]
-  %}
+{% block content %}
+  {% if caption_needed %}
+    <caption>
+      {% if caption %}
+        {{ caption }}
+      {% else %}
+        {{ title }}
+      {% endif %}
 
-  <table{{ attributes.addClass(classes) }}>
-    {% if caption_needed %}
-      <caption>
-        {% if caption %}
-          {{ caption }}
-        {% else %}
-          {{ title }}
-        {% endif %}
+      {% if (summary is not empty) or (description is not empty) %}
+        <details>
+          {% if summary is not empty %}
+            <summary>{{ summary }}</summary>
+          {% endif %}
 
-        {% if (summary is not empty) or (description is not empty) %}
-          <details>
-            {% if summary is not empty %}
-              <summary>{{ summary }}</summary>
-            {% endif %}
+          {% if description is not empty %}
+            {{ description }}
+          {% endif %}
+        </details>
+      {% endif %}
+    </caption>
+  {% endif %}
 
-            {% if description is not empty %}
-              {{ description }}
-            {% endif %}
-          </details>
-        {% endif %}
-      </caption>
-    {% endif %}
+  {% if header %}
+    <thead>
+      <tr>
+        {% for key, column in header %}
+          {% if column.default_classes %}
+            {%
+              set column_classes = [
+                'views-field',
+                'views-field-' ~ fields[key],
+              ]
+            %}
+          {% endif %}
 
-    {% if header %}
-      <thead>
-        <tr>
-          {% for key, column in header %}
-            {% if column.default_classes %}
-              {%
-                set column_classes = [
-                  'views-field',
-                  'views-field-' ~ fields[key],
-                ]
-              %}
-            {% endif %}
-
-            <th{{ column.attributes.addClass(column_classes).setAttribute('scope', 'col') }}>
-              {%- if column.wrapper_element -%}
-                <{{ column.wrapper_element }}>
-                  {%- if column.url -%}
-                    <a href="{{ column.url }}" title="{{ column.title }}">{{ column.content }}{{ column.sort_indicator }}</a>
-                  {%- else -%}
-                    {{ column.content }}{{ column.sort_indicator }}
-                  {%- endif -%}
-                </{{ column.wrapper_element }}>
-              {%- else -%}
+          <th{{ column.attributes.addClass(column_classes).setAttribute('scope', 'col') }}>
+            {%- if column.wrapper_element -%}
+              <{{ column.wrapper_element }}>
                 {%- if column.url -%}
                   <a href="{{ column.url }}" title="{{ column.title }}">{{ column.content }}{{ column.sort_indicator }}</a>
                 {%- else -%}
-                  {{- column.content }}{{ column.sort_indicator }}
+                  {{ column.content }}{{ column.sort_indicator }}
                 {%- endif -%}
-              {%- endif -%}
-            </th>
-          {% endfor %}
-        </tr>
-      </thead>
-    {% endif %}
-
-    <tbody>
-      {% for row in rows %}
-        <tr{{ row.attributes }}>
-          {% for key, column in row.columns %}
-            {% if column.default_classes %}
-              {% set column_classes = [ 'views-field' ] %}
-              {% for field in column.fields %}
-                {% set column_classes = column_classes|merge(['views-field-' ~ field]) %}
-              {% endfor %}
-            {% endif %}
-
-            <td{{ column.attributes.addClass(column_classes) }}>
-              {%- if column.wrapper_element -%}
-                <{{ column.wrapper_element }}>
-                  {% for content in column.content %}
-                    {{ content.separator }}{{ content.field_output }}
-                  {% endfor %}
-                </{{ column.wrapper_element }}>
+              </{{ column.wrapper_element }}>
+            {%- else -%}
+              {%- if column.url -%}
+                <a href="{{ column.url }}" title="{{ column.title }}">{{ column.content }}{{ column.sort_indicator }}</a>
               {%- else -%}
+                {{- column.content }}{{ column.sort_indicator }}
+              {%- endif -%}
+            {%- endif -%}
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+  {% endif %}
+
+  <tbody>
+    {% for row in rows %}
+      <tr{{ row.attributes }}>
+        {% for key, column in row.columns %}
+          {% if column.default_classes %}
+            {% set column_classes = [ 'views-field' ] %}
+            {% for field in column.fields %}
+              {% set column_classes = column_classes|merge(['views-field-' ~ field]) %}
+            {% endfor %}
+          {% endif %}
+
+          <td{{ column.attributes.addClass(column_classes) }}>
+            {%- if column.wrapper_element -%}
+              <{{ column.wrapper_element }}>
                 {% for content in column.content %}
-                  {{- content.separator }}{{ content.field_output -}}
+                  {{ content.separator }}{{ content.field_output }}
                 {% endfor %}
-              {%- endif %}
-            </td>
-          {% endfor %}
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
+              </{{ column.wrapper_element }}>
+            {%- else -%}
+              {% for content in column.content %}
+                {{- content.separator }}{{ content.field_output -}}
+              {% endfor %}
+            {%- endif %}
+          </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+{% endblock %}

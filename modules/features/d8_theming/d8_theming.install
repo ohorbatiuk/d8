@@ -5,12 +5,9 @@
  * Install, update and uninstall functions for the d8_theming module.
  */
 
-use Drupal\d8\D8Setup;
-
 /**
- * Install jQuery UI Draggable and jQuery UI Resizable modules.
+ * Implements hook_update_last_removed().
  */
-function d8_theming_update_10201(array &$sandbox): void {
-  \Drupal::classResolver(D8Setup::class)
-    ->module(['jquery_ui_draggable', 'jquery_ui_resizable']);
+function d8_theming_update_last_removed(): int {
+  return 10401;
 }
