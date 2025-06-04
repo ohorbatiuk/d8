@@ -1,7 +1,7 @@
 # D8+
 
-The installation profile for CMS Drupal 10/11 based on the most common modules
-and themes that form the basis for creating a stable site.
+The installation profile for CMS Drupal 11 based on the most common modules and
+themes that form the basis for creating a stable site.
 
 [![Made in Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd500.svg?labelColor=005bbb)](https://supportukrainenow.org)
 [![Packagist Version](https://img.shields.io/packagist/v/lexhouk/d8?label=Version)](https://packagist.org/packages/lexhouk/d8)
