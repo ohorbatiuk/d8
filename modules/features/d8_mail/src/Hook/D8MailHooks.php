@@ -3,42 +3,12 @@
 namespace Drupal\d8_mail\Hook;
 
 use Drupal\Core\Hook\Attribute\Hook;
-use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\Url;
+use Drupal\d8\D8HooksBase;
 
 /**
  * Hook implementations for d8_mail.
  */
-final class D8MailHooks {
-
-  /**
-   * Implements hook_help().
-   */
-  #[Hook('help')]
-  public function help(
-    string $route_name,
-    RouteMatchInterface $route_match,
-  ): string {
-    $output = '';
-
-    if ($route_name === 'help.page.d8_mail') {
-      $output .= "<h3>{t('About')}</h3><p>";
-
-      $url = Url::fromRoute('help.page', ['name' => 'symfony_mailer']);
-
-      $output .= t(
-        'Provides a wrapper for the <a href=":url">:name</a> module.',
-        [
-          ':url' => $url->toString(),
-          ':name' => 'Drupal Symfony Mailer',
-        ],
-      );
-
-      $output .= '</p>';
-    }
-
-    return $output;
-  }
+final class D8MailHooks extends D8HooksBase {
 
   /**
    * Implements hook_library_info_alter().
