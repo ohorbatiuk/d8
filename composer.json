@@ -37,8 +37,7 @@
                 "Mixed links": "https://www.drupal.org/files/issues/2023-09-09/autoban-mixed-links-3386212-2.patch"
             },
             "drupal/core": {
-                "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2025-03-20/default-theme-favicon-for-administration-theme-2981434-16.patch",
-                "News mode": "https://www.drupal.org/files/issues/2024-09-10/drupal-news-mode-3256060-25.patch"
+                "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2025-03-20/default-theme-favicon-for-administration-theme-2981434-16.patch"
             },
             "drupal/extlink": {
                 "Extra Comma Appears in Anchor Title Attributes": "https://git.drupalcode.org/project/extlink/-/merge_requests/55.patch"

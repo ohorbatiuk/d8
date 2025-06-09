@@ -57,7 +57,6 @@ class D8ConfigureForm extends SiteConfigureForm {
 
       $this->config('update.settings')
         ->set('check.disabled_extensions', TRUE)
-        ->set('news', TRUE)
         ->set('notification.threshold', 'security')
         ->save(TRUE);
     }
