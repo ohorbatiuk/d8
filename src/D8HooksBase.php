@@ -3,7 +3,9 @@
 namespace Drupal\d8;
 
 use Drupal\Core\Extension\ModuleExtensionList;
+use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Hook\Attribute\Hook;
+use Drupal\Core\Link;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslationInterface;
@@ -21,11 +23,14 @@ abstract class D8HooksBase {
    *
    * @param \Drupal\Core\Extension\ModuleExtensionList $moduleExtensionList
    *   The module extension list.
+   * @param \Drupal\Core\Extension\ModuleHandlerInterface $moduleHandler
+   *   The module handler.
    * @param \Drupal\Core\StringTranslation\TranslationInterface $translation
    *   The string translation.
    */
   public function __construct(
     private readonly ModuleExtensionList $moduleExtensionList,
+    private readonly ModuleHandlerInterface $moduleHandler,
     private readonly TranslationInterface $translation,
   ) {
     $this->setStringTranslation($translation);
@@ -48,35 +53,44 @@ abstract class D8HooksBase {
 
     $info = $this->moduleExtensionList->getExtensionInfo($name);
 
-    if (($name = $this->module()) !== NULL) {
-      $url = Url::fromRoute('help.page', ['name' => $name]);
-    }
-    else {
+    if (($name = $this->module()) === NULL) {
       foreach ($info['dependencies'] as $dependency) {
         $dependency = explode(':', $dependency);
 
         if ($dependency[0] === $dependency[1]) {
-          $url = Url::fromRoute('help.page', ['name' => $dependency[0]]);
+          $name = $dependency[0];
+
+          break;
         }
       }
     }
 
     if (
-      isset($url) &&
+      !empty($name) &&
       preg_match(
         '/^Provides a wrapper for the (.+) module(| and related)\.$/',
         $info['description'],
         $matches,
       )
     ) {
-      $name = str_replace($matches[1], '<a href=":url">:name</a>', $matches[0]);
+      $phrase = str_replace($matches[1], '@module', $matches[0]);
 
-      $info = [
-        ':url' => $url->toString(),
-        ':name' => $matches[1],
-      ];
+      if ($this->moduleHandler->hasImplementations('help', $name)) {
+        $link = Link::createFromRoute(
+          $matches[1],
+          'help.page',
+          ['name' => $name],
+        );
+      }
+      else {
+        $link = Link::fromTextAndUrl(
+          $matches[1],
+          Url::fromUri("https://www.drupal.org/project/$name"),
+        );
+      }
 
-      $output = "<h3>{$this->t('About')}</h3><p>{$this->t($name, $info)}</p>";
+      $info = ['@module' => $link->toString()];
+      $output = "<h3>{$this->t('About')}</h3><p>{$this->t($phrase, $info)}</p>";
     }
 
     return $output;

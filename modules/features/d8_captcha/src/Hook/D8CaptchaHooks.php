@@ -4,6 +4,7 @@ namespace Drupal\d8_captcha\Hook;
 
 use Drupal\Core\Extension\ExtensionPathResolver;
 use Drupal\Core\Extension\ModuleExtensionList;
+use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\d8\D8HooksBase;
@@ -18,6 +19,8 @@ final class D8CaptchaHooks extends D8HooksBase {
    *
    * @param \Drupal\Core\Extension\ModuleExtensionList $moduleExtensionList
    *   The module extension list.
+   * @param \Drupal\Core\Extension\ModuleHandlerInterface $moduleHandler
+   *   The module handler.
    * @param \Drupal\Core\StringTranslation\TranslationInterface $translation
    *   The string translation.
    * @param \Drupal\Core\Extension\ExtensionPathResolver $extensionPathResolver
@@ -25,10 +28,11 @@ final class D8CaptchaHooks extends D8HooksBase {
    */
   public function __construct(
     private readonly ModuleExtensionList $moduleExtensionList,
+    private readonly ModuleHandlerInterface $moduleHandler,
     private readonly TranslationInterface $translation,
     private readonly ExtensionPathResolver $extensionPathResolver,
   ) {
-    parent::__construct($moduleExtensionList, $translation);
+    parent::__construct($moduleExtensionList, $moduleHandler, $translation);
   }
 
   /**
