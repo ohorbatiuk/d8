@@ -70,6 +70,17 @@ function d8_update_10401(array &$sandbox): void {
 }
 
 /**
+ * Uninstall the news mode feature.
+ */
+function d8_update_11101(array &$sandbox): void {
+  \Drupal::configFactory()->getEditable('update.settings')
+    ->clear('news')
+    ->save();
+
+  \Drupal::state()->deleteMultiple(['update.news', 'update.versions']);
+}
+
+/**
  * Process list of update hooks.
  *
  * @param int[] ...
