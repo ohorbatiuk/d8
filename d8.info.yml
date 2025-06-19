@@ -3,7 +3,7 @@ description: The installation profile for CMS Drupal 11 based on the most common
 
 type: profile
 core_version_requirement: '>=11'
-version: 0.23.0.204
+version: 0.23.0.205
 
 php: 8.3
 
