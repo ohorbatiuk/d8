@@ -24,7 +24,7 @@
         "drupal/service": "3.0.1",
         "drupal/seven": "dev-3434485-d11-compatibility#0c070973e2d97d4a19f04cf99408e22bc9856fef",
         "drupal/standwithukraine": "3.0.1",
-        "drupal/symfony_mailer": "1.5.0",
+        "drupal/symfony_mailer": "1.6.2",
         "php": "^8.3",
         "twbs/bootstrap": "5.3.3"
     },

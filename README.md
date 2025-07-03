@@ -16,7 +16,7 @@ themes that form the basis for creating a stable site.
 - [Automatic IP ban (Autoban)](https://www.drupal.org/project/autoban)
 - [CAPTCHA](https://www.drupal.org/project/captcha)
 - [Configuration Update Manager](https://www.drupal.org/project/config_update)
-- [Drupal Symfony Mailer](https://www.drupal.org/project/symfony_mailer)
+- [Drupal Symfony Mailer Plus (DSM+)](https://www.drupal.org/project/symfony_mailer)
 - [Error & Exception Mailer](https://www.drupal.org/project/exception_mailer)
 - [External Links](https://www.drupal.org/project/extlink)
 - [Features](https://www.drupal.org/project/features)
