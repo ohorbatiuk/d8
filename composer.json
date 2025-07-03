@@ -46,7 +46,7 @@
                 "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch"
             },
             "drupal/symfony_mailer": {
-                "Add support for complex address strings in back-compatibility mode": "https://www.drupal.org/files/issues/2023-03-30/symfony_mailer-support_complex_address_strings-3350992-3.patch"
+                "Add support for complex address strings in back-compatibility mode": "https://www.drupal.org/files/issues/2025-05-28/symfony_mailer-support_complex_address_strings-3350992-38.patch"
             }
         },
         "enable-patching": true,
