@@ -14,6 +14,9 @@ distribution:
     finish_url: /welcome
 
 dependencies:
+  - service:service (>=2.1.0)
+
+install:
   - drupal:block
   - drupal:breakpoint
   - drupal:config
@@ -28,7 +31,6 @@ dependencies:
   - features:features_ui
   - idle:idle (>=1.0.2)
   - module_filter:module_filter
-  - service:service (>=2.1.0)
 
 themes:
   - seven
