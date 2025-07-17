@@ -33,6 +33,5 @@ install:
   - module_filter:module_filter
 
 themes:
-  - seven
-  - bootstrap
+  - claro
   - d8_theme
