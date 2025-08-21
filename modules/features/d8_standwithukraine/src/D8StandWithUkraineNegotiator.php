@@ -54,10 +54,9 @@ class D8StandWithUkraineNegotiator implements StandWithUkraineNegotiatorInterfac
    */
   public function override(StandWithUkraineSettingsInterface $settings): void {
     $route_name = $this->routeMatch->getRouteName();
-    $offset = 85;
+    $offset = 105;
 
     if ($route_name !== 'system.batch_page.html') {
-      $offset += 32;
       $items = $this->localTaskManager->getLocalTasksForRoute($route_name);
 
       foreach ($items as $group_delta => &$group) {
@@ -74,7 +73,7 @@ class D8StandWithUkraineNegotiator implements StandWithUkraineNegotiatorInterfac
       }
 
       if (!empty($items)) {
-        $offset += 51;
+        $offset += 18;
       }
     }
 
