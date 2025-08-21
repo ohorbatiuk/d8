@@ -34,7 +34,8 @@
     "extra": {
         "patches": {
             "drupal/autoban": {
-                "Mixed links": "https://www.drupal.org/files/issues/2023-09-09/autoban-mixed-links-3386212-2.patch"
+                "Mixed links": "https://www.drupal.org/files/issues/2023-09-09/autoban-mixed-links-3386212-2.patch",
+                "3530962 Drupal 11.2.0 - Upgrade Error": "https://git.drupalcode.org/project/autoban/-/commit/616a1cde3db69ecf2eed00e827c2692bae7d5164.patch"
             },
             "drupal/core": {
                 "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2025-03-20/default-theme-favicon-for-administration-theme-2981434-16.patch"
