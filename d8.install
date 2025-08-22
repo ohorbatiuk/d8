@@ -81,6 +81,24 @@ function d8_update_11101(array &$sandbox): void {
 }
 
 /**
+ * Replace theme Seven with theme Claro.
+ */
+function d8_update_11201(array &$sandbox): void {
+  /** @var \Drupal\Core\Extension\ThemeInstallerInterface $theme_installer */
+  $theme_installer = \Drupal::service('theme_installer');
+
+  if ($theme_installer->install(['claro'])) {
+    \Drupal::configFactory()->getEditable('system.theme')
+      ->set('admin', 'claro')
+      ->save();
+
+    $theme_installer->uninstall(['seven']);
+
+    \Drupal::classResolver(D8Setup::class)->module('d8_seven', uninstall: TRUE);
+  }
+}
+
+/**
  * Process list of update hooks.
  *
  * @param int[] ...

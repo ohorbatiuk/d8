@@ -11,8 +11,8 @@
         "drupal/bootstrap": "5.0.1",
         "drupal/captcha": "2.0.7",
         "drupal/config_update": "2.0.0-alpha4",
-        "drupal/core": "11.1.7",
-        "drupal/core-composer-scaffold": "11.1.7",
+        "drupal/core": "11.2.3",
+        "drupal/core-composer-scaffold": "11.2.3",
         "drupal/exception_mailer": "4.0.7",
         "drupal/extlink": "2.0.2",
         "drupal/features": "dev-3447460-drupal-11-compatibility#40732dfd317473d9913c9e97d0cf7e4d68a78934",
@@ -34,7 +34,8 @@
     "extra": {
         "patches": {
             "drupal/autoban": {
-                "Mixed links": "https://www.drupal.org/files/issues/2023-09-09/autoban-mixed-links-3386212-2.patch"
+                "Mixed links": "https://www.drupal.org/files/issues/2023-09-09/autoban-mixed-links-3386212-2.patch",
+                "3530962 Drupal 11.2.0 - Upgrade Error": "https://git.drupalcode.org/project/autoban/-/commit/616a1cde3db69ecf2eed00e827c2692bae7d5164.patch"
             },
             "drupal/core": {
                 "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2025-03-20/default-theme-favicon-for-administration-theme-2981434-16.patch"
@@ -43,7 +44,8 @@
                 "Extra Comma Appears in Anchor Title Attributes": "https://git.drupalcode.org/project/extlink/-/merge_requests/55.patch"
             },
             "drupal/features": {
-                "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch"
+                "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch",
+                "Fix method signature in FeaturesConfigInstaller::findPreExistingConfiguration() for Drupal 11.2+ compatibility": "https://www.drupal.org/files/issues/2025-07-15/features-drupal11-method-signature-fix.patch"
             },
             "drupal/symfony_mailer": {
                 "Add support for complex address strings in back-compatibility mode": "https://www.drupal.org/files/issues/2025-05-28/symfony_mailer-support_complex_address_strings-3350992-38.patch"
