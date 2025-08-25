@@ -44,7 +44,8 @@
             },
             "drupal/features": {
                 "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch",
-                "Fix method signature in FeaturesConfigInstaller::findPreExistingConfiguration() for Drupal 11.2+ compatibility": "https://www.drupal.org/files/issues/2025-07-15/features-drupal11-method-signature-fix.patch"
+                "Fix method signature in FeaturesConfigInstaller::findPreExistingConfiguration() for Drupal 11.2+ compatibility": "https://www.drupal.org/files/issues/2025-07-15/features-drupal11-method-signature-fix.patch",
+                "PHP 8.4 compatibility": "https://git.drupalcode.org/issue/features-3516043/-/commit/6608b27167d11e04f840103d1470a5687078b677.patch"
             },
             "drupal/symfony_mailer": {
                 "Add support for complex address strings in back-compatibility mode": "https://www.drupal.org/files/issues/2025-05-28/symfony_mailer-support_complex_address_strings-3350992-38.patch"
