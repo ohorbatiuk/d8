@@ -3,7 +3,7 @@ name: Update classic module
 about: Refresh an existing contrib module to a newer version where version names still use prefixes based on Drupal core.
 title: NAME CURRENT to NEWER
 labels: '📢 update'
-assignees: lexhouk
+assignees: ohorbatiuk
 
 ---
 

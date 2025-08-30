@@ -1,5 +1,5 @@
 {
-    "name": "lexhouk/d8",
+    "name": "ohorbatiuk/d8",
     "description": "The installation profile for CMS Drupal 11 based on the most common modules and themes that form the basis for creating a stable site.",
     "type": "drupal-profile",
     "license": "GPL-2.0-or-later",

@@ -3,7 +3,7 @@ name: Update theme
 about: Refresh an existing contrib theme to a newer version.
 title: NAME CURRENT to NEWER
 labels: '📢 update'
-assignees: lexhouk
+assignees: ohorbatiuk
 
 ---
 

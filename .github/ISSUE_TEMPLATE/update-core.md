@@ -3,7 +3,7 @@ name: Update core
 about: Switch to a newer version of the Drupal core to get improvements and new features.
 title: Drupal CURRENT to NEWER
 labels: '📢 update'
-assignees: lexhouk
+assignees: ohorbatiuk
 
 ---
 
