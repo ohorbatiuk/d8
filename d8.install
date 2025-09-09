@@ -46,6 +46,13 @@ function d8_update_last_removed(): int {
 }
 
 /**
+ * Install Profile Switcher module.
+ */
+function d8_update_11202(array &$sandbox): void {
+  \Drupal::classResolver(D8Setup::class)->module('profile_switcher');
+}
+
+/**
  * Process list of update hooks.
  *
  * @param int[] ...
