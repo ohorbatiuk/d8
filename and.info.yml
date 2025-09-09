@@ -1,17 +1,11 @@
-name: D8+
-description: The installation profile for CMS Drupal 11 based on the most common modules and themes that form the basis for creating a stable site.
+name: &
+description: Based on the most common modules and themes that form the basis for creating a stable site.
 
 type: profile
 core_version_requirement: '>=11.2'
 version: 0.24.0.212
 
 php: 8.3
-
-distribution:
-  name: D8+
-  langcode: en
-  install:
-    finish_url: /welcome
 
 dependencies:
   - service:service (>=2.1.0)

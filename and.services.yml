@@ -1,6 +1,6 @@
 services:
-  d8.controller_resolver:
-    class: Drupal\d8\Service\D8ControllerResolver
+  and.controller_resolver:
+    class: Drupal\and\Service\AndControllerResolver
     public: false
     decorates: controller_resolver
     parent: controller_resolver

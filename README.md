@@ -1,4 +1,4 @@
-# D8+
+# &
 
 The installation profile for CMS Drupal 11 based on the most common modules and
 themes that form the basis for creating a stable site.

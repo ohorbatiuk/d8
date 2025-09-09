@@ -1,15 +1,15 @@
 <?php
 
-namespace Drupal\d8\Service;
+namespace Drupal\and\Service;
 
 use Drupal\Core\Controller\ControllerResolver;
-use Drupal\d8\Controller\D8UpdateController;
+use Drupal\and\Controller\AndUpdateController;
 use Drupal\system\Controller\DbUpdateController;
 
 /**
  * ControllerResolver to enhance controllers beyond Symfony's basic handling.
  */
-class D8ControllerResolver extends ControllerResolver {
+class AndControllerResolver extends ControllerResolver {
 
   /**
    * The method name for building a database update page.
@@ -27,7 +27,7 @@ class D8ControllerResolver extends ControllerResolver {
       $controller === '\\' . DbUpdateController::class . static::METHOD &&
       $path === ''
     ) {
-      $controller = D8UpdateController::class . static::METHOD;
+      $controller = AndUpdateController::class . static::METHOD;
     }
 
     return parent::getControllerFromDefinition($controller, $path);

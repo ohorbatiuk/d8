@@ -2,31 +2,31 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the d8 installation profile.
+ * Install, update and uninstall functions for the "and" installation profile.
  */
 
-use Drupal\d8\D8Setup;
-use Drupal\d8\Form\D8CaptchaForm;
-use Drupal\d8\Form\D8ConfigureForm;
+use Drupal\and\AndSetup;
+use Drupal\and\Form\AndCaptchaForm;
+use Drupal\and\Form\AndConfigureForm;
 
 /**
  * Implements hook_install().
  */
-function d8_install(bool $is_syncing): void {
+function and_install(bool $is_syncing): void {
   if (!$is_syncing) {
-    \Drupal::classResolver(D8Setup::class)->install();
+    \Drupal::classResolver(AndSetup::class)->install();
   }
 }
 
 /**
  * Implements hook_install_tasks().
  */
-function d8_install_tasks(array &$install_state): array {
+function and_install_tasks(array &$install_state): array {
   return [
     'install_captcha_form' => [
       'display_name' => t('Activate captcha'),
       'type' => 'form',
-      'function' => D8CaptchaForm::class,
+      'function' => AndCaptchaForm::class,
     ],
   ];
 }
@@ -34,22 +34,22 @@ function d8_install_tasks(array &$install_state): array {
 /**
  * Implements hook_install_tasks_alter().
  */
-function d8_install_tasks_alter(array &$tasks, array $install_state): void {
-  $tasks['install_configure_form']['function'] = D8ConfigureForm::class;
+function and_install_tasks_alter(array &$tasks, array $install_state): void {
+  $tasks['install_configure_form']['function'] = AndConfigureForm::class;
 }
 
 /**
  * Implements hook_update_last_removed().
  */
-function d8_update_last_removed(): int {
+function and_update_last_removed(): int {
   return 11201;
 }
 
 /**
  * Install Profile Switcher module.
  */
-function d8_update_11202(array &$sandbox): void {
-  \Drupal::classResolver(D8Setup::class)->module('profile_switcher');
+function and_update_11202(array &$sandbox): void {
+  \Drupal::classResolver(AndSetup::class)->module('profile_switcher');
 }
 
 /**
@@ -58,7 +58,7 @@ function d8_update_11202(array &$sandbox): void {
  * @param int[] ...
  *   The update hook identifiers.
  */
-function _d8_update(): void {
+function _and_update(): void {
   $item = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 1)[0];
 
   if (preg_match('#([^/]+)\.install$#', $item['file'], $matches)) {

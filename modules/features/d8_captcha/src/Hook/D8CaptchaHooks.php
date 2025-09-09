@@ -7,12 +7,12 @@ use Drupal\Core\Extension\ModuleExtensionList;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\StringTranslation\TranslationInterface;
-use Drupal\d8\D8HooksBase;
+use Drupal\and\AndHooksBase;
 
 /**
  * Hook implementations for d8_captcha.
  */
-final class D8CaptchaHooks extends D8HooksBase {
+final class D8CaptchaHooks extends AndHooksBase {
 
   /**
    * D8CaptchaHooks constructor.

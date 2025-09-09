@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\d8\Hook;
+namespace Drupal\and\Hook;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -9,12 +9,12 @@ use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
- * Hook implementations for d8.
+ * Hook implementations for installation profile.
  */
-final readonly class D8Hooks {
+final readonly class AndHooks {
 
   /**
-   * D8Hooks constructor.
+   * AndHooks constructor.
    *
    * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
    *   The request stack.

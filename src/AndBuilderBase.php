@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\d8;
+namespace Drupal\and;
 
 use Drupal\service\ClassResolverBase;
 use Drupal\service\ConfigFactoryTrait;
@@ -11,7 +11,7 @@ use Drupal\service\ConfigFactoryTrait;
  * @internal
  *   This is an internal utility class wrapping hook implementations.
  */
-abstract class D8BuilderBase extends ClassResolverBase {
+abstract class AndBuilderBase extends ClassResolverBase {
 
   use ConfigFactoryTrait;
 
