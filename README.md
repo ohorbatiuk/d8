@@ -23,6 +23,7 @@ themes that form the basis for creating a stable site.
 - [Font Awesome Icons](https://www.drupal.org/project/fontawesome)
 - [Idle](https://www.drupal.org/project/idle)
 - [Module Filter](https://www.drupal.org/project/module_filter)
+- [Profile Switcher](https://www.drupal.org/project/profile_switcher)
 - [reCAPTCHA](https://www.drupal.org/project/recaptcha)
 - [reCAPTCHA Preloader](https://www.drupal.org/project/recaptcha_preloader)
 - [Service](https://www.drupal.org/project/service)
