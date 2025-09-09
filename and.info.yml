@@ -7,6 +7,12 @@ version: 0.24.0.212
 
 php: 8.3
 
+distribution:
+  name: &
+  langcode: en
+  install:
+    finish_url: /welcome
+
 dependencies:
   - service:service (>=2.1.0)
 
