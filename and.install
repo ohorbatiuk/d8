@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the "and" installation profile.
+ */
+
+use Drupal\and\AndSetup;
+use Drupal\and\Form\AndCaptchaForm;
+use Drupal\and\Form\AndConfigureForm;
+
+/**
+ * Implements hook_install().
+ */
+function and_install(bool $is_syncing): void {
+  if (!$is_syncing) {
+    \Drupal::classResolver(AndSetup::class)->install();
+  }
+}
+
+/**
+ * Implements hook_install_tasks().
+ */
+function and_install_tasks(array &$install_state): array {
+  return [
+    'install_captcha_form' => [
+      'display_name' => t('Activate captcha'),
+      'type' => 'form',
+      'function' => AndCaptchaForm::class,
+    ],
+  ];
+}
+
+/**
+ * Implements hook_install_tasks_alter().
+ */
+function and_install_tasks_alter(array &$tasks, array $install_state): void {
+  $tasks['install_configure_form']['function'] = AndConfigureForm::class;
+}
+
+/**
+ * Implements hook_update_last_removed().
+ */
+function and_update_last_removed(): int {
+  return 11201;
+}
+
+/**
+ * Install Profile Switcher module.
+ */
+function and_update_11202(array &$sandbox): void {
+  \Drupal::classResolver(AndSetup::class)->module('profile_switcher');
+}
+
+/**
+ * Process list of update hooks.
+ *
+ * @param int[] ...
+ *   The update hook identifiers.
+ */
+function _and_update(): void {
+  $item = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 1)[0];
+
+  if (preg_match('#([^/]+)\.install$#', $item['file'], $matches)) {
+    $sandbox = [];
+
+    foreach (func_get_args() as $number) {
+      $function = "{$matches[1]}_update_$number";
+
+      $function($sandbox);
+    }
+  }
+}

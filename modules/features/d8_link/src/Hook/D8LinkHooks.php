@@ -4,12 +4,12 @@ namespace Drupal\d8_link\Hook;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Hook\Attribute\Hook;
-use Drupal\d8\D8HooksBase;
+use Drupal\and\AndHooksBase;
 
 /**
  * Hook implementations for d8_link.
  */
-final class D8LinkHooks extends D8HooksBase {
+final class D8LinkHooks extends AndHooksBase {
 
   /**
    * {@inheritdoc}

@@ -4,20 +4,3 @@
  * @file
  * Provides a wrapper for the reCAPTCHA Preloader module.
  */
-
-/**
- * Implements hook_captcha_alter().
- */
-function d8_captcha_captcha_alter(array &$captcha, array $info): void {
-  if ($info['captcha_type'] === 'reCAPTCHA') {
-    if ($info['module'] === 'recaptcha') {
-      $captcha['form']['recaptcha_widget']['#suffix'] = '';
-    }
-    elseif (
-      $info['module'] === 'recaptcha_preloader' &&
-      isset($captcha['form']['#attached']['library'])
-    ) {
-      unset($captcha['form']['#attached']['library']);
-    }
-  }
-}

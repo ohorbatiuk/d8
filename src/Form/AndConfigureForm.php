@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\d8\Form;
+namespace Drupal\and\Form;
 
 use Drupal\Core\Database\Database;
 use Drupal\Core\Form\FormStateInterface;
@@ -14,7 +14,7 @@ use Drupal\service\StateTrait;
  *
  * @phpstan-ignore-next-line
  */
-class D8ConfigureForm extends SiteConfigureForm {
+class AndConfigureForm extends SiteConfigureForm {
 
   use ConfigFormBaseTrait;
   use ConfigFactoryTrait;

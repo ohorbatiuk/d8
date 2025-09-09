@@ -2,9 +2,9 @@
 
 namespace Drupal\d8_log\Hook;
 
-use Drupal\d8\D8HooksBase;
+use Drupal\and\AndHooksBase;
 
 /**
  * Hook implementations for d8_log.
  */
-final class D8LogHooks extends D8HooksBase {}
+final class D8LogHooks extends AndHooksBase {}

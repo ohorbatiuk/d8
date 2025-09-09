@@ -1,11 +1,11 @@
-# D8+
+# &
 
 The installation profile for CMS Drupal 11 based on the most common modules and
 themes that form the basis for creating a stable site.
 
 [![Made in Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd500.svg?labelColor=005bbb)](https://supportukrainenow.org)
-[![Packagist Version](https://img.shields.io/packagist/v/ohorbatiuk/d8?label=Version)](https://packagist.org/packages/ohorbatiuk/d8)
-[![Packagist Downloads](https://img.shields.io/packagist/dt/ohorbatiuk/d8?label=Downloads)](https://packagist.org/packages/ohorbatiuk/d8)
+[![Packagist Version](https://img.shields.io/packagist/v/ohorbatiuk/and?label=Version)](https://packagist.org/packages/ohorbatiuk/and)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/ohorbatiuk/and?label=Downloads)](https://packagist.org/packages/ohorbatiuk/and)
 
 
 ## Requirements
@@ -23,6 +23,7 @@ themes that form the basis for creating a stable site.
 - [Font Awesome Icons](https://www.drupal.org/project/fontawesome)
 - [Idle](https://www.drupal.org/project/idle)
 - [Module Filter](https://www.drupal.org/project/module_filter)
+- [Profile Switcher](https://www.drupal.org/project/profile_switcher)
 - [reCAPTCHA](https://www.drupal.org/project/recaptcha)
 - [reCAPTCHA Preloader](https://www.drupal.org/project/recaptcha_preloader)
 - [Service](https://www.drupal.org/project/service)

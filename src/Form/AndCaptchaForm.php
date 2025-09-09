@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\d8\Form;
+namespace Drupal\and\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
@@ -12,7 +12,7 @@ use Drupal\service\StringTranslationTrait;
 /**
  * Configure reCAPTCHA settings for this profile.
  */
-class D8CaptchaForm extends ReCaptchaAdminSettingsForm {
+class AndCaptchaForm extends ReCaptchaAdminSettingsForm {
 
   use ConfigFormBaseTrait;
   use ModuleInstallerTrait;

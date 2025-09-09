@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\d8\Controller;
+namespace Drupal\and\Controller;
 
 use Drupal\service\ConfigFactoryTrait;
 use Drupal\service\ControllerBase;
@@ -11,9 +11,9 @@ use Drupal\service\TitleResolverTrait;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Controller for d8 pages.
+ * Controller for pages.
  */
-class D8WelcomeController extends ControllerBase {
+class AndWelcomeController extends ControllerBase {
 
   use ConfigFactoryTrait;
   use EntityTypeManagerTrait;

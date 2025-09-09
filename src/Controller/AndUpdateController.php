@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\d8\Controller;
+namespace Drupal\and\Controller;
 
 use Drupal\system\Controller\DbUpdateController;
 use Symfony\Component\HttpFoundation\Request;
@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Controller routines for database update routes.
  */
-class D8UpdateController extends DbUpdateController {
+class AndUpdateController extends DbUpdateController {
 
   /**
    * {@inheritdoc}

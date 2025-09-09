@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\d8;
+namespace Drupal\and;
 
 use Drupal\Core\Extension\ModuleExtensionList;
 use Drupal\Core\Extension\ModuleHandlerInterface;
@@ -12,14 +12,14 @@ use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\Core\Url;
 
 /**
- * Hook implementations for d8.
+ * Hook implementations for and.
  */
-abstract class D8HooksBase {
+abstract class AndHooksBase {
 
   use StringTranslationTrait;
 
   /**
-   * D8HooksBase constructor.
+   * AndHooksBase constructor.
    *
    * @param \Drupal\Core\Extension\ModuleExtensionList $moduleExtensionList
    *   The module extension list.

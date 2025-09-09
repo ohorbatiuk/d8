@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\d8;
+namespace Drupal\and;
 
 use Drupal\Core\Config\FileStorage;
 use Drupal\Core\Config\InstallStorage;
@@ -21,7 +21,7 @@ use Drupal\user\UserInterface;
  * @internal
  *   This is an internal utility class wrapping hook implementations.
  */
-class D8Setup extends D8BuilderBase {
+class AndSetup extends AndBuilderBase {
 
   use CoreStringTranslationTrait;
   use EntityTypeManagerTrait;

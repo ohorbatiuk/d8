@@ -9,13 +9,13 @@ use Drupal\Core\Extension\ModuleExtensionList;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\StringTranslation\TranslationInterface;
-use Drupal\d8\D8HooksBase;
+use Drupal\and\AndHooksBase;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Hook implementations for d8_mail.
  */
-final class D8MailHooks extends D8HooksBase {
+final class D8MailHooks extends AndHooksBase {
 
   /**
    * D8MailHooks constructor.
