@@ -35,7 +35,6 @@ install:
 
 themes:
   - claro
-  - d8_theme
 
 forms:
   - '\Drupal\RecipeKit\Installer\Form\RecipesForm'

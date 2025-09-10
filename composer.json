@@ -25,7 +25,7 @@
         "drupal/service": "3.0.1",
         "drupal/standwithukraine": "3.0.1",
         "drupal/symfony_mailer": "1.6.2",
-        "ohorbatiuk/d8_recipe": "dev-main",
+        "ohorbatiuk/d8_recipe": "dev-feature/1-recipe-installer-kit",
         "php": "^8.3",
         "twbs/bootstrap": "5.3.3"
     },

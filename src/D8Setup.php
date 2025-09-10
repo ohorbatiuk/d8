@@ -56,7 +56,6 @@ class D8Setup extends D8BuilderBase {
     $this->moduleInstaller()->install([
       'd8_setting',
       'd8_menu',
-      'd8_theming',
       'd8_ban',
       'd8_standwithukraine',
       'd8_log',
@@ -73,18 +72,6 @@ class D8Setup extends D8BuilderBase {
     }
 
     $this->moduleInstaller()->install(['d8_captcha'], FALSE);
-
-    // Populate the default shortcut set.
-    $shortcut = $this->entityTypeManager()->getStorage('shortcut')->create([
-      'shortcut_set' => 'default',
-      'title' => $this->t('Features'),
-      'weight' => -20,
-      'link' => [
-        'uri' => 'internal:/admin/config/development/features',
-      ],
-    ]);
-
-    $shortcut->save();
 
     $sandbox = [];
 

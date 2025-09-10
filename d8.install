@@ -1,19 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @file
  * Install, update and uninstall functions for the d8 installation profile.
  */
 
+use Drupal\Core\Extension\ModuleInstallerInterface;
 use Drupal\d8\D8Setup;
 use Drupal\d8\Form\D8CaptchaForm;
 use Drupal\d8\Form\D8ConfigureForm;
+use Drupal\RecipeKit\Installer\Hooks;
 
 /**
  * Implements hook_install().
  */
 function d8_install(bool $is_syncing): void {
   if (!$is_syncing) {
+    \Drupal::service(ModuleInstallerInterface::class)->install(['service']);
+
     \Drupal::classResolver(D8Setup::class)->install();
   }
 }
@@ -22,7 +28,7 @@ function d8_install(bool $is_syncing): void {
  * Implements hook_install_tasks().
  */
 function d8_install_tasks(array &$install_state): array {
-  return [
+  return Hooks::installTasks($install_state) + [
     'install_captcha_form' => [
       'display_name' => t('Activate captcha'),
       'type' => 'form',
@@ -35,6 +41,8 @@ function d8_install_tasks(array &$install_state): array {
  * Implements hook_install_tasks_alter().
  */
 function d8_install_tasks_alter(array &$tasks, array $install_state): void {
+  Hooks::installTasksAlter($tasks, $install_state);
+
   $tasks['install_configure_form']['function'] = D8ConfigureForm::class;
 }
 

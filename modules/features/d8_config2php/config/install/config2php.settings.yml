@@ -1,7 +1,0 @@
-override: true
-exclude:
-  - _core
-  - dependencies
-  - langcode
-  - status
-  - uuid
