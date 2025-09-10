@@ -23,18 +23,12 @@ install:
   - drupal:contextual
   - drupal:field_ui
   - drupal:help
-  - drupal:node
-  - drupal:shortcut
   - drupal:update
 
   - admin_toolbar:admin_toolbar_search
   - admin_toolbar:admin_toolbar_tools
-  - features:features_ui
   - idle:idle (>=1.0.2)
   - module_filter:module_filter
-
-themes:
-  - claro
 
 forms:
   - '\Drupal\RecipeKit\Installer\Form\RecipesForm'

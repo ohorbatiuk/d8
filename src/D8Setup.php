@@ -11,9 +11,7 @@ use Drupal\service\EntityTypeManagerTrait;
 use Drupal\service\ExtensionPathResolverTrait;
 use Drupal\service\ModuleInstallerTrait;
 use Drupal\service\ModuleListTrait;
-use Drupal\service\StateTrait;
 use Drupal\service\StringTranslationTrait;
-use Drupal\user\UserInterface;
 
 /**
  * Provides functionality to set up installation profile.
@@ -28,7 +26,6 @@ class D8Setup extends D8BuilderBase {
   use ExtensionPathResolverTrait;
   use ModuleInstallerTrait;
   use ModuleListTrait;
-  use StateTrait;
 
   use StringTranslationTrait {
     StringTranslationTrait::getStringTranslation insteadof CoreStringTranslationTrait;
@@ -43,7 +40,6 @@ class D8Setup extends D8BuilderBase {
       ->addExtensionPathResolver()
       ->addModuleInstaller()
       ->addModuleList()
-      ->addState()
       ->addStringTranslation();
   }
 
@@ -78,8 +74,6 @@ class D8Setup extends D8BuilderBase {
     $this->access($sandbox);
 
     $this->module('d8_' . ($module = 'config2php'), $module);
-
-    $this->state()->set('features.current_bundle', 'd8');
   }
 
   /**
