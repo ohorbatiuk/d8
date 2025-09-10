@@ -40,3 +40,7 @@ themes:
 forms:
   - '\Drupal\RecipeKit\Installer\Form\RecipesForm'
   - '\Drupal\RecipeKit\Installer\Form\SiteNameForm'
+
+recipes:
+  required:
+    - ohorbatiuk/d8_recipe

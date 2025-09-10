@@ -33,6 +33,10 @@ themes that form the basis for creating a stable site.
 
 - [Bootstrap](https://www.drupal.org/project/bootstrap)
 
+### Recipes
+
+- [D8+ Recipe](https://github.com/ohorbatiuk/d8_recipe)
+
 
 ## Recommended module
 

@@ -93,13 +93,6 @@ class D8Setup extends D8BuilderBase {
     $this->module('d8_' . ($module = 'config2php'), $module);
 
     $this->state()->set('features.current_bundle', 'd8');
-
-    $account = $this->entityTypeManager()->getStorage('user')->load(1);
-
-    if ($account instanceof UserInterface) {
-      $account->addRole('administrator');
-      $account->save();
-    }
   }
 
   /**
