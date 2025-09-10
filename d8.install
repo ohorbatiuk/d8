@@ -28,7 +28,9 @@ function d8_install(bool $is_syncing): void {
  * Implements hook_install_tasks().
  */
 function d8_install_tasks(array &$install_state): array {
-  return Hooks::installTasks($install_state) + [
+  Hooks::installTasks($install_state);
+
+  return [
     'install_captcha_form' => [
       'display_name' => t('Activate captcha'),
       'type' => 'form',
