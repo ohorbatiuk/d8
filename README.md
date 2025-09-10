@@ -25,6 +25,7 @@ themes that form the basis for creating a stable site.
 - [Module Filter](https://www.drupal.org/project/module_filter)
 - [reCAPTCHA](https://www.drupal.org/project/recaptcha)
 - [reCAPTCHA Preloader](https://www.drupal.org/project/recaptcha_preloader)
+- [Recipe Installer Kit](https://www.drupal.org/project/recipe_installer_kit)
 - [Service](https://www.drupal.org/project/service)
 - [StandWithUkraine 🇺🇦](https://www.drupal.org/project/standwithukraine)
 
