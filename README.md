@@ -18,16 +18,13 @@ themes that form the basis for creating a stable site.
 - [Configuration Update Manager](https://www.drupal.org/project/config_update)
 - [Drupal Symfony Mailer Plus (DSM+)](https://www.drupal.org/project/symfony_mailer)
 - [Error & Exception Mailer](https://www.drupal.org/project/exception_mailer)
-- [External Links](https://www.drupal.org/project/extlink)
 - [Features](https://www.drupal.org/project/features)
-- [Font Awesome Icons](https://www.drupal.org/project/fontawesome)
 - [Idle](https://www.drupal.org/project/idle)
 - [Module Filter](https://www.drupal.org/project/module_filter)
 - [reCAPTCHA](https://www.drupal.org/project/recaptcha)
 - [reCAPTCHA Preloader](https://www.drupal.org/project/recaptcha_preloader)
 - [Recipe Installer Kit](https://www.drupal.org/project/recipe_installer_kit)
 - [Service](https://www.drupal.org/project/service)
-- [StandWithUkraine 🇺🇦](https://www.drupal.org/project/standwithukraine)
 
 ### Themes
 
