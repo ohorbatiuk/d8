@@ -51,9 +51,7 @@ class D8Setup extends D8BuilderBase {
   public function install(): void {
     $this->moduleInstaller()->install([
       'd8_setting',
-      'd8_menu',
       'd8_theming',
-      'd8_ban',
       'd8_standwithukraine',
       'd8_log',
       'd8_link',

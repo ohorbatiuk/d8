@@ -56,6 +56,24 @@ function d8_update_last_removed(): int {
 }
 
 /**
+ * Uninstall redundant modules.
+ */
+function d8_update_11202(array &$sandbox): void {
+  \Drupal::classResolver(D8Setup::class)->module(
+    [
+      'config_update',
+      'd8_ban',
+      'd8_menu',
+      'features',
+      'features_ui',
+      'node',
+      'shortcut',
+    ],
+    uninstall: TRUE,
+  );
+}
+
+/**
  * Process list of update hooks.
  *
  * @param int[] ...

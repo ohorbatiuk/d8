@@ -17,7 +17,6 @@ themes that form the basis for creating a stable site.
 ### Modules
 
 - [Admin Toolbar](https://www.drupal.org/project/admin_toolbar)
-- [Automatic IP ban (Autoban)](https://www.drupal.org/project/autoban)
 - [CAPTCHA](https://www.drupal.org/project/captcha)
 - [Configuration Update Manager](https://www.drupal.org/project/config_update)
 - [Features](https://www.drupal.org/project/features)
