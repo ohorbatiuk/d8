@@ -37,3 +37,6 @@ forms:
 recipes:
   required:
     - ohorbatiuk/d8_recipe
+
+hide_messages:
+  - 'The configuration options have been saved.'
