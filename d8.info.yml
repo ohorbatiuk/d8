@@ -44,4 +44,6 @@ recipes:
         - ohorbatiuk/d8_config2php
 
 hide_messages:
+  - 'An email must have a "To", "Cc", or "Bcc" header.'
   - 'The configuration options have been saved.'
+  - 'Unable to send email. Contact the site administrator if the problem persists.'
