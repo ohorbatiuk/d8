@@ -32,6 +32,7 @@ themes that form the basis for creating a stable site.
 
 ### Recipes
 
+- [D8+ Config Export to PHP array](https://github.com/ohorbatiuk/d8_config2php)
 - [D8+ Recipe](https://github.com/ohorbatiuk/d8_recipe)
 
 

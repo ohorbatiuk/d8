@@ -24,7 +24,7 @@
         "twbs/bootstrap": "5.3.3"
     },
     "require-dev": {
-        "drupal/config2php": "3.0.3"
+        "ohorbatiuk/d8_config2php": "dev-main"
     },
     "extra": {
         "patches": {

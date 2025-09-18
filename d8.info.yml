@@ -37,6 +37,11 @@ forms:
 recipes:
   required:
     - ohorbatiuk/d8_recipe
+  optional:
+    config2php:
+      name: Config Export to PHP array
+      packages:
+        - ohorbatiuk/d8_config2php
 
 hide_messages:
   - 'The configuration options have been saved.'

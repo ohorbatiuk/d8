@@ -71,8 +71,6 @@ class D8Setup extends D8BuilderBase {
     $sandbox = [];
 
     $this->access($sandbox);
-
-    $this->module('d8_' . ($module = 'config2php'), $module);
   }
 
   /**

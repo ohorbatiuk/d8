@@ -63,6 +63,7 @@ function d8_update_11202(array &$sandbox): void {
     [
       'config_update',
       'd8_ban',
+      'd8_config2php',
       'd8_menu',
       'features',
       'features_ui',
