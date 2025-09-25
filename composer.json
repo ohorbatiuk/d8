@@ -15,7 +15,7 @@
         "drupal/core-composer-scaffold": "11.2.3",
         "drupal/exception_mailer": "4.0.7",
         "drupal/extlink": "2.0.2",
-        "drupal/features": "dev-3447460-drupal-11-compatibility#40732dfd317473d9913c9e97d0cf7e4d68a78934",
+        "drupal/features": "3.15",
         "drupal/fontawesome": "3.0.0",
         "drupal/idle": "1.0.2",
         "drupal/module_filter": "5.0.3",
@@ -46,9 +46,7 @@
                 "Extra Comma Appears in Anchor Title Attributes": "https://git.drupalcode.org/project/extlink/-/merge_requests/55.patch"
             },
             "drupal/features": {
-                "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch",
-                "Fix method signature in FeaturesConfigInstaller::findPreExistingConfiguration() for Drupal 11.2+ compatibility": "https://www.drupal.org/files/issues/2025-07-15/features-drupal11-method-signature-fix.patch",
-                "PHP 8.4 compatibility": "https://git.drupalcode.org/issue/features-3516043/-/commit/6608b27167d11e04f840103d1470a5687078b677.patch"
+                "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch"
             },
             "drupal/symfony_mailer": {
                 "Add support for complex address strings in back-compatibility mode": "https://www.drupal.org/files/issues/2025-05-28/symfony_mailer-support_complex_address_strings-3350992-38.patch"
@@ -64,10 +62,6 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "git",
-            "url": "https://git.drupalcode.org/issue/features-3447460.git"
         }
     ]
 }
