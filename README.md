@@ -10,27 +10,30 @@ themes that form the basis for creating a stable site.
 
 ## Requirements
 
+### Packages
+
+- [Recipe Installer Kit](https://www.drupal.org/project/recipe_installer_kit)
+
 ### Modules
 
 - [Admin Toolbar](https://www.drupal.org/project/admin_toolbar)
-- [Automatic IP ban (Autoban)](https://www.drupal.org/project/autoban)
 - [CAPTCHA](https://www.drupal.org/project/captcha)
 - [Configuration Update Manager](https://www.drupal.org/project/config_update)
-- [Drupal Symfony Mailer Plus (DSM+)](https://www.drupal.org/project/symfony_mailer)
-- [Error & Exception Mailer](https://www.drupal.org/project/exception_mailer)
-- [External Links](https://www.drupal.org/project/extlink)
 - [Features](https://www.drupal.org/project/features)
-- [Font Awesome Icons](https://www.drupal.org/project/fontawesome)
 - [Idle](https://www.drupal.org/project/idle)
 - [Module Filter](https://www.drupal.org/project/module_filter)
 - [reCAPTCHA](https://www.drupal.org/project/recaptcha)
 - [reCAPTCHA Preloader](https://www.drupal.org/project/recaptcha_preloader)
 - [Service](https://www.drupal.org/project/service)
-- [StandWithUkraine 🇺🇦](https://www.drupal.org/project/standwithukraine)
 
 ### Themes
 
 - [Bootstrap](https://www.drupal.org/project/bootstrap)
+
+### Recipes
+
+- [D8+ Config Export to PHP array](https://github.com/ohorbatiuk/d8_config2php)
+- [D8+ Recipe](https://github.com/ohorbatiuk/d8_recipe)
 
 
 ## Recommended module

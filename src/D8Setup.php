@@ -11,9 +11,7 @@ use Drupal\service\EntityTypeManagerTrait;
 use Drupal\service\ExtensionPathResolverTrait;
 use Drupal\service\ModuleInstallerTrait;
 use Drupal\service\ModuleListTrait;
-use Drupal\service\StateTrait;
 use Drupal\service\StringTranslationTrait;
-use Drupal\user\UserInterface;
 
 /**
  * Provides functionality to set up installation profile.
@@ -28,7 +26,6 @@ class D8Setup extends D8BuilderBase {
   use ExtensionPathResolverTrait;
   use ModuleInstallerTrait;
   use ModuleListTrait;
-  use StateTrait;
 
   use StringTranslationTrait {
     StringTranslationTrait::getStringTranslation insteadof CoreStringTranslationTrait;
@@ -43,7 +40,6 @@ class D8Setup extends D8BuilderBase {
       ->addExtensionPathResolver()
       ->addModuleInstaller()
       ->addModuleList()
-      ->addState()
       ->addStringTranslation();
   }
 
@@ -55,9 +51,7 @@ class D8Setup extends D8BuilderBase {
   public function install(): void {
     $this->moduleInstaller()->install([
       'd8_setting',
-      'd8_menu',
       'd8_theming',
-      'd8_ban',
       'd8_standwithukraine',
       'd8_log',
       'd8_link',
@@ -74,32 +68,9 @@ class D8Setup extends D8BuilderBase {
 
     $this->moduleInstaller()->install(['d8_captcha'], FALSE);
 
-    // Populate the default shortcut set.
-    $shortcut = $this->entityTypeManager()->getStorage('shortcut')->create([
-      'shortcut_set' => 'default',
-      'title' => $this->t('Features'),
-      'weight' => -20,
-      'link' => [
-        'uri' => 'internal:/admin/config/development/features',
-      ],
-    ]);
-
-    $shortcut->save();
-
     $sandbox = [];
 
     $this->access($sandbox);
-
-    $this->module('d8_' . ($module = 'config2php'), $module);
-
-    $this->state()->set('features.current_bundle', 'd8');
-
-    $account = $this->entityTypeManager()->getStorage('user')->load(1);
-
-    if ($account instanceof UserInterface) {
-      $account->addRole('administrator');
-      $account->save();
-    }
   }
 
   /**

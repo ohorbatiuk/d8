@@ -3,7 +3,7 @@ description: The installation profile for CMS Drupal 11 based on the most common
 
 type: profile
 core_version_requirement: '>=11.2'
-version: 0.23.3.211
+version: 0.24.0.212
 
 php: 8.3
 
@@ -23,16 +23,27 @@ install:
   - drupal:contextual
   - drupal:field_ui
   - drupal:help
-  - drupal:node
-  - drupal:shortcut
   - drupal:update
 
   - admin_toolbar:admin_toolbar_search
   - admin_toolbar:admin_toolbar_tools
-  - features:features_ui
   - idle:idle (>=1.0.2)
   - module_filter:module_filter
 
-themes:
-  - claro
-  - d8_theme
+forms:
+  - '\Drupal\RecipeKit\Installer\Form\RecipesForm'
+  - '\Drupal\RecipeKit\Installer\Form\SiteNameForm'
+
+recipes:
+  required:
+    - ohorbatiuk/d8_recipe
+  optional:
+    config2php:
+      name: Config Export to PHP array
+      packages:
+        - ohorbatiuk/d8_config2php
+
+hide_messages:
+  - 'An email must have a "To", "Cc", or "Bcc" header.'
+  - 'The configuration options have been saved.'
+  - 'Unable to send email. Contact the site administrator if the problem persists.'
