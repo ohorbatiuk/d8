@@ -8,5 +8,5 @@ core_version_requirement: '>=11'
 dependencies:
   - d8:d8 (>=0.23.0.202)
   - drupal:link
-  - extlink:extlink
+  - extlink:extlink (>=2.0.5)
   - fontawesome:fontawesome
