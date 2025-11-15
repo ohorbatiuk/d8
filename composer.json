@@ -40,7 +40,7 @@
                 "Form element class": "https://git.drupalcode.org/issue/bootstrap-3543448/-/commit/340d741b0ec8dcb4af512841c72370880a061ba9.patch"
             },
             "drupal/core": {
-                "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2025-03-20/default-theme-favicon-for-administration-theme-2981434-16.patch"
+                "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2025-11-15/default-theme-favicon-for-administration-theme-2981434-20.patch"
             },
             "drupal/features": {
                 "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch"
