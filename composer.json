@@ -28,7 +28,7 @@
         "twbs/bootstrap": "5.3.3"
     },
     "require-dev": {
-        "drupal/config2php": "dev-3.0.x"
+        "drupal/config2php": "3.0.4"
     },
     "extra": {
         "patches": {
