@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\LegacyHook;
 use Drupal\Core\Template\Attribute;
 use Drupal\d8_theme\Hook\D8ThemeHooks;
+use Drupal\d8_theme\Hook\D8ThemeTableHooks;
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -31,11 +32,18 @@ function d8_theme_form_user_form_alter(
 
 /**
  * Implements hook_preprocess().
+ *
+ * @deprecated in d8:0.23.4 and is removed from d8:0.24.0. Use
+ *   \Drupal\d8_theme\Hook\D8ThemeTableHooks::preprocess() instead.
+ *
+ * @see https://github.com/ohorbatiuk/d8/issues/392
  */
+#[LegacyHook]
 function d8_theme_preprocess(array &$variables, string $hook): void {
-  if (_d8_theme_table($hook) && $variables['wide']) {
-    $variables['#attached']['library'][] = 'd8_theme/table';
-  }
+  @trigger_error(__FUNCTION__ . '() is deprecated in d8:0.23.4 and is removed from d8:0.24.0. Use \Drupal\d8_theme\Hook\D8ThemeTableHooks::preprocess() instead. See https://github.com/ohorbatiuk/d8/issues/392', E_USER_DEPRECATED);
+
+  \Drupal::classResolver(D8ThemeTableHooks::class)
+    ->preprocess($variables, $hook);
 }
 
 /**
@@ -144,13 +152,17 @@ function d8_theme_preprocess_status_messages(array &$variables): void {
 
 /**
  * Implements hook_theme_registry_alter().
+ *
+ * @deprecated in d8:0.23.4 and is removed from d8:0.24.0. Use
+ *   \Drupal\d8_theme\Hook\D8ThemeTableHooks::themeRegistryAlter() instead.
+ *
+ * @see https://github.com/ohorbatiuk/d8/issues/392
  */
 function d8_theme_theme_registry_alter(array &$theme_registry): void {
-  foreach ($theme_registry as $name => &$info) {
-    if (_d8_theme_table($name)) {
-      $info['variables']['wide'] = TRUE;
-    }
-  }
+  @trigger_error(__FUNCTION__ . '() is deprecated in d8:0.23.4 and is removed from d8:0.24.0. Use \Drupal\d8_theme\Hook\D8ThemeTableHooks::themeRegistryAlter() instead. See https://github.com/ohorbatiuk/d8/issues/392', E_USER_DEPRECATED);
+
+  \Drupal::classResolver(D8ThemeTableHooks::class)
+    ->themeRegistryAlter($theme_registry);
 }
 
 /**
@@ -158,7 +170,14 @@ function d8_theme_theme_registry_alter(array &$theme_registry): void {
  *
  * @param string $name
  *   The name of the theme to evaluate.
+ *
+ * @deprecated in d8:0.23.4 and is removed from d8:0.24.0. Use
+ *   \Drupal\d8_theme\Hook\D8ThemeTableHooks::match() instead.
+ *
+ * @see https://github.com/ohorbatiuk/d8/issues/392
  */
 function _d8_theme_table(string $name): bool {
-  return preg_match('/^(|views_view_)table(|__.+)$/', $name);
+  @trigger_error(__FUNCTION__ . '() is deprecated in d8:0.23.4 and is removed from d8:0.24.0. Use \Drupal\d8_theme\Hook\D8ThemeTableHooks::match() instead. See https://github.com/ohorbatiuk/d8/issues/392', E_USER_DEPRECATED);
+
+  return \Drupal::classResolver(D8ThemeTableHooks::class)->match($name);
 }
