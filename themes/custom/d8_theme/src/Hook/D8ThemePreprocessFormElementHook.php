@@ -33,6 +33,7 @@ final readonly class D8ThemePreprocessFormElementHook {
    */
   public function __invoke(array &$variables): void {
     if (
+      $this->helper === NULL ||
       !in_array($type = $variables['type'], ['checkbox', 'radio']) ||
       !empty($this->themeSettingsProvider->getSetting('bootstrap_checkbox'))
     ) {
@@ -63,7 +64,7 @@ final readonly class D8ThemePreprocessFormElementHook {
       : $element['#return_value'] === $element['#value'];
 
     $variables['input_title'] = [
-      'icon' => $this->helper?->icon($icons[(int) $selected], 'fs-3 me-2'),
+      'icon' => $this->helper->icon($icons[(int) $selected], 'fs-3 me-2'),
       'text' => ['#plain_text' => $variables['input_title']],
     ];
   }
