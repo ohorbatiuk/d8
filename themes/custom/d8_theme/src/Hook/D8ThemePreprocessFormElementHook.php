@@ -18,12 +18,12 @@ final readonly class D8ThemePreprocessFormElementHook {
    *
    * @param \Drupal\Core\Extension\ThemeSettingsProvider $themeSettingsProvider
    *   The theme settings helper.
-   * @param \Drupal\d8_theming\Service\D8ThemingHelperInterface $helper
+   * @param \Drupal\d8_theming\Service\D8ThemingHelperInterface|null $helper
    *   The D8+ Theming helper.
    */
   public function __construct(
     private ThemeSettingsProvider $themeSettingsProvider,
-    private D8ThemingHelperInterface $helper,
+    private ?D8ThemingHelperInterface $helper,
   ) {}
 
   /**
@@ -63,7 +63,7 @@ final readonly class D8ThemePreprocessFormElementHook {
       : $element['#return_value'] === $element['#value'];
 
     $variables['input_title'] = [
-      'icon' => $this->helper->icon($icons[(int) $selected], 'fs-3 me-2'),
+      'icon' => $this->helper?->icon($icons[(int) $selected], 'fs-3 me-2'),
       'text' => ['#plain_text' => $variables['input_title']],
     ];
   }
