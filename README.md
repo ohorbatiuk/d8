@@ -10,11 +10,13 @@ themes that form the basis for creating a stable site.
 
 ## Requirements
 
-### Modules
+This installation profile requires the following extensions:
 
 - [Admin Toolbar](https://www.drupal.org/project/admin_toolbar)
 - [Automatic IP ban (Autoban)](https://www.drupal.org/project/autoban)
+- [Bootstrap](https://www.drupal.org/project/bootstrap)
 - [CAPTCHA](https://www.drupal.org/project/captcha)
+- [Config Export to PHP array](https://www.drupal.org/project/config2php)
 - [Configuration Update Manager](https://www.drupal.org/project/config_update)
 - [Drupal Symfony Mailer Plus (DSM+)](https://www.drupal.org/project/symfony_mailer)
 - [Error & Exception Mailer](https://www.drupal.org/project/exception_mailer)
@@ -28,27 +30,14 @@ themes that form the basis for creating a stable site.
 - [Service](https://www.drupal.org/project/service)
 - [StandWithUkraine 🇺🇦](https://www.drupal.org/project/standwithukraine)
 
-### Themes
 
-- [Bootstrap](https://www.drupal.org/project/bootstrap)
+## Feature
 
-
-## Recommended module
-
-[Config Export to PHP array](https://www.drupal.org/project/config2php): When
-enabled, provides a page like the Single export page for getting configuration
-in PHP array style.
-
-
-## Features
-
-### Captcha
-
-New installation step for setting captcha keys.
+New installation step for setting captcha keys:
 
 ![captcha](images/captcha.png "captcha")
 
 
 ## Mirror
 
-[GitLab](https://gitlab.com/chmez/d8)
+[GitLab](https://gitlab.com/ohorbatiuk/d8)

@@ -16,10 +16,18 @@ final class D8ThemingHooks {
   public function linkAlter(array &$variables): void {
     $attributes = &$variables['options']['attributes'];
 
-    if (
-      !str_starts_with($attributes['id'] ?? '', 'toolbar-link-') &&
-      array_intersect($attributes['class'] ?? [], ['btn', 'toolbar-icon']) === []
-    ) {
+    if (str_starts_with($attributes['id'] ?? '', 'toolbar-link-')) {
+      return;
+    }
+
+    if (!isset($attributes['class'])) {
+      $attributes['class'] = [];
+    }
+    elseif (is_string($attributes['class'])) {
+      $attributes['class'] = explode(' ', $attributes['class']);
+    }
+
+    if (array_intersect($attributes['class'], ['btn', 'toolbar-icon']) === []) {
       $attributes['class'][] = 'link-secondary';
     }
   }
