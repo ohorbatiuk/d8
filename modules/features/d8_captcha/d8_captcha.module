@@ -11,14 +11,14 @@ use Drupal\d8_captcha\Hook\D8CaptchaHooks;
 /**
  * Implements hook_captcha_alter().
  *
- * @deprecated in d8:0.23.3.215 and is removed from d8:0.24.0. Use
+ * @deprecated in d8:0.23.5 and is removed from d8:0.24.0. Use
  *   \Drupal\d8_captcha\Hook\D8CaptchaHooks::captchaAlter() instead.
  *
  * @see https://github.com/ohorbatiuk/d8/issues/390
  */
-#[LegacyHook()]
+#[LegacyHook]
 function d8_captcha_captcha_alter(array &$captcha, array $info): void {
-  @trigger_error(__FUNCTION__ . '() is deprecated in d8:0.23.3.215 and is removed from d8:0.24.0. Use \Drupal\d8_captcha\Hook\D8CaptchaHooks::captchaAlter() instead. See https://github.com/ohorbatiuk/d8/issues/390', E_USER_DEPRECATED);
+  @trigger_error(__FUNCTION__ . '() is deprecated in d8:0.23.5 and is removed from d8:0.24.0. Use \Drupal\d8_captcha\Hook\D8CaptchaHooks::captchaAlter() instead. See https://github.com/ohorbatiuk/d8/issues/390', E_USER_DEPRECATED);
 
   \Drupal::classResolver(D8CaptchaHooks::class)->captchaAlter($captcha, $info);
 }
