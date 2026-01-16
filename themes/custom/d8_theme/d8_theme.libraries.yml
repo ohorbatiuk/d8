@@ -11,6 +11,10 @@ table:
     component:
       css/table.min.css: { minified: true }
 
+toggler:
+  js:
+    js/toggler.js: {}
+
 tooltip:
   js:
     js/tooltip.js: {}
