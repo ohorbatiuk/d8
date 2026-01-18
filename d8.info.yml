@@ -29,6 +29,7 @@ install:
 
   - admin_toolbar:admin_toolbar_search
   - admin_toolbar:admin_toolbar_tools
+  - bootstrap_theme_toggler:bootstrap_theme_toggler
   - features:features_ui
   - idle:idle (>=1.0.2)
   - module_filter:module_filter

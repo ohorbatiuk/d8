@@ -15,5 +15,4 @@ regions:
   footer: 'Footer'
 
 libraries:
-  - 'd8_theme/toggler'
   - 'd8_theme/tooltip'

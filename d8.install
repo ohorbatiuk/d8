@@ -46,6 +46,13 @@ function d8_update_last_removed(): int {
 }
 
 /**
+ * Install Bootstrap Light-Dark-Color Theme Mode Toggler module.
+ */
+function d8_update_11301(array &$sandbox): void {
+  \Drupal::classResolver(D8Setup::class)->module('bootstrap_theme_toggler');
+}
+
+/**
  * Process list of update hooks.
  *
  * @param int[] ...
