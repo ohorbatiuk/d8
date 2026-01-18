@@ -70,7 +70,7 @@
                 "source": {
                     "url": "https://git.drupalcode.org/issue/bootstrap_theme_toggler-3428288.git",
                     "type": "git",
-                    "reference": "refs/heads/project-update-bot-only"
+                    "reference": "ac617b8946b72d0d85d44d4c19540ccbee03da2f"
                 }
             }
         }
