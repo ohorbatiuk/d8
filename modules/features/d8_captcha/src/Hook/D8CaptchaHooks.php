@@ -15,6 +15,16 @@ use Drupal\d8\D8HooksBase;
 final class D8CaptchaHooks extends D8HooksBase {
 
   /**
+   * The URL prefix for the Google reCAPTCHA API script.
+   */
+  private const string PREFIX = 'https://www.google.com/recaptcha/api.js?';
+
+  /**
+   * The triggered function name for the Google reCAPTCHA API script.
+   */
+  private const string SUFFIX = 'onload=onLoadReCaptcha';
+
+  /**
    * D8CaptchaHooks constructor.
    *
    * @param \Drupal\Core\Extension\ModuleExtensionList $moduleExtensionList
@@ -44,10 +54,37 @@ final class D8CaptchaHooks extends D8HooksBase {
       $extension === 'recaptcha' &&
       isset($libraries[$name = "$extension.invisible"])
     ) {
-      $path = $this->extensionPathResolver->getPath('module', 'd8_captcha');
-
-      $libraries[$name]['js'] = ["/$path/js/$name.js" => []];
+      $libraries[$name]['js'] = [$this->path($extension) => []];
     }
+    elseif ($extension === 'recaptcha_preloader') {
+      $items = &$libraries['connector']['js'];
+
+      $replacements = [
+        'js/base.js' => $this->path($extension),
+        self::PREFIX . self::SUFFIX
+          => self::PREFIX . 'render=explicit&' . self::SUFFIX,
+      ];
+
+      foreach ($replacements as $old => $new) {
+        $items[$new] = $items[$old];
+
+        unset($items[$old]);
+      }
+    }
+  }
+
+  /**
+   * Generates a JavaScript file path for the specified file name.
+   *
+   * @param string $name
+   *   The name of the JavaScript file (without extension).
+   */
+  private function path(string $name): string {
+    return sprintf(
+      '/%s/js/%s.js',
+      $this->extensionPathResolver->getPath('module', 'd8_captcha'),
+      $name,
+    );
   }
 
 }
