@@ -58,10 +58,12 @@
     },
     "repositories": [
         {
+            "canonical": false,
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
         {
+            "canonical": false,
             "type": "package",
             "package": {
                 "name": "drupal/bootstrap_theme_toggler",
