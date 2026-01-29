@@ -3,7 +3,7 @@ description: The installation profile for CMS Drupal 11 based on the most common
 
 type: profile
 core_version_requirement: '>=11.3'
-version: 0.23.4.217
+version: 0.24.0.218
 
 php: 8.3
 
@@ -29,6 +29,7 @@ install:
 
   - admin_toolbar:admin_toolbar_search
   - admin_toolbar:admin_toolbar_tools
+  - bootstrap_theme_toggler:bootstrap_theme_toggler
   - features:features_ui
   - idle:idle (>=1.0.2)
   - module_filter:module_filter

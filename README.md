@@ -15,6 +15,7 @@ This installation profile requires the following extensions:
 - [Admin Toolbar](https://www.drupal.org/project/admin_toolbar)
 - [Automatic IP ban (Autoban)](https://www.drupal.org/project/autoban)
 - [Bootstrap](https://www.drupal.org/project/bootstrap)
+- [Bootstrap Light-Dark-Color Theme Mode Toggler](https://www.drupal.org/project/bootstrap_theme_toggler)
 - [CAPTCHA](https://www.drupal.org/project/captcha)
 - [Config Export to PHP array](https://www.drupal.org/project/config2php)
 - [Configuration Update Manager](https://www.drupal.org/project/config_update)
