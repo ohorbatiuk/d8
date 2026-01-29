@@ -7,13 +7,22 @@
   window.onLoadReCaptcha = () => {
     document.querySelectorAll('.g-recaptcha').forEach(el => {
       const key = el.dataset.sitekey;
+      const themes = {true: 'dark', false: 'light'};
+      const dark = el.dataset.theme === themes[true];
       const container = el.cloneNode(false);
+
+      if (query.matches !== dark) {
+        const preloader = el.nextElementSibling.classList;
+
+        preloader.remove(el.dataset.theme);
+        preloader.add(themes[!dark]);
+      }
 
       el.parentNode.replaceChild(container, el);
 
       window.grecaptcha.render(container, {
         sitekey: key,
-        theme: query.matches ? 'dark' : 'light',
+        theme: themes[query.matches],
       });
 
       const observer = new MutationObserver(() => {
