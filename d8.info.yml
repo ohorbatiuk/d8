@@ -5,7 +5,7 @@ type: profile
 core_version_requirement: '>=11.3'
 version: 0.23.4.218
 
-php: 8.3
+php: 8.4
 
 distribution:
   name: D8+
