@@ -4,7 +4,7 @@
     "type": "drupal-profile",
     "license": "GPL-2.0-or-later",
     "require": {
-        "composer/installers": "1.11.0",
+        "composer/installers": "2.3.0",
         "cweagans/composer-patches": "^1.0",
         "drupal/admin_toolbar": "3.6.2",
         "drupal/autoban": "1.11",
