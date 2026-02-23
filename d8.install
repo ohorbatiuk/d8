@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the d8 installation profile.
+ * Install, update, and uninstall functions for the d8 installation profile.
  */
 
 use Drupal\d8\D8Setup;
