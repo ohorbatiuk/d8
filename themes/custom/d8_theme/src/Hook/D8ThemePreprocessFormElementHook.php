@@ -53,9 +53,9 @@ final readonly class D8ThemePreprocessFormElementHook {
 
     $variables['input_attributes']->addClass('d-none');
 
-    $variables['label_attributes'] = (new Attribute(
+    $variables['label_attributes'] = new Attribute(
       $variables['label_attributes'] ?? [],
-    ))->addClass('d-flex', 'align-items-center');
+    )->addClass('d-flex', 'align-items-center');
 
     $element = $variables['element'];
 

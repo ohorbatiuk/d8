@@ -4,7 +4,7 @@
     "type": "drupal-profile",
     "license": "GPL-2.0-or-later",
     "require": {
-        "composer/installers": "1.11.0",
+        "composer/installers": "2.3.0",
         "cweagans/composer-patches": "^1.0",
         "drupal/admin_toolbar": "3.6.2",
         "drupal/autoban": "1.11",
@@ -24,7 +24,7 @@
         "drupal/service": "3.0.1",
         "drupal/standwithukraine": "3.0.1",
         "drupal/symfony_mailer": "1.6.2",
-        "php": "^8.3",
+        "php": ">=8.4",
         "twbs/bootstrap": "5.3.3"
     },
     "require-dev": {

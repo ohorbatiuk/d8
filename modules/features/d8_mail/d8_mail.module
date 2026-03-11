@@ -1,6 +1,0 @@
-<?php
-
-/**
- * @file
- * Provides a wrapper for the Drupal Symfony Mailer module.
- */
