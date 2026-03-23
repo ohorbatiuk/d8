@@ -36,6 +36,24 @@ final class D8CaptchaHooks extends D8HooksBase {
   }
 
   /**
+   * Implements hook_captcha_alter().
+   */
+  #[Hook('captcha_alter')]
+  public function captchaAlter(array &$captcha, array $info): void {
+    if ($info['captcha_type'] === 'reCAPTCHA') {
+      if ($info['module'] === 'recaptcha') {
+        $captcha['form']['recaptcha_widget']['#suffix'] = '';
+      }
+      elseif (
+        $info['module'] === 'recaptcha_preloader' &&
+        isset($captcha['form']['#attached']['library'])
+      ) {
+        unset($captcha['form']['#attached']['library']);
+      }
+    }
+  }
+
+  /**
    * Implements hook_library_info_alter().
    */
   #[Hook('library_info_alter')]
