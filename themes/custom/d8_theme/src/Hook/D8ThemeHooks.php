@@ -68,11 +68,10 @@ final class D8ThemeHooks {
    */
   #[Hook('preprocess_status_messages')]
   public function preprocessStatusMessages(array &$variables): void {
-    $variables['attributes']['data-bs-autohide'] = 'false';
     $variables['attributes']['data-drupal-selector'] = 'messages';
     $variables['attributes']['class'][] = 'fade';
 
-    foreach (['aria-label', 'data-bs-delay', 'role'] as $attribute) {
+    foreach (['aria-label', 'role'] as $attribute) {
       unset($variables['attributes'][$attribute]);
     }
   }
