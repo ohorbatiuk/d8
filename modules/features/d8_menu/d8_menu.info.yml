@@ -8,3 +8,5 @@ core_version_requirement: '>=9'
 dependencies:
   - drupal:system
   - drupal:menu_ui
+
+version: 1.0.0

@@ -8,3 +8,5 @@ core_version_requirement: '>=11'
 dependencies:
   - d8:d8 (>=0.23.0.202)
   - config2php:config2php
+
+version: 1.0.0

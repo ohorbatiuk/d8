@@ -8,3 +8,5 @@ core_version_requirement: '>=10'
 dependencies:
   - autoban:autoban_ban
   - autoban:autoban_dblog
+
+version: 1.0.0

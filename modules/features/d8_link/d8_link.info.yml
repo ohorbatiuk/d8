@@ -10,3 +10,5 @@ dependencies:
   - drupal:link
   - extlink:extlink (>=2.0.5)
   - fontawesome:fontawesome
+
+version: 1.0.0

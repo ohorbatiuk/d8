@@ -16,3 +16,5 @@ regions:
 
 libraries:
   - 'd8_theme/tooltip'
+
+version: 1.0.0
