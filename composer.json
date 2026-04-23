@@ -22,7 +22,7 @@
         "drupal/recaptcha": "3.3",
         "drupal/recaptcha_preloader": "3.0.0",
         "drupal/service": "3.0.1",
-        "drupal/standwithukraine": "dev-3.0.x",
+        "drupal/standwithukraine": ">=2",
         "drupal/symfony_mailer": "1.6.2",
         "php": ">=8.4",
         "twbs/bootstrap": "5.3.3"
