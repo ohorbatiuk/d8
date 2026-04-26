@@ -13,6 +13,31 @@ final class D8ThemeHooks {
   /**
    * Implements hook_form_FORM_ID_alter().
    */
+  #[Hook('form_system_theme_settings_alter')]
+  public function formSystemThemeSettingsAlter(
+    array &$form,
+    FormStateInterface $form_state,
+    ?string $form_id = NULL,
+  ): void {
+    $group = &$form['components']['navbar'];
+
+    $old = &$group['bootstrap_navbar_background']['#options'];
+    $new = [];
+
+    foreach ($old as $class => $label) {
+      $new[$class === 'bg-light' ? 'bg-body-tertiary' : $class] = $label;
+    }
+
+    $old = $new;
+
+    foreach (['maxlength', 'size'] as $key) {
+      $group['bootstrap_navbar_class']["#$key"] = 50;
+    }
+  }
+
+  /**
+   * Implements hook_form_FORM_ID_alter().
+   */
   #[Hook('form_user_form_alter')]
   public function formUserFormAlter(
     array &$form,
