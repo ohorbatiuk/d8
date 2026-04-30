@@ -19,6 +19,7 @@
         "drupal/fontawesome": "3.0.0",
         "drupal/idle": "1.0.2",
         "drupal/module_filter": "5.0.3",
+        "drupal/persistent_login": "*",
         "drupal/recaptcha": "3.3",
         "drupal/recaptcha_preloader": "3.0.0",
         "drupal/service": "3.0.1",
@@ -44,6 +45,9 @@
             },
             "drupal/features": {
                 "Set default bundle for site": "https://www.drupal.org/files/issues/2023-07-03/features-current-bundle-2789001-17.patch"
+            },
+            "drupal/persistent_login": {
+                "Provide a permission for users to see \"Persistent Logins\" tab in their profiles": "https://www.drupal.org/files/issues/persistent_login-user_task_permission-2899530-6.patch"
             },
             "drupal/symfony_mailer": {
                 "Add support for complex address strings in back-compatibility mode": "https://www.drupal.org/files/issues/2025-05-28/symfony_mailer-support_complex_address_strings-3350992-38.patch"
