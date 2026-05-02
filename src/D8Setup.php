@@ -16,7 +16,7 @@ use Drupal\service\StringTranslationTrait;
 use Drupal\user\UserInterface;
 
 /**
- * Provides functionality to set up installation profile.
+ * Provides functionality to set up an installation profile.
  *
  * @internal
  *   This is an internal utility class wrapping hook implementations.
@@ -62,6 +62,7 @@ class D8Setup extends D8BuilderBase {
       'd8_log',
       'd8_link',
       'd8_mail',
+      'd8_persistent_login',
       'recaptcha',
     ]);
 
@@ -103,7 +104,7 @@ class D8Setup extends D8BuilderBase {
   }
 
   /**
-   * Grant access to the search tab for a role with access to toolbar.
+   * Grants access to the search tab for a role with access to the toolbar.
    */
   private function access(array &$sandbox): void {
     $storage = $this->entityTypeManager()->getStorage('user_role');
@@ -142,7 +143,7 @@ class D8Setup extends D8BuilderBase {
   }
 
   /**
-   * (Un)install modules with optional checking of some other module.
+   * (Un)installs modules with optional checking of some other module.
    *
    * @param array|string $target
    *   The names of modules from this installation profile or drupal.org.
@@ -158,16 +159,16 @@ class D8Setup extends D8BuilderBase {
     array|string|null $source = NULL,
     bool $uninstall = FALSE,
   ): void {
-    if ($source !== NULL) {
-      foreach ((array) $source as $name) {
-        if (!$this->moduleList()->exists($name)) {
-          return;
-        }
-      }
+    if (
+      $source === NULL ||
+      !array_any(
+        (array) $source,
+        fn(string $name): bool => !$this->moduleList()->exists($name),
+      )
+    ) {
+      $method = ($uninstall ? 'un' : '') . 'install';
+      $this->moduleInstaller()->$method((array) $target, !$uninstall);
     }
-
-    $method = ($uninstall ? 'un' : '') . 'install';
-    $this->moduleInstaller()->$method((array) $target, !$uninstall);
   }
 
 }

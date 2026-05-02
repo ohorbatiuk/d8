@@ -25,6 +25,7 @@ This installation profile requires the following extensions:
 - [Font Awesome Icons](https://www.drupal.org/project/fontawesome)
 - [Idle](https://www.drupal.org/project/idle)
 - [Module Filter](https://www.drupal.org/project/module_filter)
+- [Persistent Login](https://www.drupal.org/project/persistent_login)
 - [reCAPTCHA](https://www.drupal.org/project/recaptcha)
 - [reCAPTCHA Preloader](https://www.drupal.org/project/recaptcha_preloader)
 - [Service](https://www.drupal.org/project/service)
