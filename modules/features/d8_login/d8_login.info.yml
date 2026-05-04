@@ -1,0 +1,12 @@
+name: D8+ Login
+description: Provides a wrapper for the Persistent Login module.
+package: D8+
+
+type: module
+core_version_requirement: '>=11.2'
+
+dependencies:
+  - d8:d8 (>=0.23.0.202)
+  - persistent_login:persistent_login
+
+version: 1.0.0

@@ -46,7 +46,14 @@ function d8_update_last_removed(): int {
 }
 
 /**
- * Process list of update hooks.
+ * Install Persistent Login module.
+ */
+function d8_update_11301(array &$sandbox): void {
+  \Drupal::classResolver(D8Setup::class)->module('d8_login');
+}
+
+/**
+ * Processes the list of update hooks.
  *
  * @param int[] ...
  *   The update hook identifiers.
@@ -58,7 +65,7 @@ function _d8_update(): void {
     $sandbox = [];
 
     foreach (func_get_args() as $number) {
-      $function = "{$matches[1]}_update_$number";
+      $function = "$matches[1]_update_$number";
 
       $function($sandbox);
     }
