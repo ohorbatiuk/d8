@@ -62,7 +62,7 @@ class D8Setup extends D8BuilderBase {
       'd8_log',
       'd8_link',
       'd8_mail',
-      'd8_persistent_login',
+      'd8_login',
       'recaptcha',
     ]);
 

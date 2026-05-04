@@ -49,7 +49,7 @@ function d8_update_last_removed(): int {
  * Install Persistent Login module.
  */
 function d8_update_11301(array &$sandbox): void {
-  \Drupal::classResolver(D8Setup::class)->module('d8_persistent_login');
+  \Drupal::classResolver(D8Setup::class)->module('d8_login');
 }
 
 /**

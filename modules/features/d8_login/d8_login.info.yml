@@ -1,4 +1,4 @@
-name: D8+ Persistent Login
+name: D8+ Login
 description: Provides a wrapper for the Persistent Login module.
 package: D8+
 
