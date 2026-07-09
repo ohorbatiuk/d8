@@ -66,6 +66,20 @@ final class D8ThemeHooks {
   /**
    * Implements hook_preprocess_HOOK().
    */
+  #[Hook('preprocess_page')]
+  public function preprocessPage(array &$variables): void {
+    $variables['navbar_attributes']['class'] = [
+      ...$variables['navbar_attributes']['class'],
+      'order-last',
+      'order-sm-first',
+      'mt-auto',
+      'mt-sm-0',
+    ];
+  }
+
+  /**
+   * Implements hook_preprocess_HOOK().
+   */
   #[Hook('preprocess_status_messages')]
   public function preprocessStatusMessages(array &$variables): void {
     $variables['attributes']['data-drupal-selector'] = 'messages';
