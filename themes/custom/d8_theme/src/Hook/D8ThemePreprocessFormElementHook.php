@@ -28,8 +28,6 @@ final readonly class D8ThemePreprocessFormElementHook {
 
   /**
    * Implements hook_preprocess_HOOK().
-   *
-   * @see d8_theme_preprocess_form_element()
    */
   public function __invoke(array &$variables): void {
     if (
