@@ -7,6 +7,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Extension\ModuleExtensionList;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Extension\ThemeSettingsProvider;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\d8\D8HooksBase;
@@ -34,6 +35,8 @@ final class D8MailHooks extends D8HooksBase {
    *   The time.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
    *   The configuration factory.
+   * @param \Drupal\Core\Extension\ThemeSettingsProvider $themeSettingsProvider
+   *   The theme settings helper.
    */
   public function __construct(
     ModuleExtensionList $moduleExtensionList,
@@ -43,6 +46,7 @@ final class D8MailHooks extends D8HooksBase {
     private readonly DateFormatterInterface $dateFormatter,
     private readonly TimeInterface $time,
     private readonly ConfigFactoryInterface $configFactory,
+    private readonly ThemeSettingsProvider $themeSettingsProvider,
   ) {
     parent::__construct($moduleExtensionList, $moduleHandler, $translation);
   }
@@ -64,7 +68,7 @@ final class D8MailHooks extends D8HooksBase {
   public function preprocessHtmlEmailWrapper(array &$variables): void {
     $variables['logo'] =
       $this->requestStack->getCurrentRequest()->getSchemeAndHttpHost() .
-      theme_get_setting('logo')['url'];
+      $this->themeSettingsProvider->getSetting('logo')['url'];
 
     /** @var \Drupal\symfony_mailer\InternalEmailInterface $email */
     $email = $variables['email'];
