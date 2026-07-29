@@ -29,6 +29,7 @@ install:
   - features:features_ui
   - idle:idle (>=1.0.2)
   - module_filter:module_filter
+  - ultimate_cron_summary:ultimate_cron_summary
 
 themes:
   - claro

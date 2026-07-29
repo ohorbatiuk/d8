@@ -30,6 +30,7 @@ This installation profile requires the following extensions:
 - [reCAPTCHA Preloader](https://www.drupal.org/project/recaptcha_preloader)
 - [Service](https://www.drupal.org/project/service)
 - [StandWithUkraine 🇺🇦](https://www.drupal.org/project/standwithukraine)
+- [Ultimate Cron Summary](https://www.drupal.org/project/ultimate_cron_summary)
 
 
 ## Feature
