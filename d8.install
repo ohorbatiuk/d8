@@ -53,6 +53,13 @@ function d8_update_11301(array &$sandbox): void {
 }
 
 /**
+ * Install Ultimate Cron Summary module.
+ */
+function d8_update_11302(array &$sandbox): void {
+  \Drupal::classResolver(D8Setup::class)->module('ultimate_cron_summary');
+}
+
+/**
  * Processes the list of update hooks.
  *
  * @param int[] ...
