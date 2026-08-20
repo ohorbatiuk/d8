@@ -7,7 +7,7 @@
         "composer/installers": "2.3.0",
         "cweagans/composer-patches": "^1.0",
         "drupal/admin_toolbar": "3.6.2",
-        "drupal/autoban": "1.11",
+        "drupal/autoban": ">=1.12",
         "drupal/bootstrap": ">=5.0.0",
         "drupal/captcha": "2.0.10",
         "drupal/config_update": "2.0.0-alpha4",
@@ -35,8 +35,7 @@
     "extra": {
         "patches": {
             "drupal/autoban": {
-                "Mixed links": "https://www.drupal.org/files/issues/2023-09-09/autoban-mixed-links-3386212-2.patch",
-                "3530962 Drupal 11.2.0 - Upgrade Error": "https://git.drupalcode.org/project/autoban/-/commit/616a1cde3db69ecf2eed00e827c2692bae7d5164.patch"
+                "Mixed links": "https://www.drupal.org/files/issues/2023-09-09/autoban-mixed-links-3386212-2.patch"
             },
             "drupal/bootstrap": {
                 "Form element class": "https://git.drupalcode.org/issue/bootstrap-3543448/-/commit/340d741b0ec8dcb4af512841c72370880a061ba9.patch"
