@@ -35,7 +35,8 @@
     "extra": {
         "patches": {
             "drupal/autoban": {
-                "Mixed links": "https://www.drupal.org/files/issues/2023-09-09/autoban-mixed-links-3386212-2.patch"
+                "Mixed links": "https://www.drupal.org/files/issues/2023-09-09/autoban-mixed-links-3386212-2.patch",
+                "3611400 Fix D11.4+ support": "https://git.drupalcode.org/project/autoban/-/commit/263f8db9e13260e47bf1464de39cf0a5f7261575.patch"
             },
             "drupal/bootstrap": {
                 "Form element class": "https://git.drupalcode.org/issue/bootstrap-3543448/-/commit/340d741b0ec8dcb4af512841c72370880a061ba9.patch"

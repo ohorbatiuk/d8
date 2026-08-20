@@ -15,11 +15,11 @@ autoban_windows: |-
   1 year ago
 autoban_window_default: ''
 autoban_query_mode: like
-autoban_use_wildcards: 0
+autoban_use_wildcards: false
 autoban_whitelist: ''
 autoban_dblog_type_exclude: |-
   autoban
   cron
   php
   system
-autoban_threshold_analyze: '5'
+autoban_threshold_analyze: 5
