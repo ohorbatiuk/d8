@@ -19,6 +19,7 @@
         "drupal/fontawesome": "3.0.0",
         "drupal/idle": "1.0.2",
         "drupal/module_filter": "5.0.3",
+        "drupal/pathauto": "*",
         "drupal/persistent_login": "*",
         "drupal/recaptcha": "3.3",
         "drupal/recaptcha_preloader": "3.0.0",
