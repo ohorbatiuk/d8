@@ -60,6 +60,13 @@ function d8_update_11302(array &$sandbox): void {
 }
 
 /**
+ * Install Pathauto module.
+ */
+function d8_update_11303(array &$sandbox): void {
+  \Drupal::classResolver(D8Setup::class)->module('pathauto');
+}
+
+/**
  * Processes the list of update hooks.
  *
  * @param int[] ...

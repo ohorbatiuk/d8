@@ -16,6 +16,7 @@ This installation profile requires the following extensions:
 - [Automatic IP ban (Autoban)](https://www.drupal.org/project/autoban)
 - [Bootstrap](https://www.drupal.org/project/bootstrap)
 - [CAPTCHA](https://www.drupal.org/project/captcha)
+- [Chaos Tool Suite (ctools)](https://www.drupal.org/project/ctools)
 - [Config Export to PHP array](https://www.drupal.org/project/config2php)
 - [Configuration Update Manager](https://www.drupal.org/project/config_update)
 - [Drupal Symfony Mailer Plus (DSM+)](https://www.drupal.org/project/symfony_mailer)
@@ -25,11 +26,13 @@ This installation profile requires the following extensions:
 - [Font Awesome Icons](https://www.drupal.org/project/fontawesome)
 - [Idle](https://www.drupal.org/project/idle)
 - [Module Filter](https://www.drupal.org/project/module_filter)
+- [Pathauto](https://www.drupal.org/project/pathauto)
 - [Persistent Login](https://www.drupal.org/project/persistent_login)
 - [reCAPTCHA](https://www.drupal.org/project/recaptcha)
 - [reCAPTCHA Preloader](https://www.drupal.org/project/recaptcha_preloader)
 - [Service](https://www.drupal.org/project/service)
 - [StandWithUkraine 🇺🇦](https://www.drupal.org/project/standwithukraine)
+- [Token](https://www.drupal.org/project/token)
 - [Ultimate Cron Summary](https://www.drupal.org/project/ultimate_cron_summary)
 
 
