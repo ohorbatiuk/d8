@@ -9,4 +9,4 @@ dependencies:
   - d8:d8 (>=0.23.0.202)
   - symfony_mailer:symfony_mailer
 
-version: 1.0.0
+version: 2.0.0
