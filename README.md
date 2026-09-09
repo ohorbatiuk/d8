@@ -42,8 +42,8 @@ New installation step for setting captcha keys:
 
 ![captcha](images/captcha.png "captcha")
 
-
-## Mirrors
-
-- [GitHub](https://github.com/ohorbatiuk/d8)
-- [GitLab](https://gitlab.com/ohorbatiuk/d8)
+<div align="center">
+  <a href="https://github.com/ohorbatiuk/d8">GitHub</a> |
+  <a href="https://packagist.org/packages/ohorbatiuk/d8">Packagist</a> |
+  <a href="https://gitlab.com/ohorbatiuk/d8">GitLab</a>
+</div>
