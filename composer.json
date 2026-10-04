@@ -42,6 +42,9 @@
             "drupal/bootstrap": {
                 "Form element class": "https://git.drupalcode.org/issue/bootstrap-3543448/-/commit/340d741b0ec8dcb4af512841c72370880a061ba9.patch"
             },
+            "drupal/config2php": {
+                "Drupal 12 compatibility": "https://www.drupal.org/files/issues/2026-10-01/config2php-drupal-12-compatibility-3606219-8.patch"
+            },
             "drupal/core": {
                 "Default theme favicon for administration theme": "https://www.drupal.org/files/issues/2025-11-15/default-theme-favicon-for-administration-theme-2981434-20.patch"
             },
