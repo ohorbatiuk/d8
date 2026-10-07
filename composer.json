@@ -17,7 +17,7 @@
         "drupal/extlink": "2.0.5",
         "drupal/features": "3.15",
         "drupal/fontawesome": "3.0.0",
-        "drupal/idle": "dev-3599005-mix-drupal-12",
+        "drupal/idle": "1.0.x-dev",
         "drupal/module_filter": "5.0.3",
         "drupal/pathauto": "*",
         "drupal/persistent_login": "*",
@@ -65,10 +65,6 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "git",
-            "url": "https://git.drupalcode.org/issue/idle-3599005.git"
         }
     ]
 }
