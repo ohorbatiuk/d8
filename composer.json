@@ -17,7 +17,7 @@
         "drupal/extlink": "2.0.5",
         "drupal/features": "3.15",
         "drupal/fontawesome": "3.0.0",
-        "drupal/idle": "1.0.2",
+        "drupal/idle": "1.0.x-dev",
         "drupal/module_filter": "5.0.3",
         "drupal/pathauto": "*",
         "drupal/persistent_login": "*",
