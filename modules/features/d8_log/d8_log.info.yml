@@ -9,4 +9,4 @@ dependencies:
   - d8:d8_mail
   - exception_mailer:exception_mailer
 
-version: 1.0.0
+version: 2.0.0
