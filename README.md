@@ -17,7 +17,6 @@ This installation profile requires the following extensions:
 - [Bootstrap](https://www.drupal.org/project/bootstrap)
 - [Chaos Tool Suite (ctools)](https://www.drupal.org/project/ctools)
 - [Config Export to PHP array](https://www.drupal.org/project/config2php)
-- [Configuration Update Manager](https://www.drupal.org/project/config_update)
 - [Drupal Symfony Mailer Plus (DSM+)](https://www.drupal.org/project/symfony_mailer)
 - [Error & Exception Mailer](https://www.drupal.org/project/exception_mailer)
 - [External Links](https://www.drupal.org/project/extlink)
