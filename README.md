@@ -26,7 +26,6 @@ This installation profile requires the following extensions:
 - [Module Filter](https://www.drupal.org/project/module_filter)
 - [Pathauto](https://www.drupal.org/project/pathauto)
 - [Persistent Login](https://www.drupal.org/project/persistent_login)
-- [reCAPTCHA](https://www.drupal.org/project/recaptcha)
 - [reCAPTCHA Preloader](https://www.drupal.org/project/recaptcha_preloader)
 - [Service](https://www.drupal.org/project/service)
 - [StandWithUkraine 🇺🇦](https://www.drupal.org/project/standwithukraine)
